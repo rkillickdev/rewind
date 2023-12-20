@@ -1,110 +1,115 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# **Rewind**
 
-Welcome Rob Killick,
+<br>
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+Rewind has been developed as part of the [Code Institute](https://codeinstitute.net/) Diploma in Full Stack Software Development (Advanced Front End Portfolio Project #5).  The Django REST Framework has been used to build a backend API.  This returns JSON data to the front end which has been built using React.  The aim of the site is to provide a platform for a community of like minded music/technology enthusiasts who enjoy sharing snippets of nostalgia to evoke memories of the past and engaging in conversations about these snapshots in time.
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+## **CONTENTS**
 
-## Gitpod Reminders
+* [User Experience (UX)](#user-experience-ux)
+    * [Strategy Plane](#strategy-plane)
+        * [Project Goals](#project-goals)
+    * [Agile Methodology](#agile-methodology)
+        * [Epics](#epics)
+        * [User Stories](#user-stories)
+    * [Scope Plane](#scope-plane)
+    * [Skeleton Plane](#skeleton-plane)
+        * [Wireframes](#wireframes)
+        * [Database Schema](#database-schema)
+    * [Structure Plane](#structure-plane)
+        * [Features](#features)
+    * [Surface Plane](#surface-plane)
+* [Technologies Used](#technologies-used)
+    * [Languages Used](#languages-used)
+    * [Programs and Tools Used](#programs-and-tools-used)
+    * [Frameworks and Libraries Used](#frameworks-and-libraries-used)
+* [Testing](#testing)
+* [Deployment and Local Development](#deployment-and-local-development)
+* [Bugs](#bugs)
+    * [Known Bugs](#known-bugs)
+    * [Solved Bugs](#solved-bugs)
+* [Credits](#credits)
+    * [Code Used and Referenced](#code-used-and-referenced)
+    * [Media](#media)
+    * [Acknowledgements](#acknowledgements)
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+# **User Experience (UX)**
 
-`python3 -m http.server`
+## **STRATEGY PLANE**
 
-A blue button should appear to click: _Make Public_,
+## **Project Goals**
 
-Another blue button should appear to click: _Open Browser_.
+<br>
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+[Back to top &uarr;](#contents)
 
-A blue button should appear to click: _Make Public_,
+## **AGILE METHODOLOGY**
 
-Another blue button should appear to click: _Open Browser_.
+[Back to top &uarr;](#contents)
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+### **Epics**
 
-To log into the Heroku toolbelt CLI:
+#### **EPIC: Navigation & User Authentication [#1](https://github.com/rkillickdev/rewind/issues/1)**
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+`
+Users should be able to navigate the site effortlessly and access the site content in an intuitive manner. Certain features should only be accessible to authenticated users that have created a user profile.
+`
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+#### **EPIC: Snapshot Lists [#8](https://github.com/rkillickdev/rewind/issues/8)**
 
-------
+`
+Snapshots posted to the site should be available for all user to view, with authenticated users given additional control over the type of content they want to view.
+`
 
-## Release History
+#### **EPIC: Create Snapshots [#12](https://github.com/rkillickdev/rewind/issues/12)**
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+`
+Logged in users should have the ability to post snapshots that will then be attached to their profile and available for other site users to enjoy.
+`
 
-**September 20 2023:** Update Python version to 3.9.17.
+#### **EPIC: Snapshot Details [#15](https://github.com/rkillickdev/rewind/issues/15)**
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+`
+The detail page should display a specified snapshot post. All site users should have the ability to 'read' snapshots, logged in users should have the ability to comment on other user's snapshots and update/delete their own.
+`
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+#### **EPIC: Like and Pin Snapshots [#21](https://github.com/rkillickdev/rewind/issues/21)**
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+`
+As the user is viewing content on the site, they should have the ability to like snapshots and also pin any snapshot that catches their interest that they might want to return to later.
+`
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+#### **EPIC: Profiles [#24](https://github.com/rkillickdev/rewind/issues/24)**
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+`
+Logged in users should have the ability to update and tailor their own profile details. They should also be able to view the profiles of other site users and their associated snapshot posts. Users should be recommended other profiles to follow based on musical genre preferences specified in their own profiles
+`
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+[Back to top &uarr;](#contents)
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+### **User Stories**
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+[Back to top &uarr;](#contents)
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+## **SCOPE PLANE**
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+In order to satisfy the goals outlined in the [strategy plane](#strategy-plane), I will implement the following features:
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+* Implement functionality for all users to read snapshots posted by other site users.
+* Implement functionality for all users to read comments relating to user's snapshot posts.
+* Implement functionality for all users to view the profiles of other site users.
+* Implement functionality for users to create a user account and access additional site features.
+* Implement functionality for logged in users to create and update their own snapshot posts.
+* Implement functionality for logged in users to create, update and delete their own comments about a particular snapshot post. 
+* Implement functionality for logged in users to like snapshots posted by other site users
+* Implement functionality for logged in users to pin snapshots posted by other site users so they can easily return to it
+* Implement functionality for displaying suggested profiles to logged  in users, based on their own musical preferences
+* Implement functionality to allow logged in users to follow profiles they want to hear more from
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+[Back to top &uarr;](#contents)
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+## **SKELETON PLANE**
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+## **Wireframes**
 
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!
+Wireframes were created using [Balsamiq](https://balsamiq.com/wireframes/) and used as a blueprint for development of the site layout and structure.
