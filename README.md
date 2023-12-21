@@ -113,3 +113,134 @@ In order to satisfy the goals outlined in the [strategy plane](#strategy-plane),
 ## **Wireframes**
 
 Wireframes were created using [Balsamiq](https://balsamiq.com/wireframes/) and used as a blueprint for development of the site layout and structure.
+
+## **Database Schema**
+
+<br>
+
+The following custom models have been implemented as part of the development process:
+
+### **Profile**
+
+An instances of the Profile model is created automatically when a user signs up for an account and is connected to the User model via a one to one field.  Users are able to edit the `name`, `bio` and `image` fields.
+
+There is a many to many relationship connecting the Profile model to the Era, Genre and Category models.  This gives the user the ability to set their preferences for the type of snapshot posts they are most interested in viewing.  The many to many link means that a user could attach several different eras/ genres/ categories to their profile, and a single instance of an Era/ Genre/ Category can belong to many different profiles.
+
+### **API Endpoints**
+___
+
+| HTTP REQUEST | URL | CRUD Operation | View Type |
+| ------------ | --- | -------------- | --------- |
+| GET | /profiles | List all profiles | LIST |
+| GET | /profiles/:id | Retrieve a profile by id | DETAIL |
+| PUT | /profiles/:id | Update a profile by id | DETAIL |
+
+<br>
+
+### **Era / Genre/ Category**
+
+Multiple instances of Era / Genre/ Category can belong to multiple profiles.  This data will then be used to tailor content presented to site users and make suggestions for other profiles to follow.  
+
+The Era / Genre / Category models are linked to the Snapshot model via a foreign key field.  For example, a single instance of Era,Genre or Category can belong to many different instances of Snapshot.
+
+The API endpoints detailed below have been built to allow for eventual implementation of 'Create', 'Read' and 'Update' functionality on these models from the front end.  Although not included in the initial scope of the project, building this functionality into the backend will allow for a future feature whereby a site administrator can add additional eras/ generes/ categories via the site interface rather than using the Django admin panel.  This functionality could be implemented in future sprints. 
+
+### **API Endpoints**
+___
+
+| HTTP REQUEST | URL | CRUD Operation | View Type |
+| ------------ | --- | -------------- | --------- |
+| GET | /eras | List all eras | LIST |
+| POST | /eras | Create an era | LIST |
+| GET | /eras/:id | Retrieve an era by id | DETAIL |
+| PUT | /eras/:id | Update an era by id | DETAIL |
+
+| HTTP REQUEST | URL | CRUD Operation | View Type |
+| ------------ | --- | -------------- | --------- |
+| GET | /genres | List all genres | LIST |
+| POST | /genres | Create a genre | LIST |
+| GET | /genres/:id | Retrieve a genre by id | DETAIL |
+| PUT | /genres/:id | Update a genre by id | DETAIL |
+
+| HTTP REQUEST | URL | CRUD Operation | View Type |
+| ------------ | --- | -------------- | --------- |
+| GET | /categories | List all categories | LIST |
+| POST | /categories | Create a category | LIST |
+| GET | /categories/:id | Retrieve a category by id | DETAIL |
+| PUT | /categories/:id | Update a category by id | DETAIL |
+
+<br>
+
+### **Snapshot**
+
+### **API Endpoints**
+___
+
+| HTTP REQUEST | URL | CRUD Operation | View Type |
+| ------------ | --- | -------------- | --------- |
+| GET | /snapshots | List all snapshots | LIST |
+| POST | /snapshots | Create a snapshot | LIST |
+| GET | /snapshots/:id | Retrieve a snapshot by id | DETAIL |
+| PUT | /snapshots/:id | Update a snapshot by id | DETAIL |
+| DELETE | /snapshots/:id | Delete a snapshot by id | DETAIL |
+
+<br>
+
+### **Recommendation**
+
+### **API Endpoints**
+___
+
+| HTTP REQUEST | URL | CRUD Operation | View Type |
+| ------------ | --- | -------------- | --------- |
+| GET | /recommendations | List all recommendations | LIST |
+| POST | /recommendations | Create a recommendation | LIST |
+| GET | /recommendations/:id | Retrieve a recommendation by id | DETAIL |
+| DELETE | /recommendations/:id | Delete a recommendation by id | DETAIL |
+
+<br>
+
+### **Comment**
+
+### **API Endpoints**
+___
+
+| HTTP REQUEST | URL | CRUD Operation | View Type |
+| ------------ | --- | -------------- | --------- |
+| GET | /comments | List all comments | LIST |
+| POST | /comments | Create a comment | LIST |
+| GET | /comments/:id | Retrieve a comment by id | DETAIL |
+| DELETE | /comments/:id | Delete a comment by id | DETAIL |
+
+<br>
+
+### **Follower**
+
+### **API Endpoints**
+___
+
+| HTTP REQUEST | URL | CRUD Operation | View Type |
+| ------------ | --- | -------------- | --------- |
+| GET | /followers | List all followers | LIST |
+| POST | /followers | Create a follower | LIST |
+| GET | /followers/:id | Retrieve a follower by id | DETAIL |
+| DELETE | /followers/:id | Delete a follower by id | DETAIL |
+
+<br>
+
+### **Pin**
+
+### **API Endpoints**
+___
+
+| HTTP REQUEST | URL | CRUD Operation | View Type |
+| ------------ | --- | -------------- | --------- |
+| GET | /pins | List all pins | LIST |
+| POST | /pins | Create a pin | LIST |
+| GET | /pins/:id | Retrieve a pin by id | DETAIL |
+| DELETE | /pins/:id | Delete a pin by id | DETAIL |
+
+<br>
+
+
+
