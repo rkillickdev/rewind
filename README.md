@@ -129,7 +129,7 @@ There is a many to many relationship connecting the Profile model to the Era, Ge
 ### **API Endpoints**
 ___
 
-| HTTP REQUEST | URL | CRUD Operation | View Type |
+| HTTP REQUEST | URI | CRUD Operation | View Type |
 | ------------ | --- | -------------- | --------- |
 | GET | /profiles | List all profiles | LIST |
 | GET | /profiles/:id | Retrieve a profile by id | DETAIL |
@@ -148,21 +148,21 @@ The API endpoints detailed below have been built to allow for eventual implement
 ### **API Endpoints**
 ___
 
-| HTTP REQUEST | URL | CRUD Operation | View Type |
+| HTTP REQUEST | URI | CRUD Operation | View Type |
 | ------------ | --- | -------------- | --------- |
 | GET | /eras | List all eras | LIST |
 | POST | /eras | Create an era | LIST |
 | GET | /eras/:id | Retrieve an era by id | DETAIL |
 | PUT | /eras/:id | Update an era by id | DETAIL |
 
-| HTTP REQUEST | URL | CRUD Operation | View Type |
+| HTTP REQUEST | URI | CRUD Operation | View Type |
 | ------------ | --- | -------------- | --------- |
 | GET | /genres | List all genres | LIST |
 | POST | /genres | Create a genre | LIST |
 | GET | /genres/:id | Retrieve a genre by id | DETAIL |
 | PUT | /genres/:id | Update a genre by id | DETAIL |
 
-| HTTP REQUEST | URL | CRUD Operation | View Type |
+| HTTP REQUEST | URI | CRUD Operation | View Type |
 | ------------ | --- | -------------- | --------- |
 | GET | /categories | List all categories | LIST |
 | POST | /categories | Create a category | LIST |
@@ -176,7 +176,7 @@ ___
 ### **API Endpoints**
 ___
 
-| HTTP REQUEST | URL | CRUD Operation | View Type |
+| HTTP REQUEST | URI | CRUD Operation | View Type |
 | ------------ | --- | -------------- | --------- |
 | GET | /snapshots | List all snapshots | LIST |
 | POST | /snapshots | Create a snapshot | LIST |
@@ -191,7 +191,7 @@ ___
 ### **API Endpoints**
 ___
 
-| HTTP REQUEST | URL | CRUD Operation | View Type |
+| HTTP REQUEST | URI | CRUD Operation | View Type |
 | ------------ | --- | -------------- | --------- |
 | GET | /recommendations | List all recommendations | LIST |
 | POST | /recommendations | Create a recommendation | LIST |
@@ -205,7 +205,7 @@ ___
 ### **API Endpoints**
 ___
 
-| HTTP REQUEST | URL | CRUD Operation | View Type |
+| HTTP REQUEST | URI | CRUD Operation | View Type |
 | ------------ | --- | -------------- | --------- |
 | GET | /comments | List all comments | LIST |
 | POST | /comments | Create a comment | LIST |
@@ -219,7 +219,7 @@ ___
 ### **API Endpoints**
 ___
 
-| HTTP REQUEST | URL | CRUD Operation | View Type |
+| HTTP REQUEST | URI | CRUD Operation | View Type |
 | ------------ | --- | -------------- | --------- |
 | GET | /followers | List all followers | LIST |
 | POST | /followers | Create a follower | LIST |
@@ -233,7 +233,7 @@ ___
 ### **API Endpoints**
 ___
 
-| HTTP REQUEST | URL | CRUD Operation | View Type |
+| HTTP REQUEST | URI | CRUD Operation | View Type |
 | ------------ | --- | -------------- | --------- |
 | GET | /pins | List all pins | LIST |
 | POST | /pins | Create a pin | LIST |
