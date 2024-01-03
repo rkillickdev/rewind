@@ -5,7 +5,6 @@ from .models import Profile
 class ProfileSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source="owner.username")
     is_owner = serializers.SerializerMethodField()
-    era_preferences = serializers.StringRelatedField(many=True)
 
     def get_is_owner(self, obj):
         request = self.context["request"]
@@ -21,6 +20,11 @@ class ProfileSerializer(serializers.ModelSerializer):
             "name",
             "bio",
             "image",
-            "era_preferences",
             "is_owner",
+            "era_preferences",
+            "genre_preferences",
         ]
+
+class ProfileListSerializer(ProfileSerializer):
+    era_preferences = serializers.StringRelatedField(many=True)
+    genre_preferences = serializers.StringRelatedField(many=True)    

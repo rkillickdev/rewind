@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 from eras.models import Era
+from genres.models import Genre
 
 
 class Profile(models.Model):
@@ -23,9 +24,9 @@ class Profile(models.Model):
     era_preferences = models.ManyToManyField(
         Era, related_name="era_pref", blank=True
     )
-    # genre_preferences = models.ManyToManyField(
-    #     Genre, related_name="genre_pref", blank=True
-    # )
+    genre_preferences = models.ManyToManyField(
+        Genre, related_name="genre_pref", blank=True
+    )
     # category_preferences = models.ManyToManyField(
     #     Category, related_name="cat_pref", blank=True
     # )
