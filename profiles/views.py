@@ -9,8 +9,10 @@ class ProfileList(generics.ListAPIView):
     Lists all profiles.
     No Create view required, as profile creation handled by Django signals.
     """
+
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
+
 
 class ProfileDetail(generics.RetrieveUpdateAPIView):
     """
