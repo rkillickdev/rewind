@@ -243,4 +243,13 @@ ___
 <br>
 
 
+# **Credits**
+
+## **Code Used and Referenced**
+
+<br>
+
+* [Display string representation of Many To Many Fields in json response rather than IDs](https://stackoverflow.com/questions/64079111/how-can-i-display-the-values-of-a-manytomany-field-in-django-rest-framework-inst)
+
+
 
