@@ -4,6 +4,7 @@ click==8.1.7
 cloudinary==1.37.0
 Django==3.2.23
 django-cloudinary-storage==0.3.0
+djangorestframework==3.14.0
 pathspec==0.12.1
 Pillow==10.1.0
 pytz==2023.3.post1
