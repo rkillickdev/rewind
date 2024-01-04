@@ -3,6 +3,7 @@ from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 from eras.models import Era
 from genres.models import Genre
+from categories.models import Category
 
 
 class Profile(models.Model):
@@ -27,9 +28,9 @@ class Profile(models.Model):
     genre_preferences = models.ManyToManyField(
         Genre, related_name="genre_pref", blank=True
     )
-    # category_preferences = models.ManyToManyField(
-    #     Category, related_name="cat_pref", blank=True
-    # )
+    category_preferences = models.ManyToManyField(
+        Category, related_name="cat_pref", blank=True
+    )
 
     class Meta:
         ordering = ["-created_at"]

@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'profiles',
     'eras',
     'genres',
+    'categories',
 ]
 
 MIDDLEWARE = [

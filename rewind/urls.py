@@ -22,4 +22,5 @@ urlpatterns = [
     path("", include("profiles.urls")),
     path("", include("eras.urls")),
     path("", include("genres.urls")),
+    path("", include("categories.urls")),
 ]
