@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'eras',
     'genres',
     'categories',
+    'snapshots',
 ]
 
 MIDDLEWARE = [

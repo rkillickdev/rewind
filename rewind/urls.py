@@ -23,4 +23,5 @@ urlpatterns = [
     path("", include("eras.urls")),
     path("", include("genres.urls")),
     path("", include("categories.urls")),
+    path("", include("snapshots.urls")),
 ]
