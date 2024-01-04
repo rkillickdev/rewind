@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'genres',
     'categories',
     'snapshots',
+    'comments',
 ]
 
 MIDDLEWARE = [

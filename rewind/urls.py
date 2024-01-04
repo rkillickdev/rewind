@@ -24,4 +24,5 @@ urlpatterns = [
     path("", include("genres.urls")),
     path("", include("categories.urls")),
     path("", include("snapshots.urls")),
+    path("", include("comments.urls")),
 ]
