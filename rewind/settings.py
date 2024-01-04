@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'categories',
     'snapshots',
     'comments',
+    'recommendations',
 ]
 
 MIDDLEWARE = [

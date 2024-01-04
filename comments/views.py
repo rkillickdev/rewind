@@ -25,7 +25,7 @@ class CommentList(generics.ListCreateAPIView):
 class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     Retrieves an instance of Comment by id.
-    If the user is logged in they can edit or delete the Comment.
+    The User can edit or delete the retrieved Comment if they own it.
     """
 
     serializer_class = CommentDetailSerializer

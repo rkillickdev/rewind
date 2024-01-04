@@ -25,7 +25,7 @@ class SnapshotList(generics.ListCreateAPIView):
 class SnapshotDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     Retrieves an instance of Snapshot by id.
-    If the user is logged in they can edit or delete the Snapshot.
+    The user can edit or delete the retrieved Snapshot if they own it.
     """
 
     serializer_class = SnapshotSerializer

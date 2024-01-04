@@ -25,4 +25,5 @@ urlpatterns = [
     path("", include("categories.urls")),
     path("", include("snapshots.urls")),
     path("", include("comments.urls")),
+    path("", include("recommendations.urls")),
 ]
