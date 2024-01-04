@@ -26,4 +26,5 @@ urlpatterns = [
     path("", include("snapshots.urls")),
     path("", include("comments.urls")),
     path("", include("recommendations.urls")),
+    path("", include("followers.urls")),
 ]

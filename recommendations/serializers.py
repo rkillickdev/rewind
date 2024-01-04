@@ -9,7 +9,6 @@ class RecommendationSerializer(serializers.ModelSerializer):
     The create method uses the unique_constraint fields specified
     in the Recommendation model to check that the owner has not
     already recommended the snapshot before a new instance is created.
-
     """
 
     owner = serializers.ReadOnlyField(source="owner.username")
