@@ -10,8 +10,12 @@ class ProfileSerializer(serializers.ModelSerializer):
     This is a read only field and displays the username of the owner.
     The get_is_owner method is also defined, to determine whether the
     user making the request is the owner of the object.  This returns
-    a boolean value and included as the is_owner field in the json
+    a boolean value and is included as the is_owner field in the json
     response.
+    The get_following_id method is defined and returns the id for an instance
+    of Follower if the logged in user is following another profile and None
+    if they are not.  If a user is not logged in, the following_id returned
+    for each instance of Profile will be None.
     """
 
     owner = serializers.ReadOnlyField(source="owner.username")
