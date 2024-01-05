@@ -242,6 +242,36 @@ ___
 
 <br>
 
+# **Technologies Used**
+
+## **Languages Used**
+
+## **Programs and Tools Used**
+
+* [Git](https://en.wikipedia.org/wiki/Git) -  Version control.
+* [GitHub](https://github.com/) - All files for the project stored and saved in a repository.
+* [Gitpod](https://www.gitpod.io/) - IDE used to write the code, make git commits and push to GitHub.
+* [Heroku](https://dashboard.heroku.com/apps) - For deployment of the project.
+* [ElephantSQL](https://www.elephantsql.com/) - a PostgreSQL database used for the deployed production site.
+* [Cloudinary](https://www.cloudimage.io/) - Used to store user uploaded images and audio files.
+* [PEP8](https://pep8ci.herokuapp.com/) - CI Python Linter.
+* [Black](https://www.freecodecamp.org/news/auto-format-your-python-code-with-black/) - Python Auto Formatter.
+* [dbdiagram](https://dbdiagram.io/home) - Database Relationship Diagrams Design Tool.
+* [Balsamiq](https://balsamiq.com/wireframes/) - Used to create wireframes.
+* [Stackoverflow](https://stackoverflow.com/) - Used for researching solutions/ fixing bugs.
+
+## **Frameworks and Libraries Used**
+
+* [Django 3.2.23](https://www.djangoproject.com/) - High level Python web framework used in conjunction with DRF for development of the project backend.
+* [Django REST Framework](https://www.django-rest-framework.org/) - Framework used to develop the backend API.
+
+The [requirements.txt](requirements.txt) file provides information on required installations for this project.  Below are libraries that I installed to implement site functionality:
+
+* [cloudinary](https://cloudinary.com/) - Python library to facilitate integration of cloudinary with Django
+* [dj-databse-url](https://pypi.org/project/dj-database-url/) - A utility that allows use of the DATABASE_URL environment variable to configure a Django application.  This was used for connection to the PostgreSQL database.
+* [dj3-cloudinary-storage](https://pypi.org/project/dj3-cloudinary-storage/) - A Django package that facilitates Cloudinary storage for media files used in the project.
+* [django-filter](https://django-filter.readthedocs.io/en/stable/#) - Enables filtering of a queryset based on a Model's fields.
+* [pillow](https://pypi.org/project/pillow/) - A Python Imaging Library that adds image processing capabilities to your Python interpreter.
 
 # **Credits**
 

@@ -1,5 +1,6 @@
 from django.db.models import Count
 from rest_framework import generics, filters
+from django_filters.rest_framework import DjangoFilterBackend
 from rewind.permissions import IsOwnerOrReadOnly
 from .models import Profile
 from .serializers import ProfileSerializer, ProfileListSerializer
@@ -18,7 +19,12 @@ class ProfileList(generics.ListAPIView):
     ).order_by('-created_at')
     serializer_class = ProfileListSerializer
     filter_backends = [
-        filters.OrderingFilter
+        filters.OrderingFilter,
+        DjangoFilterBackend,
+    ]
+    filterset_fields = [
+        'owner__following__followed__profile',
+        'owner__followed__owner__profile',
     ]
     ordering_fields = [
         'snapshots_count',

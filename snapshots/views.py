@@ -1,5 +1,6 @@
 from django.db.models import Count
 from rest_framework import generics, permissions, filters
+from django_filters.rest_framework import DjangoFilterBackend
 from rewind.permissions import IsOwnerOrReadOnly
 from .models import Snapshot
 from .serializers import SnapshotSerializer
@@ -24,6 +25,15 @@ class SnapshotList(generics.ListCreateAPIView):
     filter_backends = [
         filters.OrderingFilter,
         filters.SearchFilter,
+        DjangoFilterBackend,
+    ]
+    filterset_fields = [
+        'owner__followed__owner__profile',
+        'recommendations__owner__profile',
+        'owner__profile',
+        'era',
+        'genre',
+        'category',
     ]
     search_fields = [
         'title',
