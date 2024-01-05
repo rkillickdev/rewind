@@ -22,7 +22,14 @@ class SnapshotList(generics.ListCreateAPIView):
         recommendations_count=Count('recommendations', distinct=True)
     ).order_by('-created_at')
     filter_backends = [
-        filters.OrderingFilter
+        filters.OrderingFilter,
+        filters.SearchFilter,
+    ]
+    search_fields = [
+        'title',
+        'era__decade',
+        'genre__style',
+        'category__title'
     ]
     ordering_fields = [
         'comments_count',
