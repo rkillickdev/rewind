@@ -25,6 +25,8 @@ class SnapshotSerializer(serializers.ModelSerializer):
     profile_image = serializers.ReadOnlyField(source="owner.profile.image.url")
     recommendation_id = serializers.SerializerMethodField()
     pin_id = serializers.SerializerMethodField()
+    comments_count = serializers.ReadOnlyField()
+    recommendations_count = serializers.ReadOnlyField()
 
     def get_is_owner(self, obj):
         request = self.context["request"]
@@ -67,4 +69,6 @@ class SnapshotSerializer(serializers.ModelSerializer):
             "category",
             "recommendation_id",
             "pin_id",
+            "comments_count",
+            "recommendations_count",
         ]

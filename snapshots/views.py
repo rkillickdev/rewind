@@ -1,4 +1,5 @@
-from rest_framework import generics, permissions
+from django.db.models import Count
+from rest_framework import generics, permissions, filters
 from rewind.permissions import IsOwnerOrReadOnly
 from .models import Snapshot
 from .serializers import SnapshotSerializer
@@ -16,7 +17,18 @@ class SnapshotList(generics.ListCreateAPIView):
 
     serializer_class = SnapshotSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    queryset = Snapshot.objects.all()
+    queryset = Snapshot.objects.annotate(
+        comments_count=Count('comment', distinct=True),
+        recommendations_count=Count('recommendations', distinct=True)
+    ).order_by('-created_at')
+    filter_backends = [
+        filters.OrderingFilter
+    ]
+    ordering_fields = [
+        'comments_count',
+        'recommendations_count',
+        'recommendations__created_at',
+    ]
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
@@ -30,4 +42,7 @@ class SnapshotDetail(generics.RetrieveUpdateDestroyAPIView):
 
     serializer_class = SnapshotSerializer
     permission_classes = [IsOwnerOrReadOnly]
-    queryset = Snapshot.objects.all()
+    queryset = Snapshot.objects.annotate(
+        comments_count=Count('comment', distinct=True),
+        recommendations_count=Count('recommendations', distinct=True)
+    ).order_by('-created_at')

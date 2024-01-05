@@ -15,7 +15,6 @@ class ProfileList(generics.ListAPIView):
         snapshots_count=Count('owner__snapshot', distinct=True),
         followers_count=Count('owner__followed', distinct=True),
         following_count=Count('owner__following', distinct=True)
-
     ).order_by('-created_at')
     serializer_class = ProfileListSerializer
     filter_backends = [
