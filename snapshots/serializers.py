@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from snapshots.models import Snapshot
 from recommendations.models import Recommendation
+from pins.models import Pin
 
 
 class SnapshotSerializer(serializers.ModelSerializer):
@@ -23,6 +24,7 @@ class SnapshotSerializer(serializers.ModelSerializer):
     profile_id = serializers.ReadOnlyField(source="owner.profile.id")
     profile_image = serializers.ReadOnlyField(source="owner.profile.image.url")
     recommendation_id = serializers.SerializerMethodField()
+    pin_id = serializers.SerializerMethodField()
 
     def get_is_owner(self, obj):
         request = self.context["request"]
@@ -35,6 +37,15 @@ class SnapshotSerializer(serializers.ModelSerializer):
                 owner=user, snapshot=obj  
             ).first()
             return recommendation.id if recommendation else None
+        return None
+
+    def get_pin_id(self, obj):
+        user = self.context["request"].user
+        if user.is_authenticated:
+            pin = Pin.objects.filter(
+                owner=user, snapshot=obj  
+            ).first()
+            return pin.id if pin else None
         return None
 
     class Meta:
@@ -55,4 +66,5 @@ class SnapshotSerializer(serializers.ModelSerializer):
             "genre",
             "category",
             "recommendation_id",
+            "pin_id",
         ]
