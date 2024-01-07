@@ -39,6 +39,11 @@ Rewind has been developed as part of the [Code Institute](https://codeinstitute.
 
 ## **Project Goals**
 
+The aim of the site is to create a community for music/technology enthusiasts with a particular emphasis on the ability to share memories and reminisce.  The term 'nostalgia' can be defined as "a feeling of sadness mixed with pleasure and affection when you think of happy times in the past".  This is a powerful emotion to tap into and cyclical patterns can be seen in fashion, music and technology.  Some music events and festivals are promoted with the emphasis on nostalgia, but this does not limit the market to those who witnessed trends and movements the first time round.  It is also engaging a new generation and there is enthusiasm for 'Retro'.  The resurgence in the Vinyl market is a great demonstration of this.  There was a point
+
+* People who experienced these trends and technologies the first time round
+* Younger who are only now being exposed to these technologies
+
 <br>
 
 [Back to top &uarr;](#contents)
