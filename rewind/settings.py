@@ -63,7 +63,7 @@ DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
     '8000-rkillickdev-rewind-op9jkkw7q8n.ws-eu107.gitpod.io',
-    'rkdev-rewind-ed88f8459fe7.herokuapp.com/'
+    'rkdev-rewind-ed88f8459fe7.herokuapp.com'
     ]
 
 
