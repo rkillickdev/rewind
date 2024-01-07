@@ -344,6 +344,7 @@ The [requirements.txt](requirements.txt) file provides information on required i
 * [djangorestframework-simplejwt](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/) - Provides a JSON Web Token authentication backend for the Django REST Framework.
 * [dj-rest-auth](https://dj-rest-auth.readthedocs.io/en/latest/) - Provides a set of REST API endpoints to handle User Registration and Authentication tasks.
 * [psycopg2](https://pypi.org/project/psycopg2/) - A Python PostgreSQL Database Adapter.
+* [gunicorn](https://gunicorn.org/) - A Python WSGI HTTP Server for UNIX.
 
 # **Deployment and Local Development**
 
