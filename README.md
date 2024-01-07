@@ -392,6 +392,12 @@ The following steps were followed to deploy the site to Heroku:
 
 4.  Click on the settings tab and then click the 'Reveal Config Vars' button.
 
+5. I entered the following Key : Value pairs to config vars:
+
+    * CLOUDINARY_URL : (Enter your [Cloudinary](https://cloudinary.com/) API Credentials)
+    * DATABASE_URL: (Enter your ElephantSQL database URL) 
+    * SECRET_KEY : (Enter your Django Secret Key)
+
 <br>
 
 # **Credits**
