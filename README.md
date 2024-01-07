@@ -343,6 +343,55 @@ The [requirements.txt](requirements.txt) file provides information on required i
 * [django-allauth](https://docs.allauth.org/en/latest/) - An integrated set of Django applications addressing authentication, registration and account management.  Used to implement role based login functionality across the site.
 * [djangorestframework-simplejwt](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/) - Provides a JSON Web Token authentication backend for the Django REST Framework.
 * [dj-rest-auth](https://dj-rest-auth.readthedocs.io/en/latest/) - Provides a set of REST API endpoints to handle User Registration and Authentication tasks.
+* [psycopg2](https://pypi.org/project/psycopg2/) - A Python PostgreSQL Database Adapter.
+
+# **Deployment and Local Development**
+
+I made sure to keep my requirements.txt file up to date throughout, running the command `pip3 freeze > requirements.txt` from the terminal whenever any new libraries were installed.  It is important that all requirements are added to this before deployment so Heroku installs the necessary dependencies.
+
+In development mode, the sqlite3 database provided by Django was used but this was not suitable for use in a production environment.  The deployed site uses a PostreSQL database hosted by [elephantSQL](https://www.elephantsql.com/) that Heroku can access.  It was therefore necessary to create an account with elephantSQL, and create a new database instance selecting the Tiny Turtle(free) plan.  My database instance is also named 'rewind'.  From the ElephantSQL dashboard, clicking on the database reveals a 'details' page where you can access the database URL, which is necessary for use in both the production and development environments.
+
+To implement functionality of the PostgreSQL database with Django, the following libraries were installed using the terminal command:
+
+```
+pip3 install dj_database_url==0.5.0 psycopg2
+```
+
+The database URL contains information that should not be exposed publicly and therefore must not be pushed to the GitHub repository.  For development purposes I stored the database URL in the env.py file which had been added to the gitignore file.  I did not connect to the production Postgres database from my development environment until I was sure that the models were functioning and included all the fields I required.  I used the following code in my settings.py file to enable switching between development and production databases.
+
+```python
+if 'DEV' in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+else:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    }
+```
+
+Once happy with the functionality of my models, I temporarily commented out the 'DEV' environment variable so that the IDE could connect with the external database and migrated changes using the following command in the terminal:
+
+```
+python3 manage.py migrate
+```
+
+Any time I made an amendment to a model, once I had thoroughly tested in development mode I then switched and migrated these changes to the production database.
+
+## **Heroku Deployment**
+
+The following steps were followed to deploy the site to Heroku:
+
+1.  Create an account and login to [Heroku](https://id.heroku.com/login)
+2.  In the Heroku dashboard, click the 'New' button at the top right of the screen and then select "Create new app".
+3.  I selected the name 'rkdev-rewind' ,set my region to Europe and clicked on the 'Create app' button.
+
+4.  Click on the settings tab and then click the 'Reveal Config Vars' button.
+
+<br>
 
 # **Credits**
 
