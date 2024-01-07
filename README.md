@@ -149,7 +149,7 @@ Logged in users should have the ability to update and tailor their own profile d
 
 ## **SCOPE PLANE**
 
-In order to satisfy the goals outlined in the [strategy plane](#strategy-plane), I will implement the following features:
+In order to satisfy the goals and user stories outlined in the [strategy plane](#strategy-plane), I will implement the following features:
 
 * Implement functionality for all users to read snapshots posted by other site users.
 * Implement functionality for all users to read comments relating to user's snapshot posts.
@@ -172,17 +172,17 @@ Wireframes were created using [Balsamiq](https://balsamiq.com/wireframes/) and u
 
 ## **Database Schema**
 
-<br>
+![rewind final database schema](docs/database-schema/pp5-rewind-database-schema.png)
 
 The following custom models have been implemented as part of the development process:
 
-### **Profile**
+### **PROFILE**
 
 An instances of the Profile model is created automatically when a user signs up for an account and is connected to the User model via a one to one field.  Users are able to edit the `name`, `bio` and `image` fields.
 
 There is a many to many relationship connecting the Profile model to the Era, Genre and Category models.  This gives the user the ability to set their preferences for the type of snapshot posts they are most interested in viewing.  The many to many link means that a user could attach several different eras/ genres/ categories to their profile, and a single instance of an Era/ Genre/ Category can belong to many different profiles.
 
-### **API Endpoints**
+### **Profile API Endpoints**
 ___
 
 | HTTP REQUEST | URI | CRUD Operation | View Type |
@@ -191,17 +191,17 @@ ___
 | GET | /profiles/:id | Retrieve a profile by id | DETAIL |
 | PUT | /profiles/:id | Update a profile by id | DETAIL |
 
-<br>
-
-### **Era / Genre/ Category**
+### **ERA / GENRE/ CATEGORY**
 
 Multiple instances of Era / Genre/ Category can belong to multiple profiles.  This data will then be used to tailor content presented to site users and make suggestions for other profiles to follow.  
 
 The Era / Genre / Category models are linked to the Snapshot model via a foreign key field.  For example, a single instance of Era,Genre or Category can belong to many different instances of Snapshot.
 
-The API endpoints detailed below have been built to allow for eventual implementation of 'Create', 'Read' and 'Update' functionality on these models from the front end.  Although not included in the initial scope of the project, building this functionality into the backend will allow for a future feature whereby a site administrator can add additional eras/ generes/ categories via the site interface rather than using the Django admin panel.  This functionality could be implemented in future sprints. 
+The API endpoints detailed below have been built to allow for eventual implementation of 'Create', 'Read' and 'Update' functionality on these models from the front end.  Although not included in the initial scope of the project, building this functionality into the backend will allow for a future feature whereby a site administrator can add additional eras/ generes/ categories via the site interface rather than using the Django admin panel.  This functionality could be implemented in future sprints.
 
-### **API Endpoints**
+The `IsAdminUser` class from the rest_framwork permissions has been included in the views for eras, genres and categories to ensure only staff users can access the following API endpoints.
+
+### **Era API Endpoints**
 ___
 
 | HTTP REQUEST | URI | CRUD Operation | View Type |
@@ -211,12 +211,18 @@ ___
 | GET | /eras/:id | Retrieve an era by id | DETAIL |
 | PUT | /eras/:id | Update an era by id | DETAIL |
 
+### **Genre API Endpoints**
+___
+
 | HTTP REQUEST | URI | CRUD Operation | View Type |
 | ------------ | --- | -------------- | --------- |
 | GET | /genres | List all genres | LIST |
 | POST | /genres | Create a genre | LIST |
 | GET | /genres/:id | Retrieve a genre by id | DETAIL |
 | PUT | /genres/:id | Update a genre by id | DETAIL |
+
+### **Category API Endpoints**
+___
 
 | HTTP REQUEST | URI | CRUD Operation | View Type |
 | ------------ | --- | -------------- | --------- |
@@ -225,11 +231,11 @@ ___
 | GET | /categories/:id | Retrieve a category by id | DETAIL |
 | PUT | /categories/:id | Update a category by id | DETAIL |
 
-<br>
+### **SNAPSHOT**
 
-### **Snapshot**
+As noted above, there is a 'One To Many' relationship linking the Era, Genre and Category models to the Snapshot model.  The User model is also linked to the Snapshot model via a 'One To Many' relationship, whereby a single instance of User can own many instances of Snapshot.  When a new instance of Snapshot is created (only avaialable to authenticated users), the owner field of the Snapshot model is automatically populated with the logged in user.  The perform_create method defined in the [snapshots/views](snapshots/views.py) takes care of this task.  Authenticated users are able to perform full CRUD functionality on the Snaphot model, although the ability to Update or Delete an instance is only available if the user owns the specified instance.
 
-### **API Endpoints**
+### **Snapshot API Endpoints**
 ___
 
 | HTTP REQUEST | URI | CRUD Operation | View Type |
@@ -240,11 +246,11 @@ ___
 | PUT | /snapshots/:id | Update a snapshot by id | DETAIL |
 | DELETE | /snapshots/:id | Delete a snapshot by id | DETAIL |
 
-<br>
+### **RECOMMENDATION**
 
-### **Recommendation**
+The Snapshot model is linked to the Recommendation model via a 'One To Many relationship' - Many instances of Recommendation can belong to a single instance of Snapshot.  As was the case with the Snapshot model above, the User model is also linked to the Recommendation model via a 'One To Many' relationship.  The relationship is automatically established each time a new instance of Recommendation is created. Authenticated users are able Create and Retrieve instances of Recommendation and delete them if the user owns the instance.  There is no need to provide the ability to update an istance of Recommendation, and this is reflected in the specified API Endpoints below.
 
-### **API Endpoints**
+### **Recommendation API Endpoints**
 ___
 
 | HTTP REQUEST | URI | CRUD Operation | View Type |
@@ -254,11 +260,11 @@ ___
 | GET | /recommendations/:id | Retrieve a recommendation by id | DETAIL |
 | DELETE | /recommendations/:id | Delete a recommendation by id | DETAIL |
 
-<br>
+### **COMMENT**
 
-### **Comment**
+There are 'One To Many' relationships between User / Snapshot models and Comment Model.  Many comments could be associated with either a single User or Snapshot.  All users can retrieve comments, authenticated users can create an instance and update/delete an instance if they are the owner. 
 
-### **API Endpoints**
+### **Comment API Endpoints**
 ___
 
 | HTTP REQUEST | URI | CRUD Operation | View Type |
@@ -266,13 +272,14 @@ ___
 | GET | /comments | List all comments | LIST |
 | POST | /comments | Create a comment | LIST |
 | GET | /comments/:id | Retrieve a comment by id | DETAIL |
+| PUT | /comments/:id | Update a comment by id | DETAIL |
 | DELETE | /comments/:id | Delete a comment by id | DETAIL |
 
-<br>
+### **FOLLOWER**
 
-### **Follower**
+There are two relationships between the User model and the Follower model.  Both are 'One To Many' relationships.  It is important to include 'related_names' in this case to distinguish between the two.  A user could be connected to an instance of Follower because they are the owner (i.e. following another user), or because they are being 'followed'.  Either way, many instances of Follower can be associated with a User.  They might be following many others, or being followed by many others.  Authenticated users can 'follow' another user (i.e. create an instance).  There is no need to include an API endpoint for updating an instance of Follower.  Deleting an instance is the equivalent of 'unfollowing' another user and can only be carried out by an authenticated user who owns the instance.
 
-### **API Endpoints**
+### **Follower API Endpoints**
 ___
 
 | HTTP REQUEST | URI | CRUD Operation | View Type |
@@ -282,11 +289,11 @@ ___
 | GET | /followers/:id | Retrieve a follower by id | DETAIL |
 | DELETE | /followers/:id | Delete a follower by id | DETAIL |
 
-<br>
+### **PIN**
 
-### **Pin**
+Relationship between User and Snapshot models via 'One To Many' relationship.  Authenticated users can create a new pin.  If the authenticated user also owns the pin they can delete it. 
 
-### **API Endpoints**
+### **Pin API Endpoints**
 ___
 
 | HTTP REQUEST | URI | CRUD Operation | View Type |
