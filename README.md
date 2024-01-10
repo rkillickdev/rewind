@@ -372,7 +372,7 @@ pip3 install dj_database_url==0.5.0 psycopg2
 The database URL contains information that should not be exposed publicly and therefore must not be pushed to the GitHub repository.  For development purposes I stored the database URL in the env.py file which had been added to the gitignore file.  I did not connect to the production Postgres database from my development environment until I was sure that the models were functioning and included all the fields I required.  I used the following code in my settings.py file to enable switching between development and production databases.
 
 ```python
-if 'DEV' in os.environ:
+if 'DEV_DB' in os.environ:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -385,13 +385,20 @@ else:
     }
 ```
 
-Once happy with the functionality of my models, I temporarily commented out the 'DEV' environment variable so that the IDE could connect with the external database and migrated changes using the following command in the terminal:
+Once happy with the functionality of my models, I temporarily commented out the 'DEV_DB' environment variable so that the IDE could connect with the external database and migrated changes using the following command in the terminal:
 
 ```
 python3 manage.py migrate
 ```
 
-Any time I made an amendment to a model, once I had thoroughly tested in development mode I then switched and migrated these changes to the production database.
+Any time I made an amendment to a model, once I had thoroughly tested in development mode I then switched and migrated these changes to the production database.  The 'DEV_DB' variable does not exist in the Heroku config vars and therefore the Deployed version of the site connects to the PostgreSQL production database.  I used this naming convention for the environment variable as I also have a 'DEV' variable but this is used to control the rest framework's default renderer. When not in development mode, the classes attribute is set to JSONRenderer so the frontend React app is sent pure JSON:
+
+```python
+if 'DEV' not in os.environ:
+    REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
+        'rest_framework.renderers.JSONRenderer',
+    ]
+```
 
 ## **Heroku Deployment**
 
