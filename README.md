@@ -357,6 +357,59 @@ The [requirements.txt](requirements.txt) file provides information on required i
 * [psycopg2](https://pypi.org/project/psycopg2/) - A Python PostgreSQL Database Adapter.
 * [gunicorn](https://gunicorn.org/) - A Python WSGI HTTP Server for UNIX.
 
+[Back to top &uarr;](#contents)
+
+# **Testing**
+
+* [Manual Testing](#manual-testing)
+    * [User Story Testing](#user-story-testing)
+    * [Full Testing](#full-testing)
+    * [Defensive Testing](#defensive-testing)
+    * [Form Testing](#form-testing)
+    * [Javascript Testing](#javascript-testing)
+* [Automated Testing](#automated-testing)
+    * [Unit Testing](#unit-testing)
+* [Validators](#validators)
+    * [PEP8 Validation](#pep8-validation)
+    * [ESLint for Javascript and JSX Validation](#jshint-javascript-validation)
+    * [W3C Markup HTML Validator](#w3c-html-markup-validator)
+    * [W3C CSS Validator](#w3c-css-validator)
+* [Performance](#performance)
+    * [Lighthouse](#lighthouse)
+    * [Wave Accessibility](#wave-accessibility)
+* [Responsiveness](#responsiveness)
+
+<br>
+
+## **Validators**
+
+### **PEP8 Validation:**
+
+### **ESLint for Javascript and JSX Validation:**
+
+ESLint was installed and configured for my gitpod workspace with help from the following article and CI Slack threads:
+
+[Install ESLint and Prettier auto formatting for React](https://gist.github.com/ianmeigh/8e603b91a38d7829d959402bfcf29d3d)
+[ESLint Config](https://code-institute-room.slack.com/archives/C02MTH5MBDG/p1663951564900919?thread_ts=1663797268.383809&cid=C02MTH5MBDG)
+
+When the code for our React app is compiled, ESLint checks that certain rules are being adhered to.  Additionally, I used the Prettier extension to format js files on save.  I found that I had to specify that javascript files should use Prettier as the default formatter in my workspace settings.json file, as can be seen in the code snippet below: 
+
+```json
+"[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.detectIndentation": true,
+        "editor.tabSize": 2,
+        "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": "explicit"
+        }, 
+        "editor.formatOnSave": true   
+    },
+```
+
+eslint checks our code at compile time to ensure we are following certain rules, we can additionally use the Prettier plugin to ensure we are following a consistent style throughout our project
+
+
+
 # **Deployment and Local Development**
 
 I made sure to keep my requirements.txt file up to date throughout, running the command `pip3 freeze > requirements.txt` from the terminal whenever any new libraries were installed.  It is important that all requirements are added to this before deployment so Heroku installs the necessary dependencies.
