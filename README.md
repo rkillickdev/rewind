@@ -361,6 +361,7 @@ The [requirements.txt](requirements.txt) file provides information on required i
 
 * [react-bootstrap 1.6.3](https://react-bootstrap-v4.netlify.app/)
 * [react-router-dom](https://www.npmjs.com/package/react-router-dom)
+* [axios](https://axios-http.com/docs/intro)
 
 [Back to top &uarr;](#contents)
 
