@@ -334,6 +334,8 @@ Wireframes were created using [Balsamiq](https://balsamiq.com/wireframes/) and u
 * [ElephantSQL](https://www.elephantsql.com/) - a PostgreSQL database used for the deployed production site.
 * [Cloudinary](https://www.cloudimage.io/) - Used to store user uploaded images and audio files.
 * [PEP8](https://pep8ci.herokuapp.com/) - CI Python Linter.
+* [ESLint](https://eslint.org/)
+* [Prettier](https://prettier.io/)
 * [Black](https://www.freecodecamp.org/news/auto-format-your-python-code-with-black/) - Python Auto Formatter.
 * [dbdiagram](https://dbdiagram.io/home) - Database Relationship Diagrams Design Tool.
 * [Balsamiq](https://balsamiq.com/wireframes/) - Used to create wireframes.
@@ -356,6 +358,9 @@ The [requirements.txt](requirements.txt) file provides information on required i
 * [dj-rest-auth](https://dj-rest-auth.readthedocs.io/en/latest/) - Provides a set of REST API endpoints to handle User Registration and Authentication tasks.
 * [psycopg2](https://pypi.org/project/psycopg2/) - A Python PostgreSQL Database Adapter.
 * [gunicorn](https://gunicorn.org/) - A Python WSGI HTTP Server for UNIX.
+
+* [react-bootstrap 1.6.3](https://react-bootstrap-v4.netlify.app/)
+* [react-router-dom](https://www.npmjs.com/package/react-router-dom)
 
 [Back to top &uarr;](#contents)
 
