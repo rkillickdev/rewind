@@ -39,10 +39,11 @@ Rewind has been developed as part of the [Code Institute](https://codeinstitute.
 
 ## **Project Goals**
 
-The aim of the site is to create a community for music/technology enthusiasts with a particular emphasis on the ability to share memories and reminisce.  The term 'nostalgia' can be defined as "a feeling of sadness mixed with pleasure and affection when you think of happy times in the past".  This is a powerful emotion to tap into and cyclical patterns can be seen in fashion, music and technology.  Some music events and festivals are promoted with the emphasis on nostalgia, but this does not limit the market to those who witnessed trends and movements the first time round.  It is also engaging a new generation and there is enthusiasm for 'Retro'.  The resurgence in the Vinyl market is a great demonstration of this.  There was a point
+The aim of the site is to create a community for music/technology enthusiasts with a particular emphasis on the ability to share memories and reminisce.  The term 'nostalgia' can be defined as "a feeling of sadness mixed with pleasure and affection when you think of happy times in the past".  This is a powerful emotion to tap into and cyclical patterns can be seen in fashion, music and technology.  The resurgence in the Vinyl market is a great demonstration of this.  Although the primary target site user may be those wishing to share their memories, this does not limit the target audience to those who witnessed trends and movements the first time round.  It will also engage a new generation where there is great interest for all things 'Retro' and an enthusiasm to discover more about these bygone eras.
 
-* People who experienced these trends and technologies the first time round
-* Younger who are only now being exposed to these technologies
+Rewind will give users a platform to post their own 'snapshots' from the past and enter into discussion about fellow user's memories.  To ensure that site users can intuitively and effortlessly access content most relevant to their interets, they will be given the opportunity to tailor their user profiles to indicate their preferences.  This data will be used to recommend other profiles and snapshots that may be of interest to the user.  Users will also have the ability to recommend snapshots that they have enjoyed and this data will be stored in the database, so it can then be used as mechanism for users to sort content.  To fit in with busy lives of a site user, they will also have the ability to pin snapshots while they scroll, so they can easily return to them at a later date.
+
+Although the initial build of the site focuses on music/technology, site traffic could be increased by expanding genres / categories to appeal to a more diverse range of users.  For example additional categories such as Fashion, Art, Design could be added as instances in the Category Model
 
 <br>
 
@@ -170,10 +171,6 @@ In order to satisfy the goals and user stories outlined in the [strategy plane](
 [Back to top &uarr;](#contents)
 
 ## **SKELETON PLANE**
-
-## **Wireframes**
-
-Wireframes were created using [Balsamiq](https://balsamiq.com/wireframes/) and used as a blueprint for development of the site layout and structure.
 
 ## **Database Schema**
 
@@ -307,6 +304,20 @@ ___
 | POST | /pins | Create a pin | LIST |
 | GET | /pins/:id | Retrieve a pin by id | DETAIL |
 | DELETE | /pins/:id | Delete a pin by id | DETAIL |
+
+<br>
+
+## **Wireframes**
+
+Wireframes were created using [Balsamiq](https://balsamiq.com/wireframes/) and used as a blueprint for development of the site layout and structure.
+
+<details><summary>Mobile</summary>
+
+<br>
+
+![PlanIt-Go wireframe mobile List Views](docs/wireframes/mobile/mobile-list-views.png)
+
+</details>
 
 <br>
 
