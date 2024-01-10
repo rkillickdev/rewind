@@ -1,0 +1,9 @@
+.NavBar {
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 10%);
+}
+
+.NavBar h1 {
+    font-family: 'Bungee Spice', sans-serif;
+    margin-bottom: 0;
+    margin-left: 0.5rem;
+}
