@@ -8,7 +8,7 @@
 
 .App {
     font-family: "Roboto", sans-serif;
-    color: var(--primary-color);
+    color: var(--dark-color);
     background-color: var(--light-color);
     min-height: 100vh;
 }
