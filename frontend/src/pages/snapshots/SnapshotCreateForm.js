@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -14,10 +14,33 @@ import btnStyles from "../../styles/Button.module.css";
 import Asset from "../../components/Asset";
 import { Image } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
-import { axiosReq } from "../../api/axiosDefaults";
+import { axiosReq, axiosRes } from "../../api/axiosDefaults";
 
 function SnapshotCreateForm() {
   const [errors, setErrors] = useState({});
+  const [options, setOptions] = useState([]);
+
+  const fetchOptions = async () => {
+    try {
+      const { data } = await axiosRes.get("/genres/");
+      // data.map((item) => console.log(item.style));
+      const results = [];
+      console.log(data);
+      setOptions(data.results);
+      // data.forEach((value) => {
+      //   results.push(value.style);
+      //   console.log(results);
+      // });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchOptions();
+  }, []);
+
+  console.log(options);
 
   const [snapshotData, setSnaphotData] = useState({
     title: "",
@@ -87,6 +110,20 @@ function SnapshotCreateForm() {
           value={description}
           onChange={handleChange}
         />
+      </Form.Group>
+
+      <Form.Group>
+        <Form.Label>Category</Form.Label>
+        <Form.Control as="select" name="category" onChange={handleChange}>
+          {Object.keys(options).map((keyName) => {
+            return (
+              <option value={keyName} key={`category-${keyName}`}>
+                {options[keyName].style}
+              </option>
+              // console.log(keyName)
+            );
+          })}
+        </Form.Control>
       </Form.Group>
 
       <Button
