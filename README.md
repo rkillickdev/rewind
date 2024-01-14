@@ -358,6 +358,7 @@ The [requirements.txt](requirements.txt) file provides information on required i
 * [dj-rest-auth](https://dj-rest-auth.readthedocs.io/en/latest/) - Provides a set of REST API endpoints to handle User Registration and Authentication tasks.
 * [psycopg2](https://pypi.org/project/psycopg2/) - A Python PostgreSQL Database Adapter.
 * [gunicorn](https://gunicorn.org/) - A Python WSGI HTTP Server for UNIX.
+* [whitenoise](https://pypi.org/project/whitenoise/) - Simplified static file serving for WSGI applications.  I used this to serve static files for both the DRF backend and the React frontend.
 
 * [react-bootstrap 1.6.3](https://react-bootstrap-v4.netlify.app/)
 * [react-router-dom](https://www.npmjs.com/package/react-router-dom)
