@@ -13,7 +13,7 @@ import styles from "../../styles/SnapshotCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import Asset from "../../components/Asset";
-import { Image, NavItem } from "react-bootstrap";
+import { Image } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { axiosReq, axiosRes } from "../../api/axiosDefaults";
 
@@ -76,8 +76,6 @@ function SnapshotCreateForm() {
     });
   };
 
-  console.log(snapshotData);
-
   const handleChangeImage = (event) => {
     if (event.target.files.length) {
       URL.revokeObjectURL(image);
@@ -98,7 +96,6 @@ function SnapshotCreateForm() {
     formData.append("era", era);
     formData.append("genre", genre);
     formData.append("category", category);
-    console.log(formData);
 
     try {
       const { data } = await axiosReq.post("/snapshots/", formData);
@@ -111,7 +108,7 @@ function SnapshotCreateForm() {
     }
   };
 
-  const textFields = (
+  const textSelectFields = (
     <div className="text-center">
       <Form.Group>
         <Form.Label className="d-none">Title</Form.Label>
@@ -147,8 +144,16 @@ function SnapshotCreateForm() {
       ))}
 
       <Form.Group>
-        <Form.Label>Genre</Form.Label>
-        <Form.Control as="select" name="genre" onChange={handleChange}>
+        <Form.Label className="d-none">Genre</Form.Label>
+        <Form.Control
+          as="select"
+          name="genre"
+          onChange={handleChange}
+          defaultValue={-1}
+        >
+          <option value={-1} disabled>
+            select genre
+          </option>
           {genres.map((genre) => {
             return (
               <option value={genre.id} key={genre.id}>
@@ -165,8 +170,16 @@ function SnapshotCreateForm() {
       ))}
 
       <Form.Group>
-        <Form.Label>Era</Form.Label>
-        <Form.Control as="select" name="era" onChange={handleChange}>
+        <Form.Label className="d-none">Era</Form.Label>
+        <Form.Control
+          as="select"
+          name="era"
+          onChange={handleChange}
+          defaultValue={-1}
+        >
+          <option value={-1} disabled>
+            select era
+          </option>
           {eras.map((era) => {
             return (
               <option value={era.id} key={era.id}>
@@ -183,8 +196,16 @@ function SnapshotCreateForm() {
       ))}
 
       <Form.Group>
-        <Form.Label>Category</Form.Label>
-        <Form.Control as="select" name="category" onChange={handleChange}>
+        <Form.Label className="d-none">Category</Form.Label>
+        <Form.Control
+          as="select"
+          name="category"
+          onChange={handleChange}
+          defaultValue={-1}
+        >
+          <option value={-1} disabled>
+            select category
+          </option>
           {categories.map((category) => {
             return (
               <option value={category.id} key={category.id}>
@@ -258,11 +279,13 @@ function SnapshotCreateForm() {
               </Alert>
             ))}
 
-            <div className="d-md-none">{textFields}</div>
+            <div className="d-md-none">{textSelectFields}</div>
           </Container>
         </Col>
         <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
-          <Container className={appStyles.Content}>{textFields}</Container>
+          <Container className={appStyles.Content}>
+            {textSelectFields}
+          </Container>
         </Col>
       </Row>
     </Form>

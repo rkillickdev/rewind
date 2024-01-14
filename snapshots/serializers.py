@@ -20,9 +20,13 @@ class SnapshotSerializer(serializers.ModelSerializer):
     """
 
     owner = serializers.ReadOnlyField(source="owner.username")
-    era = serializers.StringRelatedField()
-    genre = serializers.StringRelatedField()
-    category = serializers.StringRelatedField()
+    # era = serializers.StringRelatedField()
+    # genre = serializers.StringRelatedField()
+    # category = serializers.StringRelatedField()
+    # category_name = serializers.RelatedField(source='category', read_only=True)
+    # era_decade = serializers.ReadOnlyField(source='era.decade')
+    # genre_style = serializers.ReadOnlyField(source='genre.style')
+    # category_title = serializers.ReadOnlyField(source='category.title')
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source="owner.profile.id")
     profile_image = serializers.ReadOnlyField(source="owner.profile.image.url")
