@@ -10,7 +10,7 @@ class EraList(generics.ListCreateAPIView):
     """
 
     serializer_class = EraSerializer
-    permission_classes = [permissions.IsAdminUser]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Era.objects.all()
 
 

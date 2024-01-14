@@ -26,8 +26,6 @@ class Snapshot(models.Model):
     description = models.TextField(blank=True)
     image = models.ImageField(
         upload_to="images/snapshots/",
-        default="../default_profile_oeycka",
-        blank=True,
     )
     soundbyte = models.FileField(upload_to="audio/snapshots/", blank=True)
     era = models.ForeignKey(Era, on_delete=models.CASCADE)

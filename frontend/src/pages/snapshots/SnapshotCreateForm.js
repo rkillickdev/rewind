@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
+import Alert from "react-bootstrap/Alert";
 
 import Upload from "../../assets/image-upload-icon.png";
 
@@ -12,42 +13,58 @@ import styles from "../../styles/SnapshotCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import Asset from "../../components/Asset";
-import { Image } from "react-bootstrap";
+import { Image, NavItem } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { axiosReq, axiosRes } from "../../api/axiosDefaults";
 
 function SnapshotCreateForm() {
   const [errors, setErrors] = useState({});
-  const [options, setOptions] = useState([]);
+  const [genres, setGenres] = useState([]);
+  const [eras, setEras] = useState([]);
+  const [categories, setCategories] = useState([]);
 
-  const fetchOptions = async () => {
+  const fetchGenres = async () => {
     try {
       const { data } = await axiosRes.get("/genres/");
-      // data.map((item) => console.log(item.style));
-      const results = [];
-      console.log(data);
-      setOptions(data.results);
-      // data.forEach((value) => {
-      //   results.push(value.style);
-      //   console.log(results);
-      // });
+      setGenres(data.results);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const fetchEras = async () => {
+    try {
+      const { data } = await axiosRes.get("/eras/");
+      setEras(data.results);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const fetchCategories = async () => {
+    try {
+      const { data } = await axiosRes.get("/categories/");
+      setCategories(data.results);
     } catch (err) {
       console.log(err);
     }
   };
 
   useEffect(() => {
-    fetchOptions();
+    fetchGenres();
+    fetchEras();
+    fetchCategories();
   }, []);
-
-  console.log(options);
 
   const [snapshotData, setSnaphotData] = useState({
     title: "",
     description: "",
     image: "",
+    genre: "",
+    era: "",
+    category: "",
   });
-  const { title, description, image } = snapshotData;
+  const { title, description, image, genre, era, category } = snapshotData;
 
   const imageInput = useRef(null);
   const history = useHistory();
@@ -58,6 +75,8 @@ function SnapshotCreateForm() {
       [event.target.name]: event.target.value,
     });
   };
+
+  console.log(snapshotData);
 
   const handleChangeImage = (event) => {
     if (event.target.files.length) {
@@ -76,6 +95,10 @@ function SnapshotCreateForm() {
     formData.append("title", title);
     formData.append("description", description);
     formData.append("image", imageInput.current.files[0]);
+    formData.append("era", era);
+    formData.append("genre", genre);
+    formData.append("category", category);
+    console.log(formData);
 
     try {
       const { data } = await axiosReq.post("/snapshots/", formData);
@@ -100,6 +123,12 @@ function SnapshotCreateForm() {
           onChange={handleChange}
         />
       </Form.Group>
+      {errors?.title?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+
       <Form.Group>
         <Form.Label className="d-none">Description</Form.Label>
         <Form.Control
@@ -111,20 +140,65 @@ function SnapshotCreateForm() {
           onChange={handleChange}
         />
       </Form.Group>
+      {errors?.description?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
       <Form.Group>
-        <Form.Label>Category</Form.Label>
-        <Form.Control as="select" name="category" onChange={handleChange}>
-          {Object.keys(options).map((keyName) => {
+        <Form.Label>Genre</Form.Label>
+        <Form.Control as="select" name="genre" onChange={handleChange}>
+          {genres.map((genre) => {
             return (
-              <option value={keyName} key={`category-${keyName}`}>
-                {options[keyName].style}
+              <option value={genre.id} key={genre.id}>
+                {genre.style}
               </option>
-              // console.log(keyName)
             );
           })}
         </Form.Control>
       </Form.Group>
+      {errors?.genre?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+
+      <Form.Group>
+        <Form.Label>Era</Form.Label>
+        <Form.Control as="select" name="era" onChange={handleChange}>
+          {eras.map((era) => {
+            return (
+              <option value={era.id} key={era.id}>
+                {era.decade}
+              </option>
+            );
+          })}
+        </Form.Control>
+      </Form.Group>
+      {errors?.era?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+
+      <Form.Group>
+        <Form.Label>Category</Form.Label>
+        <Form.Control as="select" name="category" onChange={handleChange}>
+          {categories.map((category) => {
+            return (
+              <option value={category.id} key={category.id}>
+                {category.title}
+              </option>
+            );
+          })}
+        </Form.Control>
+      </Form.Group>
+      {errors?.category?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
@@ -178,6 +252,12 @@ function SnapshotCreateForm() {
                 ref={imageInput}
               />
             </Form.Group>
+            {errors?.image?.map((message, idx) => (
+              <Alert variant="warning" key={idx}>
+                {message}
+              </Alert>
+            ))}
+
             <div className="d-md-none">{textFields}</div>
           </Container>
         </Col>

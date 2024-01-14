@@ -10,7 +10,7 @@ class GenreList(generics.ListCreateAPIView):
     """
 
     serializer_class = GenreSerializer
-    permission_classes = [permissions.IsAdminUser]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Genre.objects.all()
 
 

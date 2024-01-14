@@ -20,6 +20,9 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     owner = serializers.ReadOnlyField(source="owner.username")
     is_owner = serializers.SerializerMethodField()
+    era_preferences = serializers.StringRelatedField(many=True)
+    genre_preferences = serializers.StringRelatedField(many=True)
+    category_preferences = serializers.StringRelatedField(many=True)
     following_id = serializers.SerializerMethodField()
     snapshots_count = serializers.ReadOnlyField()
     followers_count = serializers.ReadOnlyField()
@@ -59,14 +62,14 @@ class ProfileSerializer(serializers.ModelSerializer):
         ]
 
 
-class ProfileListSerializer(ProfileSerializer):
-    """
-    Inherits from the ProfileSerializer above.
-    StringRelatedField is used here to display string
-    representations of the era, genre and category preferences
-    rather than IDs when listing profiles.
-    """
+# class ProfileListSerializer(ProfileSerializer):
+#     """
+#     Inherits from the ProfileSerializer above.
+#     StringRelatedField is used here to display string
+#     representations of the era, genre and category preferences
+#     rather than IDs when listing profiles.
+#     """
 
-    era_preferences = serializers.StringRelatedField(many=True)
-    genre_preferences = serializers.StringRelatedField(many=True)
-    category_preferences = serializers.StringRelatedField(many=True)
+#     era_preferences = serializers.StringRelatedField(many=True)
+#     genre_preferences = serializers.StringRelatedField(many=True)
+#     category_preferences = serializers.StringRelatedField(many=True)

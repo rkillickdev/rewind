@@ -3,7 +3,7 @@ from rest_framework import generics, filters
 from django_filters.rest_framework import DjangoFilterBackend
 from rewind.permissions import IsOwnerOrReadOnly
 from .models import Profile
-from .serializers import ProfileSerializer, ProfileListSerializer
+from .serializers import ProfileSerializer
 
 
 class ProfileList(generics.ListAPIView):
@@ -17,7 +17,7 @@ class ProfileList(generics.ListAPIView):
         followers_count=Count('owner__followed', distinct=True),
         following_count=Count('owner__following', distinct=True)
     ).order_by('-created_at')
-    serializer_class = ProfileListSerializer
+    serializer_class = ProfileSerializer
     filter_backends = [
         filters.OrderingFilter,
         DjangoFilterBackend,

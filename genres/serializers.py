@@ -9,4 +9,4 @@ class GenreSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Genre
-        fields = ["style", "summary", "image"]
+        fields = ["id", "style", "summary", "image"]

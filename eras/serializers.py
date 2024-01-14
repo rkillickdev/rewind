@@ -9,4 +9,4 @@ class EraSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Era
-        fields = ["decade", "summary", "image"]
+        fields = ["id", "decade", "summary", "image"]

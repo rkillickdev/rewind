@@ -10,7 +10,7 @@ class CategoryList(generics.ListCreateAPIView):
     """
 
     serializer_class = CategorySerializer
-    permission_classes = [permissions.IsAdminUser]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Category.objects.all()
 
 
