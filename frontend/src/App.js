@@ -6,6 +6,7 @@ import "./api/axiosDefaults";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
 import SnapshotCreateForm from "./pages/snapshots/SnapshotCreateForm";
+import SnapshotPage from "./pages/snapshots/SnapshotPage";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             path="/snapshots/create"
             render={() => <SnapshotCreateForm />}
           />
+          <Route exact path="/snapshots/:id" render={() => <SnapshotPage />} />
           <Route render={() => <p>Page Not Found!</p>} />
         </Switch>
       </Container>
