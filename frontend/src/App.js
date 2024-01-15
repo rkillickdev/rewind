@@ -7,14 +7,24 @@ import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
 import SnapshotCreateForm from "./pages/snapshots/SnapshotCreateForm";
 import SnapshotPage from "./pages/snapshots/SnapshotPage";
+import SnapshotsPage from "./pages/snapshots/SnapshotsPage";
+import { useCurrentUser } from "./contexts/CurrentUserContext";
 
 function App() {
+  const currentUser = useCurrentUser();
+  const profile_id = currentUser?.profile_id || "";
   return (
     <div className={styles.App}>
       <NavBar />
       <Container className={styles.Main}>
         <Switch>
-          <Route exact path="/" render={() => <h1>Home Page</h1>} />
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <SnapshotsPage message="No Snapshots Found.  Adjust search keyword" />
+            )}
+          />
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route

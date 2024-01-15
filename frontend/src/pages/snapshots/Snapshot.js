@@ -30,9 +30,7 @@ const Snapshot = (props) => {
   } = props;
 
   const currentUser = useCurrentUser();
-  console.log(currentUser);
   const is_owner = currentUser?.username === owner;
-  console.log(is_owner);
 
   const handleRecommend = async () => {
     try {
