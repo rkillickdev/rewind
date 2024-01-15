@@ -29,7 +29,7 @@ class SnapshotList(generics.ListCreateAPIView):
     ]
     filterset_fields = [
         'owner__followed__owner__profile',
-        'recommendations__owner__profile',
+        'pins__owner__profile',
         'owner__profile',
         'era',
         'genre',

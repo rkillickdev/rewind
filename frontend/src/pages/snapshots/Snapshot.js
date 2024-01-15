@@ -74,6 +74,46 @@ const Snapshot = (props) => {
     }
   };
 
+  const handlePin = async () => {
+    try {
+      const { data } = await axiosRes.post("/pins/", {
+        snapshot: id,
+      });
+      setSnapshots((prevSnapshots) => ({
+        ...prevSnapshots,
+        results: prevSnapshots.results.map((snapshot) => {
+          return snapshot.id === id
+            ? {
+                ...snapshot,
+                pin_id: data.id,
+              }
+            : snapshot;
+        }),
+      }));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleUnpin = async () => {
+    try {
+      await axiosRes.delete(`/pins/${pin_id}/`);
+      setSnapshots((prevSnapshots) => ({
+        ...prevSnapshots,
+        results: prevSnapshots.results.map((snapshot) => {
+          return snapshot.id === id
+            ? {
+                ...snapshot,
+                pin_id: null,
+              }
+            : snapshot;
+        }),
+      }));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <Card className={styles.Snapshot}>
       <Card.Body>
@@ -100,25 +140,41 @@ const Snapshot = (props) => {
               placement="top"
               overlay={<Tooltip>You can't like your own post!</Tooltip>}
             >
-              <i className="far fa-heart" />
+              <i className="fa-regular fa-thumbs-up" />
             </OverlayTrigger>
           ) : recommendation_id ? (
             <span onClick={handleUnrecommend}>
-              <i className={`fas fa-heart ${styles.Heart}`} />
+              <i className={`fa-solid fa-thumbs-up ${styles.Heart}`} />
             </span>
           ) : currentUser ? (
             <span onClick={handleRecommend}>
-              <i className={`far fa-heart ${styles.HeartOutline}`} />
+              <i className={`fa-regular fa-thumbs-up ${styles.HeartOutline}`} />
             </span>
           ) : (
             <OverlayTrigger
               placement="top"
-              overlay={<Tooltip>Log in to like posts!</Tooltip>}
+              overlay={<Tooltip>Log in to like snapshots!</Tooltip>}
             >
               <i className="far fa-heart" />
             </OverlayTrigger>
           )}
           {recommendations_count}
+          {pin_id ? (
+            <span onClick={handleUnpin}>
+              <i className={`fa-solid fa-bookmark ${styles.Heart}`} />
+            </span>
+          ) : currentUser ? (
+            <span onClick={handlePin}>
+              <i className={`fa-regular fa-bookmark ${styles.HeartOutline}`} />
+            </span>
+          ) : (
+            <OverlayTrigger
+              placement="top"
+              overlay={<Tooltip>Log in to pin a snapshot!</Tooltip>}
+            >
+              <i className="fa-regular fa-bookmark" />
+            </OverlayTrigger>
+          )}
           <Link to={`/snapshots/${id}`}>
             <i className="far fa-comments" />
           </Link>

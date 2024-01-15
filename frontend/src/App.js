@@ -13,6 +13,8 @@ import { useCurrentUser } from "./contexts/CurrentUserContext";
 function App() {
   const currentUser = useCurrentUser();
   const profile_id = currentUser?.profile_id || "";
+  // const genre_prefs = currentUser?.
+
   return (
     <div className={styles.App}>
       <NavBar />
@@ -23,6 +25,16 @@ function App() {
             path="/"
             render={() => (
               <SnapshotsPage message="No Snapshots Found.  Adjust search keyword" />
+            )}
+          />
+          <Route
+            exact
+            path="/pinned"
+            render={() => (
+              <SnapshotsPage
+                message="You currently have no snapshots pinned"
+                filter={`pins__owner__profile=${profile_id}&ordering=-pins__created_at&`}
+              />
             )}
           />
           <Route exact path="/signin" render={() => <SignInForm />} />
