@@ -5,6 +5,8 @@ import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
+import EditDelete from "../../components/EditDelete";
+import { useHistory } from "react-router-dom/cjs/react-router-dom";
 
 const Snapshot = (props) => {
   const {
@@ -31,7 +33,20 @@ const Snapshot = (props) => {
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
+  const history = useHistory();
 
+  const handleEdit = () => {
+    history.push(`/posts/${id}/edit`);
+  };
+
+  const handleDelete = async () => {
+    try {
+      await axiosRes.delete(`/snapshots/${id}/`);
+      history.goBack();
+    } catch (err) {
+      console.log(err);
+    }
+  };
   const handleRecommend = async () => {
     try {
       const { data } = await axiosRes.post("/recommendations/", {
@@ -124,7 +139,6 @@ const Snapshot = (props) => {
           </Link>
           <div className="d-flex align-items-center">
             <span>{updated_at}</span>
-            {is_owner && snapshotPage && "..."}
           </div>
         </Media>
       </Card.Body>
@@ -134,51 +148,62 @@ const Snapshot = (props) => {
       <Card.Body>
         {title && <Card.Title className="text-center">{title}</Card.Title>}
         {description && <Card.Text>{description}</Card.Text>}
-        <div className={styles.PostBar}>
-          {is_owner ? (
-            <OverlayTrigger
-              placement="top"
-              overlay={<Tooltip>You can't like your own post!</Tooltip>}
-            >
-              <i className="fa-regular fa-thumbs-up" />
-            </OverlayTrigger>
-          ) : recommendation_id ? (
-            <span onClick={handleUnrecommend}>
-              <i className={`fa-solid fa-thumbs-up ${styles.Heart}`} />
-            </span>
-          ) : currentUser ? (
-            <span onClick={handleRecommend}>
-              <i className={`fa-regular fa-thumbs-up ${styles.HeartOutline}`} />
-            </span>
-          ) : (
-            <OverlayTrigger
-              placement="top"
-              overlay={<Tooltip>Log in to like snapshots!</Tooltip>}
-            >
-              <i className="far fa-heart" />
-            </OverlayTrigger>
-          )}
-          {recommendations_count}
-          {pin_id ? (
-            <span onClick={handleUnpin}>
-              <i className={`fa-solid fa-bookmark ${styles.Heart}`} />
-            </span>
-          ) : currentUser ? (
-            <span onClick={handlePin}>
-              <i className={`fa-regular fa-bookmark ${styles.HeartOutline}`} />
-            </span>
-          ) : (
-            <OverlayTrigger
-              placement="top"
-              overlay={<Tooltip>Log in to pin a snapshot!</Tooltip>}
-            >
-              <i className="fa-regular fa-bookmark" />
-            </OverlayTrigger>
-          )}
-          <Link to={`/snapshots/${id}`}>
-            <i className="far fa-comments" />
-          </Link>
-          {comments_count}
+        <div className={`d-flex justify-content-between ${styles.PostBar}`}>
+          <div>
+            {is_owner ? (
+              <OverlayTrigger
+                placement="top"
+                overlay={<Tooltip>You can't like your own post!</Tooltip>}
+              >
+                <i className="fa-regular fa-thumbs-up" />
+              </OverlayTrigger>
+            ) : recommendation_id ? (
+              <span onClick={handleUnrecommend}>
+                <i className={`fa-solid fa-thumbs-up ${styles.Heart}`} />
+              </span>
+            ) : currentUser ? (
+              <span onClick={handleRecommend}>
+                <i
+                  className={`fa-regular fa-thumbs-up ${styles.HeartOutline}`}
+                />
+              </span>
+            ) : (
+              <OverlayTrigger
+                placement="top"
+                overlay={<Tooltip>Log in to like snapshots!</Tooltip>}
+              >
+                <i className="far fa-heart" />
+              </OverlayTrigger>
+            )}
+            {recommendations_count}
+            {pin_id ? (
+              <span onClick={handleUnpin}>
+                <i className={`fa-solid fa-bookmark ${styles.Heart}`} />
+              </span>
+            ) : currentUser ? (
+              <span onClick={handlePin}>
+                <i
+                  className={`fa-regular fa-bookmark ${styles.HeartOutline}`}
+                />
+              </span>
+            ) : (
+              <OverlayTrigger
+                placement="top"
+                overlay={<Tooltip>Log in to pin a snapshot!</Tooltip>}
+              >
+                <i className="fa-regular fa-bookmark" />
+              </OverlayTrigger>
+            )}
+            <Link to={`/snapshots/${id}`}>
+              <i className="far fa-comments" />
+            </Link>
+            {comments_count}
+          </div>
+          <div>
+            {is_owner && snapshotPage && (
+              <EditDelete handleEdit={handleEdit} handleDelete={handleDelete} />
+            )}
+          </div>
         </div>
       </Card.Body>
     </Card>
