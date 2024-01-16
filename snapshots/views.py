@@ -44,7 +44,7 @@ class SnapshotList(generics.ListCreateAPIView):
     ordering_fields = [
         'comments_count',
         'recommendations_count',
-        'recommendations__created_at',
+        'pins__created_at',
     ]
 
     def perform_create(self, serializer):

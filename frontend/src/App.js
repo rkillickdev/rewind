@@ -13,7 +13,6 @@ import { useCurrentUser } from "./contexts/CurrentUserContext";
 function App() {
   const currentUser = useCurrentUser();
   const profile_id = currentUser?.profile_id || "";
-  // const genre_prefs = currentUser?.
 
   return (
     <div className={styles.App}>
