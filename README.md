@@ -363,6 +363,7 @@ The [requirements.txt](requirements.txt) file provides information on required i
 * [react-bootstrap 1.6.3](https://react-bootstrap-v4.netlify.app/)
 * [react-router-dom](https://www.npmjs.com/package/react-router-dom)
 * [axios](https://axios-http.com/docs/intro)
+* [react-infinite-scroll-component](https://www.npmjs.com/package/react-infinite-scroll-component)
 
 [Back to top &uarr;](#contents)
 
@@ -491,6 +492,8 @@ The following steps were followed to deploy the site to Heroku:
 * [Displaying default 'please select' placeholder in drop down menus](https://stackoverflow.com/questions/74600128/how-to-display-selected-value-in-dropdown-menu-example-please-pick-and-select)
 
 * [Populate form select options with data from DRF API](https://stackoverflow.com/questions/72301355/how-to-populate-select-options-from-an-api-call-in-react-js-on-page-load)
+
+* [Code Institute Slack thread referencing issue with infinite scrolling when running in development mode with gitpod.](https://code-institute-room.slack.com/archives/C02MTH5MBDG/p1695309984546839?thread_ts=1695305110.716799&cid=C02MTH5MBDG)
 
 
 

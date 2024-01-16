@@ -12,7 +12,9 @@ import { axiosReq } from "../../api/axiosDefaults";
 import Snapshot from "./Snapshot";
 
 import NoResults from "../../assets/no-results.png";
+import InfiniteScroll from "react-infinite-scroll-component";
 import Asset from "../../components/Asset";
+import { fetchMoreData } from "../../utils/utils";
 
 function SnapshotsPage({ message, filter = "" }) {
   const [snapshots, setSnapshots] = useState({ results: [] });
@@ -64,13 +66,19 @@ function SnapshotsPage({ message, filter = "" }) {
         {hasLoaded ? (
           <>
             {snapshots.results.length ? (
-              snapshots.results.map((snapshot) => (
-                <Snapshot
-                  key={snapshot.id}
-                  {...snapshot}
-                  setSnapshots={setSnapshots}
-                />
-              ))
+              <InfiniteScroll
+                children={snapshots.results.map((snapshot) => (
+                  <Snapshot
+                    key={snapshot.id}
+                    {...snapshot}
+                    setSnapshots={setSnapshots}
+                  />
+                ))}
+                dataLength={snapshots.results.length}
+                loader={<Asset spinner />}
+                hasMore={!!snapshots.next}
+                next={() => fetchMoreData(snapshots, setSnapshots)}
+              />
             ) : (
               <Container className="appStyles.Content">
                 <Asset src={NoResults} message={message} />
