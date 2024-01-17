@@ -10,6 +10,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 import Snapshot from "./Snapshot";
 import CommentCreateForm from "../comments/CommentCreateForm";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import Comment from "../comments/Comment";
 
 function SnapshotPage() {
   const { id } = useParams();
@@ -22,11 +23,12 @@ function SnapshotPage() {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: snapshot }] = await Promise.all([
+        const [{ data: snapshot }, { data: comments }] = await Promise.all([
           axiosReq.get(`/snapshots/${id}`),
+          axiosReq.get(`comments/?snapshot${id}`),
         ]);
         setSnapshot({ results: [snapshot] });
-        console.log(snapshot);
+        setComments(comments);
       } catch (err) {
         console.log(err);
       }
@@ -56,6 +58,15 @@ function SnapshotPage() {
           ) : comments.results.length ? (
             "Comments"
           ) : null}
+          {comments.results.length ? (
+            comments.results.map((comment) => (
+              <Comment key={comment.id} {...comment} />
+            ))
+          ) : currentUser ? (
+            <span>No comments yet. Be the first to comment.</span>
+          ) : (
+            <span>No comments yet</span>
+          )}
         </Container>
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
