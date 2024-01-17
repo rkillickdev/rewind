@@ -7,6 +7,7 @@ import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
 import EditDelete from "../../components/EditDelete";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
+import useAlert from "../../hooks/useAlert";
 
 const Snapshot = (props) => {
   const {
@@ -47,11 +48,15 @@ const Snapshot = (props) => {
       console.log(err);
     }
   };
+
+  const { setAlert } = useAlert();
+
   const handleRecommend = async () => {
     try {
       const { data } = await axiosRes.post("/recommendations/", {
         snapshot: id,
       });
+      setAlert("You have recommended!", "success");
       setSnapshots((prevSnapshots) => ({
         ...prevSnapshots,
         results: prevSnapshots.results.map((snapshot) => {

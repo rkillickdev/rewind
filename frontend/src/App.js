@@ -10,6 +10,7 @@ import SnapshotPage from "./pages/snapshots/SnapshotPage";
 import SnapshotsPage from "./pages/snapshots/SnapshotsPage";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 import SnapshotEditForm from "./pages/snapshots/SnapshotEditForm";
+import AlertPopup from "./components/AlertPopup";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -19,6 +20,7 @@ function App() {
     <div className={styles.App}>
       <NavBar />
       <Container className={styles.Main}>
+        <AlertPopup />
         <Switch>
           <Route
             exact

@@ -99,6 +99,7 @@ function SnapshotCreateForm() {
 
     try {
       const { data } = await axiosReq.post("/snapshots/", formData);
+      console.log(data);
       history.push(`/snapshots/${data.id}`);
     } catch (err) {
       console.log(err);

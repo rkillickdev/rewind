@@ -14,6 +14,7 @@ import { Image } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { axiosReq, axiosRes } from "../../api/axiosDefaults";
 import { useParams } from "react-router-dom/cjs/react-router-dom";
+import useAlert from "../../hooks/useAlert";
 
 function SnapshotEditForm() {
   const [errors, setErrors] = useState({});
@@ -86,6 +87,8 @@ function SnapshotEditForm() {
     handleMount();
   }, [history, id]);
 
+  const { setAlert } = useAlert();
+
   const handleChange = (event) => {
     setSnapshotData({
       ...snapshotData,
@@ -119,6 +122,7 @@ function SnapshotEditForm() {
 
     try {
       await axiosReq.put(`/snapshots/${id}/`, formData);
+      setAlert("Snapshot Updated!", "success");
       history.push(`/snapshots/${id}`);
     } catch (err) {
       console.log(err);
