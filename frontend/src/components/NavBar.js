@@ -10,6 +10,7 @@ import {
 import Avatar from "./Avatar";
 import axios from "axios";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
+import useAlert from "../hooks/useAlert";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
@@ -17,12 +18,16 @@ const NavBar = () => {
 
   const { expanded, setExpanded, ref } = useClickOutsideToggle();
 
+  const { setAlert } = useAlert();
+
   const handleSignOut = async () => {
     try {
       await axios.post("/dj-rest-auth/logout/");
+      setAlert("You are now logged out", "success");
       setCurrentUser(null);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
+      setAlert(err.message, "warning");
     }
   };
 
