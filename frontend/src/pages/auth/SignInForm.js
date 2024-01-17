@@ -16,6 +16,7 @@ import appStyles from "../../App.module.css";
 
 import axios from "axios";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
+import useAlert from "../../hooks/useAlert";
 
 function SignInForm() {
   const setCurrentUser = useSetCurrentUser();
@@ -38,12 +39,15 @@ function SignInForm() {
     });
   };
 
+  const { setAlert } = useAlert();
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       const { data } = await axios.post("/dj-rest-auth/login/", signInData);
       setCurrentUser(data.user);
       history.push("/");
+      setAlert("You signed in successfully", "success");
     } catch (err) {
       setErrors(err.response?.data);
     }
