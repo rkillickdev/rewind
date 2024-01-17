@@ -86,8 +86,6 @@ const NavBar = () => {
     </>
   );
 
-  console.log(currentUser);
-
   return (
     <Navbar
       expanded={expanded}

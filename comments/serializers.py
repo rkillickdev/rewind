@@ -42,7 +42,7 @@ class CommentSerializer(serializers.ModelSerializer):
             "snapshot",
             "created_at",
             "updated_at",
-            "body",
+            "content",
         ]
 
 

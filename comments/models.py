@@ -14,7 +14,7 @@ class Comment(models.Model):
     snapshot = models.ForeignKey(Snapshot, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    body = models.TextField()
+    content = models.TextField()
 
     class Meta:
         ordering = ["-created_at"]
