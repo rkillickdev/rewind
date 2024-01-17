@@ -479,6 +479,25 @@ The following steps were followed to deploy the site to Heroku:
 
 <br>
 
+[Back to top &uarr;](#contents)
+
+# **Bugs**
+
+## **Known Bugs**
+
+| Bug Description | Solutions Tried |
+| ------------ | --------------- |
+| 'No file was submitted' warning when updating a snapshot without changing the image | This could be to do with the fact I do not have blank = True in my model.  I removed this and the default image as this had created another bug  |
+
+
+<br>
+
+## **Solved Bugs**
+
+| Bug Description | Solution |
+| ------------ | --------------- |
+| Using defaultValue on Form.Control selects not displaying required value as select option  | Using 'value' rather than defaultValue as an attribute on the Form.Control component seems to have solved this.  I eventually found the solution in the following [article](https://github.com/react-bootstrap/react-bootstrap/issues/2091)  |
+
 # **Credits**
 
 ## **Code Used and Referenced**
