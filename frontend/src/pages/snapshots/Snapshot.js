@@ -53,10 +53,10 @@ const Snapshot = (props) => {
 
   const handleRecommend = async () => {
     try {
-      const { data } = await axiosRes.post("/recommendations/invalid", {
+      const { data } = await axiosRes.post("/recommendations/", {
         snapshot: id,
       });
-      setAlert("You recommended this Snapshot!", "Success!");
+      setAlert("You recommended this Snapshot!", "success");
       setSnapshots((prevSnapshots) => ({
         ...prevSnapshots,
         results: prevSnapshots.results.map((snapshot) => {
@@ -92,7 +92,8 @@ const Snapshot = (props) => {
         }),
       }));
     } catch (err) {
-      console.log(err);
+      // console.log(err);
+      setAlert(err.message, "warning");
     }
   };
 
@@ -101,6 +102,7 @@ const Snapshot = (props) => {
       const { data } = await axiosRes.post("/pins/", {
         snapshot: id,
       });
+      setAlert("You pinned the Snapshot!", "success");
       setSnapshots((prevSnapshots) => ({
         ...prevSnapshots,
         results: prevSnapshots.results.map((snapshot) => {
@@ -113,13 +115,15 @@ const Snapshot = (props) => {
         }),
       }));
     } catch (err) {
-      console.log(err);
+      // console.log(err);
+      setAlert(err.message, "warning");
     }
   };
 
   const handleUnpin = async () => {
     try {
       await axiosRes.delete(`/pins/${pin_id}/`);
+      setAlert("You unpinned the Snapshot!", "success");
       setSnapshots((prevSnapshots) => ({
         ...prevSnapshots,
         results: prevSnapshots.results.map((snapshot) => {
@@ -132,7 +136,8 @@ const Snapshot = (props) => {
         }),
       }));
     } catch (err) {
-      console.log(err);
+      // console.log(err);
+      setAlert(err.message, "warning");
     }
   };
 

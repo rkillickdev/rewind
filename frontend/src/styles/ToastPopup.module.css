@@ -1,4 +1,6 @@
 .ToastFixed {
     position: fixed;
+    top: 20;
+    right: 0;
     z-index: 9999;
   }
