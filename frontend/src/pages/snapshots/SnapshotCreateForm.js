@@ -16,6 +16,7 @@ import Asset from "../../components/Asset";
 import { Image } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { axiosReq, axiosRes } from "../../api/axiosDefaults";
+import useAlert from "../../hooks/useAlert";
 
 function SnapshotCreateForm() {
   const [errors, setErrors] = useState({});
@@ -86,6 +87,8 @@ function SnapshotCreateForm() {
     }
   };
 
+  const { setAlert } = useAlert();
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -99,7 +102,7 @@ function SnapshotCreateForm() {
 
     try {
       const { data } = await axiosReq.post("/snapshots/", formData);
-      console.log(data);
+      setAlert("You created a new Snapshot!", "success");
       history.push(`/snapshots/${data.id}`);
     } catch (err) {
       console.log(err);

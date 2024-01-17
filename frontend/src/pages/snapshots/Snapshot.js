@@ -36,6 +36,8 @@ const Snapshot = (props) => {
   const is_owner = currentUser?.username === owner;
   const history = useHistory();
 
+  const { setAlert } = useAlert();
+
   const handleEdit = () => {
     history.push(`/snapshots/${id}/edit`);
   };
@@ -43,13 +45,13 @@ const Snapshot = (props) => {
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/snapshots/${id}/`);
+      setAlert("You deleted a Snapshot", "success");
       history.goBack();
     } catch (err) {
-      console.log(err);
+      // console.log(err);
+      setAlert(err.message, "warning");
     }
   };
-
-  const { setAlert } = useAlert();
 
   const handleRecommend = async () => {
     try {
