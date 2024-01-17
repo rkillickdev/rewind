@@ -9,6 +9,7 @@ import SnapshotCreateForm from "./pages/snapshots/SnapshotCreateForm";
 import SnapshotPage from "./pages/snapshots/SnapshotPage";
 import SnapshotsPage from "./pages/snapshots/SnapshotsPage";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
+import SnapshotEditForm from "./pages/snapshots/SnapshotEditForm";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -44,6 +45,11 @@ function App() {
             render={() => <SnapshotCreateForm />}
           />
           <Route exact path="/snapshots/:id" render={() => <SnapshotPage />} />
+          <Route
+            exact
+            path="/snapshots/:id/edit"
+            render={() => <SnapshotEditForm />}
+          />
           <Route render={() => <p>Page Not Found!</p>} />
         </Switch>
       </Container>

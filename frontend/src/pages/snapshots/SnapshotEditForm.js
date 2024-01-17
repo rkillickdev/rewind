@@ -7,17 +7,15 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 
-import Upload from "../../assets/image-upload-icon.png";
-
 import styles from "../../styles/SnapshotCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
-import Asset from "../../components/Asset";
 import { Image } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { axiosReq, axiosRes } from "../../api/axiosDefaults";
+import { useParams } from "react-router-dom/cjs/react-router-dom";
 
-function SnapshotCreateForm() {
+function SnapshotEditForm() {
   const [errors, setErrors] = useState({});
   const [genres, setGenres] = useState([]);
   const [eras, setEras] = useState([]);
@@ -68,6 +66,25 @@ function SnapshotCreateForm() {
 
   const imageInput = useRef(null);
   const history = useHistory();
+  const { id } = useParams();
+
+  useEffect(() => {
+    const handleMount = async () => {
+      try {
+        const { data } = await axiosReq.get(`/snapshots/${id}/`);
+        const { title, description, image, era, genre, category, is_owner } =
+          data;
+
+        is_owner
+          ? setSnapshotData({ title, description, image, era, genre, category })
+          : history.push("/");
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    handleMount();
+  }, [history, id]);
 
   const handleChange = (event) => {
     setSnapshotData({
@@ -92,14 +109,17 @@ function SnapshotCreateForm() {
 
     formData.append("title", title);
     formData.append("description", description);
-    formData.append("image", imageInput.current.files[0]);
     formData.append("era", era);
     formData.append("genre", genre);
     formData.append("category", category);
 
+    if (imageInput?.current?.files[0]) {
+      formData.append("image", imageInput.current.files[0]);
+    }
+
     try {
-      const { data } = await axiosReq.post("/snapshots/", formData);
-      history.push(`/snapshots/${data.id}`);
+      await axiosReq.put(`/snapshots/${id}/`, formData);
+      history.push(`/snapshots/${id}`);
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
@@ -107,6 +127,8 @@ function SnapshotCreateForm() {
       }
     }
   };
+
+  console.log(genre);
 
   const textSelectFields = (
     <div className="text-center">
@@ -149,11 +171,8 @@ function SnapshotCreateForm() {
           as="select"
           name="genre"
           onChange={handleChange}
-          defaultValue={-1}
+          value={genre}
         >
-          <option value={-1} disabled>
-            select genre
-          </option>
           {genres.map((genre) => {
             return (
               <option value={genre.id} key={genre.id}>
@@ -175,11 +194,8 @@ function SnapshotCreateForm() {
           as="select"
           name="era"
           onChange={handleChange}
-          defaultValue={-1}
+          value={era}
         >
-          <option value={-1} disabled>
-            select era
-          </option>
           {eras.map((era) => {
             return (
               <option value={era.id} key={era.id}>
@@ -201,11 +217,8 @@ function SnapshotCreateForm() {
           as="select"
           name="category"
           onChange={handleChange}
-          defaultValue={-1}
+          value={category}
         >
-          <option value={-1} disabled>
-            select category
-          </option>
           {categories.map((category) => {
             return (
               <option value={category.id} key={category.id}>
@@ -228,7 +241,7 @@ function SnapshotCreateForm() {
         cancel
       </Button>
       <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-        create
+        Save
       </Button>
     </div>
   );
@@ -241,31 +254,18 @@ function SnapshotCreateForm() {
             className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
           >
             <Form.Group className="text-center">
-              {image ? (
-                <>
-                  <figure>
-                    <Image className={appStyles.Image} src={image} rounded />
-                  </figure>
-                  <div>
-                    <Form.Label
-                      className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                      htmlFor="image-upload"
-                    >
-                      Change Image
-                    </Form.Label>
-                  </div>
-                </>
-              ) : (
+              <figure>
+                <Image className={appStyles.Image} src={image} rounded />
+              </figure>
+              <div>
                 <Form.Label
-                  className="d-flex justify-content-center"
+                  className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
                   htmlFor="image-upload"
                 >
-                  <Asset
-                    src={Upload}
-                    message="Click here to upload your image"
-                  />
+                  Change Image
                 </Form.Label>
-              )}
+              </div>
+
               <Form.File
                 id="image-upload"
                 accept="image/*"
@@ -292,4 +292,4 @@ function SnapshotCreateForm() {
   );
 }
 
-export default SnapshotCreateForm;
+export default SnapshotEditForm;

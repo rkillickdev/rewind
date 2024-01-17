@@ -36,7 +36,7 @@ const Snapshot = (props) => {
   const history = useHistory();
 
   const handleEdit = () => {
-    history.push(`/posts/${id}/edit`);
+    history.push(`/snapshots/${id}/edit`);
   };
 
   const handleDelete = async () => {
