@@ -516,5 +516,7 @@ The following steps were followed to deploy the site to Heroku:
 
 * [Article referenced when fixing bug for default value not working in form select](https://github.com/react-bootstrap/react-bootstrap/issues/2091)
 
+* [Article referenced when implementing Alert and Toast popups](https://dev.to/jeffreythecoder/set-up-react-global-alert-popup-in-10mins-36l3)
+
 
 

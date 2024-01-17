@@ -132,8 +132,6 @@ function SnapshotEditForm() {
     }
   };
 
-  console.log(genre);
-
   const textSelectFields = (
     <div className="text-center">
       <Form.Group>

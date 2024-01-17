@@ -53,10 +53,10 @@ const Snapshot = (props) => {
 
   const handleRecommend = async () => {
     try {
-      const { data } = await axiosRes.post("/recommendations/", {
+      const { data } = await axiosRes.post("/recommendations/invalid", {
         snapshot: id,
       });
-      setAlert("You have recommended!", "success");
+      setAlert("You recommended this Snapshot!", "Success!");
       setSnapshots((prevSnapshots) => ({
         ...prevSnapshots,
         results: prevSnapshots.results.map((snapshot) => {
@@ -70,13 +70,15 @@ const Snapshot = (props) => {
         }),
       }));
     } catch (err) {
-      console.log(err);
+      setAlert(err.message, "warning");
+      // console.log(err);
     }
   };
 
   const handleUnrecommend = async () => {
     try {
       await axiosRes.delete(`/recommendations/${recommendation_id}/`);
+      setAlert("You removed recommendation for this Snapshot!", "success");
       setSnapshots((prevSnapshots) => ({
         ...prevSnapshots,
         results: prevSnapshots.results.map((snapshot) => {

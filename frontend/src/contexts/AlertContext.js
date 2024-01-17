@@ -20,9 +20,7 @@ export const AlertProvider = ({ children }) => {
 
   const setAlert = (text, type) => {
     setText(text);
-    console.log(text);
     setType(type);
-    console.log(type);
 
     setTimeout(() => {
       setText("");

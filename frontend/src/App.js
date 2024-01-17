@@ -11,6 +11,7 @@ import SnapshotsPage from "./pages/snapshots/SnapshotsPage";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 import SnapshotEditForm from "./pages/snapshots/SnapshotEditForm";
 import AlertPopup from "./components/AlertPopup";
+import ToastPopup from "./components/ToastPopup";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -21,6 +22,7 @@ function App() {
       <NavBar />
       <Container className={styles.Main}>
         <AlertPopup />
+        <ToastPopup />
         <Switch>
           <Route
             exact
