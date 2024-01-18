@@ -60,7 +60,12 @@ function SnapshotPage() {
           ) : null}
           {comments.results.length ? (
             comments.results.map((comment) => (
-              <Comment key={comment.id} {...comment} />
+              <Comment
+                key={comment.id}
+                {...comment}
+                setSnapshot={setSnapshot}
+                setComments={setComments}
+              />
             ))
           ) : currentUser ? (
             <span>No comments yet. Be the first to comment.</span>
