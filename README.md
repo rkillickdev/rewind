@@ -497,6 +497,21 @@ The following steps were followed to deploy the site to Heroku:
 | Bug Description | Solution |
 | ------------ | --------------- |
 | Using defaultValue on Form.Control selects not displaying required value as select option  | Using 'value' rather than defaultValue as an attribute on the Form.Control component seems to have solved this.  I eventually found the solution in the following [article](https://github.com/react-bootstrap/react-bootstrap/issues/2091)  |
+| Snapshots could be 'unpinned' from the pinned page, but remained visible which made for bad user experience.  I needed the page to update each time a pin was removed to reflect this change | For the handleUnpin function within the Snapshot component, use a filter as part of `setSnapshots` after the delete request has been sent to the API endpoint for pins.  Only snapshots with a pin_id are displayed |
+```js
+setSnapshots((prevSnapshots) => ({
+        ...prevSnapshots,
+        results: prevSnapshots.results
+          .map((snapshot) => {
+            return snapshot.id === id
+              ? {
+                  ...snapshot,
+                  pin_id: null,
+                }
+              : snapshot;
+          })
+          .filter((snapshot) => snapshot.pin_id),
+```
 
 # **Credits**
 
