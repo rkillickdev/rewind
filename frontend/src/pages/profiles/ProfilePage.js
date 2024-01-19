@@ -23,6 +23,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Snapshot from "../snapshots/Snapshot";
 import { fetchMoreData } from "../../utils/utils";
 import NoResults from "../../assets/no-results.png";
+import { ProfileEditOptions } from "../../components/EditDelete";
 
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -101,6 +102,7 @@ function ProfilePage() {
               </Button>
             ))}
         </Col>
+        {profile?.is_owner && <ProfileEditOptions id={profile?.id} />}
         {profile?.content && <Col className="p-3">{profile.content}</Col>}
       </Row>
     </>
