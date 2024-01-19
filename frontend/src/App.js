@@ -12,6 +12,7 @@ import { useCurrentUser } from "./contexts/CurrentUserContext";
 import SnapshotEditForm from "./pages/snapshots/SnapshotEditForm";
 import AlertPopup from "./components/AlertPopup";
 import ToastPopup from "./components/ToastPopup";
+import ProfilePage from "./pages/profiles/ProfilePage";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -54,6 +55,7 @@ function App() {
             path="/snapshots/:id/edit"
             render={() => <SnapshotEditForm />}
           />
+          <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
           <Route render={() => <p>Page Not Found!</p>} />
         </Switch>
       </Container>
