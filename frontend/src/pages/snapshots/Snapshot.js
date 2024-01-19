@@ -166,7 +166,7 @@ const Snapshot = (props) => {
         {description && <Card.Text>{description}</Card.Text>}
         <div className={`d-flex justify-content-between ${styles.PostBar}`}>
           <div>
-            {is_owner ? (
+            {/* {is_owner ? (
               <OverlayTrigger
                 placement="top"
                 overlay={<Tooltip>You can't like your own post!</Tooltip>}
@@ -189,6 +189,35 @@ const Snapshot = (props) => {
                 overlay={<Tooltip>Log in to like snapshots!</Tooltip>}
               >
                 <i className="far fa-heart" />
+              </OverlayTrigger>
+            )} */}
+            {currentUser ? (
+              is_owner ? (
+                <OverlayTrigger
+                  placement="top"
+                  overlay={
+                    <Tooltip>You can't recommend your own post!</Tooltip>
+                  }
+                >
+                  <i className="fa-regular fa-thumbs-up" />
+                </OverlayTrigger>
+              ) : recommendation_id ? (
+                <span onClick={handleUnrecommend}>
+                  <i className={`fa-solid fa-thumbs-up ${styles.Heart}`} />
+                </span>
+              ) : (
+                <span onClick={handleRecommend}>
+                  <i
+                    className={`fa-regular fa-thumbs-up ${styles.HeartOutline}`}
+                  />
+                </span>
+              )
+            ) : (
+              <OverlayTrigger
+                placement="top"
+                overlay={<Tooltip>Log in to recommend snapshots!</Tooltip>}
+              >
+                <i className="fa-regular fa-thumbs-up" />
               </OverlayTrigger>
             )}
             {recommendations_count}
