@@ -20,41 +20,32 @@ import useAlert from "../../hooks/useAlert";
 
 function SnapshotCreateForm() {
   const [errors, setErrors] = useState({});
+  // const [genres, setGenres] = useState([]);
+  // const [eras, setEras] = useState([]);
+  // const [categories, setCategories] = useState([]);
+
   const [genres, setGenres] = useState([]);
   const [eras, setEras] = useState([]);
   const [categories, setCategories] = useState([]);
 
-  const fetchGenres = async () => {
+  const fetchSnapshotOptions = async () => {
     try {
-      const { data } = await axiosRes.get("/genres/");
-      setGenres(data.results);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const fetchEras = async () => {
-    try {
-      const { data } = await axiosRes.get("/eras/");
-      setEras(data.results);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const fetchCategories = async () => {
-    try {
-      const { data } = await axiosRes.get("/categories/");
-      setCategories(data.results);
+      const [{ data: genres }, { data: eras }, { data: categories }] =
+        await Promise.all([
+          axiosReq.get("/genres/"),
+          axiosReq.get("/eras/"),
+          axiosReq.get("/categories/"),
+        ]);
+      setGenres(genres.results);
+      setEras(eras.results);
+      setCategories(categories.results);
     } catch (err) {
       console.log(err);
     }
   };
 
   useEffect(() => {
-    fetchGenres();
-    fetchEras();
-    fetchCategories();
+    fetchSnapshotOptions();
   }, []);
 
   const [snapshotData, setSnapshotData] = useState({
