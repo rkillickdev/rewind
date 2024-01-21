@@ -25,12 +25,15 @@ function SnapshotCreateForm() {
   // const [eras, setEras] = useState([]);
   // const [categories, setCategories] = useState([]);
 
-  const [genres, setGenres] = useState([]);
-  const [eras, setEras] = useState([]);
-  const [categories, setCategories] = useState([]);
+  // const [genres, setGenres] = useState([]);
+  // const [eras, setEras] = useState([]);
+  // const [categories, setCategories] = useState([]);
 
   const options = useOptions();
-  console.log(options);
+  const { genres, eras, categories } = options;
+  console.log(genres);
+  console.log(eras);
+  console.log(categories);
 
   // const fetchSnapshotOptions = async () => {
   //   try {
