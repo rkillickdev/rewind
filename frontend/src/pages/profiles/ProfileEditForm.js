@@ -17,6 +17,7 @@ import {
 
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
+import { useOptions } from "../../contexts/OptionsContext";
 
 const ProfileEditForm = () => {
   const currentUser = useCurrentUser();
@@ -25,12 +26,25 @@ const ProfileEditForm = () => {
   const history = useHistory();
   const imageFile = useRef();
 
+  const options = useOptions();
+  const { genres, eras, categories } = options;
+
   const [profileData, setProfileData] = useState({
     name: "",
     content: "",
     image: "",
+    era_preferences: [],
+    genre_preferences: [],
+    category_preferences: [],
   });
-  const { name, content, image } = profileData;
+  const {
+    name,
+    content,
+    image,
+    era_preferences,
+    genre_preferences,
+    category_preferences,
+  } = profileData;
 
   const [errors, setErrors] = useState({});
 
@@ -39,8 +53,22 @@ const ProfileEditForm = () => {
       if (currentUser?.profile_id?.toString() === id) {
         try {
           const { data } = await axiosReq.get(`/profiles/${id}/`);
-          const { name, content, image } = data;
-          setProfileData({ name, content, image });
+          const {
+            name,
+            content,
+            image,
+            era_preferences,
+            genre_preferences,
+            category_preferences,
+          } = data;
+          setProfileData({
+            name,
+            content,
+            image,
+            era_preferences,
+            genre_preferences,
+            category_preferences,
+          });
         } catch (err) {
           console.log(err);
           history.push("/");
@@ -58,6 +86,7 @@ const ProfileEditForm = () => {
       ...profileData,
       [event.target.name]: event.target.value,
     });
+    console.log(profileData);
   };
 
   const handleSubmit = async (event) => {
@@ -65,6 +94,9 @@ const ProfileEditForm = () => {
     const formData = new FormData();
     formData.append("name", name);
     formData.append("content", content);
+    formData.append("era_preferences", era_preferences);
+    formData.append("genre_preferences", genre_preferences);
+    formData.append("category_preferences", category_preferences);
 
     if (imageFile?.current?.files[0]) {
       formData.append("image", imageFile?.current?.files[0]);
@@ -101,6 +133,23 @@ const ProfileEditForm = () => {
           {message}
         </Alert>
       ))}
+
+      <Form.Group>
+        {genres.map((genre) => {
+          return (
+            <Form.Check
+              key={genre.id}
+              type="checkbox"
+              value={genre.id}
+              onChange={handleChange}
+              name="genre"
+              // id={}
+              label={genre.style}
+            />
+          );
+        })}
+      </Form.Group>
+
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
         onClick={() => history.goBack()}
