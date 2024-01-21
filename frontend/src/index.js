@@ -7,15 +7,18 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { CurrentUserProvider } from "./contexts/CurrentUserContext";
 import { AlertProvider } from "./contexts/AlertContext";
 import { ProfileDataProvider } from "./contexts/ProfileDataContext";
+import { OptionsProvider } from "./contexts/OptionsContext";
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <CurrentUserProvider>
         <ProfileDataProvider>
-          <AlertProvider>
-            <App />
-          </AlertProvider>
+          <OptionsProvider>
+            <AlertProvider>
+              <App />
+            </AlertProvider>
+          </OptionsProvider>
         </ProfileDataProvider>
       </CurrentUserProvider>
     </Router>

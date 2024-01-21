@@ -15,8 +15,9 @@ import btnStyles from "../../styles/Button.module.css";
 import Asset from "../../components/Asset";
 import { Image } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
-import { axiosReq, axiosRes } from "../../api/axiosDefaults";
+import { axiosReq } from "../../api/axiosDefaults";
 import useAlert from "../../hooks/useAlert";
+import { useOptions } from "../../contexts/OptionsContext";
 
 function SnapshotCreateForm() {
   const [errors, setErrors] = useState({});
@@ -28,25 +29,28 @@ function SnapshotCreateForm() {
   const [eras, setEras] = useState([]);
   const [categories, setCategories] = useState([]);
 
-  const fetchSnapshotOptions = async () => {
-    try {
-      const [{ data: genres }, { data: eras }, { data: categories }] =
-        await Promise.all([
-          axiosReq.get("/genres/"),
-          axiosReq.get("/eras/"),
-          axiosReq.get("/categories/"),
-        ]);
-      setGenres(genres.results);
-      setEras(eras.results);
-      setCategories(categories.results);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  const options = useOptions();
+  console.log(options);
 
-  useEffect(() => {
-    fetchSnapshotOptions();
-  }, []);
+  // const fetchSnapshotOptions = async () => {
+  //   try {
+  //     const [{ data: genres }, { data: eras }, { data: categories }] =
+  //       await Promise.all([
+  //         axiosReq.get("/genres/"),
+  //         axiosReq.get("/eras/"),
+  //         axiosReq.get("/categories/"),
+  //       ]);
+  //     setGenres(genres.results);
+  //     setEras(eras.results);
+  //     setCategories(categories.results);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   fetchSnapshotOptions();
+  // }, []);
 
   const [snapshotData, setSnapshotData] = useState({
     title: "",
