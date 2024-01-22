@@ -22,14 +22,18 @@ class Profile(models.Model):
     image = models.ImageField(
         upload_to="images/profiles/", default="../default_profile_oeycka"
     )
-    era_preferences = models.ManyToManyField(
-        Era, related_name="era_pref", blank=True
+   
+    era_preference = models.ForeignKey(
+        Era, on_delete=models.CASCADE, blank=True,
+        null=True
     )
-    genre_preferences = models.ManyToManyField(
-        Genre, related_name="genre_pref", blank=True
+    genre_preference = models.ForeignKey(
+        Genre, on_delete=models.CASCADE, blank=True,
+        null=True
     )
-    category_preferences = models.ManyToManyField(
-        Category, related_name="cat_pref", blank=True
+    category_preference = models.ForeignKey(
+        Category, on_delete=models.CASCADE, blank=True,
+        null=True
     )
 
     class Meta:

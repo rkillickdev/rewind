@@ -33,18 +33,9 @@ const ProfileEditForm = () => {
     name: "",
     content: "",
     image: "",
-    era_preferences: [],
-    genre_preferences: [],
-    category_preferences: [],
+    genre_preference: "",
   });
-  const {
-    name,
-    content,
-    image,
-    era_preferences,
-    genre_preferences,
-    category_preferences,
-  } = profileData;
+  const { name, content, image, genre_preference } = profileData;
 
   const [errors, setErrors] = useState({});
 
@@ -53,21 +44,12 @@ const ProfileEditForm = () => {
       if (currentUser?.profile_id?.toString() === id) {
         try {
           const { data } = await axiosReq.get(`/profiles/${id}/`);
-          const {
-            name,
-            content,
-            image,
-            era_preferences,
-            genre_preferences,
-            category_preferences,
-          } = data;
+          const { name, content, image, genre_preference } = data;
           setProfileData({
             name,
             content,
             image,
-            era_preferences,
-            genre_preferences,
-            category_preferences,
+            genre_preference,
           });
         } catch (err) {
           console.log(err);
@@ -86,17 +68,65 @@ const ProfileEditForm = () => {
       ...profileData,
       [event.target.name]: event.target.value,
     });
-    console.log(profileData);
   };
+
+  // Test code for adding genre prefs to an array
+
+  // const [genrePrefs, setGenrePrefs] = useState([]);
+
+  // const handleCheckbox = (e) => {
+  //   // setisChecked(e.target.checked);
+  //   if (e.target.checked === true) {
+  //     // setGenrePrefs([...genrePrefs, e.target.value]);
+  //     setProfileData({
+  //       ...profileData,
+  //       [e.target.name]: [e.target.value],
+  //     });
+  //   } else if (e.target.checked === false) {
+  //     let freshArray = genrePrefs.filter((val) => val !== e.target.value);
+  //     setGenrePrefs([...freshArray]);
+  //   }
+  // };
+
+  // const handleCheckbox = (e) => {
+  //   // setisChecked(e.target.checked);
+  //   if (e.target.checked === true) {
+  // setProfileData({
+  //   ...profileData,
+  //   [e.target.name]: e.target.value,
+  // });
+  //   } else if (e.target.checked === false) {
+  //     let freshArray = profileData[e.target.name].filter(
+  //       (val) => val !== e.target.value,
+  //     );
+  //     setProfileData({
+  //       ...profileData,
+  //       [e.target.name]: freshArray,
+  //     });
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   console.log(profileData);
+  // }, [profileData]);
+
+  // const handleCheck = (event) => {
+  //   if (e.target.checked === true) {
+  //     setProfileData({
+  //       ...profileData,
+  //       [event.target.name]: event.target.value,
+  //     });
+  //   }
+
+  //   console.log(profileData);
+  // };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
     formData.append("name", name);
     formData.append("content", content);
-    formData.append("era_preferences", era_preferences);
-    formData.append("genre_preferences", genre_preferences);
-    formData.append("category_preferences", category_preferences);
+    formData.append("genre_preference", genre_preference);
 
     if (imageFile?.current?.files[0]) {
       formData.append("image", imageFile?.current?.files[0]);
@@ -108,6 +138,7 @@ const ProfileEditForm = () => {
         ...currentUser,
         profile_image: data.image,
       }));
+      console.log(data.genre_preference);
       history.goBack();
     } catch (err) {
       console.log(err);
@@ -142,7 +173,7 @@ const ProfileEditForm = () => {
               type="checkbox"
               value={genre.id}
               onChange={handleChange}
-              name="genre"
+              name="genre_preference"
               // id={}
               label={genre.style}
             />

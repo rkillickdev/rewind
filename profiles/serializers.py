@@ -1,6 +1,8 @@
 from rest_framework import serializers
 from .models import Profile
 from followers.models import Follower
+from genres.serializers import GenreSerializer
+
 
 
 class ProfileSerializer(serializers.ModelSerializer):
@@ -20,9 +22,6 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     owner = serializers.ReadOnlyField(source="owner.username")
     is_owner = serializers.SerializerMethodField()
-    era_preferences = serializers.StringRelatedField(many=True)
-    genre_preferences = serializers.StringRelatedField(many=True)
-    category_preferences = serializers.StringRelatedField(many=True)
     following_id = serializers.SerializerMethodField()
     snapshots_count = serializers.ReadOnlyField()
     followers_count = serializers.ReadOnlyField()
@@ -52,9 +51,9 @@ class ProfileSerializer(serializers.ModelSerializer):
             "bio",
             "image",
             "is_owner",
-            "era_preferences",
-            "genre_preferences",
-            "category_preferences",
+            "era_preference",
+            "genre_preference",
+            "category_preference",
             "following_id",
             "snapshots_count",
             "followers_count",
