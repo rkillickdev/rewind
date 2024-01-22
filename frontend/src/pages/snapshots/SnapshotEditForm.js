@@ -15,45 +15,45 @@ import { useHistory } from "react-router-dom";
 import { axiosReq, axiosRes } from "../../api/axiosDefaults";
 import { useParams } from "react-router-dom/cjs/react-router-dom";
 import useAlert from "../../hooks/useAlert";
+import { useOptions } from "../../contexts/OptionsContext";
 
 function SnapshotEditForm() {
   const [errors, setErrors] = useState({});
-  const [genres, setGenres] = useState([]);
-  const [eras, setEras] = useState([]);
-  const [categories, setCategories] = useState([]);
+  const options = useOptions();
+  const { genres, eras, categories } = options;
 
-  const fetchGenres = async () => {
-    try {
-      const { data } = await axiosRes.get("/genres/");
-      setGenres(data.results);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const fetchGenres = async () => {
+  //   try {
+  //     const { data } = await axiosRes.get("/genres/");
+  //     setGenres(data.results);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
-  const fetchEras = async () => {
-    try {
-      const { data } = await axiosRes.get("/eras/");
-      setEras(data.results);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const fetchEras = async () => {
+  //   try {
+  //     const { data } = await axiosRes.get("/eras/");
+  //     setEras(data.results);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
-  const fetchCategories = async () => {
-    try {
-      const { data } = await axiosRes.get("/categories/");
-      setCategories(data.results);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const fetchCategories = async () => {
+  //   try {
+  //     const { data } = await axiosRes.get("/categories/");
+  //     setCategories(data.results);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
-  useEffect(() => {
-    fetchGenres();
-    fetchEras();
-    fetchCategories();
-  }, []);
+  // useEffect(() => {
+  //   fetchGenres();
+  //   fetchEras();
+  //   fetchCategories();
+  // }, []);
 
   const [snapshotData, setSnapshotData] = useState({
     title: "",

@@ -31,9 +31,6 @@ function SnapshotCreateForm() {
 
   const options = useOptions();
   const { genres, eras, categories } = options;
-  console.log(genres);
-  console.log(eras);
-  console.log(categories);
 
   // const fetchSnapshotOptions = async () => {
   //   try {

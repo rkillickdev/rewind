@@ -20,6 +20,8 @@ import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 function App() {
   const currentUser = useCurrentUser();
   const profile_id = currentUser?.profile_id || "";
+  const genre_preference = currentUser?.genre_preference || "";
+  console.log(genre_preference.style);
 
   return (
     <div className={styles.App}>

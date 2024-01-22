@@ -31,11 +31,11 @@ const ProfileEditForm = () => {
 
   const [profileData, setProfileData] = useState({
     name: "",
-    content: "",
+    bio: "",
     image: "",
     genre_preference: "",
   });
-  const { name, content, image, genre_preference } = profileData;
+  const { name, bio, image, genre_preference } = profileData;
 
   const [errors, setErrors] = useState({});
 
@@ -44,10 +44,10 @@ const ProfileEditForm = () => {
       if (currentUser?.profile_id?.toString() === id) {
         try {
           const { data } = await axiosReq.get(`/profiles/${id}/`);
-          const { name, content, image, genre_preference } = data;
+          const { name, bio, image, genre_preference } = data;
           setProfileData({
             name,
-            content,
+            bio,
             image,
             genre_preference,
           });
@@ -125,7 +125,7 @@ const ProfileEditForm = () => {
     event.preventDefault();
     const formData = new FormData();
     formData.append("name", name);
-    formData.append("content", content);
+    formData.append("bio", bio);
     formData.append("genre_preference", genre_preference);
 
     if (imageFile?.current?.files[0]) {
@@ -139,6 +139,7 @@ const ProfileEditForm = () => {
         profile_image: data.image,
       }));
       console.log(data.genre_preference);
+      console.log(data.bio);
       history.goBack();
     } catch (err) {
       console.log(err);
@@ -152,14 +153,15 @@ const ProfileEditForm = () => {
         <Form.Label>Bio</Form.Label>
         <Form.Control
           as="textarea"
-          value={content}
+          value={bio}
           onChange={handleChange}
-          name="content"
+          name="bio"
           rows={7}
+          placeholder="Tell us about yourself"
         />
       </Form.Group>
 
-      {errors?.content?.map((message, idx) => (
+      {errors?.bio?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
           {message}
         </Alert>
