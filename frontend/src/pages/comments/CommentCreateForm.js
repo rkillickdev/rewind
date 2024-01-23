@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import Form from "react-bootstrap/Form";
+import Alert from "react-bootstrap/Alert";
 import InputGroup from "react-bootstrap/InputGroup";
 
 import styles from "../../styles/CommentCreateEditForm.module.css";
@@ -14,6 +15,7 @@ function CommentCreateForm(props) {
     props;
   const [content, setContent] = useState("");
   const { setAlert } = useAlert();
+  const [errors, setErrors] = useState({});
 
   const handleChange = (event) => {
     setContent(event.target.value);
@@ -57,12 +59,18 @@ function CommentCreateForm(props) {
             className={styles.Form}
             placeholder="my comment..."
             as="textarea"
+            name="content"
             value={content}
             onChange={handleChange}
             rows={2}
           />
         </InputGroup>
       </Form.Group>
+      {errors?.content?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
       <button
         className={`${styles.Button} btn d-block ml-auto`}
         disabled={!content.trim()}
