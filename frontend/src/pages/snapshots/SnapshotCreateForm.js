@@ -18,8 +18,10 @@ import { useHistory } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import useAlert from "../../hooks/useAlert";
 import { useOptions } from "../../contexts/OptionsContext";
+import { useRedirect } from "../../hooks/useRedirect";
 
 function SnapshotCreateForm() {
+  useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
   // const [genres, setGenres] = useState([]);
   // const [eras, setEras] = useState([]);
