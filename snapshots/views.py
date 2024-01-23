@@ -32,7 +32,7 @@ class SnapshotList(generics.ListCreateAPIView):
         'pins__owner__profile',
         'owner__profile',
         'era',
-        'genre',
+        'genre__id',
         'category',
     ]
     search_fields = [
@@ -45,6 +45,7 @@ class SnapshotList(generics.ListCreateAPIView):
         'comments_count',
         'recommendations_count',
         'pins__created_at',
+        'genre__id',
     ]
 
     def perform_create(self, serializer):

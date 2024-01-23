@@ -21,7 +21,7 @@ function App() {
   const currentUser = useCurrentUser();
   const profile_id = currentUser?.profile_id || "";
   const genre_preference = currentUser?.genre_preference || "";
-  console.log(genre_preference.style);
+  console.log(genre_preference);
 
   return (
     <div className={styles.App}>
@@ -35,6 +35,16 @@ function App() {
             path="/"
             render={() => (
               <SnapshotsPage message="No Snapshots Found.  Adjust search keyword" />
+            )}
+          />
+          <Route
+            exact
+            path="/feed"
+            render={() => (
+              <SnapshotsPage
+                message="No Snapshots Found.  Adjust search keyword"
+                filter={`genre__id=${genre_preference}&`}
+              />
             )}
           />
           <Route

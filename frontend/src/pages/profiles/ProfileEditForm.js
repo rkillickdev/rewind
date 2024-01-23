@@ -137,6 +137,7 @@ const ProfileEditForm = () => {
       setCurrentUser((currentUser) => ({
         ...currentUser,
         profile_image: data.image,
+        genre_preference: data.genre_preference,
       }));
       console.log(data.genre_preference);
       console.log(data.bio);
