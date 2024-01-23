@@ -218,24 +218,6 @@ const Snapshot = (props) => {
               </OverlayTrigger>
             )}
 
-            {/* {pin_id ? (
-              <span onClick={handleUnpin}>
-                <i className={`fa-solid fa-bookmark ${styles.Heart}`} />
-              </span>
-            ) : currentUser ? (
-              <span onClick={handlePin}>
-                <i
-                  className={`fa-regular fa-bookmark ${styles.HeartOutline}`}
-                />
-              </span>
-            ) : (
-              <OverlayTrigger
-                placement="top"
-                overlay={<Tooltip>Log in to pin a snapshot!</Tooltip>}
-              >
-                <i className="fa-regular fa-bookmark" />
-              </OverlayTrigger>
-            )} */}
             <Link to={`/snapshots/${id}`}>
               <i className="far fa-comments" />
             </Link>
