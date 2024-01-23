@@ -31,7 +31,7 @@ class SnapshotList(generics.ListCreateAPIView):
         'owner__followed__owner__profile',
         'pins__owner__profile',
         'owner__profile',
-        'era',
+        'era__id',
         'genre__id',
         'category',
     ]

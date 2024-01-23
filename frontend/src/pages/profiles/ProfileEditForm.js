@@ -34,8 +34,17 @@ const ProfileEditForm = () => {
     bio: "",
     image: "",
     genre_preference: "",
+    era_preference: "",
+    category_preference: "",
   });
-  const { name, bio, image, genre_preference } = profileData;
+  const {
+    name,
+    bio,
+    image,
+    genre_preference,
+    era_preference,
+    category_preference,
+  } = profileData;
 
   const [errors, setErrors] = useState({});
 
@@ -44,13 +53,25 @@ const ProfileEditForm = () => {
       if (currentUser?.profile_id?.toString() === id) {
         try {
           const { data } = await axiosReq.get(`/profiles/${id}/`);
-          const { name, bio, image, genre_preference } = data;
+          const {
+            name,
+            bio,
+            image,
+            genre_preference,
+            era_preference,
+            category_preference,
+          } = data;
           setProfileData({
             name,
             bio,
             image,
             genre_preference,
+            era_preference,
+            category_preference,
           });
+          console.log(genre_preference);
+          console.log(era_preference);
+          console.log(category_preference);
         } catch (err) {
           console.log(err);
           history.push("/");
@@ -127,6 +148,8 @@ const ProfileEditForm = () => {
     formData.append("name", name);
     formData.append("bio", bio);
     formData.append("genre_preference", genre_preference);
+    formData.append("era_preference", era_preference);
+    formData.append("category_preference", category_preference);
 
     if (imageFile?.current?.files[0]) {
       formData.append("image", imageFile?.current?.files[0]);
@@ -138,8 +161,12 @@ const ProfileEditForm = () => {
         ...currentUser,
         profile_image: data.image,
         genre_preference: data.genre_preference,
+        era_preference: data.era_preference,
+        category_preference: data.category_preference,
       }));
       console.log(data.genre_preference);
+      console.log(data.era_preference);
+      console.log(data.category_preference);
       console.log(data.bio);
       history.goBack();
     } catch (err) {
@@ -167,23 +194,84 @@ const ProfileEditForm = () => {
           {message}
         </Alert>
       ))}
+    </>
+  );
+
+  const selectFields = (
+    <>
+      <Form.Group>
+        <Form.Label className="d-none">Genre</Form.Label>
+        <Form.Control
+          as="select"
+          name="genre_preference"
+          onChange={handleChange}
+          value={genre_preference}
+        >
+          {genres.map((genre) => {
+            return (
+              <option value={genre.id} key={genre.id}>
+                {genre.style}
+              </option>
+            );
+          })}
+        </Form.Control>
+      </Form.Group>
+      {errors?.genre?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
       <Form.Group>
-        {genres.map((genre) => {
-          return (
-            <Form.Check
-              key={genre.id}
-              type="checkbox"
-              value={genre.id}
-              onChange={handleChange}
-              name="genre_preference"
-              // id={}
-              label={genre.style}
-            />
-          );
-        })}
+        <Form.Label className="d-none">Era</Form.Label>
+        <Form.Control
+          as="select"
+          name="era_preference"
+          onChange={handleChange}
+          value={era_preference}
+        >
+          {eras.map((era) => {
+            return (
+              <option value={era.id} key={era.id}>
+                {era.decade}
+              </option>
+            );
+          })}
+        </Form.Control>
       </Form.Group>
+      {errors?.era?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
+      <Form.Group>
+        <Form.Label className="d-none">Category</Form.Label>
+        <Form.Control
+          as="select"
+          name="category_preference"
+          onChange={handleChange}
+          value={category_preference}
+        >
+          {categories.map((category) => {
+            return (
+              <option value={category.id} key={category.id}>
+                {category.title}
+              </option>
+            );
+          })}
+        </Form.Control>
+      </Form.Group>
+      {errors?.category?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+    </>
+  );
+
+  const buttons = (
+    <>
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
         onClick={() => history.goBack()}
@@ -234,11 +322,19 @@ const ProfileEditForm = () => {
                 }}
               />
             </Form.Group>
-            <div className="d-md-none">{textFields}</div>
+            <div className="d-md-none">
+              {textFields}
+              {selectFields}
+              {buttons}
+            </div>
           </Container>
         </Col>
         <Col md={5} lg={6} className="d-none d-md-block p-0 p-md-2 text-center">
-          <Container className={appStyles.Content}>{textFields}</Container>
+          <Container className={appStyles.Content}>
+            {textFields}
+            {selectFields}
+            {buttons}
+          </Container>
         </Col>
       </Row>
     </Form>

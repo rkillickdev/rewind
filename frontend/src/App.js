@@ -21,7 +21,9 @@ function App() {
   const currentUser = useCurrentUser();
   const profile_id = currentUser?.profile_id || "";
   const genre_preference = currentUser?.genre_preference || "";
+  const era_preference = currentUser?.era_preference || "";
   console.log(genre_preference);
+  console.log(era_preference);
 
   return (
     <div className={styles.App}>
@@ -43,7 +45,7 @@ function App() {
             render={() => (
               <SnapshotsPage
                 message="No Snapshots Found.  Adjust search keyword"
-                filter={`genre__id=${genre_preference}&`}
+                filter={`genre__id=${genre_preference}&era__id=${era_preference}&`}
               />
             )}
           />
