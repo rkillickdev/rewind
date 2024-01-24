@@ -14,6 +14,7 @@ import Comment from "../comments/Comment";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Asset from "../../components/Asset";
 import { fetchMoreData } from "../../utils/utils";
+import RelevantProfiles from "../profiles/RelevantProfiles";
 
 function SnapshotPage() {
   const { id } = useParams();
@@ -43,7 +44,7 @@ function SnapshotPage() {
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <p>Popular profiles for mobile</p>
+        <RelevantProfiles mobile />
         <Snapshot
           {...snapshot.results[0]}
           setSnapshots={setSnapshot}
@@ -84,7 +85,7 @@ function SnapshotPage() {
         </Container>
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
-        Popular profiles for desktop
+        <RelevantProfiles />
       </Col>
     </Row>
   );
