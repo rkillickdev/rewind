@@ -11,6 +11,7 @@ import Avatar from "./Avatar";
 import axios from "axios";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 import useAlert from "../hooks/useAlert";
+import { removeTokenTimestamp } from "../utils/utils";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
@@ -25,6 +26,7 @@ const NavBar = () => {
       await axios.post("/dj-rest-auth/logout/");
       setAlert("You are now logged out", "success");
       setCurrentUser(null);
+      removeTokenTimestamp();
     } catch (err) {
       // console.log(err);
       setAlert(err.message, "warning");
