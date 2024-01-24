@@ -10,19 +10,17 @@ import { ProfileDataProvider } from "./contexts/ProfileDataContext";
 import { OptionsProvider } from "./contexts/OptionsContext";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Router>
-      <CurrentUserProvider>
-        <ProfileDataProvider>
-          <OptionsProvider>
-            <AlertProvider>
-              <App />
-            </AlertProvider>
-          </OptionsProvider>
-        </ProfileDataProvider>
-      </CurrentUserProvider>
-    </Router>
-  </React.StrictMode>,
+  <Router>
+    <CurrentUserProvider>
+      <ProfileDataProvider>
+        <OptionsProvider>
+          <AlertProvider>
+            <App />
+          </AlertProvider>
+        </OptionsProvider>
+      </ProfileDataProvider>
+    </CurrentUserProvider>
+  </Router>,
   document.getElementById("root"),
 );
 
