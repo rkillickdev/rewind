@@ -98,6 +98,7 @@ INSTALLED_APPS = [
     'recommendations',
     'followers',
     'pins',
+    'samples',
 ]
 SITE_ID = 1
 MIDDLEWARE = [
