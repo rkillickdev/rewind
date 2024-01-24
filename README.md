@@ -364,6 +364,7 @@ The [requirements.txt](requirements.txt) file provides information on required i
 * [react-router-dom](https://www.npmjs.com/package/react-router-dom)
 * [axios](https://axios-http.com/docs/intro)
 * [react-infinite-scroll-component](https://www.npmjs.com/package/react-infinite-scroll-component)
+* [jwt-decode](https://www.npmjs.com/package/jwt-decode)
 
 [Back to top &uarr;](#contents)
 
