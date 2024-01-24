@@ -534,5 +534,9 @@ setSnapshots((prevSnapshots) => ({
 
 * [Article referenced when implementing Alert and Toast popups](https://dev.to/jeffreythecoder/set-up-react-global-alert-popup-in-10mins-36l3)
 
+* [Article referenced when setting up Sample model to allow audio uploads to Cloudinary](https://github.com/klis87/django-cloudinary-storage/blob/master/README.md)
+
+* [Refrerenced when learning about file validation in Django](https://gist.github.com/llann/a571fa86408c68e0a4f9)
+
 
 
