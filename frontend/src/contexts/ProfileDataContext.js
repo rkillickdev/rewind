@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useCurrentUser } from "./CurrentUserContext";
-import { axiosReq } from "../api/axiosDefaults";
+import { axiosReq, axiosRes } from "../api/axiosDefaults";
 
 export const ProfileDataContext = createContext();
 export const SetProfileDataContext = createContext();
@@ -15,6 +15,53 @@ export const ProfileDataProvider = ({ children }) => {
     popularProfiles: { results: [] },
   });
   const currentUser = useCurrentUser();
+
+  const handleFollow = async (clickedProfile) => {
+    try {
+      const { data } = await axiosRes.post("/followers/", {
+        followed: clickedProfile.id,
+      });
+
+      setProfileData((prevState) => ({
+        ...prevState,
+        pageProfile: {
+          results: prevState.pageProfile.results.map((profile) => {
+            return profile.id === clickedProfile.id
+              ? {
+                  ...profile,
+                  followers_count: profile.followers_count + 1,
+                  following_id: data.id,
+                }
+              : profile.is_owner
+                ? {
+                    ...profile,
+                    following_count: profile.following_count + 1,
+                  }
+                : profile;
+          }),
+        },
+        popularProfiles: {
+          ...prevState.popularProfiles,
+          results: prevState.popularProfiles.results.map((profile) => {
+            return profile.id === clickedProfile.id
+              ? {
+                  ...profile,
+                  followers_count: profile.followers_count + 1,
+                  following_id: data.id,
+                }
+              : profile.is_owner
+                ? {
+                    ...profile,
+                    following_count: profile.following_count + 1,
+                  }
+                : profile;
+          }),
+        },
+      }));
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   useEffect(() => {
     const handleMount = async () => {
@@ -36,7 +83,7 @@ export const ProfileDataProvider = ({ children }) => {
 
   return (
     <ProfileDataContext.Provider value={profileData}>
-      <SetProfileDataContext.Provider value={setProfileData}>
+      <SetProfileDataContext.Provider value={{ setProfileData, handleFollow }}>
         {children}
       </SetProfileDataContext.Provider>
     </ProfileDataContext.Provider>
