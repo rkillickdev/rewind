@@ -80,7 +80,7 @@ function SnapshotEditForm() {
           ? setSnapshotData({ title, description, image, era, genre, category })
           : history.push("/");
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
 
@@ -125,7 +125,7 @@ function SnapshotEditForm() {
       setAlert("Snapshot Updated!", "success");
       history.push(`/snapshots/${id}`);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }

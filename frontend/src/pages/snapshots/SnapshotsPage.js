@@ -33,7 +33,7 @@ function SnapshotsPage({ message, filter = "" }) {
         setSnapshots(data);
         setHasLoaded(true);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
 

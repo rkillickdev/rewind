@@ -34,7 +34,7 @@ function SnapshotPage() {
         setSnapshot({ results: [snapshot] });
         setComments(comments);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
 

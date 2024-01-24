@@ -69,11 +69,8 @@ const ProfileEditForm = () => {
             era_preference,
             category_preference,
           });
-          console.log(genre_preference);
-          console.log(era_preference);
-          console.log(category_preference);
         } catch (err) {
-          console.log(err);
+          // console.log(err);
           history.push("/");
         }
       } else {
@@ -164,13 +161,9 @@ const ProfileEditForm = () => {
         era_preference: data.era_preference,
         category_preference: data.category_preference,
       }));
-      console.log(data.genre_preference);
-      console.log(data.era_preference);
-      console.log(data.category_preference);
-      console.log(data.bio);
       history.goBack();
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       setErrors(err.response?.data);
     }
   };

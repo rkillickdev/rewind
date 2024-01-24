@@ -22,8 +22,6 @@ function App() {
   const profile_id = currentUser?.profile_id || "";
   const genre_preference = currentUser?.genre_preference || "";
   const era_preference = currentUser?.era_preference || "";
-  console.log(genre_preference);
-  console.log(era_preference);
 
   return (
     <div className={styles.App}>

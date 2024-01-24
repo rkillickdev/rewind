@@ -33,7 +33,7 @@ export const OptionsProvider = ({ children }) => {
         // setEras(eras.results);
         // setCategories(categories.results);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
 

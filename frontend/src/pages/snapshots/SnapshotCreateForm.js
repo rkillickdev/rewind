@@ -102,7 +102,7 @@ function SnapshotCreateForm() {
       setAlert("You created a new Snapshot!", "success");
       history.push(`/snapshots/${data.id}`);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }
