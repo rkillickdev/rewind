@@ -19,10 +19,10 @@ class SampleSerializer(serializers.ModelSerializer):
     profile_image = serializers.ReadOnlyField(source="owner.profile.image.url")
     created_at = serializers.SerializerMethodField()
 
-    def validate_audio(self, value):
-        if value.size > 2 * 1024 * 1024:
-            raise serializers.ValidationError('Please choose a file smaller than 2MB')
-        return value
+    # def validate_audio(self, value):
+    #     if value.size > 2 * 1024 * 1024:
+    #         raise serializers.ValidationError('Please choose a file smaller than 2MB')
+    #     return value
 
     def get_is_owner(self, obj):
         request = self.context["request"]
@@ -40,8 +40,9 @@ class SampleSerializer(serializers.ModelSerializer):
             "profile_id",
             "profile_image",
             "snapshot",
+            "audio",
             "created_at",
-            "approved"
+            "approved",
         ]
 
 class SampleDetailSerializer(SampleSerializer):

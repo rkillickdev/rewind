@@ -84,6 +84,8 @@ function SnapshotCreateForm() {
     }
   };
 
+  console.log(image);
+
   const { setAlert } = useAlert();
 
   const handleSubmit = async (event) => {
@@ -96,9 +98,11 @@ function SnapshotCreateForm() {
     formData.append("era", era);
     formData.append("genre", genre);
     formData.append("category", category);
+    console.log(image);
 
     try {
       const { data } = await axiosReq.post("/snapshots/", formData);
+      console.log(data);
       setAlert("You created a new Snapshot!", "success");
       history.push(`/snapshots/${data.id}`);
     } catch (err) {

@@ -24,6 +24,7 @@ function SnapshotPage() {
   const currentUser = useCurrentUser();
   const profile_image = currentUser?.profile_image;
   const [comments, setComments] = useState({ results: [] });
+  const [samples, setSamples] = useState({ results: [] });
 
   useEffect(() => {
     const handleMount = async () => {
@@ -66,7 +67,7 @@ function SnapshotPage() {
                 profileImage={profile_image}
                 snapshot={id}
                 setSnapshot={setSnapshot}
-                setComments={setComments}
+                setSamples={setSamples}
               />
             </>
           ) : comments.results.length ? (

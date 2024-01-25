@@ -28,35 +28,39 @@ const SampleCreateForm = (props) => {
   const handleChangeAudio = (event) => {
     if (event.target.files.length) {
       URL.revokeObjectURL(audio);
-      setAudio({
-        audio: URL.createObjectURL(event.target.files[0]),
-      });
+      setAudio(URL.createObjectURL(event.target.files[0]));
     }
   };
 
+  console.log(audio);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+    // const formData = new FormData();
+
+    // formData.append("audio", audio );
     try {
       const { data } = await axiosRes.post("/samples/", {
         audio,
         snapshot,
       });
+      console.log(data);
       setAlert("You added a sample", "success");
       // setSamples((prevSamples) => ({
       //   ...prevSamples,
       //   results: [data, ...prevSamples.results],
       // }));
-      setSnapshot((prevSnapshot) => ({
-        results: [
-          {
-            ...prevSnapshot.results[0],
-            samples_count: prevSnapshot.results[0].samples_count + 1,
-          },
-        ],
-      }));
+      // setSnapshot((prevSnapshot) => ({
+      //   results: [
+      //     {
+      //       ...prevSnapshot.results[0],
+      //       samples_count: prevSnapshot.results[0].samples_count + 1,
+      //     },
+      //   ],
+      // }));
       setAudio("");
     } catch (err) {
-      // console.log(err);
+      console.log(err);
       setAlert(err.message, "warning");
     }
   };
