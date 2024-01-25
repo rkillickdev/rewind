@@ -15,7 +15,7 @@ import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import Asset from "../../components/Asset";
 import Avatar from "../../components/Avatar";
-import { axiosRes } from "../../api/axiosDefaults";
+import { axiosReq } from "../../api/axiosDefaults";
 import useAlert from "../../hooks/useAlert";
 
 const SampleCreateForm = (props) => {
@@ -36,28 +36,27 @@ const SampleCreateForm = (props) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // const formData = new FormData();
+    const formData = new FormData();
 
-    // formData.append("audio", audio );
+    formData.append("snapshot", snapshot);
+    formData.append("audio", audioInput.current.files[0]);
+
     try {
-      const { data } = await axiosRes.post("/samples/", {
-        audio,
-        snapshot,
-      });
+      const { data } = await axiosReq.post("/samples/", formData);
       console.log(data);
       setAlert("You added a sample", "success");
-      // setSamples((prevSamples) => ({
-      //   ...prevSamples,
-      //   results: [data, ...prevSamples.results],
-      // }));
-      // setSnapshot((prevSnapshot) => ({
-      //   results: [
-      //     {
-      //       ...prevSnapshot.results[0],
-      //       samples_count: prevSnapshot.results[0].samples_count + 1,
-      //     },
-      //   ],
-      // }));
+      setSamples((prevSamples) => ({
+        ...prevSamples,
+        results: [data, ...prevSamples.results],
+      }));
+      setSnapshot((prevSnapshot) => ({
+        results: [
+          {
+            ...prevSnapshot.results[0],
+            samples_count: prevSnapshot.results[0].samples_count + 1,
+          },
+        ],
+      }));
       setAudio("");
     } catch (err) {
       console.log(err);

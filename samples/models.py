@@ -19,7 +19,11 @@ class Sample(models.Model):
 
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     snapshot = models.ForeignKey(Snapshot, related_name="samples", on_delete=models.CASCADE)
-    audio = models.ImageField(upload_to="audio/snapshots/", storage=RawMediaCloudinaryStorage())
+    audio = models.FileField(
+        upload_to="audio/snapshots/",
+        storage=RawMediaCloudinaryStorage(),
+        validators=[FileExtensionValidator( ['mp3'] ) ]
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
 
