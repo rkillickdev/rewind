@@ -513,6 +513,11 @@ setSnapshots((prevSnapshots) => ({
           })
           .filter((snapshot) => snapshot.pin_id),
 ```
+| 400 Bad Request error when attempting to upload audio samples to API Endpoint  | Although I had called setAudio in the handleChangeAudio function when selecting the sample, I was then trying to append 'audio' to the instance of formData.  On looking back over the Code Institute Moments project, I realised that I needed to reference the audioInput component (created with the useRef hook):
+
+```js
+formData.append("audio", audioInput.current.files[0]);
+```  
 
 # **Credits**
 
