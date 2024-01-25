@@ -15,6 +15,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Asset from "../../components/Asset";
 import { fetchMoreData } from "../../utils/utils";
 import RelevantProfiles from "../profiles/RelevantProfiles";
+import SampleCreateForm from "../samples/SampleCreateForm";
 
 function SnapshotPage() {
   const { id } = useParams();
@@ -52,13 +53,22 @@ function SnapshotPage() {
         />
         <Container className={appStyles.Content}>
           {currentUser ? (
-            <CommentCreateForm
-              profile_id={currentUser.profile_id}
-              profileImage={profile_image}
-              snapshot={id}
-              setSnapshot={setSnapshot}
-              setComments={setComments}
-            />
+            <>
+              <CommentCreateForm
+                profile_id={currentUser.profile_id}
+                profileImage={profile_image}
+                snapshot={id}
+                setSnapshot={setSnapshot}
+                setComments={setComments}
+              />
+              <SampleCreateForm
+                profile_id={currentUser.profile_id}
+                profileImage={profile_image}
+                snapshot={id}
+                setSnapshot={setSnapshot}
+                setComments={setComments}
+              />
+            </>
           ) : comments.results.length ? (
             "Comments"
           ) : null}

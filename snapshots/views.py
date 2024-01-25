@@ -20,7 +20,8 @@ class SnapshotList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Snapshot.objects.annotate(
         comments_count=Count('comment', distinct=True),
-        recommendations_count=Count('recommendations', distinct=True)
+        recommendations_count=Count('recommendations', distinct=True),
+        samples_count=Count('samples', distinct=True )
     ).order_by('-created_at')
     filter_backends = [
         filters.OrderingFilter,
