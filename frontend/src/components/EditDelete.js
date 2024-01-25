@@ -5,12 +5,16 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom";
 const EditDelete = ({ handleEdit, handleDelete }) => {
   return (
     <div>
-      <span onClick={handleEdit}>
-        <i className={"fas fa-edit"} aria-label="edit" />
-      </span>
-      <span onClick={handleDelete}>
-        <i className={"fas fa-trash-alt"} aria-label="delete" />
-      </span>
+      {handleEdit && (
+        <span onClick={handleEdit}>
+          <i className={"fas fa-edit"} aria-label="edit" />
+        </span>
+      )}
+      {handleDelete && (
+        <span onClick={handleDelete}>
+          <i className={"fas fa-trash-alt"} aria-label="delete" />
+        </span>
+      )}
     </div>
   );
 };

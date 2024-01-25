@@ -16,6 +16,7 @@ import Asset from "../../components/Asset";
 import { fetchMoreData } from "../../utils/utils";
 import RelevantProfiles from "../profiles/RelevantProfiles";
 import SampleCreateForm from "../samples/SampleCreateForm";
+import Sample from "../samples/Sample";
 
 function SnapshotPage() {
   const { id } = useParams();
@@ -29,12 +30,15 @@ function SnapshotPage() {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: snapshot }, { data: comments }] = await Promise.all([
-          axiosReq.get(`/snapshots/${id}`),
-          axiosReq.get(`comments/?snapshot${id}`),
-        ]);
+        const [{ data: snapshot }, { data: comments }, { data: samples }] =
+          await Promise.all([
+            axiosReq.get(`/snapshots/${id}`),
+            axiosReq.get(`comments/?snapshot=${id}`),
+            axiosReq.get(`samples/?snapshot=${id}`),
+          ]);
         setSnapshot({ results: [snapshot] });
         setComments(comments);
+        setSamples(samples);
       } catch (err) {
         // console.log(err);
       }
@@ -73,6 +77,20 @@ function SnapshotPage() {
           ) : comments.results.length ? (
             "Comments"
           ) : null}
+          {samples.results.length ? (
+            samples.results.map((sample) => (
+              <Sample
+                key={sample.id}
+                {...sample}
+                setSnapshot={setSnapshot}
+                setSamples={setSamples}
+              />
+            ))
+          ) : currentUser ? (
+            <span>No comments yet. Be the first to comment.</span>
+          ) : (
+            <span>No comments yet</span>
+          )}
           {comments.results.length ? (
             <InfiniteScroll
               children={comments.results.map((comment) => (
