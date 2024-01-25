@@ -17,7 +17,7 @@ class SampleList(generics.ListCreateAPIView):
 
     serializer_class = SampleSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    queryset = Sample.objects.all()
+    queryset = Sample.objects.filter(approved=True)
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['snapshot']
 
@@ -33,4 +33,4 @@ class SampleDetail(generics.RetrieveDestroyAPIView):
 
     serializer_class = SampleDetailSerializer
     permission_classes = [IsOwnerOrReadOnly]
-    queryset = Sample.objects.all()
+    queryset = Sample.objects.filter(approved=True)
