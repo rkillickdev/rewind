@@ -541,7 +541,9 @@ formData.append("audio", audioInput.current.files[0]);
 
 * [Article referenced when setting up Sample model to allow audio uploads to Cloudinary](https://github.com/klis87/django-cloudinary-storage/blob/master/README.md)
 
-* [Refrerenced when learning about file validation in Django](https://gist.github.com/llann/a571fa86408c68e0a4f9)
+* [Referenced when learning about file validation in Django](https://gist.github.com/llann/a571fa86408c68e0a4f9)
+
+* [Referenced when trying to combine multiple filter parameters in a url](https://stackoverflow.com/questions/34626050/drf-is-it-possible-to-combine-multiple-filter-parameters-in-the-url-with-some)
 
 
 
