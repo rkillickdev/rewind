@@ -11,6 +11,13 @@ const RelevantProfiles = ({ mobile }) => {
   const genre_preference = currentUser?.genre_preference || "";
   const era_preference = currentUser?.era_preference || "";
   const { popularProfiles } = useProfileData();
+  const preferenceFilteredProfiles = popularProfiles.results
+    .filter((profile) => profile.id !== currentUser?.profile_id)
+    .filter(
+      (profile) =>
+        profile.genre_preference === genre_preference ||
+        profile.era_preference === era_preference,
+    );
 
   return (
     <Container
@@ -19,33 +26,26 @@ const RelevantProfiles = ({ mobile }) => {
       }`}
     >
       {popularProfiles.results.length ? (
-        <>
-          <p>Profiles you might like</p>
-          {mobile ? (
-            <div className="d-flex justify-content-around">
-              {popularProfiles.results
-                .filter((profile) => profile.id !== currentUser?.profile_id)
-                .filter(
-                  (profile) =>
-                    profile.genre_preference === genre_preference ||
-                    profile.era_preference === era_preference,
-                )
-                .slice(0, 4)
-                .map((profile) => (
+        preferenceFilteredProfiles.length == 0 ? (
+          <span>No Results</span>
+        ) : (
+          <>
+            <p>Profiles you might like</p>
+            {mobile ? (
+              <div className="d-flex justify-content-around">
+                {preferenceFilteredProfiles.slice(0, 4).map((profile) => (
                   <Profile key={profile.id} profile={profile} mobile />
                 ))}
-            </div>
-          ) : (
-            popularProfiles.results
-              .filter((profile) => profile.id !== currentUser?.profile_id)
-              .filter(
-                (profile) =>
-                  profile.genre_preference === genre_preference ||
-                  profile.era_preference === era_preference,
-              )
-              .map((profile) => <Profile key={profile.id} profile={profile} />)
-          )}
-        </>
+              </div>
+            ) : (
+              preferenceFilteredProfiles
+                .slice(0, 8)
+                .map((profile) => (
+                  <Profile key={profile.id} profile={profile} />
+                ))
+            )}
+          </>
+        )
       ) : (
         <Asset spinner />
       )}
