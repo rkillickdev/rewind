@@ -545,5 +545,7 @@ formData.append("audio", audioInput.current.files[0]);
 
 * [Referenced when trying to combine multiple filter parameters in a url](https://stackoverflow.com/questions/34626050/drf-is-it-possible-to-combine-multiple-filter-parameters-in-the-url-with-some)
 
+* [Referenced when needing to check if a filtered array has returned any results](https://stackoverflow.com/questions/71621657/return-a-message-if-nothing-is-found-after-filtering-an-array-in-javascript)
+
 
 
