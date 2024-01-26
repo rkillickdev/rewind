@@ -547,5 +547,7 @@ formData.append("audio", audioInput.current.files[0]);
 
 * [Referenced when needing to check if a filtered array has returned any results](https://stackoverflow.com/questions/71621657/return-a-message-if-nothing-is-found-after-filtering-an-array-in-javascript)
 
+* [Sorting in Javascript](https://www.freecodecamp.org/news/how-does-the-javascript-sort-function-work/)
+
 
 
