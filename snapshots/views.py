@@ -34,7 +34,7 @@ class SnapshotList(generics.ListCreateAPIView):
         'owner__profile',
         'era__id',
         'genre__id',
-        'category',
+        'category__id',
     ]
     search_fields = [
         'title',

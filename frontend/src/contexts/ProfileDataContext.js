@@ -16,6 +16,8 @@ export const ProfileDataProvider = ({ children }) => {
     popularProfiles: { results: [] },
   });
   const currentUser = useCurrentUser();
+  const genre_preference = currentUser?.genre_preference || "";
+  const era_preference = currentUser?.era_preference || "";
 
   const handleFollow = async (clickedProfile) => {
     try {
@@ -69,7 +71,7 @@ export const ProfileDataProvider = ({ children }) => {
     const handleMount = async () => {
       try {
         const { data } = await axiosReq.get(
-          "/profiles/?ordering=-followers_count",
+          `/profiles/?genre_preference__id=${genre_preference}&era_preference__id=${era_preference}`,
         );
         setProfileData((prevState) => ({
           ...prevState,

@@ -25,6 +25,9 @@ class ProfileList(generics.ListAPIView):
     filterset_fields = [
         'owner__following__followed__profile',
         'owner__followed__owner__profile',
+        'era_preference__id',
+        'genre_preference__id',
+        'category_preference__id',
     ]
     ordering_fields = [
         'snapshots_count',
