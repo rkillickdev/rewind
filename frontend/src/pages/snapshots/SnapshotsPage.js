@@ -4,6 +4,9 @@ import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import { Image } from "react-bootstrap";
+
+import HeroImage from "../../assets/cassette-player-retro.webp";
 
 import appStyles from "../../App.module.css";
 import styles from "../../styles/SnapshotsPage.module.css";
@@ -19,7 +22,7 @@ import RelevantProfiles from "../profiles/RelevantProfiles";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useSetProfileData } from "../../contexts/ProfileDataContext";
 
-function SnapshotsPage({ message, filter = "", curated }) {
+function SnapshotsPage({ message, filter = "", curated, home }) {
   const [snapshots, setSnapshots] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
@@ -95,31 +98,13 @@ function SnapshotsPage({ message, filter = "", curated }) {
                   />
                 ) : (
                   <InfiniteScroll
-                    children={snapshots.results
-                      // .sort((a, b) => {
-                      //   if (
-                      //     a.genre === genre_preference &&
-                      //     b !== genre_preference
-                      //   ) {
-                      //     return -1;
-                      //   } else if (
-                      //     a.genre !== genre_preference &&
-                      //     b === genre_preference
-                      //   ) {
-                      //     return 1;
-                      //   }
-                      //   if (b.recommendations_count < a.recommendations_count)
-                      //     return -1;
-                      //   if (b.recommendations_count > a.recommendations_count)
-                      //     return 1;
-                      // })
-                      .map((snapshot) => (
-                        <Snapshot
-                          key={snapshot.id}
-                          {...snapshot}
-                          setSnapshots={setSnapshots}
-                        />
-                      ))}
+                    children={snapshots.results.map((snapshot) => (
+                      <Snapshot
+                        key={snapshot.id}
+                        {...snapshot}
+                        setSnapshots={setSnapshots}
+                      />
+                    ))}
                     dataLength={snapshots.results.length}
                     loader={<Asset spinner />}
                     hasMore={!!snapshots.next}
@@ -162,7 +147,11 @@ function SnapshotsPage({ message, filter = "", curated }) {
         )}
       </Col>
       <Col md={4} className="d-none d-lg-block p-0 p-lg-2">
-        <RelevantProfiles />
+        {currentUser ? (
+          <RelevantProfiles />
+        ) : (
+          <Image className="img-fluid" src={HeroImage} />
+        )}
       </Col>
     </Row>
   );

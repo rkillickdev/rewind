@@ -32,7 +32,10 @@ function App() {
             exact
             path="/"
             render={() => (
-              <SnapshotsPage message="No Snapshots Found.  Adjust search keyword" />
+              <SnapshotsPage
+                message="No Snapshots Found.  Adjust search keyword"
+                home
+              />
             )}
           />
           <Route

@@ -14,6 +14,8 @@ import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 
+import SignInUpImage from "../../assets/roland-808.webp";
+
 import axios from "axios";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import useAlert from "../../hooks/useAlert";
@@ -118,10 +120,7 @@ function SignInForm() {
         md={6}
         className={`my-auto d-none d-md-block p-2 ${styles.SignInCol}`}
       >
-        <Image
-          className={`${appStyles.FillerImage}`}
-          src={"https://codeinstitute.s3.amazonaws.com/AdvancedReact/hero.jpg"}
-        />
+        <Image className={`${appStyles.FillerImage}`} src={SignInUpImage} />
       </Col>
     </Row>
   );
