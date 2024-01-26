@@ -17,12 +17,21 @@ import Asset from "../../components/Asset";
 import { fetchMoreData } from "../../utils/utils";
 import RelevantProfiles from "../profiles/RelevantProfiles";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { useSetProfileData } from "../../contexts/ProfileDataContext";
 
-function SnapshotsPage({ message, filter = "" }) {
+function SnapshotsPage({ message, filter = "", curated }) {
   const [snapshots, setSnapshots] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
+  const { handleFollow, handleUnfollow } = useSetProfileData();
   const currentUser = useCurrentUser();
+  const genre_preference = currentUser?.genre_preference || "";
+  const era_preference = currentUser?.era_preference || "";
+
+  const curatedSnapshots = snapshots.results.filter(
+    (snapshot) =>
+      snapshot.genre === genre_preference || snapshot.era === era_preference,
+  );
 
   const [query, setQuery] = useState("");
 
@@ -47,7 +56,7 @@ function SnapshotsPage({ message, filter = "" }) {
     return () => {
       clearTimeout(timer);
     };
-  }, [filter, query, pathname, currentUser]);
+  }, [filter, query, pathname, currentUser, handleFollow, handleUnfollow]);
 
   return (
     <Row className="h-100">
@@ -67,27 +76,85 @@ function SnapshotsPage({ message, filter = "" }) {
           ></Form.Control>
         </Form>
         {hasLoaded ? (
-          <>
-            {snapshots.results.length ? (
-              <InfiniteScroll
-                children={snapshots.results.map((snapshot) => (
-                  <Snapshot
-                    key={snapshot.id}
-                    {...snapshot}
-                    setSnapshots={setSnapshots}
+          currentUser ? (
+            <>
+              {snapshots.results.length ? (
+                curated ? (
+                  <InfiniteScroll
+                    children={curatedSnapshots.map((snapshot) => (
+                      <Snapshot
+                        key={snapshot.id}
+                        {...snapshot}
+                        setSnapshots={setSnapshots}
+                      />
+                    ))}
+                    dataLength={snapshots.results.length}
+                    loader={<Asset spinner />}
+                    hasMore={!!snapshots.next}
+                    next={() => fetchMoreData(snapshots, setSnapshots)}
                   />
-                ))}
-                dataLength={snapshots.results.length}
-                loader={<Asset spinner />}
-                hasMore={!!snapshots.next}
-                next={() => fetchMoreData(snapshots, setSnapshots)}
-              />
-            ) : (
-              <Container className="appStyles.Content">
-                <Asset src={NoResults} message={message} />
-              </Container>
-            )}
-          </>
+                ) : (
+                  <InfiniteScroll
+                    children={snapshots.results
+                      // .sort((a, b) => {
+                      //   if (
+                      //     a.genre === genre_preference &&
+                      //     b !== genre_preference
+                      //   ) {
+                      //     return -1;
+                      //   } else if (
+                      //     a.genre !== genre_preference &&
+                      //     b === genre_preference
+                      //   ) {
+                      //     return 1;
+                      //   }
+                      //   if (b.recommendations_count < a.recommendations_count)
+                      //     return -1;
+                      //   if (b.recommendations_count > a.recommendations_count)
+                      //     return 1;
+                      // })
+                      .map((snapshot) => (
+                        <Snapshot
+                          key={snapshot.id}
+                          {...snapshot}
+                          setSnapshots={setSnapshots}
+                        />
+                      ))}
+                    dataLength={snapshots.results.length}
+                    loader={<Asset spinner />}
+                    hasMore={!!snapshots.next}
+                    next={() => fetchMoreData(snapshots, setSnapshots)}
+                  />
+                )
+              ) : (
+                <Container className="appStyles.Content">
+                  <Asset src={NoResults} message={message} />
+                </Container>
+              )}
+            </>
+          ) : (
+            <>
+              {snapshots.results.length ? (
+                <InfiniteScroll
+                  children={snapshots.results.map((snapshot) => (
+                    <Snapshot
+                      key={snapshot.id}
+                      {...snapshot}
+                      setSnapshots={setSnapshots}
+                    />
+                  ))}
+                  dataLength={snapshots.results.length}
+                  loader={<Asset spinner />}
+                  hasMore={!!snapshots.next}
+                  next={() => fetchMoreData(snapshots, setSnapshots)}
+                />
+              ) : (
+                <Container className="appStyles.Content">
+                  <Asset src={NoResults} message={message} />
+                </Container>
+              )}
+            </>
+          )
         ) : (
           <Container className="appStyles.Content">
             <Asset spinner />
