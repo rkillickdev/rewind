@@ -4,8 +4,10 @@ import { Container } from "react-bootstrap";
 import Asset from "../../components/Asset";
 import Profile from "./Profile";
 import { useProfileData } from "../../contexts/ProfileDataContext";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 const RelevantProfiles = ({ mobile }) => {
+  const currentUser = useCurrentUser();
   const { popularProfiles } = useProfileData();
 
   return (
@@ -19,14 +21,17 @@ const RelevantProfiles = ({ mobile }) => {
           <p>Most followed profiles.</p>
           {mobile ? (
             <div className="d-flex justify-content-around">
-              {popularProfiles.results.slice(0, 4).map((profile) => (
-                <Profile key={profile.id} profile={profile} mobile />
-              ))}
+              {popularProfiles.results
+                .filter((profile) => profile.id !== currentUser?.profile_id)
+                .slice(0, 4)
+                .map((profile) => (
+                  <Profile key={profile.id} profile={profile} mobile />
+                ))}
             </div>
           ) : (
-            popularProfiles.results.map((profile) => (
-              <Profile key={profile.id} profile={profile} />
-            ))
+            popularProfiles.results
+              .filter((profile) => profile.id !== currentUser?.profile_id)
+              .map((profile) => <Profile key={profile.id} profile={profile} />)
           )}
         </>
       ) : (

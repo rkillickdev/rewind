@@ -71,7 +71,8 @@ export const ProfileDataProvider = ({ children }) => {
     const handleMount = async () => {
       try {
         const { data } = await axiosReq.get(
-          `/profiles/?genre_preference__id=${genre_preference}&era_preference__id=${era_preference}`,
+          // `/profiles/?genre_preference__id=${genre_preference}&ordering=-followers_count`,
+          "/profiles/?ordering=-followers_count",
         );
         setProfileData((prevState) => ({
           ...prevState,
