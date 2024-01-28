@@ -489,6 +489,7 @@ The following steps were followed to deploy the site to Heroku:
 | Bug Description | Solutions Tried |
 | ------------ | --------------- |
 | 'No file was submitted' warning when updating a snapshot without changing the image | This could be to do with the fact I do not have blank = True in my model.  I removed this and the default image as this had created another bug  |
+| User unpins snapshot on home page.  All snapshots dissapear and no results found message displayed | Look at code relating to pin page|
 
 
 <br>
@@ -513,12 +514,11 @@ setSnapshots((prevSnapshots) => ({
           })
           .filter((snapshot) => snapshot.pin_id),
 ```
-| 400 Bad Request error when attempting to upload audio samples to API Endpoint  | Although I had called setAudio in the handleChangeAudio function when selecting the sample, I was then trying to append 'audio' to the instance of formData.  On looking back over the Code Institute Moments project, I realised that I needed to reference the audioInput component (created with the useRef hook):
+| 400 Bad Request error when attempting to upload audio samples to API Endpoint  | Although I had called setAudio in the handleChangeAudio function when selecting the sample, I was then trying to append 'audio' to the instance of formData.  On looking back over the Code Institute Moments project, I realised that I needed to reference the audioInput component (created with the useRef hook)|
 
 ```js
 formData.append("audio", audioInput.current.files[0]);
 ```  
-
 # **Credits**
 
 ## **Code Used and Referenced**
