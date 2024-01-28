@@ -1,8 +1,9 @@
 from rest_framework import serializers
 from .models import Profile
 from followers.models import Follower
+from eras.serializers import EraSerializer
 from genres.serializers import GenreSerializer
-
+from categories.serializers import CategorySerializer
 
 
 class ProfileSerializer(serializers.ModelSerializer):
@@ -26,6 +27,9 @@ class ProfileSerializer(serializers.ModelSerializer):
     snapshots_count = serializers.ReadOnlyField()
     followers_count = serializers.ReadOnlyField()
     following_count = serializers.ReadOnlyField()
+    era_preference = EraSerializer(allow_null=True, required=False)
+    genre_preference = GenreSerializer(allow_null=True, required=False)
+    category_preference = GenreSerializer(allow_null=True, required=False)
 
     def get_is_owner(self, obj):
         request = self.context["request"]
@@ -59,6 +63,14 @@ class ProfileSerializer(serializers.ModelSerializer):
             "followers_count",
             "following_count",
         ]
+
+    def update(self, instance, validated_data):
+        instance.era_preference = validated_data.get('era_preference')
+        instance.genre_preference = validated_data.get('genre_preference')
+        instance.category_preference = validated_data.get('category_preference')
+        instance.save()
+
+        return instance
 
 
 # class ProfileListSerializer(ProfileSerializer):

@@ -25,6 +25,7 @@ const ProfileEditForm = () => {
   const { id } = useParams();
   const history = useHistory();
   const imageFile = useRef();
+  const initialValue = null;
 
   const options = useOptions();
   const { genres, eras, categories } = options;
@@ -33,9 +34,9 @@ const ProfileEditForm = () => {
     name: "",
     bio: "",
     image: "",
-    genre_preference: "",
-    era_preference: "",
-    category_preference: "",
+    genre_preference: initialValue,
+    era_preference: initialValue,
+    category_preference: initialValue,
   });
   const {
     name,
@@ -144,8 +145,8 @@ const ProfileEditForm = () => {
     const formData = new FormData();
     formData.append("name", name);
     formData.append("bio", bio);
-    formData.append("genre_preference", genre_preference);
     formData.append("era_preference", era_preference);
+    formData.append("genre_preference", genre_preference);
     formData.append("category_preference", category_preference);
 
     if (imageFile?.current?.files[0]) {
@@ -198,8 +199,11 @@ const ProfileEditForm = () => {
           as="select"
           name="genre_preference"
           onChange={handleChange}
-          value={genre_preference}
+          value={genre_preference ? genre_preference : -1}
         >
+          <option value={-1} disabled>
+            select genre
+          </option>
           {genres.map((genre) => {
             return (
               <option value={genre.id} key={genre.id}>
@@ -209,7 +213,7 @@ const ProfileEditForm = () => {
           })}
         </Form.Control>
       </Form.Group>
-      {errors?.genre?.map((message, idx) => (
+      {errors?.genre_preference?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
           {message}
         </Alert>
@@ -221,8 +225,11 @@ const ProfileEditForm = () => {
           as="select"
           name="era_preference"
           onChange={handleChange}
-          value={era_preference}
+          value={era_preference ? era_preference : -1}
         >
+          <option value={-1} disabled>
+            select era
+          </option>
           {eras.map((era) => {
             return (
               <option value={era.id} key={era.id}>
@@ -232,7 +239,7 @@ const ProfileEditForm = () => {
           })}
         </Form.Control>
       </Form.Group>
-      {errors?.era?.map((message, idx) => (
+      {errors?.era_preference?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
           {message}
         </Alert>
@@ -244,8 +251,11 @@ const ProfileEditForm = () => {
           as="select"
           name="category_preference"
           onChange={handleChange}
-          value={category_preference}
+          value={category_preference ? category_preference : -1}
         >
+          <option value={-1} disabled>
+            select category
+          </option>
           {categories.map((category) => {
             return (
               <option value={category.id} key={category.id}>
@@ -255,7 +265,7 @@ const ProfileEditForm = () => {
           })}
         </Form.Control>
       </Form.Group>
-      {errors?.category?.map((message, idx) => (
+      {errors?.category_preference?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
           {message}
         </Alert>

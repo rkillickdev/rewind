@@ -98,7 +98,6 @@ function SnapshotCreateForm() {
     formData.append("era", era);
     formData.append("genre", genre);
     formData.append("category", category);
-    console.log(image);
 
     try {
       const { data } = await axiosReq.post("/snapshots/", formData);

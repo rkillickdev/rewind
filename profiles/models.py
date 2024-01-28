@@ -24,16 +24,16 @@ class Profile(models.Model):
     )
    
     era_preference = models.ForeignKey(
-        Era, on_delete=models.CASCADE, blank=True,
-        null=True
+        Era, on_delete=models.CASCADE,
+        null=True, blank=True
     )
     genre_preference = models.ForeignKey(
-        Genre, on_delete=models.CASCADE, blank=True,
-        null=True
+        Genre, on_delete=models.CASCADE,
+        null=True, blank=True
     )
     category_preference = models.ForeignKey(
-        Category, on_delete=models.CASCADE, blank=True,
-        null=True
+        Category, on_delete=models.CASCADE,
+        null=True, blank=True
     )
 
     class Meta:
