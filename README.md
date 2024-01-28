@@ -488,8 +488,6 @@ The following steps were followed to deploy the site to Heroku:
 
 | Bug Description | Solutions Tried |
 | ------------ | --------------- |
-| 'No file was submitted' warning when updating a snapshot without changing the image | This could be to do with the fact I do not have blank = True in my model.  I removed this and the default image as this had created another bug  |
-
 
 <br>
 
@@ -547,6 +545,9 @@ pinboard &&
 
         return instance
 ```
+| Bug Description | Solution |
+| ------------ | --------------- |
+| 'No file was submitted' warning when updating a snapshot without changing the image | This bug came about because I removed `blank=True` from my Snapshot model.  The logic in the handleSubmit function of the Snapshot Edit Form looks to see whether a file exists in imageInput, and if so it appends it to the formData.  However, if the user chooses not to change the snapshot image, a warning is displayed on submission of the form as the field cannot be blank.  I only need this rule to be enforced when a user is creating a **new** snapshot, but not when updating.  I therefore created a SnapshotDetailSerializer which inherits from SnapshotSerializer but additionally defines `image = serializers.ImageField(required=False)`.  This ensures that when updating an instance of Snapshot, the image field can be blank  |
 
 
 # **Credits**
