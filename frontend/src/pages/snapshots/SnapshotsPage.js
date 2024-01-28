@@ -22,7 +22,7 @@ import RelevantProfiles from "../profiles/RelevantProfiles";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useSetProfileData } from "../../contexts/ProfileDataContext";
 
-function SnapshotsPage({ message, filter = "", curated, home }) {
+function SnapshotsPage({ message, filter = "", curated, pinboard }) {
   const [snapshots, setSnapshots] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
@@ -103,6 +103,7 @@ function SnapshotsPage({ message, filter = "", curated, home }) {
                         key={snapshot.id}
                         {...snapshot}
                         setSnapshots={setSnapshots}
+                        pinboard={pinboard}
                       />
                     ))}
                     dataLength={snapshots.results.length}

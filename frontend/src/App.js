@@ -32,10 +32,7 @@ function App() {
             exact
             path="/"
             render={() => (
-              <SnapshotsPage
-                message="No Snapshots Found.  Adjust search keyword"
-                home
-              />
+              <SnapshotsPage message="No Snapshots Found.  Adjust search keyword" />
             )}
           />
           <Route
@@ -56,6 +53,7 @@ function App() {
               <SnapshotsPage
                 message="You currently have no snapshots pinned"
                 filter={`pins__owner__profile=${profile_id}&ordering=-pins__created_at&`}
+                pinboard
               />
             )}
           />

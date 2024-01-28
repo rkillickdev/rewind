@@ -30,6 +30,7 @@ const Snapshot = (props) => {
     recommendations_count,
     snapshotPage,
     setSnapshots,
+    pinboard,
   } = props;
 
   const currentUser = useCurrentUser();
@@ -128,17 +129,20 @@ const Snapshot = (props) => {
       setAlert("You unpinned the Snapshot!", "success");
       setSnapshots((prevSnapshots) => ({
         ...prevSnapshots,
-        results: prevSnapshots.results
-          .map((snapshot) => {
-            return snapshot.id === id
-              ? {
-                  ...snapshot,
-                  pin_id: null,
-                }
-              : snapshot;
-          })
-          .filter((snapshot) => snapshot.pin_id),
+        results: prevSnapshots.results.map((snapshot) => {
+          return snapshot.id === id
+            ? {
+                ...snapshot,
+                pin_id: null,
+              }
+            : snapshot;
+        }),
       }));
+      pinboard &&
+        setSnapshots((prevSnapshots) => ({
+          ...prevSnapshots,
+          results: prevSnapshots.results.filter((snapshot) => snapshot.pin_id),
+        }));
     } catch (err) {
       // console.log(err);
       setAlert(err.message, "warning");
