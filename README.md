@@ -489,7 +489,6 @@ The following steps were followed to deploy the site to Heroku:
 | Bug Description | Solutions Tried |
 | ------------ | --------------- |
 | 'No file was submitted' warning when updating a snapshot without changing the image | This could be to do with the fact I do not have blank = True in my model.  I removed this and the default image as this had created another bug  |
-| User unpins snapshot on home page.  All snapshots dissapear and no results found message displayed | Look at code relating to pin page|
 
 
 <br>
@@ -500,6 +499,7 @@ The following steps were followed to deploy the site to Heroku:
 | ------------ | --------------- |
 | Using defaultValue on Form.Control selects not displaying required value as select option  | Using 'value' rather than defaultValue as an attribute on the Form.Control component seems to have solved this.  I eventually found the solution in the following [article](https://github.com/react-bootstrap/react-bootstrap/issues/2091)  |
 | Snapshots could be 'unpinned' from the pinned page, but remained visible which made for bad user experience.  I needed the page to update each time a pin was removed to reflect this change | For the handleUnpin function within the Snapshot component, use a filter as part of `setSnapshots` after the delete request has been sent to the API endpoint for pins.  Only snapshots with a pin_id are displayed |
+
 ```js
 setSnapshots((prevSnapshots) => ({
         ...prevSnapshots,
@@ -514,11 +514,41 @@ setSnapshots((prevSnapshots) => ({
           })
           .filter((snapshot) => snapshot.pin_id),
 ```
-| 400 Bad Request error when attempting to upload audio samples to API Endpoint  | Although I had called setAudio in the handleChangeAudio function when selecting the sample, I was then trying to append 'audio' to the instance of formData.  On looking back over the Code Institute Moments project, I realised that I needed to reference the audioInput component (created with the useRef hook)|
+| Bug Description | Solution |
+| ------------ | --------------- |
+| 400 Bad Request error when attempting to upload audio samples to API Endpoint | Although I had called setAudio in the handleChangeAudio function when selecting the sample, I was then trying to append 'audio' to the instance of formData.  On looking back over the Code Institute Moments project, I realised that I needed to reference the audioInput component (created with the useRef hook) |
 
 ```js
 formData.append("audio", audioInput.current.files[0]);
-```  
+``` 
+| Bug Description | Solution |
+| ------------ | --------------- |
+| User unpins snapshot on home page.  Any snapshots that are not pinned dissapear. 'No results found' message displayed if there are no pinned snapshots | This issue related to the handleUnpin function in the Snapshot component.  Filtering was being applied to Snapshots on **any** page where the handleUnpin was called.  However this was only required on the 'pinned' page to ensure that snapshots were removed from this page once unpinned.  To solve this, I pass a `pinboard` prop to the SnapshotsPage component in App.js and then pass this prop down to the Snapshot component.  I then use the && conditional operator in handleUnpin to check if the pinboard prop is present, and only apply filtering if it is. |
+```js
+pinboard &&
+        setSnapshots((prevSnapshots) => ({
+          ...prevSnapshots,
+          results: prevSnapshots.results.filter((snapshot) => snapshot.pin_id),
+        }));
+```
+| Bug Description | Solution |
+| ------------ | --------------- |
+| When navigating to the Profile Edit Form, even though `blank=True` and `null=True` was set on the era_preference, genre_preference and category_preference fields in the Profile model, a 400 'bad request' error was logged in the console if the form was submitted without a value selected for era, genre and category. |  With the help of [this Stack overflow thread](https://stackoverflow.com/questions/56917190/django-django-rest-framework-how-do-i-allow-model-serializer-to-set-models-fo), I specified `allow_null=True` on each required field in the serializer file and defined the update method.  I also needed to specify `required=False` on the serializer fields to allow users to leave the form field blank, even though I had already specified this on the model field. |
+```js
+    era_preference = EraSerializer(allow_null=True, required=False)
+    genre_preference = GenreSerializer(allow_null=True, required=False)
+    category_preference = GenreSerializer(allow_null=True, required=False)
+
+    def update(self, instance, validated_data):
+        instance.era_preference = validated_data.get('era_preference')
+        instance.genre_preference = validated_data.get('genre_preference')
+        instance.category_preference = validated_data.get('category_preference')
+        instance.save()
+
+        return instance
+```
+
+
 # **Credits**
 
 ## **Code Used and Referenced**
@@ -549,7 +579,7 @@ formData.append("audio", audioInput.current.files[0]);
 
 * [Sorting in Javascript](https://www.freecodecamp.org/news/how-does-the-javascript-sort-function-work/)
 
-* Setting Foreign Key Field im model serializer to null: [Article 1/](https://stackoverflow.com/questions/56917190/django-django-rest-framework-how-do-i-allow-model-serializer-to-set-models-fo)[Article 2](https://stackoverflow.com/questions/47076194/django-rest-framework-how-to-set-a-field-to-null-via-patch-request)
+* Setting Foreign Key Field im model serializer to null: [Article 1/ ](https://stackoverflow.com/questions/56917190/django-django-rest-framework-how-do-i-allow-model-serializer-to-set-models-fo)[Article 2](https://stackoverflow.com/questions/47076194/django-rest-framework-how-to-set-a-field-to-null-via-patch-request)
 
 
 
