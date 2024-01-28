@@ -94,3 +94,14 @@ class SnapshotSerializer(serializers.ModelSerializer):
             "recommendations_count",
             "samples_count",
         ]
+
+
+class SnapshotDetailSerializer(SnapshotSerializer):
+    """
+    Inherits from the SnapshotSerializer above.
+    Additionally, image is defined to
+    allow this field to be blank when sending a 
+    put request to the API endpoint. 
+    """
+
+    image = serializers.ImageField(required=False)

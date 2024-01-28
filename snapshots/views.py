@@ -3,7 +3,7 @@ from rest_framework import generics, permissions, filters
 from django_filters.rest_framework import DjangoFilterBackend
 from rewind.permissions import IsOwnerOrReadOnly
 from .models import Snapshot
-from .serializers import SnapshotSerializer
+from .serializers import SnapshotSerializer, SnapshotDetailSerializer
 
 
 class SnapshotList(generics.ListCreateAPIView):
@@ -59,7 +59,7 @@ class SnapshotDetail(generics.RetrieveUpdateDestroyAPIView):
     The user can edit or delete the retrieved Snapshot if they own it.
     """
 
-    serializer_class = SnapshotSerializer
+    serializer_class = SnapshotDetailSerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Snapshot.objects.annotate(
         comments_count=Count('comment', distinct=True),
