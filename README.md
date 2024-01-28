@@ -549,5 +549,7 @@ formData.append("audio", audioInput.current.files[0]);
 
 * [Sorting in Javascript](https://www.freecodecamp.org/news/how-does-the-javascript-sort-function-work/)
 
+* Setting Foreign Key Field im model serializer to null: [Article 1/](https://stackoverflow.com/questions/56917190/django-django-rest-framework-how-do-i-allow-model-serializer-to-set-models-fo)[Article 2](https://stackoverflow.com/questions/47076194/django-rest-framework-how-to-set-a-field-to-null-via-patch-request)
+
 
 
