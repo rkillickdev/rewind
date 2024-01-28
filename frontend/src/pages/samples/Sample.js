@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Media } from "react-bootstrap";
+import { Media, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link } from "react-router-dom/cjs/react-router-dom";
 import Avatar from "../../components/Avatar";
-import styles from "../../styles/Comment.module.css";
+import styles from "../../styles/Sample.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import EditDelete from "../../components/EditDelete";
 import { axiosRes } from "../../api/axiosDefaults";
@@ -13,14 +13,14 @@ const Sample = (props) => {
     profile_id,
     profile_image,
     owner,
-    updated_at,
+    created_at,
     audio,
+    approved,
     id,
     setSnapshot,
     setSamples,
   } = props;
 
-  // const [showEditForm, setShowEditForm] = useState(false);
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
   const { setAlert } = useAlert();
@@ -50,15 +50,22 @@ const Sample = (props) => {
   return (
     <>
       <hr />
-      <Media>
+      <Media className={!approved && styles.Pending}>
         <Link to={`/profiles/${profile_id}`}>
           <Avatar src={profile_image} />
         </Link>
         <Media.Body className="align-self-center ml-2">
           <span className={styles.Owner}>{owner}</span>
-          <span className={styles.Date}>{updated_at}</span>
+          <span className={styles.Date}>{created_at}</span>
           <audio src={audio} controls />
         </Media.Body>
+        <OverlayTrigger
+          placement="top"
+          overlay={<Tooltip>Your sample is pending approval</Tooltip>}
+        >
+          {!approved && <i className="fa-solid fa-stamp"></i>}
+        </OverlayTrigger>
+
         {is_owner && <EditDelete handleDelete={handleDelete} />}
       </Media>
     </>

@@ -78,14 +78,19 @@ function SnapshotPage() {
             "Comments"
           ) : null}
           {samples.results.length ? (
-            samples.results.map((sample) => (
-              <Sample
-                key={sample.id}
-                {...sample}
-                setSnapshot={setSnapshot}
-                setSamples={setSamples}
-              />
-            ))
+            samples.results
+              .filter(
+                (sample) =>
+                  sample.approved || sample.owner === currentUser?.username,
+              )
+              .map((sample) => (
+                <Sample
+                  key={sample.id}
+                  {...sample}
+                  setSnapshot={setSnapshot}
+                  setSamples={setSamples}
+                />
+              ))
           ) : currentUser ? (
             <span>No comments yet. Be the first to comment.</span>
           ) : (
