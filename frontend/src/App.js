@@ -40,7 +40,7 @@ function App() {
           />
           <Route
             exact
-            path="/feed"
+            path="/watching"
             render={() => (
               <SnapshotsPage
                 message="No Snapshots Found.  Adjust search keyword"
