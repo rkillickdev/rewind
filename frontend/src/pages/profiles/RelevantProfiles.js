@@ -19,8 +19,6 @@ const RelevantProfiles = ({ mobile }) => {
         profile.era_preference === era_preference,
     );
 
-  console.log(preferenceFilteredProfiles);
-
   return (
     <Container
       className={`${appStyles.Content} ${

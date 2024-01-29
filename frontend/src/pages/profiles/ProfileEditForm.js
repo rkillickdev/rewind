@@ -34,9 +34,9 @@ const ProfileEditForm = () => {
     name: "",
     bio: "",
     image: "",
-    genre_preference: initialValue,
-    era_preference: initialValue,
-    category_preference: initialValue,
+    // genre_preference: initialValue,
+    // era_preference: initialValue,
+    // category_preference: initialValue,
   });
   const {
     name,
@@ -88,8 +88,6 @@ const ProfileEditForm = () => {
       [event.target.name]: event.target.value,
     });
   };
-
-  console.log(profileData);
 
   // Test code for adding genre prefs to an array
 
@@ -147,9 +145,18 @@ const ProfileEditForm = () => {
     const formData = new FormData();
     formData.append("name", name);
     formData.append("bio", bio);
-    formData.append("era_preference", era_preference);
-    formData.append("genre_preference", genre_preference);
-    formData.append("category_preference", category_preference);
+
+    if (era_preference) {
+      formData.append("era_preference", era_preference);
+    }
+
+    if (genre_preference) {
+      formData.append("genre_preference", genre_preference);
+    }
+
+    if (category_preference) {
+      formData.append("category_preference", category_preference);
+    }
 
     if (imageFile?.current?.files[0]) {
       formData.append("image", imageFile?.current?.files[0]);
