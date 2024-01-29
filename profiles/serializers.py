@@ -31,7 +31,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     # genre_preference = serializers.PrimaryKeyRelatedField(queryset, allow_null=True)
     # category_preference = serializers.PrimaryKeyRelatedField(queryset, allow_null=True)
     # era_preference = EraSerializer(required=False)
-    genre_preference = GenreSerializer(required=False, allow_null=True)
+    # genre_preference = GenreSerializer(required=False, allow_null=True)
     # category_preference = CategorySerializer(required=False)
 
     # def update(self, instance, validated_data):
