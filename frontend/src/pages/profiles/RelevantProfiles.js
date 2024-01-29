@@ -19,6 +19,8 @@ const RelevantProfiles = ({ mobile }) => {
         profile.era_preference === era_preference,
     );
 
+  console.log(preferenceFilteredProfiles);
+
   return (
     <Container
       className={`${appStyles.Content} ${
@@ -26,9 +28,7 @@ const RelevantProfiles = ({ mobile }) => {
       }`}
     >
       {popularProfiles.results.length ? (
-        preferenceFilteredProfiles.length == 0 ? (
-          <span>No Results</span>
-        ) : (
+        preferenceFilteredProfiles.length ? (
           <>
             <p>Profiles you might like</p>
             {mobile ? (
@@ -45,6 +45,8 @@ const RelevantProfiles = ({ mobile }) => {
                 ))
             )}
           </>
+        ) : (
+          <span>No Results</span>
         )
       ) : (
         <Asset spinner />

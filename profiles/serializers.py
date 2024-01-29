@@ -27,9 +27,22 @@ class ProfileSerializer(serializers.ModelSerializer):
     snapshots_count = serializers.ReadOnlyField()
     followers_count = serializers.ReadOnlyField()
     following_count = serializers.ReadOnlyField()
-    era_preference = EraSerializer(allow_null=True, required=False)
-    genre_preference = GenreSerializer(allow_null=True, required=False)
-    category_preference = GenreSerializer(allow_null=True, required=False)
+    # era_preference = serializers.PrimaryKeyRelatedField(queryset, allow_null=True)
+    # genre_preference = serializers.PrimaryKeyRelatedField(queryset, allow_null=True)
+    # category_preference = serializers.PrimaryKeyRelatedField(queryset, allow_null=True)
+    # era_preference = EraSerializer(required=False)
+    genre_preference = GenreSerializer(required=False, allow_null=True)
+    # category_preference = CategorySerializer(required=False)
+
+    # def update(self, instance, validated_data):
+    #     instance.name = validated_data.get('name')
+    #     instance.bio = validated_data.get('bio')
+    #     instance.era_preference = validated_data.get('era_preference')
+    #     instance.genre_preference = validated_data.get('genre_preference')
+    #     instance.category_preference = validated_data.get('category_preference')
+    #     instance.save()
+
+    #     return instance
 
     def get_is_owner(self, obj):
         request = self.context["request"]
@@ -64,23 +77,7 @@ class ProfileSerializer(serializers.ModelSerializer):
             "following_count",
         ]
 
-    def update(self, instance, validated_data):
-        instance.era_preference = validated_data.get('era_preference')
-        instance.genre_preference = validated_data.get('genre_preference')
-        instance.category_preference = validated_data.get('category_preference')
-        instance.save()
 
-        return instance
+    
 
-
-# class ProfileListSerializer(ProfileSerializer):
-#     """
-#     Inherits from the ProfileSerializer above.
-#     StringRelatedField is used here to display string
-#     representations of the era, genre and category preferences
-#     rather than IDs when listing profiles.
-#     """
-
-#     era_preferences = serializers.StringRelatedField(many=True)
-#     genre_preferences = serializers.StringRelatedField(many=True)
-#     category_preferences = serializers.StringRelatedField(many=True)
+    

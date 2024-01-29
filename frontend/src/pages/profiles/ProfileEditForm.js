@@ -89,6 +89,8 @@ const ProfileEditForm = () => {
     });
   };
 
+  console.log(profileData);
+
   // Test code for adding genre prefs to an array
 
   // const [genrePrefs, setGenrePrefs] = useState([]);
