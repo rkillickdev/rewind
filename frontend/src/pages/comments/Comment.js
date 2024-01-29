@@ -84,8 +84,8 @@ const Comment = (props) => {
         show={showModal}
         handleClose={() => setShowModal(false)}
         onConfirm={handleDelete}
-        title={"Confirm Delete"}
-        message={"Are you sure you want to delete?"}
+        title={"Delete Comment"}
+        message={"Are you sure you want to delete this comment?"}
         buttonLabel={"Delete"}
       />
     </>

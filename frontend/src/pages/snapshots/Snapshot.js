@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../../styles/Snapshot.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
@@ -8,6 +8,7 @@ import { axiosRes } from "../../api/axiosDefaults";
 import EditDelete from "../../components/EditDelete";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import useAlert from "../../hooks/useAlert";
+import ModalPopup from "../../components/ModalPopup";
 
 const Snapshot = (props) => {
   const {
@@ -33,6 +34,7 @@ const Snapshot = (props) => {
     pinboard,
   } = props;
 
+  const [showModal, setShowModal] = useState(false);
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
   const history = useHistory();
@@ -150,83 +152,96 @@ const Snapshot = (props) => {
   };
 
   return (
-    <Card className={styles.Snapshot}>
-      <Card.Body>
-        <Media className="align-items-center justify-content-between">
-          <Link to={`/profiles/${profile_id}`}>
-            <Avatar src={profile_image} height={55} />
-            {owner}
-          </Link>
-          <div className="d-flex align-items-center">
-            <span>{updated_at}</span>
-          </div>
-        </Media>
-      </Card.Body>
-      <Link to={`/snapshots/${id}`}>
-        <Card.Img src={image} alt={title} />
-      </Link>
-      <Card.Body>
-        {title && <Card.Title className="text-center">{title}</Card.Title>}
-        {description && <Card.Text>{description}</Card.Text>}
-        <div className={`d-flex justify-content-between ${styles.PostBar}`}>
-          <div>
-            {currentUser ? (
-              is_owner ? (
+    <>
+      <Card className={styles.Snapshot}>
+        <Card.Body>
+          <Media className="align-items-center justify-content-between">
+            <Link to={`/profiles/${profile_id}`}>
+              <Avatar src={profile_image} height={55} />
+              {owner}
+            </Link>
+            <div className="d-flex align-items-center">
+              <span>{updated_at}</span>
+            </div>
+          </Media>
+        </Card.Body>
+        <Link to={`/snapshots/${id}`}>
+          <Card.Img src={image} alt={title} />
+        </Link>
+        <Card.Body>
+          {title && <Card.Title className="text-center">{title}</Card.Title>}
+          {description && <Card.Text>{description}</Card.Text>}
+          <div className={`d-flex justify-content-between ${styles.PostBar}`}>
+            <div>
+              {currentUser ? (
+                is_owner ? (
+                  <OverlayTrigger
+                    placement="top"
+                    overlay={
+                      <Tooltip>You can't recommend your own post!</Tooltip>
+                    }
+                  >
+                    <i className="fa-regular fa-thumbs-up" />
+                  </OverlayTrigger>
+                ) : recommendation_id ? (
+                  <span onClick={handleUnrecommend}>
+                    <i className={`fa-solid fa-thumbs-up ${styles.Heart}`} />
+                  </span>
+                ) : (
+                  <span onClick={handleRecommend}>
+                    <i
+                      className={`fa-regular fa-thumbs-up ${styles.HeartOutline}`}
+                    />
+                  </span>
+                )
+              ) : (
                 <OverlayTrigger
                   placement="top"
-                  overlay={
-                    <Tooltip>You can't recommend your own post!</Tooltip>
-                  }
+                  overlay={<Tooltip>Log in to recommend snapshots!</Tooltip>}
                 >
                   <i className="fa-regular fa-thumbs-up" />
                 </OverlayTrigger>
-              ) : recommendation_id ? (
-                <span onClick={handleUnrecommend}>
-                  <i className={`fa-solid fa-thumbs-up ${styles.Heart}`} />
-                </span>
-              ) : (
-                <span onClick={handleRecommend}>
-                  <i
-                    className={`fa-regular fa-thumbs-up ${styles.HeartOutline}`}
-                  />
-                </span>
-              )
-            ) : (
-              <OverlayTrigger
-                placement="top"
-                overlay={<Tooltip>Log in to recommend snapshots!</Tooltip>}
-              >
-                <i className="fa-regular fa-thumbs-up" />
-              </OverlayTrigger>
-            )}
-            {recommendations_count}
+              )}
+              {recommendations_count}
 
-            {currentUser &&
-              (pin_id ? (
-                <span onClick={handleUnpin}>
-                  <i className={`fa-solid fa-bookmark ${styles.Heart}`} />
-                </span>
-              ) : (
-                <span onClick={handlePin}>
-                  <i
-                    className={`fa-regular fa-bookmark ${styles.HeartOutline}`}
-                  />
-                </span>
-              ))}
+              {currentUser &&
+                (pin_id ? (
+                  <span onClick={handleUnpin}>
+                    <i className={`fa-solid fa-bookmark ${styles.Heart}`} />
+                  </span>
+                ) : (
+                  <span onClick={handlePin}>
+                    <i
+                      className={`fa-regular fa-bookmark ${styles.HeartOutline}`}
+                    />
+                  </span>
+                ))}
 
-            <Link to={`/snapshots/${id}`}>
-              <i className="far fa-comments" />
-            </Link>
-            {comments_count}
+              <Link to={`/snapshots/${id}`}>
+                <i className="far fa-comments" />
+              </Link>
+              {comments_count}
+            </div>
+            <div>
+              {is_owner && snapshotPage && (
+                <EditDelete
+                  handleEdit={handleEdit}
+                  handleDelete={() => setShowModal(true)}
+                />
+              )}
+            </div>
           </div>
-          <div>
-            {is_owner && snapshotPage && (
-              <EditDelete handleEdit={handleEdit} handleDelete={handleDelete} />
-            )}
-          </div>
-        </div>
-      </Card.Body>
-    </Card>
+        </Card.Body>
+      </Card>
+      <ModalPopup
+        show={showModal}
+        handleClose={() => setShowModal(false)}
+        onConfirm={handleDelete}
+        title={"Delete Snapshot"}
+        message={"Are you sure you want to delete this snapshot?"}
+        buttonLabel={"Delete"}
+      />
+    </>
   );
 };
 
