@@ -8,6 +8,7 @@ import EditDelete from "../../components/EditDelete";
 import { axiosRes } from "../../api/axiosDefaults";
 import useAlert from "../../hooks/useAlert";
 import CommentEditForm from "./CommentEditForm";
+import ModalPopup from "../../components/ModalPopup";
 
 const Comment = (props) => {
   const {
@@ -21,6 +22,7 @@ const Comment = (props) => {
     setComments,
   } = props;
 
+  const [showModal, setShowModal] = useState(false);
   const [showEditForm, setShowEditForm] = useState(false);
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
@@ -74,10 +76,18 @@ const Comment = (props) => {
         {is_owner && !showEditForm && (
           <EditDelete
             handleEdit={() => setShowEditForm(true)}
-            handleDelete={handleDelete}
+            handleDelete={() => setShowModal(true)}
           />
         )}
       </Media>
+      <ModalPopup
+        show={showModal}
+        handleClose={() => setShowModal(false)}
+        onConfirm={handleDelete}
+        title={"Confirm Delete"}
+        message={"Are you sure you want to delete?"}
+        buttonLabel={"Delete"}
+      />
     </>
   );
 };
