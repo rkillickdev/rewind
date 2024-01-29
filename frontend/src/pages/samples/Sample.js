@@ -7,6 +7,7 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import EditDelete from "../../components/EditDelete";
 import { axiosRes } from "../../api/axiosDefaults";
 import useAlert from "../../hooks/useAlert";
+import ModalPopup from "../../components/ModalPopup";
 
 const Sample = (props) => {
   const {
@@ -21,6 +22,7 @@ const Sample = (props) => {
     setSamples,
   } = props;
 
+  const [showModal, setShowModal] = useState(false);
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
   const { setAlert } = useAlert();
@@ -66,8 +68,16 @@ const Sample = (props) => {
           {!approved && <i className="fa-solid fa-stamp"></i>}
         </OverlayTrigger>
 
-        {is_owner && <EditDelete handleDelete={handleDelete} />}
+        {is_owner && <EditDelete handleDelete={() => setShowModal(true)} />}
       </Media>
+      <ModalPopup
+        show={showModal}
+        handleClose={() => setShowModal(false)}
+        onConfirm={handleDelete}
+        title={"Delete Sample"}
+        message={"Are you sure you want to delete this sample?"}
+        buttonLabel={"Delete"}
+      />
     </>
   );
 };
