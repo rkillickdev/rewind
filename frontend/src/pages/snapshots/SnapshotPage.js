@@ -59,19 +59,19 @@ function SnapshotPage() {
         <Container className={appStyles.Content}>
           {currentUser ? (
             <>
-              <CommentCreateForm
-                profile_id={currentUser.profile_id}
-                profileImage={profile_image}
-                snapshot={id}
-                setSnapshot={setSnapshot}
-                setComments={setComments}
-              />
               <SampleCreateForm
                 profile_id={currentUser.profile_id}
                 profileImage={profile_image}
                 snapshot={id}
                 setSnapshot={setSnapshot}
                 setSamples={setSamples}
+              />
+              <CommentCreateForm
+                profile_id={currentUser.profile_id}
+                profileImage={profile_image}
+                snapshot={id}
+                setSnapshot={setSnapshot}
+                setComments={setComments}
               />
             </>
           ) : comments.results.length ? (
@@ -92,9 +92,9 @@ function SnapshotPage() {
                 />
               ))
           ) : currentUser ? (
-            <span>No comments yet. Be the first to comment.</span>
+            <span>No samples added yet. Be the first to add a sample.</span>
           ) : (
-            <span>No comments yet</span>
+            <span>No samples yet</span>
           )}
           {comments.results.length ? (
             <InfiniteScroll

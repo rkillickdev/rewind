@@ -8,7 +8,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 
-import Upload from "../../assets/image-upload-icon.png";
+import Upload from "../../assets/sound-waves.png";
 
 import styles from "../../styles/SampleCreateForm.module.css";
 import appStyles from "../../App.module.css";
@@ -65,8 +65,11 @@ const SampleCreateForm = (props) => {
   };
 
   return (
-    <Form className="mt-2" onSubmit={handleSubmit}>
-      <Form.Group className="text-center">
+    <Form
+      className="mt-2 mb-4 d-flex justify-content-between"
+      onSubmit={handleSubmit}
+    >
+      <Form.Group className="text-center my-auto">
         {audio ? (
           <>
             <i className="fa-solid fa-file-audio"></i>
@@ -81,10 +84,11 @@ const SampleCreateForm = (props) => {
           </>
         ) : (
           <Form.Label
-            className="d-flex justify-content-center"
+            className="d-flex justify-content-center align-items-center my-0 p-2"
             htmlFor="audio-upload"
           >
-            <Asset src={Upload} message="Click here to upload your file" />
+            <img src={Upload} alt="upload a sample" height={45} width={45} />
+            <p className="mb-0 px-3">Upload a sample</p>
           </Form.Label>
         )}
         <Form.File
@@ -100,14 +104,11 @@ const SampleCreateForm = (props) => {
         </Alert>
       ))}
 
-      {/* <Button
-        className={`${btnStyles.Button} ${btnStyles.Blue}`}
-        onClick={() => history.goBack()}
+      <Button
+        className={`${btnStyles.Button} ${btnStyles.Primary}`}
+        type="submit"
       >
-        cancel
-      </Button> */}
-      <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-        Add
+        Upload
       </Button>
     </Form>
   );
