@@ -1,7 +1,7 @@
 .Button {
     font-size: 0.8rem;
     align-self: center;
-    border-radius: 100px;
+    border-radius: 10px;
     border-color: transparent;
     padding: 4px 10px;
     margin-left: 2px;
@@ -45,25 +45,28 @@
     background-color: #ffffff;
     color: #2142b2;
   }
-  
-  .Black,
-  .BlackOutline:hover {
-    /* background-color: #242a3d;
-    color: white; */
-    background-color: #242a3d;
-    color: aliceblue;
+
+  .Follow,
+  .FollowOutline:hover {
+    background-color: var(--primary-color);
+    color: var(--white-color); 
+  }
+
+  .Follow:hover,
+  .FollowOutline {
+    background-color: var(--white-color);
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+
+  .Primary {
+    background-color: var(--primary-color);
+    color: var(--white-color); 
+  }
+
+  .Primary:hover {
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+    border-color: var(--primary-color);
   }
   
-  .Black:hover,
-  .BlackOutline {
-    /* background-color: #dadadf;
-    color: #242a3d;
-    border-color: #242a3d; */
-    background-color: aliceblue;
-    color: #242a3d;
-  }
-  
-  .Bright {
-    background-color: #2ed9ff;
-    color: #2142b2;
-  }

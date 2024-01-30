@@ -237,12 +237,15 @@ function SnapshotEditForm() {
       ))}
 
       <Button
-        className={`${btnStyles.Button} ${btnStyles.Blue}`}
+        className={`${btnStyles.Button} ${btnStyles.Primary}`}
         onClick={() => history.goBack()}
       >
         cancel
       </Button>
-      <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
+      <Button
+        className={`${btnStyles.Button} ${btnStyles.Primary}`}
+        type="submit"
+      >
         Save
       </Button>
     </div>
@@ -261,7 +264,7 @@ function SnapshotEditForm() {
               </figure>
               <div>
                 <Form.Label
-                  className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
+                  className={`${btnStyles.Button} ${btnStyles.Primary} btn`}
                   htmlFor="image-upload"
                 >
                   Change Image

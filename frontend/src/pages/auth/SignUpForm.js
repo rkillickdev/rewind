@@ -5,7 +5,7 @@ import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 
-import SignInUpImage from "../../assets/roland-808.webp";
+import SignInUpImage from "../../assets/multi-cassette-tapes.webp";
 
 import {
   Form,
@@ -104,7 +104,7 @@ const SignUpForm = () => {
               </Alert>
             ))}
             <Button
-              className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
+              className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Primary}`}
               type="submit"
             >
               Sign Up
