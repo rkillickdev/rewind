@@ -22,7 +22,8 @@ const ToastPopup = () => {
         autohide
       >
         <Toast.Header>
-          <i className="fa-solid fa-circle-check mr-auto"></i>
+          <i className="fa-solid fa-circle-check"></i>
+          <strong className="mr-auto">Job done</strong>
         </Toast.Header>
         <Toast.Body>{text}</Toast.Body>
       </Toast>
