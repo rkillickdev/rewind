@@ -75,7 +75,8 @@ function SnapshotsPage({ message, filter = "", curated, pinboard }) {
           <UserDirection
             hide="d-lg-none"
             src={HeroImage}
-            text="Take a trip back in time"
+            heading="Take a trip back in time"
+            page="/signin"
             button="Get Started"
           />
         )}
@@ -168,7 +169,8 @@ function SnapshotsPage({ message, filter = "", curated, pinboard }) {
         ) : (
           <UserDirection
             src={HeroImage}
-            text="Take a trip back in time"
+            heading="Take a trip back in time"
+            page="/signin"
             button="Get Started"
           />
         )}
