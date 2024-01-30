@@ -4,11 +4,12 @@ import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
-import { Image } from "react-bootstrap";
+import { Card, Image } from "react-bootstrap";
 
 import HeroImage from "../../assets/cassette-player-retro.webp";
 
 import appStyles from "../../App.module.css";
+import btnStyles from "../../styles/Button.module.css";
 import styles from "../../styles/SnapshotsPage.module.css";
 import { useLocation } from "react-router-dom/cjs/react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
@@ -22,6 +23,8 @@ import RelevantProfiles from "../profiles/RelevantProfiles";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useSetProfileData } from "../../contexts/ProfileDataContext";
 import AddSnapshot from "../../components/AddSnapshot";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import UserDirection from "../../components/UserDirection";
 
 function SnapshotsPage({ message, filter = "", curated, pinboard }) {
   const [snapshots, setSnapshots] = useState({ results: [] });
@@ -66,7 +69,16 @@ function SnapshotsPage({ message, filter = "", curated, pinboard }) {
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
         <AddSnapshot mobile />
-        <RelevantProfiles mobile />
+        {currentUser ? (
+          <RelevantProfiles mobile />
+        ) : (
+          <UserDirection
+            hide="d-lg-none"
+            src={HeroImage}
+            text="Take a trip back in time"
+            button="Get Started"
+          />
+        )}
         <i className={`fas fa-search ${styles.SearchIcon}`}></i>
         <Form
           className={styles.SearchBar}
@@ -154,7 +166,11 @@ function SnapshotsPage({ message, filter = "", curated, pinboard }) {
         {currentUser ? (
           <RelevantProfiles />
         ) : (
-          <Image className="img-fluid" src={HeroImage} />
+          <UserDirection
+            src={HeroImage}
+            text="Take a trip back in time"
+            button="Get Started"
+          />
         )}
       </Col>
     </Row>
