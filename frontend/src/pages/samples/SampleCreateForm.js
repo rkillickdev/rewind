@@ -75,7 +75,7 @@ const SampleCreateForm = (props) => {
             <i className="fa-solid fa-file-audio"></i>
             <div>
               <Form.Label
-                className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
+                className={`${btnStyles.Button} ${btnStyles.Primary} btn`}
                 htmlFor="audio-upload"
               >
                 Change File
@@ -88,7 +88,7 @@ const SampleCreateForm = (props) => {
             htmlFor="audio-upload"
           >
             <img src={Upload} alt="upload a sample" height={45} width={45} />
-            <p className="mb-0 px-3">Upload a sample</p>
+            <p className="mb-0 px-3">Click here to add a sample</p>
           </Form.Label>
         )}
         <Form.File

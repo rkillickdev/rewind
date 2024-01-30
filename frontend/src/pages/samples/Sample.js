@@ -8,6 +8,7 @@ import EditDelete from "../../components/EditDelete";
 import { axiosRes } from "../../api/axiosDefaults";
 import useAlert from "../../hooks/useAlert";
 import ModalPopup from "../../components/ModalPopup";
+import Waveform from "../../assets/sound-waves.png";
 
 const Sample = (props) => {
   const {
@@ -52,23 +53,38 @@ const Sample = (props) => {
   return (
     <>
       <hr />
-      <Media className={!approved && styles.Pending}>
+      <Media
+        className={`${
+          !approved && styles.Pending
+        } d-flex justify-content-between`}
+      >
         <Link to={`/profiles/${profile_id}`}>
           <Avatar src={profile_image} />
+          <span className={`${styles.Owner} align-self-center ml-2`}>
+            {owner}
+          </span>
+          <img src={Waveform} alt="Audio Waveform" height={45} width={45} />
         </Link>
-        <Media.Body className="align-self-center ml-2">
-          <span className={styles.Owner}>{owner}</span>
-          <span className={styles.Date}>{created_at}</span>
-          <audio src={audio} controls />
-        </Media.Body>
-        <OverlayTrigger
-          placement="top"
-          overlay={<Tooltip>Your sample is pending approval</Tooltip>}
-        >
-          {!approved && <i className="fa-solid fa-stamp"></i>}
-        </OverlayTrigger>
+        <audio src={audio} controls />
+        <div className="d-flex">
+          {!approved && is_owner ? (
+            <OverlayTrigger
+              placement="top"
+              overlay={<Tooltip>Your sample is pending approval</Tooltip>}
+            >
+              <i className="fa-solid fa-circle-xmark"></i>
+            </OverlayTrigger>
+          ) : (
+            <OverlayTrigger
+              placement="top"
+              overlay={<Tooltip>Your sample is pending approval</Tooltip>}
+            >
+              <i className="fa-solid fa-circle-check"></i>
+            </OverlayTrigger>
+          )}
 
-        {is_owner && <EditDelete handleDelete={() => setShowModal(true)} />}
+          {is_owner && <EditDelete handleDelete={() => setShowModal(true)} />}
+        </div>
       </Media>
       <ModalPopup
         show={showModal}

@@ -51,6 +51,17 @@ function SnapshotPage() {
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
         <RelevantProfiles mobile />
+        <Container className={appStyles.Content}>
+          {currentUser && (
+            <SampleCreateForm
+              profile_id={currentUser.profile_id}
+              profileImage={profile_image}
+              snapshot={id}
+              setSnapshot={setSnapshot}
+              setSamples={setSamples}
+            />
+          )}
+        </Container>
         <Snapshot
           {...snapshot.results[0]}
           setSnapshots={setSnapshot}
@@ -59,13 +70,6 @@ function SnapshotPage() {
         <Container className={appStyles.Content}>
           {currentUser ? (
             <>
-              <SampleCreateForm
-                profile_id={currentUser.profile_id}
-                profileImage={profile_image}
-                snapshot={id}
-                setSnapshot={setSnapshot}
-                setSamples={setSamples}
-              />
               <CommentCreateForm
                 profile_id={currentUser.profile_id}
                 profileImage={profile_image}

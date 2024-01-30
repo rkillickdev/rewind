@@ -3,3 +3,7 @@
     margin: 0px 8px 0px 8px;
     object-fit: cover;
   }
+
+  .Avatar:hover {
+    opacity: 0.5;
+  }
