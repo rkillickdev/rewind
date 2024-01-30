@@ -69,4 +69,14 @@
     color: var(--white-color);
     border-color: var(--primary-color);
   }
+
+  .Highlight {
+    background-color: var(--highlight-color);
+    color: var(--white-color); 
+  }
+
+  .Highlight:hover {
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+  }
   

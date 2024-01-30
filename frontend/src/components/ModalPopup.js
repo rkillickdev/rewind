@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import btnStyles from "../styles/Button.module.css";
 
 // Referenced the following article when implementing Modal Popup:
 //https://www.codu.co/articles/creating-a-pop-up-modal-dialog-in-bootstrap-react-xgeujzcj
@@ -20,10 +21,16 @@ const ModalPopup = ({
       </Modal.Header>
       <Modal.Body>{message}</Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
+        <Button
+          className={`${btnStyles.Button} ${btnStyles.Highlight}`}
+          onClick={handleClose}
+        >
           Close
         </Button>
-        <Button variant="primary" onClick={onConfirm}>
+        <Button
+          className={`${btnStyles.Button} ${btnStyles.Primary}`}
+          onClick={onConfirm}
+        >
           {buttonLabel}
         </Button>
       </Modal.Footer>
