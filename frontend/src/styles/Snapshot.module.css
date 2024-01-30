@@ -11,14 +11,18 @@
     margin: 0 0;
   }
   
-  .Heart {
-    color: #f85032;
+  .IconSolid {
+    color: var(--primary-color);
   }
   
-  .Heart:hover {
-    color: #2142b2;
+  .IconSolid:hover {
+    color: var(--highlight-color);
+  }
+
+  .IconOutline {
+    color: var(--primary-color);
   }
   
-  .HeartOutline:hover {
-    color: #f85032;
+  .IconOutline:hover {
+    color: var(--highlight-color);
   }

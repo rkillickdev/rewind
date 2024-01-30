@@ -185,12 +185,14 @@ const Snapshot = (props) => {
                   </OverlayTrigger>
                 ) : recommendation_id ? (
                   <span onClick={handleUnrecommend}>
-                    <i className={`fa-solid fa-thumbs-up ${styles.Heart}`} />
+                    <i
+                      className={`fa-solid fa-thumbs-up ${styles.IconSolid}`}
+                    />
                   </span>
                 ) : (
                   <span onClick={handleRecommend}>
                     <i
-                      className={`fa-regular fa-thumbs-up ${styles.HeartOutline}`}
+                      className={`fa-regular fa-thumbs-up ${styles.IconOutline}`}
                     />
                   </span>
                 )
@@ -207,18 +209,18 @@ const Snapshot = (props) => {
               {currentUser &&
                 (pin_id ? (
                   <span onClick={handleUnpin}>
-                    <i className={`fa-solid fa-bookmark ${styles.Heart}`} />
+                    <i className={`fa-solid fa-bookmark ${styles.IconSolid}`} />
                   </span>
                 ) : (
                   <span onClick={handlePin}>
                     <i
-                      className={`fa-regular fa-bookmark ${styles.HeartOutline}`}
+                      className={`fa-regular fa-bookmark ${styles.IconOutline}`}
                     />
                   </span>
                 ))}
 
               <Link to={`/snapshots/${id}`}>
-                <i className="far fa-comments" />
+                <i className={`far fa-comments ${styles.IconOutline}`} />
               </Link>
               {comments_count}
             </div>
