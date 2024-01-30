@@ -21,6 +21,7 @@ import { fetchMoreData } from "../../utils/utils";
 import RelevantProfiles from "../profiles/RelevantProfiles";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useSetProfileData } from "../../contexts/ProfileDataContext";
+import AddSnapshot from "../../components/AddSnapshot";
 
 function SnapshotsPage({ message, filter = "", curated, pinboard }) {
   const [snapshots, setSnapshots] = useState({ results: [] });
@@ -64,6 +65,7 @@ function SnapshotsPage({ message, filter = "", curated, pinboard }) {
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
+        <AddSnapshot mobile />
         <RelevantProfiles mobile />
         <i className={`fas fa-search ${styles.SearchIcon}`}></i>
         <Form
@@ -148,6 +150,7 @@ function SnapshotsPage({ message, filter = "", curated, pinboard }) {
         )}
       </Col>
       <Col md={4} className="d-none d-lg-block p-0 p-lg-2">
+        <AddSnapshot />
         {currentUser ? (
           <RelevantProfiles />
         ) : (
