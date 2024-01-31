@@ -20,7 +20,7 @@ class Profile(models.Model):
     name = models.CharField(max_length=25, blank=True)
     bio = models.TextField(blank=True)
     image = models.ImageField(
-        upload_to="images/profiles/", default="../default_profile_oeycka"
+        upload_to="images/profiles/", default="../robot_djhwqf"
     )
    
     era_preference = models.ForeignKey(

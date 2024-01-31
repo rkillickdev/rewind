@@ -4,12 +4,9 @@ import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
-import { Card, Image } from "react-bootstrap";
 
 import HeroImage from "../../assets/cassette-player-retro.webp";
 
-import appStyles from "../../App.module.css";
-import btnStyles from "../../styles/Button.module.css";
 import styles from "../../styles/SnapshotsPage.module.css";
 import { useLocation } from "react-router-dom/cjs/react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
@@ -23,7 +20,6 @@ import RelevantProfiles from "../profiles/RelevantProfiles";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useSetProfileData } from "../../contexts/ProfileDataContext";
 import AddSnapshot from "../../components/AddSnapshot";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import UserDirection from "../../components/UserDirection";
 
 function SnapshotsPage({ message, filter = "", curated, pinboard }) {

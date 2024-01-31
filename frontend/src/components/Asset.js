@@ -2,7 +2,7 @@ import React from "react";
 import { Spinner } from "react-bootstrap";
 import styles from "../styles/Asset.module.css";
 
-const Asset = ({ spinner, src, message, height, width, sample }) => {
+const Asset = ({ spinner, src, message, height, width }) => {
   return (
     <div className={`${styles.Asset} p-4`}>
       {spinner && <Spinner animation="border" />}

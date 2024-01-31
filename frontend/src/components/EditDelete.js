@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "../styles/Asset.module.css";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 
 const EditDelete = ({ handleEdit, handleDelete }) => {

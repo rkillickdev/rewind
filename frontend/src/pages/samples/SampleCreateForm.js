@@ -1,25 +1,17 @@
 import React, { useRef, useState } from "react";
-import { Link } from "react-router-dom";
 
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
 
 import Upload from "../../assets/sound-waves.png";
 
-import styles from "../../styles/SampleCreateForm.module.css";
-import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
-import Asset from "../../components/Asset";
-import Avatar from "../../components/Avatar";
 import { axiosReq } from "../../api/axiosDefaults";
 import useAlert from "../../hooks/useAlert";
 
 const SampleCreateForm = (props) => {
-  const { snapshot, setSnapshot, setSamples, profileImage, profile_id } = props;
+  const { snapshot, setSnapshot, setSamples } = props;
   const [audio, setAudio] = useState("");
   const { setAlert } = useAlert();
   const [errors, setErrors] = useState({});

@@ -15,7 +15,6 @@ const Sample = (props) => {
     profile_id,
     profile_image,
     owner,
-    created_at,
     audio,
     approved,
     id,
