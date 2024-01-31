@@ -16,10 +16,12 @@ import {
 
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
+import useAlert from "../../hooks/useAlert";
 
 const UsernameForm = () => {
   const [username, setUsername] = useState("");
   const [errors, setErrors] = useState({});
+  const { setAlert } = useAlert();
 
   const history = useHistory();
   const { id } = useParams();
@@ -41,6 +43,7 @@ const UsernameForm = () => {
       await axiosRes.put("/dj-rest-auth/user/", {
         username,
       });
+      setAlert("You updated your username", "success");
       setCurrentUser((prevUser) => ({
         ...prevUser,
         username,

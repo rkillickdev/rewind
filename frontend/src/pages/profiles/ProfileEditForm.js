@@ -18,6 +18,7 @@ import {
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 import { useOptions } from "../../contexts/OptionsContext";
+import useAlert from "../../hooks/useAlert";
 
 const ProfileEditForm = () => {
   const currentUser = useCurrentUser();
@@ -26,6 +27,7 @@ const ProfileEditForm = () => {
   const history = useHistory();
   const imageFile = useRef();
   const initialValue = null;
+  const { setAlert } = useAlert();
 
   const options = useOptions();
   const { genres, eras, categories } = options;
@@ -164,6 +166,7 @@ const ProfileEditForm = () => {
 
     try {
       const { data } = await axiosReq.put(`/profiles/${id}/`, formData);
+      setAlert("You updated your profile", "success");
       setCurrentUser((currentUser) => ({
         ...currentUser,
         profile_image: data.image,

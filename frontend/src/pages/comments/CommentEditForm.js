@@ -5,12 +5,14 @@ import Alert from "react-bootstrap/Alert";
 import { axiosRes } from "../../api/axiosDefaults";
 
 import styles from "../../styles/CommentCreateEditForm.module.css";
+import useAlert from "../../hooks/useAlert";
 
 function CommentEditForm(props) {
   const { id, content, setShowEditForm, setComments } = props;
 
   const [formContent, setFormContent] = useState(content);
   const [errors, setErrors] = useState({});
+  const { setAlert } = useAlert();
 
   const handleChange = (event) => {
     setFormContent(event.target.value);
@@ -22,6 +24,7 @@ function CommentEditForm(props) {
       await axiosRes.put(`/comments/${id}/`, {
         content: formContent.trim(),
       });
+      setAlert("You updated your comment", "success");
       setComments((prevComments) => ({
         ...prevComments,
         results: prevComments.results.map((comment) => {

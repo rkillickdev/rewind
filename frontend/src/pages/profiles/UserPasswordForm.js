@@ -13,11 +13,13 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
+import useAlert from "../../hooks/useAlert";
 
 const UserPasswordForm = () => {
   const history = useHistory();
   const { id } = useParams();
   const currentUser = useCurrentUser();
+  const { setAlert } = useAlert();
 
   const [userData, setUserData] = useState({
     new_password1: "",
@@ -45,6 +47,7 @@ const UserPasswordForm = () => {
     event.preventDefault();
     try {
       await axiosRes.post("/dj-rest-auth/password/change/", userData);
+      setAlert("You updated your password", "success");
       history.goBack();
     } catch (err) {
       // console.log(err);

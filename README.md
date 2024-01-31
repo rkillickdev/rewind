@@ -488,6 +488,7 @@ The following steps were followed to deploy the site to Heroku:
 
 | Bug Description | Solutions Tried |
 | ------------ | --------------- |
+| User inputs snaphot or profile url including an id that doesn't exist.  Rendering a page rather than redirecting and handling gracefully |
 
 <br>
 
