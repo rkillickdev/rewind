@@ -21,7 +21,7 @@ const UserDirection = ({ src, heading, button, hide, page, text }) => {
         <Link className="align-self-center" to={page}>
           <button
             type="button"
-            className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Primary} mb-4`}
+            className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Highhlight} my-4`}
           >
             {button}
           </button>
