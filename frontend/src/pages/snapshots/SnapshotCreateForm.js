@@ -23,36 +23,8 @@ import { useRedirect } from "../../hooks/useRedirect";
 function SnapshotCreateForm() {
   useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
-  // const [genres, setGenres] = useState([]);
-  // const [eras, setEras] = useState([]);
-  // const [categories, setCategories] = useState([]);
-
-  // const [genres, setGenres] = useState([]);
-  // const [eras, setEras] = useState([]);
-  // const [categories, setCategories] = useState([]);
-
   const options = useOptions();
   const { genres, eras, categories } = options;
-
-  // const fetchSnapshotOptions = async () => {
-  //   try {
-  //     const [{ data: genres }, { data: eras }, { data: categories }] =
-  //       await Promise.all([
-  //         axiosReq.get("/genres/"),
-  //         axiosReq.get("/eras/"),
-  //         axiosReq.get("/categories/"),
-  //       ]);
-  //     setGenres(genres.results);
-  //     setEras(eras.results);
-  //     setCategories(categories.results);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   fetchSnapshotOptions();
-  // }, []);
 
   const [snapshotData, setSnapshotData] = useState({
     title: "",
@@ -84,8 +56,6 @@ function SnapshotCreateForm() {
     }
   };
 
-  console.log(image);
-
   const { setAlert } = useAlert();
 
   const handleSubmit = async (event) => {
@@ -101,7 +71,6 @@ function SnapshotCreateForm() {
 
     try {
       const { data } = await axiosReq.post("/snapshots/", formData);
-      console.log(data);
       setAlert("You created a new Snapshot!", "success");
       history.push(`/snapshots/${data.id}`);
     } catch (err) {

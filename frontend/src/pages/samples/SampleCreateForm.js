@@ -32,8 +32,6 @@ const SampleCreateForm = (props) => {
     }
   };
 
-  console.log(audio);
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -58,7 +56,7 @@ const SampleCreateForm = (props) => {
       }));
       setAudio("");
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       setAlert(err.message, "warning");
     }
   };

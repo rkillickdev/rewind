@@ -26,7 +26,6 @@ const ProfileEditForm = () => {
   const { id } = useParams();
   const history = useHistory();
   const imageFile = useRef();
-  const initialValue = null;
   const { setAlert } = useAlert();
 
   const options = useOptions();
@@ -36,9 +35,6 @@ const ProfileEditForm = () => {
     name: "",
     bio: "",
     image: "",
-    // genre_preference: initialValue,
-    // era_preference: initialValue,
-    // category_preference: initialValue,
   });
   const {
     name,
@@ -90,57 +86,6 @@ const ProfileEditForm = () => {
       [event.target.name]: event.target.value,
     });
   };
-
-  // Test code for adding genre prefs to an array
-
-  // const [genrePrefs, setGenrePrefs] = useState([]);
-
-  // const handleCheckbox = (e) => {
-  //   // setisChecked(e.target.checked);
-  //   if (e.target.checked === true) {
-  //     // setGenrePrefs([...genrePrefs, e.target.value]);
-  //     setProfileData({
-  //       ...profileData,
-  //       [e.target.name]: [e.target.value],
-  //     });
-  //   } else if (e.target.checked === false) {
-  //     let freshArray = genrePrefs.filter((val) => val !== e.target.value);
-  //     setGenrePrefs([...freshArray]);
-  //   }
-  // };
-
-  // const handleCheckbox = (e) => {
-  //   // setisChecked(e.target.checked);
-  //   if (e.target.checked === true) {
-  // setProfileData({
-  //   ...profileData,
-  //   [e.target.name]: e.target.value,
-  // });
-  //   } else if (e.target.checked === false) {
-  //     let freshArray = profileData[e.target.name].filter(
-  //       (val) => val !== e.target.value,
-  //     );
-  //     setProfileData({
-  //       ...profileData,
-  //       [e.target.name]: freshArray,
-  //     });
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   console.log(profileData);
-  // }, [profileData]);
-
-  // const handleCheck = (event) => {
-  //   if (e.target.checked === true) {
-  //     setProfileData({
-  //       ...profileData,
-  //       [event.target.name]: event.target.value,
-  //     });
-  //   }
-
-  //   console.log(profileData);
-  // };
 
   const handleSubmit = async (event) => {
     event.preventDefault();

@@ -22,39 +22,6 @@ function SnapshotEditForm() {
   const options = useOptions();
   const { genres, eras, categories } = options;
 
-  // const fetchGenres = async () => {
-  //   try {
-  //     const { data } = await axiosRes.get("/genres/");
-  //     setGenres(data.results);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
-  // const fetchEras = async () => {
-  //   try {
-  //     const { data } = await axiosRes.get("/eras/");
-  //     setEras(data.results);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
-  // const fetchCategories = async () => {
-  //   try {
-  //     const { data } = await axiosRes.get("/categories/");
-  //     setCategories(data.results);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   fetchGenres();
-  //   fetchEras();
-  //   fetchCategories();
-  // }, []);
-
   const [snapshotData, setSnapshotData] = useState({
     title: "",
     description: "",

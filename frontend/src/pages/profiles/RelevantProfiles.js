@@ -6,7 +6,6 @@ import Profile from "./Profile";
 import { useProfileData } from "../../contexts/ProfileDataContext";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import UserDirection from "../../components/UserDirection";
-import DrumMachine from "../../assets/roland-808.webp";
 
 const RelevantProfiles = ({ mobile }) => {
   const currentUser = useCurrentUser();

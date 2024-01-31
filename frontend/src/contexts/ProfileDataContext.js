@@ -11,13 +11,10 @@ export const useSetProfileData = () => useContext(SetProfileDataContext);
 
 export const ProfileDataProvider = ({ children }) => {
   const [profileData, setProfileData] = useState({
-    // we will use the pageProfile later!
     pageProfile: { results: [] },
     popularProfiles: { results: [] },
   });
   const currentUser = useCurrentUser();
-  const genre_preference = currentUser?.genre_preference || "";
-  const era_preference = currentUser?.era_preference || "";
 
   const handleFollow = async (clickedProfile) => {
     try {

@@ -29,9 +29,6 @@ export const OptionsProvider = ({ children }) => {
           eras: eras.results,
           categories: categories.results,
         }));
-        // setGenres(genres.results);
-        // setEras(eras.results);
-        // setCategories(categories.results);
       } catch (err) {
         // console.log(err);
       }
