@@ -488,7 +488,8 @@ The following steps were followed to deploy the site to Heroku:
 
 | Bug Description | Solutions Tried |
 | ------------ | --------------- |
-| User inputs snaphot or profile url including an id that doesn't exist.  Rendering a page rather than redirecting and handling gracefully |
+| User inputs snaphot or profile url including an id that doesn't exist.  Rendering a page rather than redirecting and handling gracefully | |
+ 
 
 <br>
 
@@ -549,6 +550,45 @@ pinboard &&
 | Bug Description | Solution |
 | ------------ | --------------- |
 | 'No file was submitted' warning when updating a snapshot without changing the image | This bug came about because I removed `blank=True` from my Snapshot model.  The logic in the handleSubmit function of the Snapshot Edit Form looks to see whether a file exists in imageInput, and if so it appends it to the formData.  However, if the user chooses not to change the snapshot image, a warning is displayed on submission of the form as the field cannot be blank.  I only need this rule to be enforced when a user is creating a **new** snapshot, but not when updating.  I therefore created a SnapshotDetailSerializer which inherits from SnapshotSerializer but additionally defines `image = serializers.ImageField(required=False)`.  This ensures that when updating an instance of Snapshot, the image field can be blank  |
+| When signing up as a new user before setting any profile preferences, choosing to follow a profile should mean that all the snapshots associated with that particular profile should be displayed on the 'For You' page.  However, no snapshots appear when navigating to the 'For You' page. | The solution for this was to check the length of CuratedSnapshots (which is a filtered version of snapshots based on profile preferences), and only display results if there are any.  Otherwise just display all snapshots associated with followed profiles.  The problem in this case was that the filter was returning no results as the user had not yet set their profile preferences. |
+```js
+{snapshots.results.length ? (
+                curated && curatedSnapshots.length ? (
+                  <InfiniteScroll
+                    children={curatedSnapshots.map((snapshot) => (
+                      <Snapshot
+                        key={snapshot.id}
+                        {...snapshot}
+                        setSnapshots={setSnapshots}
+                      />
+                    ))}
+                    dataLength={snapshots.results.length}
+                    loader={<Asset spinner />}
+                    hasMore={!!snapshots.next}
+                    next={() => fetchMoreData(snapshots, setSnapshots)}
+                  />
+                ) : (
+                  <InfiniteScroll
+                    children={snapshots.results.map((snapshot) => (
+                      <Snapshot
+                        key={snapshot.id}
+                        {...snapshot}
+                        setSnapshots={setSnapshots}
+                        pinboard={pinboard}
+                      />
+                    ))}
+                    dataLength={snapshots.results.length}
+                    loader={<Asset spinner />}
+                    hasMore={!!snapshots.next}
+                    next={() => fetchMoreData(snapshots, setSnapshots)}
+                  />
+                )
+              ) : (
+                <Container className="appStyles.Content">
+                  <Asset src={NoResults} message={message} />
+                </Container>
+              )}
+```
 
 
 # **Credits**

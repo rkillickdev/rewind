@@ -30,10 +30,13 @@ function SnapshotsPage({ message, filter = "", curated, pinboard }) {
   const currentUser = useCurrentUser();
   const genre_preference = currentUser?.genre_preference || "";
   const era_preference = currentUser?.era_preference || "";
+  const category_preference = currentUser?.category_preference || "";
 
   const curatedSnapshots = snapshots.results.filter(
     (snapshot) =>
-      snapshot.genre === genre_preference || snapshot.era === era_preference,
+      snapshot.genre === genre_preference ||
+      snapshot.era === era_preference ||
+      snapshot.category === category_preference,
   );
 
   const [query, setQuery] = useState("");
@@ -93,7 +96,7 @@ function SnapshotsPage({ message, filter = "", curated, pinboard }) {
           currentUser ? (
             <>
               {snapshots.results.length ? (
-                curated ? (
+                curated && curatedSnapshots.length ? (
                   <InfiniteScroll
                     children={curatedSnapshots.map((snapshot) => (
                       <Snapshot
