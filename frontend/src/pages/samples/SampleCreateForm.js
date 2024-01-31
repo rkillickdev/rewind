@@ -49,7 +49,8 @@ const SampleCreateForm = (props) => {
       setAudio("");
     } catch (err) {
       // console.log(err);
-      setAlert(err.message, "warning");
+      // setAlert(err.message, "warning");
+      setErrors(err.response?.data);
     }
   };
 
@@ -99,6 +100,11 @@ const SampleCreateForm = (props) => {
       >
         Upload
       </Button>
+      {errors.non_field_errors?.map((message, idx) => (
+        <Alert variant="warning" key={idx} className="mt-3">
+          {message}
+        </Alert>
+      ))}
     </Form>
   );
 };

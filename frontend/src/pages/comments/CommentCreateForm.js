@@ -44,7 +44,8 @@ function CommentCreateForm(props) {
       setContent("");
     } catch (err) {
       // console.log(err);
-      setAlert(err.message, "warning");
+      // setAlert(err.message, "warning");
+      setErrors(err.response?.data);
     }
   };
 
@@ -78,6 +79,11 @@ function CommentCreateForm(props) {
       >
         post
       </button>
+      {errors.non_field_errors?.map((message, idx) => (
+        <Alert variant="warning" key={idx} className="mt-3">
+          {message}
+        </Alert>
+      ))}
     </Form>
   );
 }

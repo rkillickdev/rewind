@@ -40,6 +40,7 @@ function CommentEditForm(props) {
       setShowEditForm(false);
     } catch (err) {
       // console.log(err);
+      setErrors(err.response?.data);
     }
   };
 
@@ -75,6 +76,11 @@ function CommentEditForm(props) {
         >
           save
         </button>
+        {errors.non_field_errors?.map((message, idx) => (
+          <Alert variant="warning" key={idx} className="mt-3">
+            {message}
+          </Alert>
+        ))}
       </div>
     </Form>
   );
