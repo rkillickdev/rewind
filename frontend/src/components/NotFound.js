@@ -1,5 +1,5 @@
 import React from "react";
-import DrumMachine from "../assets/roland-808.webp";
+import CassetteTapes from "../assets/multi-cassette-tapes.webp";
 import styles from "../styles/NotFound.module.css";
 import UserDirection from "./UserDirection";
 
@@ -7,9 +7,10 @@ const NotFound = () => {
   return (
     <div className={styles.NoPageResults}>
       <UserDirection
-        src={DrumMachine}
+        src={CassetteTapes}
         heading="Sorry, the page you're looking for doesn't exist"
         button="Go Home"
+        page="/"
       />
     </div>
   );
