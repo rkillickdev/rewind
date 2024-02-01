@@ -67,7 +67,6 @@ function SnapshotsPage({ message, filter = "", curated, pinboard }) {
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <AddSnapshot mobile />
         {currentUser ? (
           <RelevantProfiles mobile />
         ) : (
@@ -79,19 +78,26 @@ function SnapshotsPage({ message, filter = "", curated, pinboard }) {
             button="Get Started"
           />
         )}
-        <i className={`fas fa-search ${styles.SearchIcon}`}></i>
-        <Form
-          className={styles.SearchBar}
-          onSubmit={(event) => event.preventDefault()}
-        >
-          <Form.Control
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            type="text"
-            className="mr-sm-2"
-            placeholder="Search posts"
-          ></Form.Control>
-        </Form>
+        <Row>
+          <Col xs={8} className="my-auto">
+            <i className={`fas fa-search ${styles.SearchIcon}`}></i>
+            <Form
+              className={styles.SearchBar}
+              onSubmit={(event) => event.preventDefault()}
+            >
+              <Form.Control
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                type="text"
+                className="mr-sm-2"
+                placeholder="Search snapshots"
+              ></Form.Control>
+            </Form>
+          </Col>
+          <Col>
+            <AddSnapshot />
+          </Col>
+        </Row>
         {hasLoaded ? (
           currentUser ? (
             <>
@@ -162,7 +168,6 @@ function SnapshotsPage({ message, filter = "", curated, pinboard }) {
         )}
       </Col>
       <Col md={4} className="d-none d-lg-block p-0 p-lg-2">
-        <AddSnapshot />
         {currentUser ? (
           <RelevantProfiles />
         ) : (
