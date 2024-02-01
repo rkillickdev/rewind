@@ -233,13 +233,13 @@ const ProfileEditForm = () => {
   const buttons = (
     <>
       <Button
-        className={`${btnStyles.Button} ${btnStyles.Primary}`}
+        className={`${btnStyles.Button} ${btnStyles.Highlight}`}
         onClick={() => history.goBack()}
       >
         cancel
       </Button>
       <Button
-        className={`${btnStyles.Button} ${btnStyles.Primary}`}
+        className={`${btnStyles.Button} ${btnStyles.Feature}`}
         type="submit"
       >
         save
@@ -270,7 +270,7 @@ const ProfileEditForm = () => {
               ))}
               <div>
                 <Form.Label
-                  className={`${btnStyles.Button} ${btnStyles.Primary} btn my-auto`}
+                  className={`${btnStyles.Button} ${btnStyles.Feature} btn my-auto`}
                   htmlFor="image-upload"
                 >
                   Change the image

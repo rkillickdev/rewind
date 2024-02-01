@@ -28,7 +28,9 @@ const RelevantProfiles = ({ mobile }) => {
           mobile && "d-lg-none text-center mb-3"
         }`}
       >
-        <p>Profiles you might like</p>
+        <h2 className={`${appStyles.FeatureHeading} text-center`}>
+          Profiles you might like
+        </h2>
         {mobile ? (
           <div className="d-flex justify-content-around">
             {preferenceFilteredProfiles.slice(0, 4).map((profile) => (

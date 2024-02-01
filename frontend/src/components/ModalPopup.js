@@ -28,7 +28,7 @@ const ModalPopup = ({
           Close
         </Button>
         <Button
-          className={`${btnStyles.Button} ${btnStyles.Primary}`}
+          className={`${btnStyles.Button} ${btnStyles.Feature}`}
           onClick={onConfirm}
         >
           {buttonLabel}

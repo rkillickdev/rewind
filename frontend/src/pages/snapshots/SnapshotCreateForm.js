@@ -201,7 +201,7 @@ function SnapshotCreateForm() {
         cancel
       </Button>
       <Button
-        className={`${btnStyles.Button} ${btnStyles.Primary}`}
+        className={`${btnStyles.Button} ${btnStyles.Feature}`}
         type="submit"
       >
         create

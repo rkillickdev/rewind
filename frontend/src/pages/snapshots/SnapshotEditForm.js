@@ -204,13 +204,13 @@ function SnapshotEditForm() {
       ))}
 
       <Button
-        className={`${btnStyles.Button} ${btnStyles.Primary}`}
+        className={`${btnStyles.Button} ${btnStyles.Highlight}`}
         onClick={() => history.goBack()}
       >
         cancel
       </Button>
       <Button
-        className={`${btnStyles.Button} ${btnStyles.Primary}`}
+        className={`${btnStyles.Button} ${btnStyles.Feature}`}
         type="submit"
       >
         Save
@@ -236,7 +236,7 @@ function SnapshotEditForm() {
               </figure>
               <div>
                 <Form.Label
-                  className={`${btnStyles.Button} ${btnStyles.Primary} btn`}
+                  className={`${btnStyles.Button} ${btnStyles.Feature} btn`}
                   htmlFor="image-upload"
                 >
                   Change Image
