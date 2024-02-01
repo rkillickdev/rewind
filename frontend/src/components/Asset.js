@@ -17,7 +17,9 @@ const Asset = ({ spinner, src, message, height, width }) => {
         />
       )}
       {message && (
-        <p className={`${appStyles.FeatureHeading} mt-4 h2`}>{message}</p>
+        <p className={`${appStyles.FeatureHeading} mt-4 h2 text-center`}>
+          {message}
+        </p>
       )}
     </div>
   );

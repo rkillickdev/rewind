@@ -6,6 +6,7 @@ import Profile from "./Profile";
 import { useProfileData } from "../../contexts/ProfileDataContext";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import UserDirection from "../../components/UserDirection";
+import DrumMachine from "../../assets/roland-808.webp";
 
 const RelevantProfiles = ({ mobile }) => {
   const currentUser = useCurrentUser();
@@ -44,32 +45,38 @@ const RelevantProfiles = ({ mobile }) => {
         )}
       </Container>
     ) : (
-      <Container
-        className={`${appStyles.Content} ${
-          mobile && "d-lg-none text-center mb-3"
-        }`}
-      >
-        <p>Popular Profiles</p>
-        {mobile ? (
-          <div className="d-flex justify-content-around">
-            {popularProfiles.results.slice(0, 4).map((profile) => (
-              <Profile key={profile.id} profile={profile} mobile />
-            ))}
-          </div>
-        ) : (
-          popularProfiles.results
-            .slice(0, 6)
-            .map((profile) => <Profile key={profile.id} profile={profile} />)
-        )}
-
+      <>
         <UserDirection
           hide={mobile && "d-lg-none"}
-          text="Tell us about yourself so we can suggest some profiles"
+          hideImage={mobile && "d-none"}
+          heading="Tell Us More"
+          src={DrumMachine}
+          text="Let us know your interests and we'll suggest some profiles you might like"
           page={`/profiles/${profile_id}/edit`}
           button="Preferences"
           mobile
         />
-      </Container>
+        <Container
+          className={`${appStyles.Content} ${
+            mobile && "d-lg-none text-center mb-3"
+          }`}
+        >
+          <h2 className={`${appStyles.FeatureHeading} text-center`}>
+            Popular Profiles
+          </h2>
+          {mobile ? (
+            <div className="d-flex justify-content-around">
+              {popularProfiles.results.slice(0, 4).map((profile) => (
+                <Profile key={profile.id} profile={profile} mobile />
+              ))}
+            </div>
+          ) : (
+            popularProfiles.results
+              .slice(0, 6)
+              .map((profile) => <Profile key={profile.id} profile={profile} />)
+          )}
+        </Container>
+      </>
     )
   ) : (
     <Asset spinner />

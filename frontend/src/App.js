@@ -41,7 +41,7 @@ function App() {
             path="/watching"
             render={() => (
               <SnapshotsPage
-                message="No Snapshots Found.  Adjust search keyword"
+                message="Start following other profiles to fill up this page"
                 filter={`owner__followed__owner__profile=${profile_id}&ordering=-recommendations_count&`}
                 curated
               />
