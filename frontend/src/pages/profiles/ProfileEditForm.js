@@ -129,14 +129,14 @@ const ProfileEditForm = () => {
   const textFields = (
     <>
       <Form.Group>
-        <Form.Label>Bio</Form.Label>
+        <Form.Label className="d-none">Bio</Form.Label>
         <Form.Control
           as="textarea"
           value={bio}
           onChange={handleChange}
           name="bio"
           rows={7}
-          placeholder="Tell us about yourself"
+          placeholder="Write something about yourself..."
         />
       </Form.Group>
 
@@ -292,6 +292,9 @@ const ProfileEditForm = () => {
             </Form.Group>
             <div className="d-md-none">
               {textFields}
+              <p className={`h4 ${appStyles.FeatureHeading}`}>
+                What would you like to hear about?
+              </p>
               {selectFields}
               {buttons}
             </div>
@@ -300,6 +303,9 @@ const ProfileEditForm = () => {
         <Col md={5} lg={6} className="d-none d-md-block p-0 p-md-2 text-center">
           <Container className={appStyles.Content}>
             {textFields}
+            <p className={`h4 ${appStyles.FeatureHeading}`}>
+              What would you like to hear about?
+            </p>
             {selectFields}
             {buttons}
           </Container>
