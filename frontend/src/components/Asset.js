@@ -1,5 +1,6 @@
 import React from "react";
 import { Spinner } from "react-bootstrap";
+import appStyles from "../App.module.css";
 import styles from "../styles/Asset.module.css";
 
 const Asset = ({ spinner, src, message, height, width }) => {
@@ -15,7 +16,9 @@ const Asset = ({ spinner, src, message, height, width }) => {
           width={width}
         />
       )}
-      {message && <p className="mt-4">{message}</p>}
+      {message && (
+        <p className={`${appStyles.FeatureHeading} mt-4 h2`}>{message}</p>
+      )}
     </div>
   );
 };
