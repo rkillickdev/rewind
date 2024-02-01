@@ -45,11 +45,11 @@
 }
 
 /* Media query for mobile devices from 991px and down. Feature Heading font size increases */
-@media only screen and (max-width: 991px) {
+/* @media only screen and (max-width: 991px) {
   .FeatureHeading {
     font-size: 3rem;   
   }
-}
+} */
 
 * {
     box-sizing: border-box;
