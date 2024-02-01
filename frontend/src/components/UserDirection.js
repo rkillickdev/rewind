@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, Container } from "react-bootstrap";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import appStyles from "../App.module.css";
 import btnStyles from "../styles/Button.module.css";
 
 const UserDirection = ({ src, heading, button, hide, page, text }) => {
@@ -9,7 +10,9 @@ const UserDirection = ({ src, heading, button, hide, page, text }) => {
       <Card className={`mb-4 ${hide}`}>
         {heading && (
           <Card.Title className="text-center mb-0 pt-4">
-            <h1 className="mb-0">{heading}</h1>
+            <h1 className={`${appStyles.FeatureHeading} mb-0 px-4`}>
+              {heading}
+            </h1>
           </Card.Title>
         )}
         {src && <Card.Img className={`img-fluid rounded ${hide}`} src={src} />}
@@ -21,7 +24,7 @@ const UserDirection = ({ src, heading, button, hide, page, text }) => {
         <Link className="align-self-center" to={page}>
           <button
             type="button"
-            className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Highhlight} my-4`}
+            className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Primary} my-4`}
           >
             {button}
           </button>

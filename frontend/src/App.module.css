@@ -1,6 +1,6 @@
 :root {
     /* --primary-color: #E57E25; */
-    --primary-color: #E88000;
+    --primary-color: #E07000;
     --secondary-color: #F29C1F;
     --light-color: #E9EBED;
     --highlight-color: #393F4A;
@@ -9,7 +9,7 @@
 }
 
 .App {
-    font-family: "Roboto", sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     color: var(--dark-color);
     background-color: var(--light-color);
     min-height: 100vh;
@@ -36,6 +36,19 @@
   max-height: 40vh;
   max-width: 100%;
   object-fit: contain;
+}
+
+.FeatureHeading {
+  font-family: 'Amatic SC', sans-serif;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+/* Media query for mobile devices from 991px and down. Feature Heading font size increases */
+@media only screen and (max-width: 991px) {
+  .FeatureHeading {
+    font-size: 4rem;   
+  }
 }
 
 * {

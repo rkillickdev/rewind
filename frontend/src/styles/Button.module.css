@@ -46,7 +46,7 @@
     color: #2142b2;
   }
 
-  .Follow,
+  /* .Follow,
   .FollowOutline:hover {
     background-color: var(--primary-color);
     color: var(--white-color); 
@@ -57,7 +57,7 @@
     background-color: var(--white-color);
     color: var(--primary-color);
     border-color: var(--primary-color);
-  }
+  } */
 
   .Primary {
     background-color: var(--primary-color);
@@ -65,8 +65,8 @@
   }
 
   .Primary:hover {
-    background-color: var(--secondary-color);
-    color: var(--white-color);
+    background-color: var(--white-color);
+    color: var(--primary-color);
     border-color: var(--primary-color);
   }
 
@@ -76,7 +76,7 @@
   }
 
   .Highlight:hover {
-    background-color: var(--secondary-color);
-    color: var(--white-color);
+    background-color: var(--light-color);
+    color: var(--dark-color);
   }
   

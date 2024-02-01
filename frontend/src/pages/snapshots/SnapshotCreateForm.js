@@ -195,7 +195,7 @@ function SnapshotCreateForm() {
       ))}
 
       <Button
-        className={`${btnStyles.Button} ${btnStyles.Primary}`}
+        className={`${btnStyles.Button} ${btnStyles.Highlight}`}
         onClick={() => history.goBack()}
       >
         cancel

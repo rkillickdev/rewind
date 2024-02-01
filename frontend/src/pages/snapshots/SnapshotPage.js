@@ -53,19 +53,9 @@ function SnapshotPage() {
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
-        {currentUser ? (
-          <RelevantProfiles mobile />
-        ) : (
-          <UserDirection
-            hide="d-lg-none"
-            src={HeroImage}
-            heading="Take a trip back in time"
-            page="/signin"
-            button="Get Started"
-          />
-        )}
-        <Container className={appStyles.Content}>
-          {currentUser && (
+        {currentUser && <RelevantProfiles mobile />}
+        {currentUser && (
+          <Container className={appStyles.Content}>
             <SampleCreateForm
               profile_id={currentUser.profile_id}
               profileImage={profile_image}
@@ -73,8 +63,9 @@ function SnapshotPage() {
               setSnapshot={setSnapshot}
               setSamples={setSamples}
             />
-          )}
-        </Container>
+          </Container>
+        )}
+
         <Snapshot
           {...snapshot.results[0]}
           setSnapshots={setSnapshot}
