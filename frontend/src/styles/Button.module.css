@@ -1,5 +1,6 @@
 .Button {
-    font-size: 0.8rem;
+    font-size: 1rem;
+    font-weight: bold;
     align-self: center;
     border-radius: 100px;
     border-color: transparent;
