@@ -1,5 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
+import { OverlayTrigger, Tooltip } from "react-bootstrap";
+import appStyles from "../App.module.css";
 
 const EditDelete = ({ handleEdit, handleDelete }) => {
   return (
@@ -21,28 +23,46 @@ const EditDelete = ({ handleEdit, handleDelete }) => {
 export const ProfileEditOptions = ({ id }) => {
   const history = useHistory();
   return (
-    <div>
-      <span
-        onClick={() => history.push(`/profiles/${id}/edit`)}
-        aria-label="edit-profile"
-      >
-        <i className={"fas fa-edit"} />
-        edit profile
-      </span>
-      <span
-        onClick={() => history.push(`/profiles/${id}/edit/username`)}
-        aria-label="edit-username"
-      >
-        <i className={"far fa-id-card"} />
-        change username
-      </span>
-      <span
-        onClick={() => history.push(`/profiles/${id}/edit/password`)}
-        aria-label="edit-password"
-      >
-        <i className={"fas fa-key"} />
-        change password
-      </span>
+    <div className="mx-auto mt-4 d-flex flex-column">
+      <h1 className={`h3 ${appStyles.FeatureHeading}`}>Update Your Details</h1>
+      <div>
+        <OverlayTrigger
+          placement="top"
+          overlay={<Tooltip>Edit Profile</Tooltip>}
+        >
+          <span
+            className="p-2"
+            onClick={() => history.push(`/profiles/${id}/edit`)}
+            aria-label="edit-profile"
+          >
+            <i className={"fas fa-edit"} />
+          </span>
+        </OverlayTrigger>
+        <OverlayTrigger
+          placement="top"
+          overlay={<Tooltip>Edit Username</Tooltip>}
+        >
+          <span
+            className="p-2"
+            onClick={() => history.push(`/profiles/${id}/edit/username`)}
+            aria-label="edit-username"
+          >
+            <i className={"far fa-id-card"} />
+          </span>
+        </OverlayTrigger>
+        <OverlayTrigger
+          placement="top"
+          overlay={<Tooltip>Change Password</Tooltip>}
+        >
+          <span
+            className="p-2"
+            onClick={() => history.push(`/profiles/${id}/edit/password`)}
+            aria-label="edit-password"
+          >
+            <i className={"fas fa-key"} />
+          </span>
+        </OverlayTrigger>
+      </div>
     </div>
   );
 };
