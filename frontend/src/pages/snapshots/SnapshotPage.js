@@ -4,6 +4,8 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
+import HeroImage from "../../assets/cassette-player-retro.webp";
+
 import appStyles from "../../App.module.css";
 import { useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
@@ -17,6 +19,7 @@ import { fetchMoreData } from "../../utils/utils";
 import RelevantProfiles from "../profiles/RelevantProfiles";
 import SampleCreateForm from "../samples/SampleCreateForm";
 import Sample from "../samples/Sample";
+import UserDirection from "../../components/UserDirection";
 
 function SnapshotPage() {
   const { id } = useParams();
@@ -50,7 +53,17 @@ function SnapshotPage() {
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <RelevantProfiles mobile />
+        {currentUser ? (
+          <RelevantProfiles mobile />
+        ) : (
+          <UserDirection
+            hide="d-lg-none"
+            src={HeroImage}
+            heading="Take a trip back in time"
+            page="/signin"
+            button="Get Started"
+          />
+        )}
         <Container className={appStyles.Content}>
           {currentUser && (
             <SampleCreateForm
@@ -123,7 +136,16 @@ function SnapshotPage() {
         </Container>
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
-        <RelevantProfiles />
+        {currentUser ? (
+          <RelevantProfiles />
+        ) : (
+          <UserDirection
+            src={HeroImage}
+            heading="Take a trip back in time"
+            page="/signin"
+            button="Get Started"
+          />
+        )}
       </Col>
     </Row>
   );
