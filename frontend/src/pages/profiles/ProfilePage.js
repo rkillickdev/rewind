@@ -12,7 +12,7 @@ import btnStyles from "../../styles/Button.module.css";
 
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import RelevantProfiles from "./RelevantProfiles";
-import { useParams } from "react-router-dom/cjs/react-router-dom";
+import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import {
   useProfileData,
@@ -24,7 +24,7 @@ import Snapshot from "../snapshots/Snapshot";
 import { fetchMoreData } from "../../utils/utils";
 import NoResults from "../../assets/no-results.png";
 import { ProfileEditOptions } from "../../components/EditDelete";
-import AddSnapshot from "../../components/AddSnapshot";
+import useAlert from "../../hooks/useAlert";
 
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -35,6 +35,8 @@ function ProfilePage() {
   const [profile] = pageProfile.results;
   const is_owner = currentUser?.username === profile?.owner;
   const [profileSnapshots, setProfileSnapshots] = useState({ results: [] });
+  const history = useHistory();
+  const { setAlert } = useAlert();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -51,6 +53,8 @@ function ProfilePage() {
         setProfileSnapshots(profileSnapshots);
         setHasLoaded(true);
       } catch (err) {
+        history.push("/");
+        setAlert("sorry, something went wrong", "warning");
         // console.log(err);
       }
     };
