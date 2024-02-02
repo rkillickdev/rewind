@@ -20,6 +20,7 @@ import RelevantProfiles from "../profiles/RelevantProfiles";
 import SampleCreateForm from "../samples/SampleCreateForm";
 import Sample from "../samples/Sample";
 import UserDirection from "../../components/UserDirection";
+import { useHistory } from "react-router-dom/cjs/react-router-dom";
 
 function SnapshotPage() {
   const { id } = useParams();
@@ -29,6 +30,7 @@ function SnapshotPage() {
   const profile_image = currentUser?.profile_image;
   const [comments, setComments] = useState({ results: [] });
   const [samples, setSamples] = useState({ results: [] });
+  const history = useHistory();
 
   useEffect(() => {
     const handleMount = async () => {
@@ -43,6 +45,9 @@ function SnapshotPage() {
         setComments(comments);
         setSamples(samples);
       } catch (err) {
+        if (err.response?.status === 400) {
+          history.push("/error");
+        }
         // console.log(err);
       }
     };
