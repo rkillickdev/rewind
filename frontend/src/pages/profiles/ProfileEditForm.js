@@ -70,7 +70,7 @@ const ProfileEditForm = () => {
           });
         } catch (err) {
           // console.log(err);
-          // history.push("/");
+          history.push("/");
         }
       } else {
         history.push("/");
