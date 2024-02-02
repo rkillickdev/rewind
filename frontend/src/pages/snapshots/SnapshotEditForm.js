@@ -47,6 +47,8 @@ function SnapshotEditForm() {
           ? setSnapshotData({ title, description, image, era, genre, category })
           : history.push("/");
       } catch (err) {
+        history.push("/");
+        setAlert("sorry, something went wrong", "warning");
         // console.log(err);
       }
     };
