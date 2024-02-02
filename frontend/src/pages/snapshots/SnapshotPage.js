@@ -21,6 +21,7 @@ import SampleCreateForm from "../samples/SampleCreateForm";
 import Sample from "../samples/Sample";
 import UserDirection from "../../components/UserDirection";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
+import useAlert from "../../hooks/useAlert";
 
 function SnapshotPage() {
   const { id } = useParams();
@@ -31,6 +32,7 @@ function SnapshotPage() {
   const [comments, setComments] = useState({ results: [] });
   const [samples, setSamples] = useState({ results: [] });
   const history = useHistory();
+  const { setAlert } = useAlert();
 
   useEffect(() => {
     const handleMount = async () => {
@@ -45,9 +47,8 @@ function SnapshotPage() {
         setComments(comments);
         setSamples(samples);
       } catch (err) {
-        if (err.response?.status === 400) {
-          history.push("/error");
-        }
+        history.push("/");
+        setAlert("sorry, something went wrong", "warning");
         // console.log(err);
       }
     };
