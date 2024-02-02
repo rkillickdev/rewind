@@ -71,6 +71,7 @@ const ProfileEditForm = () => {
         } catch (err) {
           // console.log(err);
           history.push("/");
+          setAlert("sorry, something went wrong", "warning");
         }
       } else {
         history.push("/");
