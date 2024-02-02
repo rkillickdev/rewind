@@ -365,6 +365,7 @@ The [requirements.txt](requirements.txt) file provides information on required i
 * [axios](https://axios-http.com/docs/intro)
 * [react-infinite-scroll-component](https://www.npmjs.com/package/react-infinite-scroll-component)
 * [jwt-decode](https://www.npmjs.com/package/jwt-decode)
+* [react-error-boundary](https://github.com/bvaughn/react-error-boundary)
 
 [Back to top &uarr;](#contents)
 
@@ -486,11 +487,6 @@ The following steps were followed to deploy the site to Heroku:
 
 ## **Known Bugs**
 
-| Bug Description | Solutions Tried |
-| ------------ | --------------- |
-| User inputs snaphot or profile url including an id that doesn't exist.  Rendering a page rather than redirecting and handling gracefully | |
- 
-
 <br>
 
 ## **Solved Bugs**
@@ -589,6 +585,10 @@ pinboard &&
                 </Container>
               )}
 ```
+
+| Bug Description | Solution |
+| ------------ | --------------- |
+| User inputs snaphot or profile url including an id that doesn't exist.  This is rendering a page but no data exists.  A 400 bad request error is logged in the console.  The error should be handled gracefully and the user redirected back to the home page | In the catch block of the handleMount function for the SnapshotPage component, I have made use of the useHistory hook to redirect the user, and also set an alert to inform them that there has been a problem |
 
 
 # **Credits**
