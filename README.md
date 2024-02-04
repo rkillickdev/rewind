@@ -427,9 +427,19 @@ ___
 
 ### **Authenticated**
 
+* The AddSnapshot component is rendered.  This displays a clickable icon which directs the user to the `SnapshotCreateForm`
+
 * Users can recommend/ remove recommendations for snaphots that they do not own.  If they own the snapshot and attempt to recommend, a tooltip provides feedback that they cannot carry out this action.
 
+| | User Story | Acceptance Criteria Satisfied | 
+| --- | ------------ | :---: | 
+| [#22](https://github.com/rkillickdev/rewind/issues/22) | As a logged in user I can recommend a snapshot so that I can show my appreciation of another user's post and encourage others to view it  | Pass |
+
 * Users can pin/ remove pins for any snapshot.
+
+| | User Story | Acceptance Criteria Satisfied | 
+| --- | ------------ | :---: | 
+| [#23](https://github.com/rkillickdev/rewind/issues/23) | As a logged in user I can pin any snapshots of interest while browsing the site so that I can build a list of posts to return to later   | Pass |
 
 * If a user has not set their profile preferences, a `UserDirection` component is rendered with props passed to display a reminder message and button directing them to their profile edit page.
 
@@ -449,9 +459,69 @@ ___
 <summary> Snapshot Page
 </summary>
 
+* The SnapshotPage component is rendered using the React Router whenever the user naviagates to the exact url `/snapshots/:id`.  This displays details for a snapshot specified by the id supplied in the url.  As detailed in the description for the `SnapshotsPage` component, the `Snapshot` component is rendered to display this information.  Additionally, the following components are rendered:
 
+### **Unauthenticated**
+
+* A list of approved samples relating to the associated snapshot is displayed above the `Snapshot` component, with the `Sample` component used to render each sample.  Each has it's own unique key (this is provided by the sample id).  A rendered Sample component displays the Profile avatar and name of the sample owner.  A media player to audition the audio sample is displayed.  To ensure good user experience, the user must instigate playback of the sample themselves.
+
+* If no samples are associated with the snapshot, a message is displayed to the user to convey this information.
+
+* A list of comments relating to the associated snapshot is displayed below the `Snapshot` component, with the `Comment` component used to render each comment.  Each has it's own unique key (this is provided by the comment id).  A rendered Comment component displays the Profile avatar and name of the comment owner, the comment and the date created.
+
+* If no comments are associated with the snapshot, a message is displayed to the user to convey this information.
+
+### **Authenticated**
+
+* The `SampleCreateForm` component is rendered above the `sample` and `Snapshot` components.  This provides users with the ability to select an audio file and upload.  On successful upload, a toast alert is used to notify users that the new sample has been created.
+
+* The `CommentCreateForm` component is rendered directly below the `Snapshot` component and above the `Comment` component.  This provides a text area input field where users can write a comment.  While this field is empty, the 'post' button is disabled.  Only when text has been entered can the comment be posted.  On successful creation of a comment, a toast alert is used to notify users that the new comment has been created.
+
+| | User Story | Acceptance Criteria Satisfied | 
+| --- | ------------ | :---: |
+| As a logged in user I can comment on another user's snapshot so that I can share my thoughts and interact with the Rewind community | [#18](https://github.com/rkillickdev/rewind/issues/18) |
+
+### **Authenticated & Owner of Snapshot**
+
+* The `EditDelete` component is rendered within the `Snapshot` component.  This displays clickable icons for editing or deleting the snapshot.
+
+* Clicking on the edit icon directs the user to the url path `/snapshots/:id/edit`.  This route renders the SnapshotEditForm component.  Here a user can update details of their Snapshot.  On successful submission, a toast alert is used to notify users that the snapshot has been updated.
+
+* Clicking on the delete icon triggers rendering of the `ModalPopup` component.  This allows the user to confirm that they definitely want to delete the snapshot.  Upon successful deletion, a toast alert is used to notify users that the snapshot has been deleted.
+
+| | User Story | Acceptance Criteria Satisfied | 
+| --- | ------------ | :---: |
+| As a logged in user I can edit my own snapshots so that I can update and amend the details of my original post | [#17](https://github.com/rkillickdev/rewind/issues/17) |
+
+
+### **Authenticated & Owner of Comment**
+
+* The `EditDelete` component is rendered within the `Comment` component.  This displays clickable icons for editing or deleting the snapshot.
+
+* Clicking on the edit icon renders the `CommentEditForm` component in place of the `Comment` component.  Here a user can update the content of their comment.  On successful submission, a toast alert is used to notify users that the comment has been updated.
+
+| | User Story | Acceptance Criteria Satisfied | 
+| --- | ------------ | :---: |
+| As a logged in user I can edit my own comments so that I can amend and update my thoughts | [#19](https://github.com/rkillickdev/rewind/issues/19) |
+
+* Clicking on the delete icon triggers rendering of the `ModalPopup` component.  This allows the user to confirm that they definitely want to delete the comment.  Upon successful deletion, a toast alert is used to notify users that the comment has been deleted.
+
+| | User Story | Acceptance Criteria Satisfied | 
+| --- | ------------ | :---: |
+| As a logged in user I can delete my own comments so that I can control whether a previous comment remains visible to other site users | [#20](https://github.com/rkillickdev/rewind/issues/20) |
+
+### **Authenticated & Owner of Sample**
+
+* The `EditDelete` component is rendered within the `Sample` component.  As the user only has the ability to delete samples, only the `handleDelete` prop is passed to EditDelete.  This displays a  clickable icons for deleting the sample.
+
+* Clicking on the delete icon triggers rendering of the `ModalPopup` component.  This allows the user to confirm that they definitely want to delete the sample.  Upon successful deletion, a toast alert is used to notify users that the sample has been deleted.
 
 </details>
+
+* As a user I can view a snapshot detail page so that I can read the full description of the snapshot and any associated comments [#16](https://github.com/rkillickdev/rewind/issues/16)
+
+
+
 
 
 ## **Future Features**
