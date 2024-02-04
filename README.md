@@ -319,7 +319,148 @@ Wireframes were created using [Balsamiq](https://balsamiq.com/wireframes/) and u
 
 </details>
 
-<br>
+[Back to top &uarr;](#contents)
+
+## **STRUCTURE PLANE**
+
+## **Features**
+
+<details>
+<summary> Navbar
+</summary>
+
+| | User Story | Acceptance Criteria Satisfied | 
+| --- | ------------ | :---: | 
+| [#2](https://github.com/rkillickdev/rewind/issues/2) | As a user I can access a navbar on every page so that navigation of the site is intuitive | Pass |
+___
+
+The NavBar component is displayed at the top of all pages.  In order to achieve this, it has been included as the first component in the return statement of `App.js`
+
+To the left of the navbar is the brand logo that is designed to instantly communicate the core aims of the site.  The use of a cassette tape aims to immediately make the user subconsciously aware that 'retro technology and music' is at the heart of the site's objectives.  The colours used in the brand logo are consistent with the colour scheme used throughout the rest of the site, which are designed to be retro in their feel.  The hover effect applied to the brand logo is consistent with the effect used for other clickable links throughout.  Clicking on the logo takes the site user back to the home page.
+
+To the right of the navbar, page links are displayed and a hover effect applied so users know they are clickable.  Links for the currently active page are styled using the site's dark colour.  Dependent on the status of the site user, links display as shown in the table below.  This helps to signal to the user their current authentication status.
+
+| Link | Visibility |
+| ---- | -------- |
+| Home |  All users |
+| For You | Logged in users |
+| Pinned |  Logged in users |
+| Profile | Logged in users |
+| Sign up |  Logged out users |
+| Sign in | Logged out users |
+| Sign out | Logged in users |
+
+The Profile link is coupled with an avatar.  If the user has edited their profile and added their own personal image, this is displayed.  A default image is displayed in cases where the user has not yet added an image.
+
+| | User Story | Acceptance Criteria Satisfied | 
+| --- | ------------ | :---: | 
+| [#6](https://github.com/rkillickdev/rewind/issues/6) | As a user I can see whether I am already logged in so that I am aware of my status and the features of the site I can access | Pass |
+___
+
+To ensure good user experience and satisfy the site owner's goal of responsive design across a range of device sizes, the navigation menu collapses down into a hamburger menu on screen sizes below 992px.  This prevents the navbar from feeling cluttered on smaller devices and the instantly recognisable hamburger icon ensures that site navigation remains intuitive for users.
+
+Clicking on the hamburger icon expands the nav links which are stacked vertically to the left of the screen.  Clicking on a link, the icon or anywhere else on the pag collapses the nav menu.
+
+The React Router library is used to handle routing for the application, with specified urls routing the user to different pages.  However this happens without the browser refreshing as the router handles these changes in the React virtual DOM.  In reality each time a user navigates to a new 'page', it is always the same HTML page but with a different component rendered.
+
+| | User Story | Acceptance Criteria Satisfied | 
+| --- | ------------ | :---: | 
+| [#3](https://github.com/rkillickdev/rewind/issues/3) | As a user I can navigate the content of the site without the page refreshing so that content is accessed quickly and user experience is enhanced | Pass |
+___
+
+</details>
+
+<details>
+<summary> Sign Up Form
+</summary>
+
+Clicking on the 'Sign up' nav link renders the `SignUpForm` component where a new user can create an account.  This also provides a link to the 'Sign in' page, in case the user already has an account.
+
+| | User Story | Acceptance Criteria Satisfied | 
+| --- | ------------ | :---: | 
+| [#4](https://github.com/rkillickdev/rewind/issues/4) | As a user I can sign up and create a user account so that I can access additional site functionality only available to authenticated users  | Pass |
+___
+
+</details>
+
+<details>
+<summary> Sign In Form
+</summary>
+
+Clicking on the 'Sign in' nav link renders the `SignInForm` component where a user with existing credentials can sign in.  This also provides a link to the 'Sign up' page, in case the user does not yet have an account.
+
+| | User Story | Acceptance Criteria Satisfied | 
+| --- | ------------ | :---: | 
+| [#5](https://github.com/rkillickdev/rewind/issues/5) | As a user I can sign in using my existing credentials so that I can view my account and continue enjoying site functionality only accessible to authenticated users | Pass |
+___
+
+</details>
+
+<details>
+<summary> Snapshots Page
+</summary>
+
+* The SnapshotsPage component is rendered using the React Router whenever the user naviagates to the exact url for 'Home', 'For You' or 'Pinned'.  
+
+* A search bar positioned at the top of the page allows the user to search for snapshots based on their title, era, musical genre or category.  The filtering happens dynamically as the user types via the backend using the DRF SearchFilter as specified in `snapshots/views.py`.  Below the search bar, a list of snapshots is displayed.
+
+| | User Story | Acceptance Criteria Satisfied | 
+| --- | ------------ | :---: |
+| [#10](https://github.com/rkillickdev/rewind/issues/10) | As a user I can search snapshots by keywords so that I can filter results displayed by their text content or by the profile of the poster | Pass |
+
+
+* The `Snapshot` component is rendered for each snapshot in the list, each with a unique key (this is provided by the snapshot id).  This displays the Profile avatar and name of the owner, Snapshot image, title, date created and description if available.  Exactly what else the user sees is determined by their authentication status and props passed into the component.
+
+### **All Users**
+
+* All users navigating to the 'Home' page can view a list of all snapshots, ordered by the most recently created.
+
+| | User Story | Acceptance Criteria Satisfied | 
+| --- | ------------ | :---: | 
+| [#9](https://github.com/rkillickdev/rewind/issues/9) | As a user I can view all snapshots posted so that I can get an overview of the type of content available on the site and decide whether I would like to sign up | Pass |
+
+### **Unauthenticated**
+
+* Icons and tallies for recommendation and comment counts are displayed.  If the user tries to recommend the snapshot, a tooltip provides feedback that they must be signed in to carry out this action.  Clicking on the comments icon directs the user to the Snapshot Detail Page.
+
+* To the right of the Snapshot list, a reuseable `UserDirection` component is rendered to display a hero image and 'call to action' button, encouraging the user to 'get started' by signing up.
+
+### **Authenticated**
+
+* Users can recommend/ remove recommendations for snaphots that they do not own.  If they own the snapshot and attempt to recommend, a tooltip provides feedback that they cannot carry out this action.
+
+* Users can pin/ remove pins for any snapshot.
+
+* If a user has not set their profile preferences, a `UserDirection` component is rendered with props passed to display a reminder message and button directing them to their profile edit page.
+
+* The RelevantProfiles component is rendered to the right of the snapshot list (see description of the component below).
+
+* Authenticated users navigating to the 'For you' page can view a list of snapshots filtered by any snapshot belonging to a profile they are following.  This stage of the filtering is carried out on the backend, with the required filterset field passed to the component as a prop.  Returned results are ordered according to recommendation count (descending order).  If a user has not followed any other profiles, a resuable `Asset` component is rendered to display a message encouraging the user to start following other profiles to fill the page. 
+
+* If a user has specified their preferences on the profile edit page, Snapshots on the 'For You' page will be further filtered on the frontend to match these preferences.  This ensures that each user receives bespoke content best matched to their interests.  If the frontend filtering returns no results, by default snapshots belonging to all followed profiles are displayed.
+
+* Authenticated users navigating to the 'Pinned' page can view a list of all snapshots that they have pinned, ordered by most recently created (descending order).
+
+* Pins can be removed for a snapshot on the 'Pinned' page and the list dynamically updates in response to this, so the targeted snapshot is no longer displayed.
+
+</details>
+
+<details>
+<summary> Snapshot Page
+</summary>
+
+
+
+</details>
+
+
+## **Future Features**
+
+| | User Story | Acceptance Criteria Satisfied | 
+| --- | ------------ | :---: |
+| [#11](https://github.com/rkillickdev/rewind/issues/11) | As a user I can choose to order the list by 'most liked' or 'most talked about' so that I can view most popular snapshots first | Future Feature |
+| [#39](https://github.com/rkillickdev/rewind/issues/39) | As a user I can filter the list of snapshots on the home page by era, genre and category so that I can view snapshots most relevant to my interests  | Future Feature |
+___
 
 # **Technologies Used**
 
