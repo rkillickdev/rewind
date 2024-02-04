@@ -456,10 +456,32 @@ ___
 </details>
 
 <details>
+<summary> SnapshotCreateForm
+</summary>
+
+* The `SnapshotCreateForm` component is rendered by the react router when a user navigates to the `/snapshots/create` url.
+
+* To successfully create a new snaphot, the user must select an image and input a title.  Description is optional.  The snapshot must also be given an era, genre and category.
+
+| | User Story | Acceptance Criteria Satisfied | 
+| --- | ------------ | :---: |
+| [#13](https://github.com/rkillickdev/rewind/issues/13) | As a logged in user I can post image snapshots so that I can share my nostalgic memories with other site users | Pass |
+
+* On successful submission, a toast alert is used to notify users that the snapshot has been created.
+
+</details>
+
+<details>
 <summary> Snapshot Page
 </summary>
 
-* The SnapshotPage component is rendered using the React Router whenever the user naviagates to the exact url `/snapshots/:id`.  This displays details for a snapshot specified by the id supplied in the url.  As detailed in the description for the `SnapshotsPage` component, the `Snapshot` component is rendered to display this information.  Additionally, the following components are rendered:
+* The SnapshotPage component is rendered using the React Router whenever the user naviagates to the exact url `/snapshots/:id`.  This displays details for a snapshot specified by the id supplied in the url.  As detailed in the description for the `SnapshotsPage` component, the `Snapshot` component is rendered to display this information.
+
+| | User Story | Acceptance Criteria Satisfied | 
+| --- | ------------ | :---: |
+| As a user I can view a snapshot detail page so that I can read the full description of the snapshot and any associated comments | [#16](https://github.com/rkillickdev/rewind/issues/16) | Passed |
+
+ Additionally, the following components are rendered:
 
 ### **Unauthenticated**
 
@@ -475,11 +497,16 @@ ___
 
 * The `SampleCreateForm` component is rendered above the `sample` and `Snapshot` components.  This provides users with the ability to select an audio file and upload.  On successful upload, a toast alert is used to notify users that the new sample has been created.
 
+| | User Story | Acceptance Criteria Satisfied | 
+| --- | ------------ | :---: |
+| [#14](https://github.com/rkillickdev/rewind/issues/14) | As a logged in user I can upload audio clips when creating a snaphot so that I can share audio memories with other site users | Pass |
+
+
 * The `CommentCreateForm` component is rendered directly below the `Snapshot` component and above the `Comment` component.  This provides a text area input field where users can write a comment.  While this field is empty, the 'post' button is disabled.  Only when text has been entered can the comment be posted.  On successful creation of a comment, a toast alert is used to notify users that the new comment has been created.
 
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: |
-| As a logged in user I can comment on another user's snapshot so that I can share my thoughts and interact with the Rewind community | [#18](https://github.com/rkillickdev/rewind/issues/18) |
+| [#18](https://github.com/rkillickdev/rewind/issues/18) | As a logged in user I can comment on another user's snapshot so that I can share my thoughts and interact with the Rewind community | Passed |
 
 ### **Authenticated & Owner of Snapshot**
 
@@ -491,7 +518,7 @@ ___
 
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: |
-| As a logged in user I can edit my own snapshots so that I can update and amend the details of my original post | [#17](https://github.com/rkillickdev/rewind/issues/17) |
+| [#17](https://github.com/rkillickdev/rewind/issues/17) | As a logged in user I can edit my own snapshots so that I can update and amend the details of my original post | Passed | 
 
 
 ### **Authenticated & Owner of Comment**
@@ -502,13 +529,13 @@ ___
 
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: |
-| As a logged in user I can edit my own comments so that I can amend and update my thoughts | [#19](https://github.com/rkillickdev/rewind/issues/19) |
+| [#19](https://github.com/rkillickdev/rewind/issues/19) | As a logged in user I can edit my own comments so that I can amend and update my thoughts | Passed |
 
 * Clicking on the delete icon triggers rendering of the `ModalPopup` component.  This allows the user to confirm that they definitely want to delete the comment.  Upon successful deletion, a toast alert is used to notify users that the comment has been deleted.
 
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: |
-| As a logged in user I can delete my own comments so that I can control whether a previous comment remains visible to other site users | [#20](https://github.com/rkillickdev/rewind/issues/20) |
+| [#20](https://github.com/rkillickdev/rewind/issues/20) | As a logged in user I can delete my own comments so that I can control whether a previous comment remains visible to other site users | Passed |
 
 ### **Authenticated & Owner of Sample**
 
@@ -518,11 +545,93 @@ ___
 
 </details>
 
-* As a user I can view a snapshot detail page so that I can read the full description of the snapshot and any associated comments [#16](https://github.com/rkillickdev/rewind/issues/16)
+<details>
+<summary> Relevant Profile Page
+</summary>
 
+* The `RelevantProfilePage` component is rendered as part of the `SnapshotsPage` component, if the user is authenticated.
 
+* If the user has not yet specified any preferences on their profile edit page, the rendered `RelevantProfilePage` component displays a list of popular profiles in descending order, based on the number of followers each profile has.  In this scenario, every user will be presented with the same list.  Howver, code has been implemented to ensure that the logged in user's own profile does not appear in the list they are presented with. 
 
+* If the user has selected their preferences on the Profile Edit page, these are retrieved via the `CurrentUserContext`.  This information is then used to carry out frontend filtering of the 'popular profiles' list to return a list of suggested profiles whose interests/ preferences are most closely aligned with the current user.  It's possible that no results are returned, especially while the datatabase of profiles grows.  In this case, the list of popular profiles are displayed as a default.
 
+| | User Story | Acceptance Criteria Satisfied | 
+| --- | ------------ | :---: |
+| [#28](https://github.com/rkillickdev/rewind/issues/28) | As a logged in user I can view suggested profiles so that I can decide whether their previous snapshot posts are of interest to me | Pass |
+
+* For each profile in the returned list, the `Profile` component is rendered.  It accepts the profile data as a prop, destructures this and uses it to display the Avatar and name for the associated profile.  If the logged in user is not following a profile, a 'follow' button is displayed.  Once they are following a profile, an 'unfollow' button is displayed.
+
+| | User Story | Acceptance Criteria Satisfied | 
+| --- | ------------ | :---: |
+| [#29](https://github.com/rkillickdev/rewind/issues/29) | As a logged in user I can choose to follow profiles that are posting interesting content so that I can be updated with more of their posts in the future | Pass |
+
+</details>
+
+<details>
+<summary> Profile Page
+</summary>
+
+### **Unauthenticated**
+
+* The `ProfilePage` component is rendered using the React Router whenever the user naviagates to the exact url `/profiles/:id`.  This displays the following details for a profile specified by the id supplied in the url:
+
+ 1. Image
+ 2. Profile Name
+ 3. The number of snapshots the profile has added
+ 4. The number of followers the profile has
+ 5. The number of other profiles that the specified profile is following
+
+* For every snapshot associated with the profile, a `Snapshot` component is rendered beneath the profile details.
+
+| | User Story | Acceptance Criteria Satisfied | 
+| --- | ------------ | :---: |
+| [#26](https://github.com/rkillickdev/rewind/issues/26) | As a user I can view the profile pages of other site users so that I can learn more about them and the type of content they are posting | Pass |
+
+### **Authenticated**
+
+* The profile id of the selected profile page is compared with the profile id of the current user.  If the logged in user is not the owner of the profile, an follow/ unfollow button is displayed.
+
+### **Authenticated & Profile Owner**
+
+* The `ProfileEditOptions` component is rendered below the profile details and 3 icons displayed:
+
+  1. Edit profile directs the user to the following url `/profiles/:id/edit`.  The react router renders the `ProfileEditForm` component
+  2. Edit username directs the user to the following url `/profiles/:id/edit/username`.  The react router renders the `UsernameForm` component.
+  3. Change password directs the user to the following url `/profiles/:id/edit/password`.  The react router renders the `UserPasswordForm` component.
+
+</details>
+
+<details>
+<summary> Profile Edit Form
+</summary>
+
+| | User Story | Acceptance Criteria Satisfied | 
+| --- | ------------ | :---: |
+| [#25](https://github.com/rkillickdev/rewind/issues/25) | As a logged in user I can edit the details of my profile so that I can update my profile pic, bio details and preferences for era, musical genre and category | Pass |
+
+</details>
+
+<details>
+<summary> Username Form
+</summary>
+
+| | User Story | Acceptance Criteria Satisfied | 
+| --- | ------------ | :---: |
+| [#27](https://github.com/rkillickdev/rewind/issues/27) | As a logged in user I can update my username and password so that I can choose how my name is displayed to other users and to ensure my login credentials remain secure | Pass |
+
+</details>
+
+<details>
+<summary> User Password Form
+</summary>
+
+</details>
+
+<details>
+<summary> Log Out
+</summary>
+
+</details>
 
 ## **Future Features**
 
