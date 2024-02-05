@@ -27,23 +27,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     snapshots_count = serializers.ReadOnlyField()
     followers_count = serializers.ReadOnlyField()
     following_count = serializers.ReadOnlyField()
-    # era_preference = serializers.PrimaryKeyRelatedField(queryset, allow_null=True)
-    # genre_preference = serializers.PrimaryKeyRelatedField(queryset, allow_null=True)
-    # category_preference = serializers.PrimaryKeyRelatedField(queryset, allow_null=True)
-    # era_preference = EraSerializer(required=False)
-    # genre_preference = GenreSerializer(required=False, allow_null=True)
-    # category_preference = CategorySerializer(required=False)
-
-    # def update(self, instance, validated_data):
-    #     instance.name = validated_data.get('name')
-    #     instance.bio = validated_data.get('bio')
-    #     instance.era_preference = validated_data.get('era_preference')
-    #     instance.genre_preference = validated_data.get('genre_preference')
-    #     instance.category_preference = validated_data.get('category_preference')
-    #     instance.save()
-
-    #     return instance
-
+    
     def get_is_owner(self, obj):
         request = self.context["request"]
         return request.user == obj.owner
