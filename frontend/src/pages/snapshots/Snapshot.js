@@ -214,7 +214,10 @@ const Snapshot = (props) => {
                   </span>
                 ))}
 
-              <Link to={`/snapshots/${id}`}>
+              <Link
+                to={`/snapshots/${id}`}
+                aria-label="Navigate to comments associated with this snapshot"
+              >
                 <i className={`far fa-comments ${styles.IconOutline}`} />
               </Link>
               {comments_count}
