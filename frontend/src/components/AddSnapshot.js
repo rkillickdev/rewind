@@ -13,9 +13,9 @@ const AddSnapshot = () => {
         <Link className={styles.AddSnapshotIcon} to="/snapshots/create">
           <div className="d-flex flex-column align-items-center">
             <i className="fa-solid fa-clock-rotate-left"></i>
-            <h4 className={`${appStyles.FeatureHeading} text-center`}>
+            <p className={`${appStyles.FeatureHeading} text-center h4`}>
               Add snapshot
-            </h4>
+            </p>
           </div>
         </Link>
       </div>
