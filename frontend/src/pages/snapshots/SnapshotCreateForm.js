@@ -89,6 +89,7 @@ function SnapshotCreateForm() {
           type="text"
           placeholder="Give your snapshot a title..."
           name="title"
+          aria-label="Enter a title"
           value={title}
           onChange={handleChange}
         />
@@ -106,6 +107,7 @@ function SnapshotCreateForm() {
           placeholder="description"
           rows={6}
           name="description"
+          aria-label="Enter a description"
           value={description}
           onChange={handleChange}
         />
@@ -121,6 +123,7 @@ function SnapshotCreateForm() {
         <Form.Control
           as="select"
           name="genre"
+          aria-label="Select a genre"
           onChange={handleChange}
           defaultValue={-1}
         >
@@ -147,6 +150,7 @@ function SnapshotCreateForm() {
         <Form.Control
           as="select"
           name="era"
+          aria-label="Select an era"
           onChange={handleChange}
           defaultValue={-1}
         >
@@ -173,6 +177,7 @@ function SnapshotCreateForm() {
         <Form.Control
           as="select"
           name="category"
+          aria-label="Select a category"
           onChange={handleChange}
           defaultValue={-1}
         >
