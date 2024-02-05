@@ -13,13 +13,15 @@ const RelevantProfiles = ({ mobile }) => {
   const profile_id = currentUser?.profile_id || "";
   const genre_preference = currentUser?.genre_preference || "";
   const era_preference = currentUser?.era_preference || "";
+  const category_preference = currentUser?.category_preference || "";
   const { popularProfiles } = useProfileData();
   const preferenceFilteredProfiles = popularProfiles.results
     .filter((profile) => profile.id !== currentUser?.profile_id)
     .filter(
       (profile) =>
         profile.genre_preference === genre_preference ||
-        profile.era_preference === era_preference,
+        profile.era_preference === era_preference ||
+        profile.category_preference === category_preference,
     );
 
   return popularProfiles.results.length ? (
