@@ -9,8 +9,8 @@ from categories.models import Category
 class Profile(models.Model):
     """
     Profile Model.  Related to a User instance via a One To One Field.
-    When updating their profile, a user can select their preferences of
-    era, genre and category.  These models have a many to many relationship
+    When updating their profile, a user can select their preference of
+    era, genre and category.  These models have a one to many relationship
     with the Profile model.
     """
 
@@ -22,18 +22,15 @@ class Profile(models.Model):
     image = models.ImageField(
         upload_to="images/profiles/", default="../robot_djhwqf"
     )
-   
+
     era_preference = models.ForeignKey(
-        Era, on_delete=models.CASCADE,
-        null=True, blank=True
+        Era, on_delete=models.CASCADE, null=True, blank=True
     )
     genre_preference = models.ForeignKey(
-        Genre, on_delete=models.CASCADE,
-        null=True, blank=True
+        Genre, on_delete=models.CASCADE, null=True, blank=True
     )
     category_preference = models.ForeignKey(
-        Category, on_delete=models.CASCADE,
-        null=True, blank=True
+        Category, on_delete=models.CASCADE, null=True, blank=True
     )
 
     class Meta:

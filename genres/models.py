@@ -3,8 +3,8 @@ from django.db import models
 
 class Genre(models.Model):
     """
-    Genre Model.  Each instance of Genre stores a specific 
-    style of music, an optional summary of the genre and an 
+    Genre Model.  Each instance of Genre stores a specific
+    style of music, an optional summary of the genre and an
     optional image.
     """
 

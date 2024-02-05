@@ -325,43 +325,80 @@ App: rewind
 | asgi.py | 0 | Passed |
 | permissions.py | 0 | Passed |
 | serializers.py | 0 | Passed |
-| settings.py | 0 | Passed |
+| settings.py | 0 | FAILED |
 | urls.py | 0 | Passed |
 | views.py | 0 | Passed |
 | wsgi.py | 0 | Passed |
 
-App: home
+App: categories
 
 | File | Errors | Result |
 | :----: | :-------: | :------: |
 | admin.py | 0 | Passed |
 | apps.py | 0 | Passed |
 | models.py | 0 | Passed |
+| serializers.py | 0 | Passed |
 | tests.py | 0 | Passed |
 | urls.py | 0 | Passed |
 | views.py | 0 | Passed |
 
-App: locations
+App: comments
 
 | File | Errors | Result |
 | :----: | :-------: | :------: |
 | admin.py | 0 | Passed |
 | apps.py | 0 | Passed |
-| forms.py | 0 | Passed |
 | models.py | 0 | Passed |
-| test_views.py | 0 | Passed |
+| serializers.py | 0 | Passed |
+| tests.py | 0 | Passed |
 | urls.py | 0 | Passed |
 | views.py | 0 | Passed |
 
-App: places
+App: eras
 
 | File | Errors | Result |
 | :----: | :-------: | :------: |
 | admin.py | 0 | Passed |
 | apps.py | 0 | Passed |
-| forms.py | 0 | Passed |
 | models.py | 0 | Passed |
-| test_views.py | 0 | Passed |
+| serializers.py | 0 | Passed |
+| tests.py | 0 | Passed |
+| urls.py | 0 | Passed |
+| views.py | 0 | Passed |
+
+App: followers
+
+| File | Errors | Result |
+| :----: | :-------: | :------: |
+| admin.py | 0 | Passed |
+| apps.py | 0 | Passed |
+| models.py | 0 | Passed |
+| serializers.py | 0 | Passed |
+| tests.py | 0 | Passed |
+| urls.py | 0 | Passed |
+| views.py | 0 | Passed |
+
+App: genres
+
+| File | Errors | Result |
+| :----: | :-------: | :------: |
+| admin.py | 0 | Passed |
+| apps.py | 0 | Passed |
+| models.py | 0 | Passed |
+| serializers.py | 0 | Passed |
+| tests.py | 0 | Passed |
+| urls.py | 0 | Passed |
+| views.py | 0 | Passed |
+
+App: pins
+
+| File | Errors | Result |
+| :----: | :-------: | :------: |
+| admin.py | 0 | Passed |
+| apps.py | 0 | Passed |
+| models.py | 0 | Passed |
+| serializers.py | 0 | Passed |
+| tests.py | 0 | Passed |
 | urls.py | 0 | Passed |
 | views.py | 0 | Passed |
 
@@ -371,23 +408,9 @@ App: profiles
 | :----: | :-------: | :------: |
 | admin.py | 0 | Passed |
 | apps.py | 0 | Passed |
-| forms.py | 0 | Passed |
 | models.py | 0 | Passed |
-| test_models.py | 0 | Passed |
-| test_views.py | 0 | Passed |
-| urls.py | 0 | Passed |
-| views.py | 0 | Passed |
-
-App: trips
-
-| File | Errors | Result |
-| :----: | :-------: | :------: |
-| admin.py | 0 | Passed |
-| apps.py | 0 | Passed |
-| forms.py | 0 | Passed |
-| models.py | 0 | Passed |
-| test_models.py | 0 | Passed |
-| test_views.py | 0 | Passed |
+| serializers.py | 0 | Passed |
+| tests.py | 0 | Passed |
 | urls.py | 0 | Passed |
 | views.py | 0 | Passed |
 

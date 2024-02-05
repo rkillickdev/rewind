@@ -5,8 +5,8 @@ from .serializers import EraSerializer
 
 class EraList(generics.ListCreateAPIView):
     """
-    List and Create Eras.  This view is only accessible
-    to staff users.
+    List and Create Eras.   Only authenticated
+    users can create an instance.
     """
 
     serializer_class = EraSerializer

@@ -5,8 +5,8 @@ from .serializers import CategorySerializer
 
 class CategoryList(generics.ListCreateAPIView):
     """
-    List and Create Category.  This view is only accessible
-    to staff users.
+    List and Create Category.  Only authenticated
+    users can create an instance.
     """
 
     serializer_class = CategorySerializer

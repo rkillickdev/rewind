@@ -5,8 +5,8 @@ from .serializers import GenreSerializer
 
 class GenreList(generics.ListCreateAPIView):
     """
-    List and Create Genres.  This view is only accessible
-    to staff users.
+    List and Create Genres.  Only authenticated
+    users can create an instance.
     """
 
     serializer_class = GenreSerializer
