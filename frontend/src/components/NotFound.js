@@ -8,6 +8,7 @@ const NotFound = () => {
     <div className={styles.NoPageResults}>
       <UserDirection
         src={CassetteTapes}
+        alt="Multi coloured cassette tapes"
         heading="Sorry, the page you're looking for doesn't exist"
         button="Go Home"
         page="/"

@@ -138,6 +138,7 @@ function SnapshotPage() {
         ) : (
           <UserDirection
             src={HeroImage}
+            alt="Retro boombox"
             heading="Take a trip back in time"
             page="/signin"
             button="Get Started"

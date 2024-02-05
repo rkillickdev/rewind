@@ -51,6 +51,7 @@ const RelevantProfiles = ({ mobile }) => {
           hideImage={mobile && "d-none"}
           heading="Tell Us More"
           src={DrumMachine}
+          alt="Retro drum machine"
           text="Let us know your interests and we'll suggest some profiles you might like"
           page={`/profiles/${profile_id}/edit`}
           button="Preferences"

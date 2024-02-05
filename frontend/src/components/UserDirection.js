@@ -6,6 +6,7 @@ import btnStyles from "../styles/Button.module.css";
 
 const UserDirection = ({
   src,
+  alt,
   heading,
   button,
   hide,
@@ -23,7 +24,11 @@ const UserDirection = ({
         </Card.Title>
       )}
       {src && (
-        <Card.Img className={`img-fluid rounded mb-4 ${hideImage}`} src={src} />
+        <Card.Img
+          className={`img-fluid rounded mb-4 ${hideImage}`}
+          src={src}
+          alt={alt}
+        />
       )}
       {text && (
         <Card.Text>

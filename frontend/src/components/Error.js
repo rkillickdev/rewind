@@ -8,6 +8,7 @@ const Error = () => {
     <div className={styles.NoPageResults}>
       <UserDirection
         src={CassetteTapes}
+        alt="Multi coloured cassette tapes"
         heading="There has been a problem with your request"
         button="Go Home"
         page="/"
