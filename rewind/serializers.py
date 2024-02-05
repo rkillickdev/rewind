@@ -15,6 +15,9 @@ class CurrentUserSerializer(UserDetailsSerializer):
     era_preference = serializers.ReadOnlyField(
         source="profile.era_preference.id"
     )
+    category_preference = serializers.ReadOnlyField(
+        source="profile.category_preference.id"
+    )
 
     class Meta(UserDetailsSerializer.Meta):
         fields = UserDetailsSerializer.Meta.fields + (
@@ -22,4 +25,5 @@ class CurrentUserSerializer(UserDetailsSerializer):
             "profile_image",
             "genre_preference",
             "era_preference",
+            "category_preference",
         )
