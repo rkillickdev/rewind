@@ -1,5 +1,5 @@
 from django.db import models
-from django.core.validators import FileExtensionValidator 
+from django.core.validators import FileExtensionValidator
 from django.contrib.auth.models import User
 from snapshots.models import Snapshot
 from cloudinary_storage.storage import RawMediaCloudinaryStorage
@@ -18,19 +18,19 @@ class Sample(models.Model):
     """
 
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    snapshot = models.ForeignKey(Snapshot, related_name="samples", on_delete=models.CASCADE)
+    snapshot = models.ForeignKey(
+        Snapshot, related_name="samples", on_delete=models.CASCADE
+    )
     audio = models.FileField(
         upload_to="audio/snapshots/",
         storage=RawMediaCloudinaryStorage(),
-        validators=[FileExtensionValidator( ['mp3'] ) ]
+        validators=[FileExtensionValidator(["mp3"])],
     )
     created_at = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
 
-    
     class Meta:
         ordering = ["-created_at"]
 
     def __str__(self):
         return f"{self.owner.username}'s sample {self.id}"
-

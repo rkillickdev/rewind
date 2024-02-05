@@ -4,7 +4,6 @@ from .models import Sample
 
 @admin.register(Sample)
 class SampleAdmin(admin.ModelAdmin):
-
     def approve_samples(self, request, queryset):
         """
         Method for admin to approve samples

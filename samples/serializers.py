@@ -2,6 +2,7 @@ from django.contrib.humanize.templatetags.humanize import naturaltime
 from rest_framework import serializers
 from samples.models import Sample
 
+
 class SampleSerializer(serializers.ModelSerializer):
     """
     Serializer for the Sample model.
@@ -21,7 +22,9 @@ class SampleSerializer(serializers.ModelSerializer):
 
     def validate_audio(self, value):
         if value.size > 2 * 1024 * 1024:
-            raise serializers.ValidationError('Please choose a file smaller than 2MB')
+            raise serializers.ValidationError(
+                "Please choose a file smaller than 2MB"
+            )
         return value
 
     def get_is_owner(self, obj):
@@ -44,6 +47,7 @@ class SampleSerializer(serializers.ModelSerializer):
             "created_at",
             "approved",
         ]
+
 
 class SampleDetailSerializer(SampleSerializer):
     """

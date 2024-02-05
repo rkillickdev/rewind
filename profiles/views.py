@@ -13,28 +13,28 @@ class ProfileList(generics.ListAPIView):
     """
 
     queryset = Profile.objects.annotate(
-        snapshots_count=Count('owner__snapshot', distinct=True),
-        followers_count=Count('owner__followed', distinct=True),
-        following_count=Count('owner__following', distinct=True)
-    ).order_by('-created_at')
+        snapshots_count=Count("owner__snapshot", distinct=True),
+        followers_count=Count("owner__followed", distinct=True),
+        following_count=Count("owner__following", distinct=True),
+    ).order_by("-created_at")
     serializer_class = ProfileSerializer
     filter_backends = [
         filters.OrderingFilter,
         DjangoFilterBackend,
     ]
     filterset_fields = [
-        'owner__following__followed__profile',
-        'owner__followed__owner__profile',
-        'era_preference__id',
-        'genre_preference__id',
-        'category_preference__id',
+        "owner__following__followed__profile",
+        "owner__followed__owner__profile",
+        "era_preference__id",
+        "genre_preference__id",
+        "category_preference__id",
     ]
     ordering_fields = [
-        'snapshots_count',
-        'followers_count',
-        'following_count',
-        'owner__followed__created_at',
-        'owner__following__created_at',
+        "snapshots_count",
+        "followers_count",
+        "following_count",
+        "owner__followed__created_at",
+        "owner__following__created_at",
     ]
 
 
@@ -46,9 +46,8 @@ class ProfileDetail(generics.RetrieveUpdateAPIView):
 
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Profile.objects.annotate(
-        snapshots_count=Count('owner__snapshot', distinct=True),
-        followers_count=Count('owner__followed', distinct=True),
-        following_count=Count('owner__following', distinct=True)
-
-    ).order_by('-created_at')
+        snapshots_count=Count("owner__snapshot", distinct=True),
+        followers_count=Count("owner__followed", distinct=True),
+        following_count=Count("owner__following", distinct=True),
+    ).order_by("-created_at")
     serializer_class = ProfileSerializer

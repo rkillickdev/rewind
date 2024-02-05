@@ -27,7 +27,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     snapshots_count = serializers.ReadOnlyField()
     followers_count = serializers.ReadOnlyField()
     following_count = serializers.ReadOnlyField()
-    
+
     def get_is_owner(self, obj):
         request = self.context["request"]
         return request.user == obj.owner
@@ -36,7 +36,7 @@ class ProfileSerializer(serializers.ModelSerializer):
         user = self.context["request"].user
         if user.is_authenticated:
             following = Follower.objects.filter(
-                owner=user, followed=obj.owner    
+                owner=user, followed=obj.owner
             ).first()
             return following.id if following else None
         return None
@@ -60,8 +60,3 @@ class ProfileSerializer(serializers.ModelSerializer):
             "followers_count",
             "following_count",
         ]
-
-
-    
-
-    

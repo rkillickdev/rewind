@@ -414,6 +414,42 @@ App: profiles
 | urls.py | 0 | Passed |
 | views.py | 0 | Passed |
 
+App: recommendations
+
+| File | Errors | Result |
+| :----: | :-------: | :------: |
+| admin.py | 0 | Passed |
+| apps.py | 0 | Passed |
+| models.py | 0 | Passed |
+| serializers.py | 0 | Passed |
+| tests.py | 0 | Passed |
+| urls.py | 0 | Passed |
+| views.py | 0 | Passed |
+
+App: samples
+
+| File | Errors | Result |
+| :----: | :-------: | :------: |
+| admin.py | 0 | Passed |
+| apps.py | 0 | Passed |
+| models.py | 0 | Passed |
+| serializers.py | 0 | Passed |
+| tests.py | 0 | Passed |
+| urls.py | 0 | Passed |
+| views.py | 0 | Passed |
+
+App: snapshots
+
+| File | Errors | Result |
+| :----: | :-------: | :------: |
+| admin.py | 0 | Passed |
+| apps.py | 0 | Passed |
+| models.py | 0 | Passed |
+| serializers.py | 0 | Passed |
+| tests.py | 0 | Passed |
+| urls.py | 0 | Passed |
+| views.py | 0 | Passed |
+
 Main Directory:
 
 | File | Errors | Result |
