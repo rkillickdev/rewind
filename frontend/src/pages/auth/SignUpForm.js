@@ -62,6 +62,7 @@ const SignUpForm = () => {
                 type="text"
                 placeholder="username"
                 name="username"
+                aria-label="Input username"
                 value={username}
                 onChange={handleChange}
               />
@@ -78,6 +79,7 @@ const SignUpForm = () => {
                 type="password"
                 placeholder="Password"
                 name="password1"
+                aria-label="Input password"
                 value={password1}
                 onChange={handleChange}
               />
@@ -94,6 +96,7 @@ const SignUpForm = () => {
                 type="password"
                 placeholder="Confirm password"
                 name="password2"
+                aria-label="Confirm password"
                 value={password2}
                 onChange={handleChange}
               />
@@ -126,7 +129,11 @@ const SignUpForm = () => {
         md={6}
         className={`my-auto d-none d-md-block p-2 ${styles.SignUpCol}`}
       >
-        <Image className={`${appStyles.FillerImage}`} src={SignInUpImage} />
+        <Image
+          className={`${appStyles.FillerImage}`}
+          src={SignInUpImage}
+          alt="Multi coloured cassette tapes"
+        />
       </Col>
     </Row>
   );

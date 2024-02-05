@@ -72,6 +72,7 @@ function SignInForm() {
                 className={styles.Input}
                 placeholder="Username"
                 name="username"
+                aria-label="Input username"
                 value={username}
                 onChange={handleChange}
               />
@@ -88,6 +89,7 @@ function SignInForm() {
                 className={styles.Input}
                 placeholder="Password"
                 name="password"
+                aria-label="Input password"
                 value={password}
                 onChange={handleChange}
               />
@@ -120,7 +122,11 @@ function SignInForm() {
         md={6}
         className={`my-auto d-none d-md-block p-2 ${styles.SignInCol}`}
       >
-        <Image className={`${appStyles.FillerImage}`} src={SignInUpImage} />
+        <Image
+          className={`${appStyles.FillerImage}`}
+          src={SignInUpImage}
+          alt="Multi coloured cassette tapes"
+        />
       </Col>
     </Row>
   );
