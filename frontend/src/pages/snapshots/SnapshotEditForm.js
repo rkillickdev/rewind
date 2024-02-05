@@ -109,6 +109,7 @@ function SnapshotEditForm() {
           type="text"
           placeholder="Give your snapshot a title..."
           name="title"
+          aria-label="Update the title"
           value={title}
           onChange={handleChange}
         />
@@ -126,6 +127,7 @@ function SnapshotEditForm() {
           placeholder="description"
           rows={6}
           name="description"
+          aria-label="Update the description"
           value={description}
           onChange={handleChange}
         />
@@ -141,6 +143,7 @@ function SnapshotEditForm() {
         <Form.Control
           as="select"
           name="genre"
+          aria-label="Update genre"
           onChange={handleChange}
           value={genre}
         >
@@ -164,6 +167,7 @@ function SnapshotEditForm() {
         <Form.Control
           as="select"
           name="era"
+          aria-label="Update era"
           onChange={handleChange}
           value={era}
         >
@@ -187,6 +191,7 @@ function SnapshotEditForm() {
         <Form.Control
           as="select"
           name="category"
+          aria-label="Update category"
           onChange={handleChange}
           value={category}
         >
@@ -234,7 +239,12 @@ function SnapshotEditForm() {
           >
             <Form.Group className="text-center">
               <figure>
-                <Image className={appStyles.Image} src={image} rounded />
+                <Image
+                  className={appStyles.Image}
+                  src={image}
+                  alt={title}
+                  rounded
+                />
               </figure>
               <div>
                 <Form.Label
