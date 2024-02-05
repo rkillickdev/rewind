@@ -136,6 +136,7 @@ const ProfileEditForm = () => {
           value={bio}
           onChange={handleChange}
           name="bio"
+          aria-label="Update your bio"
           rows={7}
           placeholder="Write something about yourself..."
         />
@@ -156,6 +157,7 @@ const ProfileEditForm = () => {
         <Form.Control
           as="select"
           name="genre_preference"
+          aria-label="Set your genre preference"
           onChange={handleChange}
           value={genre_preference ? genre_preference : -1}
         >
@@ -182,6 +184,7 @@ const ProfileEditForm = () => {
         <Form.Control
           as="select"
           name="era_preference"
+          aria-label="Set your era preference"
           onChange={handleChange}
           value={era_preference ? era_preference : -1}
         >
@@ -208,6 +211,7 @@ const ProfileEditForm = () => {
         <Form.Control
           as="select"
           name="category_preference"
+          aria-label="Set your category preference"
           onChange={handleChange}
           value={category_preference ? category_preference : -1}
         >
@@ -261,7 +265,7 @@ const ProfileEditForm = () => {
             <Form.Group>
               {image && (
                 <figure>
-                  <Image src={image} fluid />
+                  <Image src={image} alt="Current profile picture" fluid />
                 </figure>
               )}
               {errors?.image?.map((message, idx) => (
