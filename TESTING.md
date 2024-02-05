@@ -306,6 +306,103 @@
 
 
 
+[Back to top &uarr;](#contents)
+
+## **Validators**
+
+### **PEP8 Validation:**
+
+<br>
+
+I passed all python files through the [Code Institute Python Linter](https://pep8ci.herokuapp.com/) and no errors are found. Results of this testing can be seen below:
+
+<br>
+
+App: rewind
+
+| File | Errors | Result |
+| :----: | :-------: | :------: |
+| asgi.py | 0 | Passed |
+| permissions.py | 0 | Passed |
+| serializers.py | 0 | Passed |
+| settings.py | 0 | Passed |
+| urls.py | 0 | Passed |
+| views.py | 0 | Passed |
+| wsgi.py | 0 | Passed |
+
+App: home
+
+| File | Errors | Result |
+| :----: | :-------: | :------: |
+| admin.py | 0 | Passed |
+| apps.py | 0 | Passed |
+| models.py | 0 | Passed |
+| tests.py | 0 | Passed |
+| urls.py | 0 | Passed |
+| views.py | 0 | Passed |
+
+App: locations
+
+| File | Errors | Result |
+| :----: | :-------: | :------: |
+| admin.py | 0 | Passed |
+| apps.py | 0 | Passed |
+| forms.py | 0 | Passed |
+| models.py | 0 | Passed |
+| test_views.py | 0 | Passed |
+| urls.py | 0 | Passed |
+| views.py | 0 | Passed |
+
+App: places
+
+| File | Errors | Result |
+| :----: | :-------: | :------: |
+| admin.py | 0 | Passed |
+| apps.py | 0 | Passed |
+| forms.py | 0 | Passed |
+| models.py | 0 | Passed |
+| test_views.py | 0 | Passed |
+| urls.py | 0 | Passed |
+| views.py | 0 | Passed |
+
+App: profiles
+
+| File | Errors | Result |
+| :----: | :-------: | :------: |
+| admin.py | 0 | Passed |
+| apps.py | 0 | Passed |
+| forms.py | 0 | Passed |
+| models.py | 0 | Passed |
+| test_models.py | 0 | Passed |
+| test_views.py | 0 | Passed |
+| urls.py | 0 | Passed |
+| views.py | 0 | Passed |
+
+App: trips
+
+| File | Errors | Result |
+| :----: | :-------: | :------: |
+| admin.py | 0 | Passed |
+| apps.py | 0 | Passed |
+| forms.py | 0 | Passed |
+| models.py | 0 | Passed |
+| test_models.py | 0 | Passed |
+| test_views.py | 0 | Passed |
+| urls.py | 0 | Passed |
+| views.py | 0 | Passed |
+
+Main Directory:
+
+| File | Errors | Result |
+| :----: | :-------: | :------: |
+| manage.py | 0 | Passed |
+
+<br>
+
+[Back to top &uarr;](#contents)
+
+
+
 
 
 
