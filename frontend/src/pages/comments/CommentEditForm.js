@@ -51,6 +51,7 @@ function CommentEditForm(props) {
           className={styles.Form}
           as="textarea"
           value={formContent}
+          aria-label="Update your comment"
           onChange={handleChange}
           rows={2}
         />
