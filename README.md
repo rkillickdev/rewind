@@ -633,6 +633,10 @@ ___
 
 </details>
 
+## **Accessibility**
+
+* Redundant Alternative Text occurs for each snapshot as it is the same as the title
+
 ## **Future Features**
 
 | | User Story | Acceptance Criteria Satisfied | 
