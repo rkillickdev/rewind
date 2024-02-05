@@ -65,6 +65,7 @@ const UsernameForm = () => {
               <Form.Control
                 placeholder="username"
                 type="text"
+                aria-label="Update your username"
                 value={username}
                 onChange={(event) => setUsername(event.target.value)}
               />

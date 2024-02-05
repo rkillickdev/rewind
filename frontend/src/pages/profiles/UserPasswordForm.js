@@ -65,6 +65,7 @@ const UserPasswordForm = () => {
               <Form.Control
                 placeholder="new password"
                 type="password"
+                aria-label="Enter a new password"
                 value={new_password1}
                 onChange={handleChange}
                 name="new_password1"
@@ -80,6 +81,7 @@ const UserPasswordForm = () => {
               <Form.Control
                 placeholder="confirm new password"
                 type="password"
+                aria-label="Confirm your new password"
                 value={new_password2}
                 onChange={handleChange}
                 name="new_password2"
