@@ -5,7 +5,7 @@ from pins.models import Pin
 
 
 class SnapshotSerializer(serializers.ModelSerializer):
-    """ 
+    """
     Serializer for the Snapshot Model.
     The owner of the snapshot is returned as part of the json response.
     This is a read only field and displays the username of the owner.
@@ -20,13 +20,6 @@ class SnapshotSerializer(serializers.ModelSerializer):
     """
 
     owner = serializers.ReadOnlyField(source="owner.username")
-    # era = serializers.StringRelatedField()
-    # genre = serializers.StringRelatedField()
-    # category = serializers.StringRelatedField()
-    # category_name = serializers.RelatedField(source='category', read_only=True)
-    # era_decade = serializers.ReadOnlyField(source='era.decade')
-    # genre_style = serializers.ReadOnlyField(source='genre.style')
-    # category_title = serializers.ReadOnlyField(source='category.title')
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source="owner.profile.id")
     profile_image = serializers.ReadOnlyField(source="owner.profile.image.url")
@@ -38,14 +31,16 @@ class SnapshotSerializer(serializers.ModelSerializer):
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
-            raise serializers.ValidationError('Please choose an image smaller than 2MB')
+            raise serializers.ValidationError(
+                "Please choose an image smaller than 2MB"
+            )
         if value.image.height > 4096:
             raise serializers.ValidationError(
-                'Image height larger than 4096px!'
+                "Image height larger than 4096px!"
             )
         if value.image.width > 4096:
             raise serializers.ValidationError(
-                'Image width larger than 4096px!'
+                "Image width larger than 4096px!"
             )
         return value
 
@@ -57,7 +52,7 @@ class SnapshotSerializer(serializers.ModelSerializer):
         user = self.context["request"].user
         if user.is_authenticated:
             recommendation = Recommendation.objects.filter(
-                owner=user, snapshot=obj  
+                owner=user, snapshot=obj
             ).first()
             return recommendation.id if recommendation else None
         return None
@@ -65,9 +60,7 @@ class SnapshotSerializer(serializers.ModelSerializer):
     def get_pin_id(self, obj):
         user = self.context["request"].user
         if user.is_authenticated:
-            pin = Pin.objects.filter(
-                owner=user, snapshot=obj  
-            ).first()
+            pin = Pin.objects.filter(owner=user, snapshot=obj).first()
             return pin.id if pin else None
         return None
 
@@ -100,8 +93,8 @@ class SnapshotDetailSerializer(SnapshotSerializer):
     """
     Inherits from the SnapshotSerializer above.
     Additionally, image is defined to
-    allow this field to be blank when sending a 
-    put request to the API endpoint. 
+    allow this field to be blank when sending a
+    put request to the API endpoint.
     """
 
     image = serializers.ImageField(required=False)

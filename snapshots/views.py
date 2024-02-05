@@ -19,34 +19,29 @@ class SnapshotList(generics.ListCreateAPIView):
     serializer_class = SnapshotSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Snapshot.objects.annotate(
-        comments_count=Count('comment', distinct=True),
-        recommendations_count=Count('recommendations', distinct=True),
-        samples_count=Count('samples', distinct=True )
-    ).order_by('-created_at')
+        comments_count=Count("comment", distinct=True),
+        recommendations_count=Count("recommendations", distinct=True),
+        samples_count=Count("samples", distinct=True),
+    ).order_by("-created_at")
     filter_backends = [
         filters.OrderingFilter,
         filters.SearchFilter,
         DjangoFilterBackend,
     ]
     filterset_fields = [
-        'owner__followed__owner__profile',
-        'pins__owner__profile',
-        'owner__profile',
-        'era__id',
-        'genre__id',
-        'category__id',
+        "owner__followed__owner__profile",
+        "pins__owner__profile",
+        "owner__profile",
+        "era__id",
+        "genre__id",
+        "category__id",
     ]
-    search_fields = [
-        'title',
-        'era__decade',
-        'genre__style',
-        'category__title'
-    ]
+    search_fields = ["title", "era__decade", "genre__style", "category__title"]
     ordering_fields = [
-        'comments_count',
-        'recommendations_count',
-        'pins__created_at',
-        'genre__id',
+        "comments_count",
+        "recommendations_count",
+        "pins__created_at",
+        "genre__id",
     ]
 
     def perform_create(self, serializer):
@@ -62,6 +57,6 @@ class SnapshotDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = SnapshotDetailSerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Snapshot.objects.annotate(
-        comments_count=Count('comment', distinct=True),
-        recommendations_count=Count('recommendations', distinct=True)
-    ).order_by('-created_at')
+        comments_count=Count("comment", distinct=True),
+        recommendations_count=Count("recommendations", distinct=True),
+    ).order_by("-created_at")
