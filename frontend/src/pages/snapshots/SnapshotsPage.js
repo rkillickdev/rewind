@@ -89,10 +89,12 @@ function SnapshotsPage({ message, filter = "", curated, pinboard }) {
               <Form.Control
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
+                name="search"
                 type="text"
+                aria-label="Search Bar"
                 className="mr-sm-2"
                 placeholder="Search snapshots"
-              ></Form.Control>
+              />
             </Form>
           </Col>
           <Col>
