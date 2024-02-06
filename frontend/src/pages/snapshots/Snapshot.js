@@ -167,7 +167,7 @@ const Snapshot = (props) => {
           {title && <Card.Title className="text-center">{title}</Card.Title>}
           {description && <Card.Text>{description}</Card.Text>}
           <div className={`d-flex justify-content-between ${styles.PostBar}`}>
-            <div>
+            <div className={!is_owner || !snapshotPage ? "m-auto" : "mr-auto"}>
               {currentUser ? (
                 is_owner ? (
                   <OverlayTrigger
@@ -176,7 +176,9 @@ const Snapshot = (props) => {
                       <Tooltip>You can't recommend your own post!</Tooltip>
                     }
                   >
-                    <i className="fa-regular fa-thumbs-up" />
+                    <i
+                      className={`fa-regular fa-thumbs-up ${styles.IconOutline}`}
+                    />
                   </OverlayTrigger>
                 ) : recommendation_id ? (
                   <span onClick={handleUnrecommend}>
@@ -222,14 +224,14 @@ const Snapshot = (props) => {
               </Link>
               {comments_count}
             </div>
-            <div>
-              {is_owner && snapshotPage && (
+            {is_owner && snapshotPage && (
+              <div>
                 <EditDelete
                   handleEdit={handleEdit}
                   handleDelete={() => setShowModal(true)}
                 />
-              )}
-            </div>
+              </div>
+            )}
           </div>
         </Card.Body>
       </Card>
