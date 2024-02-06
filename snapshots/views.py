@@ -1,4 +1,4 @@
-from django.db.models import Count
+from django.db.models import Count, Q
 from rest_framework import generics, permissions, filters
 from django_filters.rest_framework import DjangoFilterBackend
 from rewind.permissions import IsOwnerOrReadOnly
@@ -14,6 +14,8 @@ class SnapshotList(generics.ListCreateAPIView):
     is created, the logged in user is associated with the newly
     created instance of Snapshot.  The 'owner' field of the
     serializer is populated with the user.
+    Read the following documentation for filtering on annotations:
+    https://docs.djangoproject.com/en/5.0/topics/db/aggregation/#filtering-on-annotations
     """
 
     serializer_class = SnapshotSerializer
@@ -21,7 +23,9 @@ class SnapshotList(generics.ListCreateAPIView):
     queryset = Snapshot.objects.annotate(
         comments_count=Count("comment", distinct=True),
         recommendations_count=Count("recommendations", distinct=True),
-        samples_count=Count("samples", distinct=True),
+        samples_count=Count(
+            "samples", distinct=True, filter=Q(samples__approved=True)
+        ),
     ).order_by("-created_at")
     filter_backends = [
         filters.OrderingFilter,
