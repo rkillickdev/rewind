@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import appStyles from "../../App.module.css";
 import styles from "../../styles/Snapshot.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
@@ -171,7 +172,7 @@ const Snapshot = (props) => {
                     alt="Audio Waveform"
                     height={45}
                     width={45}
-                    className={styles.Waveform}
+                    className={appStyles.ImageIconClickable}
                   />
                 </Link>
               </OverlayTrigger>

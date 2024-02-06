@@ -9,84 +9,61 @@
     min-width: 75px;
   }
   
-  .Button:hover {
-    opacity: 0.8;
-    border-color: transparent;
-    cursor: pointer;
-  }
+.Button:hover {
+  opacity: 0.8;
+  border-color: transparent;
+  cursor: pointer;
+}
   
-  .Button:hover:active {
-    background-color: var(--primary-color) !important;
-  }
+.Button:hover:active {
+  background-color: var(--primary-color) !important;
+}
+
+.Button:active {
+  background-color: var(--primary-color) !important;
+}
   
-  .Button:active {
-    background-color: var(--primary-color) !important;
-  }
+.Button:focus {
+  background-color: var(--primary-color);
+}
   
-  .Button:focus {
-    background-color: var(--primary-color);
-  }
+.Wide {
+  padding: 10px 50px;
+  width: 100%;
+}
   
-  .Wide {
-    padding: 10px 50px;
-    width: 100%;
-  }
-  
-  /* .Blue,
-  .BlueOutline:hover,
-  .Bright:hover {
-    background-color: #2142b2;
-    color: #ffffff;
-  } */
-  
-  /* .BlueOutline,
-  .Blue:hover {
-    border: 1px solid #2142b2;
-    background-color: #ffffff;
-    color: #2142b2;
-  } */
+.Feature {
+  transition: opacity ease-in-out 0.3s;
+}
 
-  /* .Follow,
-  .FollowOutline:hover {
-    background-color: var(--primary-color);
-    color: var(--white-color); 
-  }
+.Feature,
+.FeatureOutline:hover  {
+  background-color: var(--secondary-color);
+  color: var(--dark-color); 
+}
 
-  .Follow:hover,
-  .FollowOutline {
-    background-color: var(--white-color);
-    color: var(--primary-color);
-    border-color: var(--primary-color);
-  } */
+.Feature:hover {
+  background-color: var(--secondary-color);
+  color: var(--dark-color);
+  opacity: 0.5;
+  border-color: var(--primary-color);
+}
 
-  .Feature,
-  .FeatureOutline:hover  {
-    background-color: var(--secondary-color);
-    color: var(--dark-color); 
-  }
+.FeatureOutline {
+  background-color: var(--white-color);
+  color: var(--dark-color);
+  border-color: var(--primary-color);
+  transition: background-color ease-in-out 0.3s;  
+}
 
-  .Feature:hover {
-    background-color: var(--primary-color);
-    color: var(--dark-color);
-    opacity: 0.5;
-    border-color: var(--primary-color);
-    transition: color ease-in-out 0.3s;
-  }
+.Highlight {
+  background-color: var(--highlight-color);
+  color: var(--white-color);
+  transition: opacity ease-in-out 0.3s;
+}
 
-  .FeatureOutline {
-    background-color: var(--white-color);
-    color: var(--dark-color);
-    border-color: var(--primary-color);  
-  }
-
-  .Highlight {
-    background-color: var(--highlight-color);
-    color: var(--white-color); 
-  }
-
-  .Highlight:hover {
-    background-color: var(--light-color);
-    color: var(--dark-color);
-    transition: color ease-in-out 0.3s;
-  }
+.Highlight:hover {
+  background-color: var(--highlight-color);
+  opacity: 0.5;
+}
   

@@ -93,6 +93,15 @@ figure {
   display: inline-block;
 }
 
+.ImageIconClickable {
+  transition: opacity ease-in-out 0.3s;
+}
+
+.ImageIconClickable:hover {
+  opacity: 0.5;
+  transition: opacity ease-in-out 0.3s;
+}
+
 /* scrollbar */
 *::-webkit-scrollbar {
   width: 5px;

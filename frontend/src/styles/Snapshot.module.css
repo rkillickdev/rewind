@@ -6,32 +6,24 @@
     text-align: center;
   }
   
-  .Post figure,
-  h5 {
-    margin: 0 0;
-  }
-  
-  .IconSolid {
-    color: var(--primary-color);
-  }
-  
-  .IconSolid:hover {
-    color: var(--secondary-color);
-  }
+.Post figure,
+h5 {
+  margin: 0 0;
+}
 
-  .IconOutline {
-    color: var(--primary-color);
-  }
-  
-  .IconOutline:hover {
-    color: var(--secondary-color);
-  }
+.IconSolid {
+  color: var(--primary-color);
+}
 
-  .Waveform {
-    transition: opacity ease-in-out 0.3s;
-  }
+.IconSolid:hover {
+  color: var(--secondary-color);
+}
 
-  .Waveform:hover {
-    opacity: 0.5;
-    transition: opacity ease-in-out 0.3s;
-  }
+.IconOutline {
+  color: var(--primary-color);
+}
+
+.IconOutline:hover {
+  color: var(--secondary-color);
+}
+

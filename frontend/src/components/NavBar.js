@@ -1,6 +1,7 @@
 import React from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import logo from "../assets/cassette-orange-logo.png";
+import appStyles from "../App.module.css";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
 import {
@@ -88,7 +89,9 @@ const NavBar = () => {
     >
       <Container>
         <NavLink to="/">
-          <Navbar.Brand className="d-flex align-items-center">
+          <Navbar.Brand
+            className={`d-flex align-items-center ${appStyles.ImageIconClickable}`}
+          >
             <img src={logo} alt="casette tape logo" height="60" />
             <h1>Rewind</h1>
           </Navbar.Brand>
