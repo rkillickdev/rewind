@@ -9,6 +9,7 @@ import EditDelete from "../../components/EditDelete";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import useAlert from "../../hooks/useAlert";
 import ModalPopup from "../../components/ModalPopup";
+import Waveform from "../../assets/sound-waves.png";
 
 const Snapshot = (props) => {
   const {
@@ -24,6 +25,7 @@ const Snapshot = (props) => {
     pin_id,
     comments_count,
     recommendations_count,
+    samples_count,
     snapshotPage,
     setSnapshots,
     pinboard,
@@ -155,6 +157,25 @@ const Snapshot = (props) => {
               <Avatar src={profile_image} height={55} />
               {owner}
             </Link>
+            {samples_count > 0 && (
+              <OverlayTrigger
+                placement="top"
+                overlay={<Tooltip>Samples available for this snapshot</Tooltip>}
+              >
+                <Link
+                  to={`/snapshots/${id}`}
+                  aria-label="Navigate to samples associated with this snapshot"
+                >
+                  <img
+                    src={Waveform}
+                    alt="Audio Waveform"
+                    height={45}
+                    width={45}
+                    className={styles.Waveform}
+                  />
+                </Link>
+              </OverlayTrigger>
+            )}
             <div className="d-flex align-items-center">
               <span>{updated_at}</span>
             </div>

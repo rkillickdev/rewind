@@ -69,7 +69,6 @@ color: var(--highlight-color);
 
 a:hover i {
 color: var(--secondary-color);
-transition: color ease-in-out 0.3s;
 }
 
 input[type="file"] {
@@ -81,11 +80,11 @@ color: var(--primary-color);
 font-size: 1.6rem;
 padding: 7px;
 vertical-align: middle;
+transition: color ease-in-out 0.3s;
 }
 
 i:hover {
 cursor: pointer;
-transition: color ease-in-out 0.3s;
 color: var(--secondary-color);
 }
 

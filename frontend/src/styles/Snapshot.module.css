@@ -26,3 +26,12 @@
   .IconOutline:hover {
     color: var(--secondary-color);
   }
+
+  .Waveform {
+    transition: opacity ease-in-out 0.3s;
+  }
+
+  .Waveform:hover {
+    opacity: 0.5;
+    transition: opacity ease-in-out 0.3s;
+  }
