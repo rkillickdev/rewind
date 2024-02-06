@@ -79,8 +79,8 @@ function SnapshotsPage({ message, filter = "", curated, pinboard }) {
             button="Get Started"
           />
         )}
-        <Row>
-          <Col xs={8} className="my-auto">
+        <Row className={styles.SearchAdd}>
+          <Col xs={currentUser && 9} className="m-auto">
             <i className={`fas fa-search ${styles.SearchIcon}`}></i>
             <Form
               className={styles.SearchBar}
@@ -93,13 +93,15 @@ function SnapshotsPage({ message, filter = "", curated, pinboard }) {
                 type="text"
                 aria-label="Search Bar"
                 className="mr-sm-2"
-                placeholder="Search snapshots"
+                placeholder="Search snapshots by title or preference"
               />
             </Form>
           </Col>
-          <Col>
-            <AddSnapshot />
-          </Col>
+          {currentUser && (
+            <Col>
+              <AddSnapshot />
+            </Col>
+          )}
         </Row>
         {hasLoaded ? (
           currentUser ? (

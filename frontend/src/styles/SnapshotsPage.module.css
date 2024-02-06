@@ -16,3 +16,11 @@
     cursor: default;
     color: #cfced3;
   }
+
+/* Media query for mobile devices from 767px and down. Row switches to flex column */
+@media only screen and (max-width: 767px) {
+  .SearchAdd {
+    display: flex;
+    flex-direction: column;
+  }
+}
