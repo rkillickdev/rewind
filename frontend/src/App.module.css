@@ -1,5 +1,5 @@
 :root {
-    /* --primary-color: #E57E25; */
+    /* --primary-color: #CF2000; */
     --primary-color: #E07000;
     --secondary-color: #F5B047;
     --light-color: #E9EBED;
@@ -68,7 +68,7 @@ color: var(--highlight-color);
 }
 
 a:hover i {
-color: var(--highlight-color);
+color: var(--secondary-color);
 transition: color ease-in-out 0.3s;
 }
 

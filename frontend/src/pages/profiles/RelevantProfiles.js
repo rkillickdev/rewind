@@ -36,7 +36,7 @@ const RelevantProfiles = ({ mobile }) => {
         </h2>
         {mobile ? (
           <div className="d-flex justify-content-around">
-            {preferenceFilteredProfiles.slice(0, 4).map((profile) => (
+            {preferenceFilteredProfiles.slice(0, 3).map((profile) => (
               <Profile key={profile.id} profile={profile} mobile />
             ))}
           </div>
