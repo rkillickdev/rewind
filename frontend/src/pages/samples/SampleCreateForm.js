@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 
 import Upload from "../../assets/sound-waves.png";
 
+import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import { axiosReq } from "../../api/axiosDefaults";
 import useAlert from "../../hooks/useAlert";
@@ -78,7 +79,9 @@ const SampleCreateForm = (props) => {
             htmlFor="audio-upload"
           >
             <img src={Upload} alt="upload a sample" height={45} width={45} />
-            <p className="mb-0 px-3">Click here to add a sample</p>
+            <p className={`${appStyles.FeatureHeading} mb-0 px-3 h4`}>
+              Click here to add a sample
+            </p>
           </Form.Label>
         )}
         <Form.File

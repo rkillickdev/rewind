@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
+import btnStyles from "../../styles/Button.module.css";
+
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import InputGroup from "react-bootstrap/InputGroup";
@@ -74,7 +76,7 @@ function CommentCreateForm(props) {
         </Alert>
       ))}
       <button
-        className={`${styles.Button} btn d-block ml-auto`}
+        className={`${btnStyles.Button} ${btnStyles.Feature} btn d-block ml-auto`}
         disabled={!content.trim()}
         type="submit"
       >

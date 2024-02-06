@@ -3,7 +3,7 @@
     border-bottom: 2px var(--primary-color) solid;
   }
   
-  .Button {
+  /* .Button {
     border: none;
     background-color: var(--primary-color);
     color: var(--white-color); 
@@ -18,4 +18,4 @@
     background-color: var(--secondary-color);
     color: var(--white-color);
     border-color: var(--primary-color);
-  }
+  } */

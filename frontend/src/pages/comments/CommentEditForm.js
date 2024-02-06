@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import { axiosRes } from "../../api/axiosDefaults";
 
+import btnStyles from "../../styles/Button.module.css";
 import styles from "../../styles/CommentCreateEditForm.module.css";
 import useAlert from "../../hooks/useAlert";
 
@@ -64,14 +65,14 @@ function CommentEditForm(props) {
 
       <div className="text-right">
         <button
-          className={styles.Button}
+          className={`${btnStyles.Button} ${btnStyles.Highlight}`}
           onClick={() => setShowEditForm(false)}
           type="button"
         >
           cancel
         </button>
         <button
-          className={styles.Button}
+          className={`${btnStyles.Button} ${btnStyles.Feature}`}
           disabled={!content.trim()}
           type="submit"
         >

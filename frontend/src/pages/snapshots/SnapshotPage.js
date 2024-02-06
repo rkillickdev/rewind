@@ -69,6 +69,13 @@ function SnapshotPage() {
               setSnapshot={setSnapshot}
               setSamples={setSamples}
             />
+            <CommentCreateForm
+              profile_id={currentUser.profile_id}
+              profileImage={profile_image}
+              snapshot={id}
+              setSnapshot={setSnapshot}
+              setComments={setComments}
+            />
           </Container>
         )}
 
@@ -78,20 +85,7 @@ function SnapshotPage() {
           snapshotPage
         />
         <Container className={appStyles.Content}>
-          {currentUser ? (
-            <>
-              <CommentCreateForm
-                profile_id={currentUser.profile_id}
-                profileImage={profile_image}
-                snapshot={id}
-                setSnapshot={setSnapshot}
-                setComments={setComments}
-              />
-            </>
-          ) : comments.results.length ? (
-            "Comments"
-          ) : null}
-          {samples.results.length ? (
+          {samples.results.length &&
             samples.results
               .filter(
                 (sample) =>
@@ -104,12 +98,7 @@ function SnapshotPage() {
                   setSnapshot={setSnapshot}
                   setSamples={setSamples}
                 />
-              ))
-          ) : currentUser ? (
-            <span>No samples added yet. Be the first to add a sample.</span>
-          ) : (
-            <span>No samples yet</span>
-          )}
+              ))}
           {comments.results.length ? (
             <InfiniteScroll
               children={comments.results.map((comment) => (

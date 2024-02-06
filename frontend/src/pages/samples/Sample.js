@@ -9,6 +9,7 @@ import { axiosRes } from "../../api/axiosDefaults";
 import useAlert from "../../hooks/useAlert";
 import ModalPopup from "../../components/ModalPopup";
 import Waveform from "../../assets/sound-waves.png";
+import Pending from "../../assets/pending.png";
 
 const Sample = (props) => {
   const {
@@ -57,33 +58,27 @@ const Sample = (props) => {
           !approved && styles.Pending
         } d-flex justify-content-between`}
       >
-        <Link to={`/profiles/${profile_id}`}>
-          <Avatar src={profile_image} />
-          <span className={`${styles.Owner} align-self-center ml-2`}>
-            {owner}
-          </span>
+        {!approved && is_owner ? (
+          <OverlayTrigger
+            placement="top"
+            overlay={<Tooltip>Your sample is pending approval</Tooltip>}
+          >
+            <img src={Pending} alt="Audio Waveform" height={45} width={45} />
+          </OverlayTrigger>
+        ) : (
           <img src={Waveform} alt="Audio Waveform" height={45} width={45} />
-        </Link>
+        )}
         <audio src={audio} controls />
-        <div className="d-flex">
-          {!approved && is_owner ? (
-            <OverlayTrigger
-              placement="top"
-              overlay={<Tooltip>Your sample is pending approval</Tooltip>}
-            >
-              <i className="fa-solid fa-circle-xmark"></i>
-            </OverlayTrigger>
-          ) : (
-            <OverlayTrigger
-              placement="top"
-              overlay={<Tooltip>Your sample is pending approval</Tooltip>}
-            >
-              <i className="fa-solid fa-circle-check"></i>
-            </OverlayTrigger>
-          )}
-
-          {is_owner && <EditDelete handleDelete={() => setShowModal(true)} />}
-        </div>
+        {is_owner ? (
+          <EditDelete handleDelete={() => setShowModal(true)} />
+        ) : (
+          <Link to={`/profiles/${profile_id}`}>
+            <Avatar src={profile_image} />
+            <span className={`${styles.Owner} align-self-center ml-2`}>
+              {owner}
+            </span>
+          </Link>
+        )}
       </Media>
       <ModalPopup
         show={showModal}

@@ -9,6 +9,7 @@ import { axiosRes } from "../../api/axiosDefaults";
 import useAlert from "../../hooks/useAlert";
 import CommentEditForm from "./CommentEditForm";
 import ModalPopup from "../../components/ModalPopup";
+import CommentBubble from "../../assets/chat.png";
 
 const Comment = (props) => {
   const {
@@ -54,12 +55,16 @@ const Comment = (props) => {
     <>
       <hr />
       <Media>
-        <Link to={`/profiles/${profile_id}`}>
-          <Avatar src={profile_image} />
-        </Link>
-        <Media.Body className="align-self-center ml-2">
-          <span className={styles.Owner}>{owner}</span>
-          <span className={styles.Date}>{updated_at}</span>
+        <img src={CommentBubble} alt="Comment Bubble" height={45} width={45} />
+        <Media.Body className="align-self-center ml-2 text-center">
+          {!is_owner && (
+            <>
+              <div className="mb-3">
+                <span className={styles.Owner}>{owner}</span>
+                <span className={styles.Date}>{updated_at}</span>
+              </div>
+            </>
+          )}
           {showEditForm ? (
             <CommentEditForm
               id={id}
@@ -73,11 +78,15 @@ const Comment = (props) => {
             <p>{content}</p>
           )}
         </Media.Body>
-        {is_owner && !showEditForm && (
+        {is_owner && !showEditForm ? (
           <EditDelete
             handleEdit={() => setShowEditForm(true)}
             handleDelete={() => setShowModal(true)}
           />
+        ) : (
+          <Link to={`/profiles/${profile_id}`}>
+            <Avatar src={profile_image} />
+          </Link>
         )}
       </Media>
       <ModalPopup
