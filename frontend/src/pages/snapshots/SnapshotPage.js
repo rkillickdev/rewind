@@ -67,7 +67,7 @@ function SnapshotPage() {
               profileImage={profile_image}
               snapshot={id}
               setSnapshot={setSnapshot}
-              setSamples={setSamples}
+              {...snapshot.results[0]}
             />
             <CommentCreateForm
               profile_id={currentUser.profile_id}

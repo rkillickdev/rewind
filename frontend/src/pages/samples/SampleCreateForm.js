@@ -12,10 +12,11 @@ import { axiosReq } from "../../api/axiosDefaults";
 import useAlert from "../../hooks/useAlert";
 
 const SampleCreateForm = (props) => {
-  const { snapshot, setSnapshot, setSamples } = props;
+  const { snapshot, setSnapshot, setSamples, samples_count } = props;
   const [audio, setAudio] = useState("");
   const { setAlert } = useAlert();
   const [errors, setErrors] = useState({});
+  const [sampleLimitError, setSampleLimitError] = useState();
   const audioInput = useRef(null);
 
   const handleChangeAudio = (event) => {
@@ -27,6 +28,13 @@ const SampleCreateForm = (props) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (samples_count > 0) {
+      setSampleLimitError(
+        "Sorry, the maximum number of samples have been added for this snapshot",
+      );
+      return;
+    }
+
     const formData = new FormData();
 
     formData.append("snapshot", snapshot);
@@ -94,6 +102,7 @@ const SampleCreateForm = (props) => {
           ref={audioInput}
         />
       </Form.Group>
+      {sampleLimitError && <Alert variant="warning">{sampleLimitError}</Alert>}
       {errors?.audio?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
           {message}

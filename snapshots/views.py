@@ -63,4 +63,7 @@ class SnapshotDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Snapshot.objects.annotate(
         comments_count=Count("comment", distinct=True),
         recommendations_count=Count("recommendations", distinct=True),
+        samples_count=Count(
+            "samples", distinct=True, filter=Q(samples__approved=True)
+        ),
     ).order_by("-created_at")
