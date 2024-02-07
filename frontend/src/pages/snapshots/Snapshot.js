@@ -158,28 +158,7 @@ const Snapshot = (props) => {
               <Avatar src={profile_image} height={55} />
               {owner}
             </Link>
-            {samples_count > 0 && (
-              <OverlayTrigger
-                placement="top"
-                overlay={<Tooltip>Samples available for this snapshot</Tooltip>}
-              >
-                <Link
-                  to={`/snapshots/${id}`}
-                  aria-label="Navigate to samples associated with this snapshot"
-                >
-                  <img
-                    src={Waveform}
-                    alt="Audio Waveform"
-                    height={45}
-                    width={45}
-                    className={appStyles.ImageIconClickable}
-                  />
-                </Link>
-              </OverlayTrigger>
-            )}
-            <div className="d-flex align-items-center">
-              <span>{updated_at}</span>
-            </div>
+            <span>{updated_at}</span>
           </Media>
         </Card.Body>
         <Link to={`/snapshots/${id}`}>
@@ -245,6 +224,27 @@ const Snapshot = (props) => {
                 <i className={`far fa-comments ${styles.IconOutline}`} />
               </Link>
               {comments_count}
+              {samples_count > 0 && !snapshotPage && (
+                <OverlayTrigger
+                  placement="top"
+                  overlay={
+                    <Tooltip>Samples available for this snapshot</Tooltip>
+                  }
+                >
+                  <Link
+                    to={`/snapshots/${id}`}
+                    aria-label="Navigate to samples associated with this snapshot"
+                  >
+                    <img
+                      src={Waveform}
+                      alt="Audio Waveform"
+                      height={45}
+                      width={45}
+                      className={appStyles.ImageIconClickable}
+                    />
+                  </Link>
+                </OverlayTrigger>
+              )}
             </div>
             {is_owner && snapshotPage && (
               <div>

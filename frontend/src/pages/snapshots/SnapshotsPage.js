@@ -92,72 +92,113 @@ function SnapshotsPage({ message, filter = "", curated, pinboard }) {
   }
 
   return (
-    <Row className="h-100">
-      <Col className="py-2 p-0 p-lg-2" lg={8}>
-        {currentUser ? (
-          <RelevantProfiles mobile />
-        ) : (
-          <UserDirection
-            hide="d-lg-none"
-            src={HeroImage}
-            alt="Retro boombox"
-            heading="Take a trip back in time"
-            page="/signup"
-            button="Get Started"
-          />
-        )}
-        <Row className={styles.SearchAdd}>
-          <Col xs={currentUser && 9} className="m-auto">
-            <i className={`fas fa-search ${styles.SearchIcon}`}></i>
-            <Form
-              className={styles.SearchBar}
-              onSubmit={(event) => event.preventDefault()}
-            >
-              <Form.Control
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                name="search"
-                type="text"
-                aria-label="Search Bar"
-                className="mr-sm-2"
-                placeholder="Search snapshots by title or preference"
-              />
-            </Form>
-            <div
-              className={`${styles.SortIcons} d-flex align-items-center mb-4`}
-            >
-              <p className="my-0 mr-3">Sort By:</p>
-              <i
-                onClick={handleRecommendationSort}
-                className={"fa-solid fa-thumbs-up"}
-                aria-label="Sort by recommendation count"
-              />
-              <i
-                onClick={handleCommentSort}
-                className={"far fa-comments"}
-                aria-label="Sort by comment count"
-              />
-              <i
-                onClick={handleDateSort}
-                className={"fa-solid fa-calendar-days"}
-                aria-label="Sort by most recently posted"
-              />
-            </div>
-          </Col>
-
-          {currentUser && (
-            <Col>
-              <AddSnapshot />
-            </Col>
+    <>
+      <Row className="">
+        <Col className="py-2 p-0 p-lg-2" lg={8}>
+          {currentUser ? (
+            <RelevantProfiles mobile />
+          ) : (
+            <UserDirection
+              hide="d-lg-none"
+              src={HeroImage}
+              alt="Retro boombox"
+              heading="Take a trip back in time"
+              page="/signup"
+              button="Get Started"
+            />
           )}
-        </Row>
-        {hasLoaded ? (
-          currentUser ? (
-            <>
-              {snapshots.results.length ? (
-                curated && curatedSnapshots.length ? (
+        </Col>
+      </Row>
+      <Row className={styles.SearchAdd}>
+        <Col lg={currentUser && 8} className="m-auto">
+          <i className={`fas fa-search ${styles.SearchIcon}`}></i>
+          <Form
+            className={styles.SearchBar}
+            onSubmit={(event) => event.preventDefault()}
+          >
+            <Form.Control
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              name="search"
+              type="text"
+              aria-label="Search Bar"
+              className=""
+              placeholder="Search by title or preference"
+            />
+          </Form>
+          <div className={`${styles.SortIcons} d-flex align-items-center mb-4`}>
+            <p className="my-0 mr-3">Sort By:</p>
+            <i
+              onClick={handleRecommendationSort}
+              className={"fa-solid fa-thumbs-up"}
+              aria-label="Sort by recommendation count"
+            />
+            <i
+              onClick={handleCommentSort}
+              className={"far fa-comments"}
+              aria-label="Sort by comment count"
+            />
+            <i
+              onClick={handleDateSort}
+              className={"fa-solid fa-calendar-days"}
+              aria-label="Sort by most recently posted"
+            />
+          </div>
+        </Col>
+
+        {currentUser && (
+          <Col>
+            <AddSnapshot />
+          </Col>
+        )}
+      </Row>
+      <Row className="h-100">
+        <Col className="py-2 p-0 p-lg-2" lg={8}>
+          {hasLoaded ? (
+            currentUser ? (
+              <>
+                {snapshots.results.length ? (
+                  curated && curatedSnapshots.length ? (
+                    <InfiniteScroll
+                      children={curatedSnapshots.map((snapshot) => (
+                        <Snapshot
+                          key={snapshot.id}
+                          {...snapshot}
+                          setSnapshots={setSnapshots}
+                        />
+                      ))}
+                      dataLength={snapshots.results.length}
+                      loader={<Asset spinner />}
+                      hasMore={!!snapshots.next}
+                      next={() => fetchMoreData(snapshots, setSnapshots)}
+                    />
+                  ) : (
+                    <InfiniteScroll
+                      children={snapshots.results.map((snapshot) => (
+                        <Snapshot
+                          key={snapshot.id}
+                          {...snapshot}
+                          setSnapshots={setSnapshots}
+                          pinboard={pinboard}
+                        />
+                      ))}
+                      dataLength={snapshots.results.length}
+                      loader={<Asset spinner />}
+                      hasMore={!!snapshots.next}
+                      next={() => fetchMoreData(snapshots, setSnapshots)}
+                    />
+                  )
+                ) : (
+                  <Container className="appStyles.Content">
+                    <Asset src={NoResults} message={message} />
+                  </Container>
+                )}
+              </>
+            ) : (
+              <>
+                {snapshots.results.length ? (
                   <InfiniteScroll
-                    children={curatedSnapshots.map((snapshot) => (
+                    children={snapshots.results.map((snapshot) => (
                       <Snapshot
                         key={snapshot.id}
                         {...snapshot}
@@ -170,70 +211,33 @@ function SnapshotsPage({ message, filter = "", curated, pinboard }) {
                     next={() => fetchMoreData(snapshots, setSnapshots)}
                   />
                 ) : (
-                  <InfiniteScroll
-                    children={snapshots.results.map((snapshot) => (
-                      <Snapshot
-                        key={snapshot.id}
-                        {...snapshot}
-                        setSnapshots={setSnapshots}
-                        pinboard={pinboard}
-                      />
-                    ))}
-                    dataLength={snapshots.results.length}
-                    loader={<Asset spinner />}
-                    hasMore={!!snapshots.next}
-                    next={() => fetchMoreData(snapshots, setSnapshots)}
-                  />
-                )
-              ) : (
-                <Container className="appStyles.Content">
-                  <Asset src={NoResults} message={message} />
-                </Container>
-              )}
-            </>
+                  <Container className="appStyles.Content">
+                    <Asset src={NoResults} message={message} />
+                  </Container>
+                )}
+              </>
+            )
           ) : (
-            <>
-              {snapshots.results.length ? (
-                <InfiniteScroll
-                  children={snapshots.results.map((snapshot) => (
-                    <Snapshot
-                      key={snapshot.id}
-                      {...snapshot}
-                      setSnapshots={setSnapshots}
-                    />
-                  ))}
-                  dataLength={snapshots.results.length}
-                  loader={<Asset spinner />}
-                  hasMore={!!snapshots.next}
-                  next={() => fetchMoreData(snapshots, setSnapshots)}
-                />
-              ) : (
-                <Container className="appStyles.Content">
-                  <Asset src={NoResults} message={message} />
-                </Container>
-              )}
-            </>
-          )
-        ) : (
-          <Container className="appStyles.Content">
-            <Asset spinner />
-          </Container>
-        )}
-      </Col>
-      <Col md={4} className="d-none d-lg-block p-0 p-lg-2">
-        {currentUser ? (
-          <RelevantProfiles />
-        ) : (
-          <UserDirection
-            src={HeroImage}
-            alt="Retro boombox"
-            heading="Take a trip back in time"
-            page="/signup"
-            button="Get Started"
-          />
-        )}
-      </Col>
-    </Row>
+            <Container className="appStyles.Content">
+              <Asset spinner />
+            </Container>
+          )}
+        </Col>
+        <Col md={4} className="d-none d-lg-block p-0 p-lg-2">
+          {currentUser ? (
+            <RelevantProfiles />
+          ) : (
+            <UserDirection
+              src={HeroImage}
+              alt="Retro boombox"
+              heading="Take a trip back in time"
+              page="/signup"
+              button="Get Started"
+            />
+          )}
+        </Col>
+      </Row>
+    </>
   );
 }
 
