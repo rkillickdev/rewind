@@ -61,7 +61,7 @@ const Sample = (props) => {
         {!approved && is_owner ? (
           <OverlayTrigger
             placement="top"
-            overlay={<Tooltip>Your sample is pending approval</Tooltip>}
+            overlay={<Tooltip>Your sample is awaiting approval</Tooltip>}
           >
             <img src={Pending} alt="Audio Waveform" height={45} width={45} />
           </OverlayTrigger>

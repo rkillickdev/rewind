@@ -34,7 +34,10 @@ const SampleCreateForm = (props) => {
 
     try {
       const { data } = await axiosReq.post("/samples/", formData);
-      setAlert("You added a sample", "success");
+      setAlert(
+        "You added a sample.  This is awaiting approval by our team.",
+        "success",
+      );
       setSamples((prevSamples) => ({
         ...prevSamples,
         results: [data, ...prevSamples.results],
