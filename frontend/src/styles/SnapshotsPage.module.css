@@ -24,3 +24,10 @@
     flex-direction: column;
   }
 }
+
+/* Media query for mobile devices from 767px and down. Sort icons centered. */
+@media only screen and (max-width: 767px) {
+  .SortIcons {
+    justify-content: center;
+  }
+}

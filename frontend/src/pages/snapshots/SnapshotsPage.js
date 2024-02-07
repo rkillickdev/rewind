@@ -123,7 +123,9 @@ function SnapshotsPage({ message, filter = "", curated, pinboard }) {
                 placeholder="Search snapshots by title or preference"
               />
             </Form>
-            <div className="d-flex align-items-center">
+            <div
+              className={`${styles.SortIcons} d-flex align-items-center mb-4`}
+            >
               <p className="my-0 mr-3">Sort By:</p>
               <i
                 onClick={handleRecommendationSort}
