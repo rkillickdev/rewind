@@ -107,10 +107,26 @@ function SnapshotsPage({ message, filter = "", curated, pinboard }) {
                 placeholder="Search snapshots by title or preference"
               />
             </Form>
+            <div className="d-flex align-items-center">
+              <p className="my-0 mr-3">Sort By:</p>
+              <i
+                onClick={handleRecommendationSort}
+                className={"fa-solid fa-thumbs-up"}
+                aria-label="edit"
+              />
+              <i
+                onClick={() => {}}
+                className={"far fa-comments"}
+                aria-label="edit"
+              />
+              <i
+                onClick={() => {}}
+                className={"fa-solid fa-calendar-days"}
+                aria-label="edit"
+              />
+            </div>
           </Col>
-          <span onClick={handleRecommendationSort}>
-            <i className={"fas fa-edit"} aria-label="edit" />
-          </span>
+
           {currentUser && (
             <Col>
               <AddSnapshot />
