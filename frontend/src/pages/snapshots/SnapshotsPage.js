@@ -71,7 +71,16 @@ function SnapshotsPage({ message, filter = "", curated, pinboard }) {
         .sort((a, b) => a.recommendations_count - b.recommendations_count)
         .reverse(),
     }));
-    console.log(snapshots);
+    console.log(snapshots.results);
+  }
+
+  function handleCommentSort() {
+    setSnapshots((prevSnapshots) => ({
+      ...prevSnapshots,
+      results: prevSnapshots.results
+        .sort((a, b) => a.comments_count - b.comments_count)
+        .reverse(),
+    }));
     console.log(snapshots.results);
   }
 
@@ -115,7 +124,7 @@ function SnapshotsPage({ message, filter = "", curated, pinboard }) {
                 aria-label="Sort by recommendation count"
               />
               <i
-                onClick={() => {}}
+                onClick={handleCommentSort}
                 className={"far fa-comments"}
                 aria-label="Sort by comment count"
               />
