@@ -39,6 +39,10 @@
   object-fit: contain;
 }
 
+.Spinner {
+  color: var(--primary-color) ; 
+}
+
 .FeatureHeading {
   font-family: 'Amatic SC', sans-serif;
   font-weight: 800;

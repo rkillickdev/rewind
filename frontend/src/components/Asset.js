@@ -6,7 +6,11 @@ import styles from "../styles/Asset.module.css";
 const Asset = ({ spinner, src, message, height, width }) => {
   return (
     <div className={`${styles.Asset} p-4`}>
-      {spinner && <Spinner animation="border" />}
+      {spinner && (
+        <Spinner animation="border" role="status" className={appStyles.Spinner}>
+          <span className="sr-only">Loading...</span>
+        </Spinner>
+      )}
       {src && (
         <img
           className="img-fluid"
