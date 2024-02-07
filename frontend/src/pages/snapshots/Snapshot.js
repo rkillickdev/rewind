@@ -240,7 +240,7 @@ const Snapshot = (props) => {
                       alt="Audio Waveform"
                       height={45}
                       width={45}
-                      className={appStyles.ImageIconClickable}
+                      className={`${appStyles.ImageIconClickable} ${styles.Waveform}`}
                     />
                   </Link>
                 </OverlayTrigger>

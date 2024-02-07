@@ -89,7 +89,13 @@ const SampleCreateForm = (props) => {
             className="d-flex justify-content-center align-items-center my-0 p-2"
             htmlFor="audio-upload"
           >
-            <img src={Upload} alt="upload a sample" height={45} width={45} />
+            <img
+              src={Upload}
+              alt="upload a sample"
+              height={45}
+              width={45}
+              className={appStyles.ImageIconClickable}
+            />
             <p className={`${appStyles.FeatureHeading} mb-0 px-3 h4`}>
               Click here to add a sample
             </p>

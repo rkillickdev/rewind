@@ -56,7 +56,7 @@ const Sample = (props) => {
       <Media
         className={`${
           !approved && styles.Pending
-        } d-flex justify-content-between`}
+        } d-flex justify-content-between align-items-center`}
       >
         {!approved && is_owner ? (
           <OverlayTrigger

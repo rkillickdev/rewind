@@ -27,3 +27,10 @@ h5 {
   color: var(--secondary-color);
 }
 
+.Waveform {
+  height: 3rem;
+  width: 3rem;
+  padding: 7px;
+  vertical-align: middle;
+}
+
