@@ -64,6 +64,17 @@ function SnapshotsPage({ message, filter = "", curated, pinboard }) {
     };
   }, [filter, query, pathname, currentUser, handleFollow, handleUnfollow]);
 
+  function handleRecommendationSort() {
+    setSnapshots((prevSnapshots) => ({
+      ...prevSnapshots,
+      results: prevSnapshots.results
+        .sort((a, b) => a.recommendations_count - b.recommendations_count)
+        .reverse(),
+    }));
+    console.log(snapshots);
+    console.log(snapshots.results);
+  }
+
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
@@ -97,6 +108,9 @@ function SnapshotsPage({ message, filter = "", curated, pinboard }) {
               />
             </Form>
           </Col>
+          <span onClick={handleRecommendationSort}>
+            <i className={"fas fa-edit"} aria-label="edit" />
+          </span>
           {currentUser && (
             <Col>
               <AddSnapshot />
