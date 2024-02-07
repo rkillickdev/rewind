@@ -23,6 +23,7 @@ class SnapshotList(generics.ListCreateAPIView):
     queryset = Snapshot.objects.annotate(
         comments_count=Count("comment", distinct=True),
         recommendations_count=Count("recommendations", distinct=True),
+        total_samples=Count("samples", distinct=True),
         samples_count=Count(
             "samples", distinct=True, filter=Q(samples__approved=True)
         ),
@@ -63,6 +64,7 @@ class SnapshotDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Snapshot.objects.annotate(
         comments_count=Count("comment", distinct=True),
         recommendations_count=Count("recommendations", distinct=True),
+        total_samples=Count("samples", distinct=True),
         samples_count=Count(
             "samples", distinct=True, filter=Q(samples__approved=True)
         ),

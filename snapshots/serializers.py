@@ -28,6 +28,7 @@ class SnapshotSerializer(serializers.ModelSerializer):
     comments_count = serializers.ReadOnlyField()
     recommendations_count = serializers.ReadOnlyField()
     samples_count = serializers.ReadOnlyField()
+    total_samples = serializers.ReadOnlyField()
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
@@ -86,6 +87,7 @@ class SnapshotSerializer(serializers.ModelSerializer):
             "comments_count",
             "recommendations_count",
             "samples_count",
+            "total_samples",
         ]
 
 
