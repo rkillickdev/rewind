@@ -8,18 +8,25 @@ import { CurrentUserProvider } from "./contexts/CurrentUserContext";
 import { AlertProvider } from "./contexts/AlertContext";
 import { ProfileDataProvider } from "./contexts/ProfileDataContext";
 import { OptionsProvider } from "./contexts/OptionsContext";
+import { ErrorBoundary } from "react-error-boundary";
+import ErrorFallback from "./components/Error";
 
 ReactDOM.render(
   <Router>
-    <CurrentUserProvider>
-      <ProfileDataProvider>
-        <OptionsProvider>
-          <AlertProvider>
-            <App />
-          </AlertProvider>
-        </OptionsProvider>
-      </ProfileDataProvider>
-    </CurrentUserProvider>
+    <ErrorBoundary
+      FallbackComponent={ErrorFallback}
+      onReset={() => (location.href = "/")}
+    >
+      <CurrentUserProvider>
+        <ProfileDataProvider>
+          <OptionsProvider>
+            <AlertProvider>
+              <App />
+            </AlertProvider>
+          </OptionsProvider>
+        </ProfileDataProvider>
+      </CurrentUserProvider>
+    </ErrorBoundary>
   </Router>,
   document.getElementById("root"),
 );

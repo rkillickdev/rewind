@@ -3,18 +3,18 @@ import CassetteTapes from "../assets/multi-cassette-tapes.webp";
 import styles from "../styles/NotFound.module.css";
 import UserDirection from "./UserDirection";
 
-const Error = () => {
+const ErrorFallback = ({ error, resetErrorBoundary }) => {
   return (
     <div className={styles.NoPageResults}>
       <UserDirection
         src={CassetteTapes}
         alt="Multi coloured cassette tapes"
-        heading="There has been a problem with your request"
-        button="Go Home"
-        page="/"
+        heading="There has been a problem"
+        reset={resetErrorBoundary}
+        resetLabel="Try again"
       />
     </div>
   );
 };
 
-export default Error;
+export default ErrorFallback;

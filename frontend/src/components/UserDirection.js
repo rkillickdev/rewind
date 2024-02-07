@@ -13,6 +13,8 @@ const UserDirection = ({
   page,
   text,
   hideImage,
+  reset,
+  resetLabel,
 }) => {
   return (
     <Card className={`mb-4 p-4 ${hide}`}>
@@ -22,6 +24,15 @@ const UserDirection = ({
             {heading}
           </h1>
         </Card.Title>
+      )}
+      {reset && (
+        <button
+          onClick={reset}
+          type="button"
+          className={`${btnStyles.Button} ${btnStyles.Feature}`}
+        >
+          {resetLabel}
+        </button>
       )}
       {src && (
         <Card.Img
@@ -35,14 +46,16 @@ const UserDirection = ({
           <p className={`${appStyles.FeatureHeading} h5 text-center`}>{text}</p>
         </Card.Text>
       )}
-      <Link className="align-self-center" to={page}>
-        <button
-          type="button"
-          className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Feature}`}
-        >
-          {button}
-        </button>
-      </Link>
+      {button && (
+        <Link className="align-self-center" to={page}>
+          <button
+            type="button"
+            className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Feature}`}
+          >
+            {button}
+          </button>
+        </Link>
+      )}
     </Card>
   );
 };
