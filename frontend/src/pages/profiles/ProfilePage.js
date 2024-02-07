@@ -5,6 +5,7 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
 import Asset from "../../components/Asset";
+import HeroImage from "../../assets/cassette-player-retro.webp";
 
 import styles from "../../styles/ProfilePage.module.css";
 import appStyles from "../../App.module.css";
@@ -25,6 +26,7 @@ import { fetchMoreData } from "../../utils/utils";
 import NoResults from "../../assets/no-results.png";
 import { ProfileEditOptions } from "../../components/EditDelete";
 import useAlert from "../../hooks/useAlert";
+import UserDirection from "../../components/UserDirection";
 
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -145,7 +147,18 @@ function ProfilePage() {
   return (
     <Row>
       <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <RelevantProfiles mobile />
+        {currentUser ? (
+          <RelevantProfiles mobile />
+        ) : (
+          <UserDirection
+            hide="d-lg-none"
+            src={HeroImage}
+            alt="Retro boombox"
+            heading="Take a trip back in time"
+            page="/signup"
+            button="Get Started"
+          />
+        )}
         <Container className={appStyles.Content}>
           {hasLoaded ? (
             <>
@@ -158,7 +171,17 @@ function ProfilePage() {
         </Container>
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
-        <RelevantProfiles />
+        {currentUser ? (
+          <RelevantProfiles />
+        ) : (
+          <UserDirection
+            src={HeroImage}
+            alt="Retro boombox"
+            heading="Take a trip back in time"
+            page="/signup"
+            button="Get Started"
+          />
+        )}
       </Col>
     </Row>
   );
