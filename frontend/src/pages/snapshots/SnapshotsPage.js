@@ -112,17 +112,17 @@ function SnapshotsPage({ message, filter = "", curated, pinboard }) {
               <i
                 onClick={handleRecommendationSort}
                 className={"fa-solid fa-thumbs-up"}
-                aria-label="edit"
+                aria-label="Sort by recommendation count"
               />
               <i
                 onClick={() => {}}
                 className={"far fa-comments"}
-                aria-label="edit"
+                aria-label="Sort by comment count"
               />
               <i
                 onClick={() => {}}
                 className={"fa-solid fa-calendar-days"}
-                aria-label="edit"
+                aria-label="Sort by most recently posted"
               />
             </div>
           </Col>
