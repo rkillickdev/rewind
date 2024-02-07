@@ -71,7 +71,6 @@ function SnapshotsPage({ message, filter = "", curated, pinboard }) {
         .sort((a, b) => a.recommendations_count - b.recommendations_count)
         .reverse(),
     }));
-    console.log(snapshots.results);
   }
 
   function handleCommentSort() {
@@ -81,7 +80,15 @@ function SnapshotsPage({ message, filter = "", curated, pinboard }) {
         .sort((a, b) => a.comments_count - b.comments_count)
         .reverse(),
     }));
-    console.log(snapshots.results);
+  }
+
+  function handleDateSort() {
+    setSnapshots((prevSnapshots) => ({
+      ...prevSnapshots,
+      results: prevSnapshots.results.sort((a, b) =>
+        b.created_at.localeCompare(a.created_at),
+      ),
+    }));
   }
 
   return (
@@ -129,7 +136,7 @@ function SnapshotsPage({ message, filter = "", curated, pinboard }) {
                 aria-label="Sort by comment count"
               />
               <i
-                onClick={() => {}}
+                onClick={handleDateSort}
                 className={"fa-solid fa-calendar-days"}
                 aria-label="Sort by most recently posted"
               />
