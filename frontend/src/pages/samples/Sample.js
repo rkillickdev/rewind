@@ -56,19 +56,31 @@ const Sample = (props) => {
       <Media
         className={`${
           !approved && styles.Pending
-        } d-flex justify-content-between align-items-center`}
+        } d-flex justify-content-between align-items-center text-center`}
       >
         {!approved && is_owner ? (
           <OverlayTrigger
             placement="top"
             overlay={<Tooltip>Your sample is awaiting approval</Tooltip>}
           >
-            <img src={Pending} alt="Audio Waveform" height={45} width={45} />
+            <img
+              src={Pending}
+              alt="Pending Icon"
+              className="mx-2"
+              height={45}
+              width={45}
+            />
           </OverlayTrigger>
         ) : (
-          <img src={Waveform} alt="Audio Waveform" height={45} width={45} />
+          <img
+            src={Waveform}
+            alt="Audio Waveform"
+            className="mx-2"
+            height={45}
+            width={45}
+          />
         )}
-        <audio src={audio} controls />
+        <audio src={audio} className="px-2" controls />
         {is_owner ? (
           <EditDelete handleDelete={() => setShowModal(true)} />
         ) : (
