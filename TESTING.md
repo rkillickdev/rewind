@@ -209,7 +209,7 @@
 | ---- | ---- | :----: |
 | User clicks on Add Snapshot Icon | Snapshot Create Form displayed | Pass |
 | User clicks on Cancel button | User directed back to the page they were previously on | Pass |
-| User completes valid field entries and clicks on 'create' button | User redirected to the snapshot detail page of the newly created snapshot and toast message displayed to confirm successful creation | Pass |
+| User completes valid field entries and clicks on 'create' button | User redirected to the snapshot detail page of the newly created snapshot and toast message displayed to confirm successful creation | RE-TEST |
 
 ### **CRUD**
 
@@ -223,8 +223,11 @@
 
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
+| User clicks on pencil icon for a snapshop that they own | User directed to Snapshot edit page | Pass |
 | User clicks on Snapshot Edit Form cancel button | User redirected back to Snapshot detail Page | Pass |
-| User updates snapshot information and clicks save button | User redirected back to Snapshot detail Page and amended information displayed.  Toast message displayed informing user they have updated their snapshot | Fail |
+| User updates any snapshot fields and clicks save button | User redirected back to Snapshot detail Page and amended information displayed.  Toast message displayed informing user they have updated their snapshot | Pass |
+| User clicks save button with no fields updated | User redirected back to Snapshot detail Page | Pass | 
+
 
 ## SnapshotsPage - FOR YOU
 
@@ -233,7 +236,7 @@
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
 |  |  |   |
-| User navigates to 'For You' page | All snapshots belonging to any profiles that the current user is following should be displayed.  If the current user is not following any profiles, a message should inform them of this and encourage them to start following | Pass |
+| User navigates to 'For You' page | All snapshots belonging to any profiles that the current user is following are displayed.  If the current user is not following any profiles, a message informs them of this and encourages them to start following | Pass |
 | User sets preferences for their profile | Snapshots are filtered based on user preferences | Pass |
 | User updates preferences for their profile | Filtering of snapshots adjusted based on the updated user preferences | Pass |
 
@@ -251,8 +254,8 @@
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
 |  |  |   |
-| User navigates to 'Pinned' page | All snapshots that the user has pinned should be displayed.  If they have not pinned any snapshots, a message should inform them of this | Pass |
-| User unpins a snapshot | The list of snapshots should be updated to reflect this change, with the unpinned snapshot no longer visible | Pass |
+| User navigates to 'Pinned' page | All snapshots that the user has pinned are displayed.  Most recently pinned is displayed first.  If they have not pinned any snapshots, a message informs them of this | Pass |
+| User unpins a snapshot | The list of snapshots is updated to reflect this change, with the unpinned snapshot no longer visible | Pass |
 
 ### **CRUD**
 
@@ -266,9 +269,11 @@
 
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
-| User navigates to home, 'For You' or 'Pinned' page | If the user has not added any preference information to their profile, a button directing them to their profile edit page will be dsiplayed to right of snapshot list. (Appears above snapshot list on mobile devices below 992px).  Once preferences have been set, suggested profiles to follow should be displayed based on user preferences.  The current user's profile should not be displayed as part of these suggestions | Fail |
-| User clicks on the 'follow' button next a profile | Button changes to display 'unfollow'.  The 'followers' count for the selected profile and the 'following' count for the current user should increment by 1. | Pass |
-| User clicks on the 'unfollow' button next a profile | Button changes to display 'follow'.  The 'followed' count for the selected profile and the 'following' count for the current user should decrease by 1. | Pass |
+| User navigates to home, 'For You' or 'Pinned' page | If the user has not added any preference information to their profile, a 'Tell us more' box directing them to their profile edit page is displayed to the right of snapshot list. (Appears above snapshot list on mobile devices below 992px).  A list of 'popular profiles' appears below.  This is sorted (descending order) by the number of followers each profile has. | Pass |   
+| User sets their preferences on the profile edit page | 'Profiles you might like' are displayed by matching current user preferences to other profile preferences. The current user's profile is not displayed as part of these suggestions | Pass |
+| User sets their preferences on the profile edit page but there are no matches to the preferences of other profiles | The 'Tell us more' box and 'popular profiles' remain displayed | Pass | 
+| User clicks on the 'follow' button next to a profile | Button changes to display 'unfollow'.  The 'followers' count for the selected profile and the 'following' count for the current user increment by 1. | Pass |
+| User clicks on the 'unfollow' button next to a profile | Button changes to display 'follow'.  The 'followed' count for the selected profile and the 'following' count for the current user decrease by 1. | Pass |
 
 ## ProfilePage
 
@@ -276,10 +281,13 @@
 
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
-| Authenticated user navigates to their own profile page | Icons for edit profile, change username and change password are displayed below their profile stats | Pass |
+| Authenticated user navigates to their own profile page | Icons for edit profile, change username and change password are displayed below their profile stats.  All snapshots owned by the current user are listed below their profile info | Pass |
 | User clicks on edit profile icon | User redirected to Profile Edit Form | Pass |
 | User clicks on change username icon | User redirected to Username Form | Pass |
 | User clicks on change password icon | User redirected to User Password Form | Pass |
+| All users navigate to another user's profile page | Picture and name displayed. Stats for snapshot count, follower count and following count associated with the profile are displayed.  All snapshots belonging to the profile are listed | Pass |
+| Authenticated user navigates to another user's profile page | Additional to the info displayed to all users, a follow/unfollow button is displayed | Pass |
+
 
 ## ProfileEditForm
 
@@ -297,7 +305,7 @@
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
 | User clicks on Username Form cancel button | User redirected back to Profile Page | Pass |
-| User updates username and clicks save button | User redirected back to Profile Page and amended information displayed.  Toast message displayed informing user they have updated their username | Fail |
+| User updates username and clicks save button | User redirected back to Profile Page and amended information displayed.  Toast message displayed informing user they have updated their username | Pass |
 | User signs out and attempts sign in using updated username | User signed in successfully | Pass |
 
 ## UserPasswordForm
@@ -308,7 +316,7 @@
 | ---- | ---- | :----: |
 | User clicks on User Password Form cancel button | User redirected back to Profile Page | Pass |
 | User updates, confirms updated password and clicks save button | User redirected back to Profile Page.  Toast message displayed informing user they have updated their password | Pass |
-| User signs out and attempts sign in using updated password | User signed in successfully | Pass |
+| User signs out and attempts to sign in using updated password | User signed in successfully | Pass |
 
 ## Sign Out
 
@@ -316,7 +324,7 @@
 
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
-|  |  |   |
+| Authenticated user clicks 'sign out' nav link | User signed out and only has access to unauthenticated site content.  Toast message displayed informing the user that they have signed out | Pass |
 
 
 
