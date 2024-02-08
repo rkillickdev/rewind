@@ -85,7 +85,7 @@ function SnapshotPage() {
           snapshotPage
         />
         <Container className={appStyles.Content}>
-          {samples.results.length &&
+          {samples.results.length > 0 &&
             samples.results
               .filter(
                 (sample) =>
