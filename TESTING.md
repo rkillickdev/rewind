@@ -117,7 +117,9 @@
 
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
-| User navigates to home page | Hero Image, short app synopsis and call to action button displayed to right of snapshot list. (Appears above snapshot list on mobile devices below 992px) | Fail |
+| User navigates to home page | Hero Image, 'Take a trip back in time' heading and call to action button displayed to right of snapshot list. (Appears above snapshot list on mobile devices below 992px) | Pass |
+| User hovers over 'Get started' call to action button | Button colour transformed on hover and returns to original on moving away | Pass | 
+| User clicks on 'Get started' call to action button | User redirected to 'Sign Up' page | Pass |
 
 
 ## SignUpForm
@@ -127,10 +129,10 @@
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
 |  |  |   |
-| User hovers over 'Sign Up' button on sign up form | Button hover transformation applied | |
-| User clicks on 'Sign Up' button with a valid form | User redirected to Sign In Form prepopulated with new user details | |
-| User hovers over 'Sign In' redirect link | Link text colour changes to site primary colour | |
-| User clicks on 'Sign In' redirect link | User redirected to Sign In Form | |
+| User hovers over 'Sign Up' button on sign up form | Button hover transformation applied | Pass |
+| User clicks on 'Sign Up' button with a valid form | User redirected to Sign In Form prepopulated with new user details | Pass |
+| User hovers over 'Sign In' redirect link | Link text colour changes to site secondary colour | Pass |
+| User clicks on 'Sign In' redirect link | User redirected to Sign In Form | Pass |
 
 
 ### **CRUD**
@@ -145,10 +147,10 @@
 
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
-| User hovers over 'Sign In' button on login form  | Button hover transformation applied |  |
-| User clicks on 'Log In' button with a valid form | User redirected to the home page and a bootstrap toast displayed to inform the user they are sucessfully logged in | |
-| User hovers over 'Sign Up' redirect link | Link text colour changes to site primary colour | |
-| User clicks on 'Sign Up' redirect link | User redirected to Sign Up Form | |
+| User hovers over 'Sign In' button on login form  | Button hover transformation applied | Pass |
+| User clicks on 'Sign In' button with a valid form | User logged in and redirected to the home page. A bootstrap toast is displayed to inform the user they are sucessfully logged in | Pass |
+| User hovers over 'Sign Up' redirect link | Link text colour changes to site secondary colour | Pass |
+| User clicks on 'Sign Up' redirect link | User redirected to Sign Up Form | Pass |
 
 ### **CRUD**
 
@@ -162,11 +164,12 @@
 
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
-| User enters site url https://rkdev-rewind-ed88f8459fe7.herokuapp.com/ in a web browser | Navbar displays links: Home, For You, Pinned, Sign Out and Profile Avatar | |
-| User clicks on 'Home' navbar link | User redirected to the home page | |
-| User clicks on 'For You' navbar link | User redirected to page displaying profiles they are following | |
-| User clicks on 'Pinned' navbar link | User redirected to page displaying profiles they have pinned | |
-| User clicks on 'Sign Out' navbar link | User logged out | |
+| User enters site url https://rkdev-rewind-ed88f8459fe7.herokuapp.com/ in a web browser | Navbar displays links: Home, For You, Pinned, Sign Out and Profile Avatar | Pass |
+| User clicks on 'Home' navbar link | User redirected to the home page | Pass |
+| User clicks on 'For You' navbar link | User redirected to page displaying snapshots for profiles they are following | Pass |
+| User clicks on 'Pinned' navbar link | User redirected to page displaying snapshots they have pinned | Pass |
+| User clicks on 'Profile/ Avatar' navbar link | User redirected to their own profile page | Pass |
+| User clicks on 'Sign Out' navbar link | User logged out.  A bootstrap toast is displayed to inform the user they are sucessfully logged out | Pass |
 
 ## Snapshot
 
@@ -174,11 +177,11 @@
 
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
-| User hovers over recommendation icon when they own the snapshot | Tooltip dsiplayed, informing user that thet cannot recommends their own snapshot | Pass |
+| User hovers over or clicks on recommendation icon when they own the snapshot | Tooltip dsiplayed, informing user that they cannot recommend their own snapshot | Pass |
 | User clicks on recommendation icon for a snapshot owned by another user | Recommendation icon turns solid colour and recommendation count increments by 1. Toast message displayed informing user they have recommended the snapshot | Pass |
 | User clicks on recommendation icon for a snapshot they have already recommended | Recommendation icon turns to outline and recommendation count decreases by 1. Toast message displayed informing user they have removed recommendation for the snapshot | Pass |
 | Hover and click on bookmark icon below snapshot | Icon outline changes colour on hover and turns solid colour on click to indicate that the snapshot has been pinned.  Toast message displayed informing user they have pinned the snapshot | Pass |
-| Hover and click on bookmark icon below snapshot that has already been pinned | Icon changes colour on hover and turns to outline icon on click to indicate that the snapshot has been unpinned.  Toast message displayed informing user they have unpinned the snapshot | Fail |
+| Hover and click on bookmark icon below snapshot that has already been pinned | Icon changes colour on hover and turns to outline icon on click to indicate that the snapshot has been unpinned.  Toast message displayed informing user they have unpinned the snapshot | Pass |
 
 ## SnapshotPage
 
@@ -186,7 +189,7 @@
 
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
-| User clicks on snapshot image or comments icon | User redirected to detail page for associated snapshot.  Comment submit form and sample upload form displayed below snapshot.  Any samples that have been approved by site admin should be visible to all users.  Samples that have not been approved should only be visible to the owner.  For any comments owned by the current user, an edit and delete icon should be displayed next to the comment.  An edit and delete button should also be displayed for the snapshot itself if the user owns the snapshot | Fail |
+| User clicks on snapshot image, comments icon or waveform icon | User redirected to detail page for associated snapshot.  Sample upload form and Comment submit form displayed above snapshot.  Any samples that have been approved by site admin are be visible to all users.  Samples that have not been approved are only visible to the owner.  For any comments owned by the current user, an edit and delete icon is displayed next to the comment.  For any samples owned by the current user, a delete icon is displayed next to the sample.  An edit and delete button is also displayed for the snapshot itself if the user owns the snapshot | Pass |
 | User clicks on edit icon next to a snapshot they own | User redirected to Snapshot Edit Form | Pass |
 | User clicks on delete icon next to a snapshot they own | Snapshot deleted and removed from snapshot list. Snapshot count for the profile of the owner should decrease by 1.  Toast message displayed informing user they have deleted their snapshot | Pass |
 | User creates and submits a new comment | Comment appears at top of the comments list.  Created date should display as 'now'.  Comment count should increase by 1 | Pass |
