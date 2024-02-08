@@ -37,11 +37,11 @@
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
 | User clicks on brand name on the left of the navbar | User redirected to the home page | Pass |
-| Hover over  and move away from brand name in nav bar | Link opacity added to brand name on hover and no opacity on moving away. Cursor turns to pointer | Fail |
+| Hover over  and move away from brand name in nav bar | Link opacity added to brand name on hover and no opacity on moving away. Cursor turns to pointer | Pass |
 | User hovers over nav bar links  | Link colour transformed on hover and returns to original on moving away. Cursor turns to pointer | Pass   |
-| User hovers over hamburger toggler on screens below 768px | Link colour transformed on hover and returns to original on moving away. Cursor turns to pointer | Fail | 
-| User clicks on hamburger toggler on screens below 768px when menu items collapsed | Vertical navbar links expanded | Pass |
-| User clicks on hamburger toggler or anywhere else on the screen on screens below 768px when menu items expanded. | Vertical navbar links collapsed | Pass |
+| User hovers over hamburger toggler on screens below 992px | Link colour transformed on hover and returns to original on moving away. Cursor turns to pointer | Fail | 
+| User clicks on hamburger toggler on screens below 992px when menu items collapsed | Vertical navbar links expanded | Pass |
+| User clicks on hamburger toggler or anywhere else on the screen on screens below 992px when menu items expanded. | Vertical navbar links collapsed | Pass |
 | Navigate between pages from nav bar links | Navbar link for active page text colour changes colour to indicate active | Pass |
 
 
@@ -59,10 +59,14 @@
 
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
-| User navigates to home page  | 10 Snapshots listed on left hand side of page, in descending order and sorted by date created.  Search bar appears at top above first snapshot  | Pass |
+| User navigates to home page  | Snapshots listed in descending order and sorted by date created.  Search bar and sort icons appear at top of page above first snapshot  | Pass |
 | User scrolls through snapshots | More snapshots load automatically as user scrolls (if more than 10 exist) | Fail |
-| User enters text into the search bar | Posts filter dynamically with a 1 second pause after the user stops typing.  Snapshots will be displayed if text input matches any text in the title, era, genre or category of the snapshot | Pass |
+| User enters text into the search bar | Results filter dynamically with a 1 second pause after the user stops typing.  Snapshots will be displayed if text input matches any text in the title, era, genre or category of the snapshot | Pass |
 | User enters text into the search bar that does not match any text in the defined API search fields | Message displayed to user, informing that no snapshots could be found and recommending to adjust their search phrase | Pass |
+| User hovers over each of the sort icons | Icon colour transformed on hover and returns to original on moving away | Pass |
+| User clicks on 'Recommendations' sort icon | Snapshots sorted by recommendation count (descending) without the page refereshing | Pass |
+| User clicks on 'Comments' sort icon | Snapshots sorted by comment count (descending) without the page refereshing | Pass |
+| User clicks on 'Date' sort icon | Snapshots sorted by date created (descending) without the page refereshing | Pass |
 
 ## Snapshot
 
@@ -70,10 +74,12 @@
 
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
-| User navigates to home page | Each snapshot in the list displays an image, title, description (if it exists), profile avatar of the snapshot owner and date craeted.  The number of recommendations and number of comments should be displayed for each snapshot.  If samples belong to the snapshot, and audio icon should be displayed | Fail |
-| User hovers or clicks on recommendation icon | Tooltip displayed, informing user that they must sign in to recommend a snapshot | Pass |
+| User navigates to home page | Each snapshot in the list displays an image, title, description (if it exists), profile avatar and name of the snapshot owner, and date created.  The number of recommendations and number of comments should be displayed for each snapshot.  If samples belong to the snapshot a waveform icon should be displayed | Pass |
+| User hovers or clicks on recommendation icon | Icon colour transformed on hover and returns to original on moving away.  Tooltip displayed, informing user that they must sign in to recommend a snapshot | Pass |
+| User hovers over comment icon | Icon colour transformed on hover and returns to original on moving away | Pass |
 | User clicks on comments icon | User redirected to detail page for associated snapshot | Pass |
-| User hovers or clicks on audio icon | Tooltip displayed, informing user that they must sign in to hear samples | Fail |
+| User hovers over waveform icon | Opacity effect applied on hover and returns to original on moving away.  Tooltip displayed, informing user that samples are available for this snapshot | Pass |
+| User clicks on waveform icon | User redirected to detail page for associated snapshot | Pass |
 
 ## SnapshotPage
 
@@ -81,8 +87,10 @@
 
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
-| User clicks on snapshot image or comments icon | User redirected to detail page for associated snapshot.  First 10 comments associated with the snapshot are displayed in date created descending order below the snapshot.  If no comments exist, display message to inform user | Pass |
-| User scrolls through comments | More comments load automatically as user scrolls (if more than 10 exist) | Fail |
+| User clicks on snapshot image,comments icon or waveform icon | User redirected to detail page for associated snapshot.  Approved samples associated with the snapshot are listed in date created descending order below the snapshot. First 10 comments associated with the snapshot are displayed in date created descending order below any samples.  If no comments exist, display message to inform user | Pass |
+| User scrolls through comments | More comments load automatically as user scrolls (if more than 10 exist) | Pass |
+| User clicks play button of audio player | Playback of sample begins | Pass |
+| User clicks pause button of audio player | Playback of sample stops | Pass |
 
 ## ProfilePage
 
