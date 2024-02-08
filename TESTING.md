@@ -98,7 +98,7 @@
 
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
-| User clicks on avatar of a profile | User redirected to the profile page of the associated profile.  Stats for the snapshots count, followers count and following count associated with the profile should be displayed along side the profile image, name and bio(if it exists).  All snapshots owned by the profile should be listed below | Pass |
+| User clicks on avatar of a profile | User redirected to the profile page of the associated profile.  Stats for the snapshots count, followers count and following count associated with the profile are displayed along side the profile image, name and bio(if it exists).  All snapshots owned by the profile are listed below | Pass |
 
 ## **UNAUTHENTICATED USER**
 
@@ -106,10 +106,10 @@
 
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
-| User enters site url https://rkdev-rewind-ed88f8459fe7.herokuapp.com/ in a web browser | Navbar displays links for Home, Sign In and Sign Up | |
+| User enters site url https://rkdev-rewind-ed88f8459fe7.herokuapp.com/ in a web browser | Navbar displays links for Home, Sign In and Sign Up | Pass |
 | User clicks on 'Home' navbar link | User redirected to the home page | Pass |
-| User clicks on 'Sign Up' navbar link | User redirected to SignUpForm | |
-| User clicks on 'Sign In' navbar link | User redirected to SignInForm | |
+| User clicks on 'Sign Up' navbar link | User redirected to Sign Up Form | Pass |
+| User clicks on 'Sign In' navbar link | User redirected to Sign In Form | Pass |
 
 ## SnapshotsPage - HOME
 
