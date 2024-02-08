@@ -194,12 +194,12 @@
 | User clicks on delete icon next to a snapshot they own | Modal displayed to confirm deletion.  Upon confirming the action, snapshot deleted and removed from snapshot list. Snapshot count for the profile of the owner should decrease by 1.  Toast message displayed informing user they have deleted their snapshot | Pass |
 | User attempts to post an empty comment | 'Post' button has opacity effect applied to indicate that it is disabled and clicking has no effect | Pass |
 | User creates and submits a new comment | 'Post' button becomes active as the user types text.  Once posted, the comment appears at top of the comments list and toast message is displayed informing user they have added a comment.  Created date should display as 'now' initially.  Comment count should increase by 1 | Pass |
-| User selects sample file and submits | Sample appears below snapshot with opacity effect applied. message to say that approval is pending.  A delete icon is displayed next to the sample | Fail |
+| User selects sample file and submits | Sample appears below snapshot with opacity effect applied. On hovering over pending icon, a tooltip is used to convey message that approval is pending.  A delete icon is displayed next to the sample | RE-TEST |
 | User clicks on edit icon next to a comment they own | Comment edit form displayed, prepopulated with existing comment | Pass |
 | User clicks on Comment edit form cancel button | Comment edit form hidden | Pass |
-| User amends comment and clicks on Comment edit form save button | Comment edit form hidden and amended comment content displayed.  Toast message displayed informing user they have updated their snapshot  | Pass |
-| User clicks on delete icon next to a comment they own | Comment deleted and removed from comment list. Comment count should decrease by 1. Toast message displayed informing user they have deleted their comment | Pass |
-| User clicks on delete icon next to a sample they own | Sample deleted and removed from sample list. Toast message displayed informing user they have deleted their sample | Pass |
+| User amends comment and clicks on Comment edit form save button | Comment edit form hidden and amended comment content displayed.  Toast message displayed informing user they have updated their comment | Pass |
+| User clicks on delete icon next to a comment they own | Modal displayed to confirm deletion.  Upon confirming the action, comment deleted and removed from comment list. Comment count decreases by 1. Toast message displayed informing user they have deleted their comment | Pass |
+| User clicks on delete icon next to a sample they own | Modal displayed to confirm deletion.  Upon confirming the action, sample deleted and removed from sample list. Toast message displayed informing user they have deleted their sample | DOUBLE CHECK |
 
 ## SnapshotsCreateForm
 
@@ -207,7 +207,8 @@
 
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
-|  |  |   |
+| User clicks on Add Snapshot Icon | Snapshot Create Form displayed | Pass |
+
 
 ### **CRUD**
 
