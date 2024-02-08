@@ -4,15 +4,15 @@
 }
 
 .NavBar h1 {
-    font-family: 'Bungee Spice', sans-serif;
-    margin-bottom: 0;
-    margin-left: 0.5rem;
+  font-family: 'Bungee Spice', sans-serif;
+  margin-bottom: 0;
+  margin-left: 0.5rem;
 }
 
 .NavLink {
-    padding: 5px;
-  }
-  
-  .Active i {
-    color: var(--highlight-color);
-  }
+  padding: 5px;
+}
+
+.Active i {
+  color: var(--highlight-color);
+}
