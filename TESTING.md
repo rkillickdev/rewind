@@ -55,8 +55,6 @@
 
 ## SnapshotsPage - HOME
 
-### **Features**
-
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
 | User navigates to home page  | Snapshots listed in descending order and sorted by date created.  Search bar and sort icons appear at top of page above first snapshot  | Pass |
@@ -70,8 +68,6 @@
 
 ## Snapshot
 
-### **Features**
-
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
 | User navigates to home page | Each snapshot in the list displays an image, title, description (if it exists), profile avatar and name of the snapshot owner, and date created.  The number of recommendations and number of comments should be displayed for each snapshot.  If samples belong to the snapshot a waveform icon should be displayed | Pass |
@@ -83,8 +79,6 @@
 
 ## SnapshotPage
 
-### **Features**
-
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
 | User clicks on snapshot image,comments icon or waveform icon | User redirected to detail page for associated snapshot.  Approved samples associated with the snapshot are listed in date created descending order below the snapshot. First 10 comments associated with the snapshot are displayed in date created descending order below any samples.  If no comments exist, display message to inform user | Pass |
@@ -93,8 +87,6 @@
 | User clicks pause button of audio player | Playback of sample stops | Pass |
 
 ## ProfilePage
-
-### **Features**
 
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
@@ -113,18 +105,13 @@
 
 ## SnapshotsPage - HOME
 
-### **Features**
-
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
 | User navigates to home page | Hero Image, 'Take a trip back in time' heading and call to action button displayed to right of snapshot list. (Appears above snapshot list on mobile devices below 992px) | Pass |
 | User hovers over 'Get started' call to action button | Button colour transformed on hover and returns to original on moving away | Pass | 
 | User clicks on 'Get started' call to action button | User redirected to 'Sign Up' page | Pass |
 
-
 ## SignUpForm
-
-### **Features**
 
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
@@ -134,16 +121,7 @@
 | User hovers over 'Sign In' redirect link | Link text colour changes to site secondary colour | Pass |
 | User clicks on 'Sign In' redirect link | User redirected to Sign In Form | Pass |
 
-
-### **CRUD**
-
-### **Form Validation**
-
-### **Defensive Programming**
-
 ## SignInForm
-
-### **Features**
 
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
@@ -151,12 +129,6 @@
 | User clicks on 'Sign In' button with a valid form | User logged in and redirected to the home page. A bootstrap toast is displayed to inform the user they are sucessfully logged in | Pass |
 | User hovers over 'Sign Up' redirect link | Link text colour changes to site secondary colour | Pass |
 | User clicks on 'Sign Up' redirect link | User redirected to Sign Up Form | Pass |
-
-### **CRUD**
-
-### **Form Validation**
-
-### **Defensive Programming**
 
 ## **AUTHENTICATED USER**
 
@@ -173,8 +145,6 @@
 
 ## Snapshot
 
-### **Features**
-
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
 | User hovers over or clicks on recommendation icon when they own the snapshot | Tooltip dsiplayed, informing user that they cannot recommend their own snapshot | Pass |
@@ -184,8 +154,6 @@
 | Hover and click on bookmark icon below snapshot that has already been pinned | Icon changes colour on hover and turns to outline icon on click to indicate that the snapshot has been unpinned.  Toast message displayed informing user they have unpinned the snapshot | Pass |
 
 ## SnapshotPage
-
-### **Features**
 
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
@@ -203,23 +171,13 @@
 
 ## SnapshotsCreateForm
 
-### **Features**
-
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
 | User clicks on Add Snapshot Icon | Snapshot Create Form displayed | Pass |
 | User clicks on Cancel button | User directed back to the page they were previously on | Pass |
 | User completes valid field entries and clicks on 'create' button | User redirected to the snapshot detail page of the newly created snapshot and toast message displayed to confirm successful creation | RE-TEST |
 
-### **CRUD**
-
-### **Form Validation**
-
-### **Defensive Programming**
-
 ## SnapshotEditForm
-
-### **Features**
 
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
@@ -228,10 +186,7 @@
 | User updates any snapshot fields and clicks save button | User redirected back to Snapshot detail Page and amended information displayed.  Toast message displayed informing user they have updated their snapshot | Pass |
 | User clicks save button with no fields updated | User redirected back to Snapshot detail Page | Pass | 
 
-
 ## SnapshotsPage - FOR YOU
-
-### **Features**
 
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
@@ -240,16 +195,7 @@
 | User sets preferences for their profile | Snapshots are filtered based on user preferences | Pass |
 | User updates preferences for their profile | Filtering of snapshots adjusted based on the updated user preferences | Pass |
 
-### **CRUD**
-
-### **Form Validation**
-
-### **Defensive Programming**
-
-
 ## SnapshotsPage - PINNED
-
-### **Features**
 
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
@@ -257,15 +203,7 @@
 | User navigates to 'Pinned' page | All snapshots that the user has pinned are displayed.  Most recently pinned is displayed first.  If they have not pinned any snapshots, a message informs them of this | Pass |
 | User unpins a snapshot | The list of snapshots is updated to reflect this change, with the unpinned snapshot no longer visible | Pass |
 
-### **CRUD**
-
-### **Form Validation**
-
-### **Defensive Programming**
-
 ## RelevantProfile - HOME, FOR YOU, PINNED, PROFILE PAGE
-
-### **Features**
 
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
@@ -277,8 +215,6 @@
 
 ## ProfilePage
 
-### **Features**
-
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
 | Authenticated user navigates to their own profile page | Icons for edit profile, change username and change password are displayed below their profile stats.  All snapshots owned by the current user are listed below their profile info | Pass |
@@ -288,10 +224,7 @@
 | All users navigate to another user's profile page | Picture and name displayed. Stats for snapshot count, follower count and following count associated with the profile are displayed.  All snapshots belonging to the profile are listed | Pass |
 | Authenticated user navigates to another user's profile page | Additional to the info displayed to all users, a follow/unfollow button is displayed | Pass |
 
-
 ## ProfileEditForm
-
-### **Features**
 
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
@@ -299,8 +232,6 @@
 | User updates profile information and clicks save button | User redirected back to Profile Page and amended information displayed.  Toast message displayed informing user they have updated their profile | Fail |
 
 ## UsernameForm
-
-### **Features**
 
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
@@ -310,8 +241,6 @@
 
 ## UserPasswordForm
 
-### **Features**
-
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
 | User clicks on User Password Form cancel button | User redirected back to Profile Page | Pass |
@@ -320,13 +249,9 @@
 
 ## Sign Out
 
-### **Features**
-
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
 | Authenticated user clicks 'sign out' nav link | User signed out and only has access to unauthenticated site content.  Toast message displayed informing the user that they have signed out | Pass |
-
-
 
 [Back to top &uarr;](#contents)
 
