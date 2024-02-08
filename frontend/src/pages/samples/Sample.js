@@ -17,6 +17,7 @@ const Sample = (props) => {
     profile_image,
     owner,
     audio,
+    created_at,
     approved,
     id,
     setSnapshot,
@@ -80,15 +81,22 @@ const Sample = (props) => {
             width={45}
           />
         )}
-        <audio src={audio} className="px-2" controls />
+        <Media.Body className="align-self-center ml-2 text-center">
+          {!is_owner && (
+            <>
+              <div className="mb-3">
+                <span className={styles.Owner}>{owner}</span>
+                <span className={styles.Date}>{created_at}</span>
+              </div>
+            </>
+          )}
+          <audio src={audio} className="px-2" controls />
+        </Media.Body>
         {is_owner ? (
           <EditDelete handleDelete={() => setShowModal(true)} />
         ) : (
           <Link to={`/profiles/${profile_id}`}>
             <Avatar src={profile_image} />
-            <span className={`${styles.Owner} align-self-center ml-2`}>
-              {owner}
-            </span>
           </Link>
         )}
       </Media>

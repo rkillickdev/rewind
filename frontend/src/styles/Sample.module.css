@@ -4,6 +4,10 @@
     margin-right: 8px;
   }
 
+  .Date {
+    font-weight: 200;
+  }
+
 .Pending {
     opacity: 0.2;
 }
