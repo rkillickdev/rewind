@@ -33,13 +33,14 @@
   }
   
   .Link span {
+    margin-left: 4px;
     font-size: 1.25rem;
     font-weight: bold;
     color: var(--primary-color);
   }
 
   .Link span:hover {
-    color: var(--primary-color);
+    color: var(--secondary-color);
     font-weight: bold;
   }
   
