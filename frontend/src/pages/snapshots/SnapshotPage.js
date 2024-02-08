@@ -7,6 +7,7 @@ import Container from "react-bootstrap/Container";
 import HeroImage from "../../assets/cassette-player-retro.webp";
 
 import appStyles from "../../App.module.css";
+import styles from "../../styles/SnapshotPage.module.css";
 import { useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import Snapshot from "./Snapshot";
@@ -116,9 +117,15 @@ function SnapshotPage() {
               next={() => fetchMoreData(comments, setComments)}
             />
           ) : currentUser ? (
-            <span>No comments yet. Be the first to comment.</span>
+            <>
+              <hr />
+              <span>No comments yet. Be the first to comment.</span>
+            </>
           ) : (
-            <span>No comments yet</span>
+            <>
+              <hr />
+              <span>No comments yet</span>
+            </>
           )}
         </Container>
       </Col>

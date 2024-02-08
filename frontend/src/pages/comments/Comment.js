@@ -54,7 +54,7 @@ const Comment = (props) => {
   return (
     <>
       <hr />
-      <Media>
+      <Media className="align-items-center">
         <img src={CommentBubble} alt="Comment Bubble" height={45} width={45} />
         <Media.Body className="align-self-center ml-2 text-center">
           {!is_owner && (
