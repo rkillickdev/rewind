@@ -1,20 +1,42 @@
 .Owner {
-    font-weight: bold;
-    color: var(--primary-color);
-    margin-right: 8px;
-  }
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-right: 8px;
+}
 
-  .Date {
-    font-weight: 200;
-  }
+.Date {
+  font-weight: 200;
+}
 
 .Pending {
     opacity: 0.2;
 }
 
+/* Used the following thread to help with audio styling: */
+/* https://stackoverflow.com/questions/75604231/audio-tag-minimal-play-button */
+
+audio {
+  width: 160px;
+}
+
+audio::-webkit-media-controls-volume-slider {
+  display: none !important;
+}
+
+audio::-webkit-media-controls-timeline-container {
+  display: none !important;
+}
+
+audio::-webkit-media-controls-time-remaining-display {
+  display: none !important;
+}
+
+audio::-webkit-media-controls-timeline {
+  display: none !important;
+}
+
 audio::-webkit-media-controls-panel {
     background-color: var(--light-color);
-    /* opacity: 0.5; */
   }
 
 audio::-webkit-media-controls-play-button {
@@ -23,7 +45,7 @@ border-radius: 50%;
 }
 
 audio::-webkit-media-controls-play-button:hover {
-    background-color: var(--highlight-color);
+    background-color: var(--primary-color);
     cursor: pointer;
   }
 
