@@ -77,7 +77,7 @@ function ProfilePage() {
           />
         </Col>
         <Col lg={6}>
-          <h3 className="m-2">{profile?.owner}</h3>
+          <h2 className="m-2 ">{profile?.owner}</h2>
           <Row className="justify-content-center no-gutters">
             <Col xs={3} className="m-2">
               <div className={styles.FeatureInfo}>

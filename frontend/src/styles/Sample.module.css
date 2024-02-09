@@ -1,5 +1,6 @@
 .Owner {
   font-weight: bold;
+  font-size: 1.25rem;
   color: var(--primary-color);
   margin-right: 8px;
 }

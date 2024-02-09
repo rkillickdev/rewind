@@ -37,7 +37,6 @@ export const ProfileEditOptions = ({ id }) => {
           <span
             className="p-2"
             onClick={() => history.push(`/profiles/${id}/edit`)}
-            aria-label="edit-profile"
           >
             <i className={"fas fa-edit"} />
           </span>
@@ -49,7 +48,6 @@ export const ProfileEditOptions = ({ id }) => {
           <span
             className="p-2"
             onClick={() => history.push(`/profiles/${id}/edit/username`)}
-            aria-label="edit-username"
           >
             <i className={"far fa-id-card"} />
           </span>
@@ -61,7 +59,6 @@ export const ProfileEditOptions = ({ id }) => {
           <span
             className="p-2"
             onClick={() => history.push(`/profiles/${id}/edit/password`)}
-            aria-label="edit-password"
           >
             <i className={"fas fa-key"} />
           </span>
