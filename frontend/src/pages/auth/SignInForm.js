@@ -32,11 +32,11 @@ function SignInForm() {
   });
 
   const { username, password } = signInData;
-
   const [errors, setErrors] = useState({});
-
   const history = useHistory();
+  const { setAlert } = useAlert();
 
+  // Function to handle changes to form inputs
   const handleChange = (event) => {
     setSignInData({
       ...signInData,
@@ -44,8 +44,7 @@ function SignInForm() {
     });
   };
 
-  const { setAlert } = useAlert();
-
+  // Function to handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
