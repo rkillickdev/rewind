@@ -1,4 +1,4 @@
-import { Alert } from "react-bootstrap";
+import Alert from "react-bootstrap/Alert";
 import useAlert from "../hooks/useAlert";
 
 import styles from "../styles/AlertPopup.module.css";
