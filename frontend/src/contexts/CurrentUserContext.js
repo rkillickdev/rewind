@@ -8,7 +8,6 @@ import { removeTokenTimestamp, shouldRefreshToken } from "../utils/utils";
   Code for CurrentUserContext based on Code Institute Moments walk through project.
   Creation of user context enables access to user details throughout the app.
   Axios interceptors are included to refresh tokens.
-
 */
 
 // Context for current user and setting current user
