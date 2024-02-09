@@ -27,7 +27,6 @@ import UserDirection from "../../components/UserDirection";
 function SnapshotPage() {
   const { id } = useParams();
   const [snapshot, setSnapshot] = useState({ results: [] });
-
   const currentUser = useCurrentUser();
   const profile_image = currentUser?.profile_image;
   const [comments, setComments] = useState({ results: [] });
@@ -36,6 +35,7 @@ function SnapshotPage() {
   const { setAlert } = useAlert();
 
   useEffect(() => {
+    // Fetch Snapshot by id and all associated comments and samples on mount
     const handleMount = async () => {
       try {
         const [{ data: snapshot }, { data: comments }, { data: samples }] =
@@ -60,7 +60,9 @@ function SnapshotPage() {
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
+        {/* Render Relevant Profiles */}
         {currentUser && <RelevantProfiles mobile />}
+        {/* Render Sample Create Form */}
         {currentUser && (
           <Container className={appStyles.Content}>
             <SampleCreateForm
@@ -71,6 +73,7 @@ function SnapshotPage() {
               setSamples={setSamples}
               {...snapshot.results[0]}
             />
+            {/* Render Comment Create Form */}
             <CommentCreateForm
               profile_id={currentUser.profile_id}
               profileImage={profile_image}
@@ -80,13 +83,14 @@ function SnapshotPage() {
             />
           </Container>
         )}
-
+        {/* Render Snapshot */}
         <Snapshot
           {...snapshot.results[0]}
           setSnapshots={setSnapshot}
           snapshotPage
         />
         <Container className={appStyles.Content}>
+          {/* Render Samples */}
           {samples.results.length > 0 &&
             samples.results
               .filter(
@@ -101,6 +105,7 @@ function SnapshotPage() {
                   setSamples={setSamples}
                 />
               ))}
+          {/* Render Comments */}
           {comments.results.length ? (
             <InfiniteScroll
               children={comments.results.map((comment) => (
@@ -130,6 +135,7 @@ function SnapshotPage() {
         </Container>
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
+        {/* Render Relevant Profiles or welcome message */}
         {currentUser ? (
           <RelevantProfiles />
         ) : (
