@@ -1,14 +1,18 @@
 import React from "react";
-import { Navbar, Container, Nav } from "react-bootstrap";
+import Navbar from "react-bootstrap/Navbar";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Avatar from "./Avatar";
+
 import logo from "../assets/cassette-orange-logo.png";
 import appStyles from "../App.module.css";
 import styles from "../styles/NavBar.module.css";
+
 import { NavLink } from "react-router-dom";
 import {
   useCurrentUser,
   useSetCurrentUser,
 } from "../contexts/CurrentUserContext";
-import Avatar from "./Avatar";
 import axios from "axios";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 import useAlert from "../hooks/useAlert";
@@ -17,11 +21,10 @@ import { removeTokenTimestamp } from "../utils/utils";
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
-
   const { expanded, setExpanded, ref } = useClickOutsideToggle();
-
   const { setAlert } = useAlert();
 
+  // Function to handle user sign out
   const handleSignOut = async () => {
     try {
       await axios.post("/dj-rest-auth/logout/");
@@ -34,6 +37,7 @@ const NavBar = () => {
     }
   };
 
+  // Nav Icons to display for signed in user
   const loggedInIcons = (
     <>
       <NavLink
@@ -61,6 +65,8 @@ const NavBar = () => {
       </NavLink>
     </>
   );
+
+  // Nav Icons to display for signed out user
   const loggedOutIcons = (
     <>
       <NavLink
@@ -113,7 +119,7 @@ const NavBar = () => {
             >
               <i className="fa-solid fa-house"></i>Home
             </NavLink>
-
+            {/* Ternary operator used to render nav icons based on user authentication */}
             {currentUser ? loggedInIcons : loggedOutIcons}
           </Nav>
         </Navbar.Collapse>
