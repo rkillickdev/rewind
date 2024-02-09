@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 
+// Redirects user based on the value of the userAuthStatus prop passed
 export const useRedirect = (userAuthStatus) => {
   const history = useHistory();
 

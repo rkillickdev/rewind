@@ -20,32 +20,58 @@ export const fetchMoreData = async (resource, setResource) => {
 
 export const followHelper = (profile, clickedProfile, following_id) => {
   return profile.id === clickedProfile.id
-    ? {
+    ? /* 
+        If the profile matches the profile that has been clicked, increase
+        followers_count and set following_id.
+      */
+      {
         ...profile,
         followers_count: profile.followers_count + 1,
         following_id,
       }
-    : profile.is_owner
+    : /*
+        If the profile belongs to the logged in user, increase
+        following_count by 1
+      */
+      profile.is_owner
       ? {
           ...profile,
           following_count: profile.following_count + 1,
         }
-      : profile;
+      : /* 
+          Return profile unchanged if it is not the profile
+          that has been clicked on or does not belong to the
+          logged in user.
+        */
+        profile;
 };
 
 export const unfollowHelper = (profile, clickedProfile) => {
   return profile.id === clickedProfile.id
-    ? {
+    ? /*
+        If the profile matches the profile that has been clicked, decrease
+        followers_count and set following_id to null.
+      */
+      {
         ...profile,
         followers_count: profile.followers_count - 1,
         following_id: null,
       }
-    : profile.is_owner
+    : /*
+        If the profile belongs to the logged in user, decrease
+        following_count by 1
+      */
+      profile.is_owner
       ? {
           ...profile,
           following_count: profile.following_count - 1,
         }
-      : profile;
+      : /* 
+          Return profile unchanged if it is not the profile
+          that has been clicked on or does not belong to the
+          logged in user.
+        */
+        profile;
 };
 
 export const setTokenTimestamp = (data) => {
