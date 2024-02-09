@@ -99,7 +99,7 @@ const Sample = (props) => {
               </div>
             </>
           )}
-          <audio src={audio} className="px-2" controls />
+          <audio src={audio} className="px-2 mx-auto" controls />
         </Media.Body>
         {/* Display delete icon or Avatar dependent on owner status */}
         {is_owner ? (
