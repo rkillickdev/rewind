@@ -1,10 +1,12 @@
 import React from "react";
 import appStyles from "../App.module.css";
 import styles from "../styles/AddSnapshot.module.css";
+
 import { useCurrentUser } from "../contexts/CurrentUserContext";
 import { Link } from "react-router-dom/cjs/react-router-dom";
 
 const AddSnapshot = () => {
+  // Current user
   const currentUser = useCurrentUser();
 
   const addSnapshotIcon = (
