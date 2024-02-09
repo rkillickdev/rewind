@@ -1,6 +1,7 @@
 import React from "react";
-import { Card, Container } from "react-bootstrap";
+import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+
 import appStyles from "../App.module.css";
 import btnStyles from "../styles/Button.module.css";
 
@@ -17,6 +18,7 @@ const UserDirection = ({
   resetLabel,
 }) => {
   return (
+    // Render elements conditionally based on props passed to component
     <Card className={`mb-4 p-4 ${hide}`}>
       {heading && (
         <Card.Title className="text-center mb-0">

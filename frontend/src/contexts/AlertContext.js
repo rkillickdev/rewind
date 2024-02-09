@@ -9,11 +9,13 @@ const initialState = {
   type: "",
 };
 
+// Create context for AlertPopup and pass initial state
 const AlertContext = createContext({
   ...initialState,
   setAlert: () => {},
 });
 
+// Provider component to manage alerts when setAlert function called
 export const AlertProvider = ({ children }) => {
   const [text, setText] = useState("");
   const [type, setType] = useState("");
@@ -22,6 +24,7 @@ export const AlertProvider = ({ children }) => {
     setText(text);
     setType(type);
 
+    // Clear alert after 4 seconds
     setTimeout(() => {
       setText("");
       setType("");
@@ -29,6 +32,7 @@ export const AlertProvider = ({ children }) => {
   };
 
   return (
+    // Pass text, type, and setAlert function  down component tree to children
     <AlertContext.Provider
       value={{
         text,
