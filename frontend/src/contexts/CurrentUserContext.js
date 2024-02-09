@@ -4,17 +4,28 @@ import { axiosReq, axiosRes } from "../api/axiosDefaults";
 import { useHistory } from "react-router-dom";
 import { removeTokenTimestamp, shouldRefreshToken } from "../utils/utils";
 
+/* 
+  Code for CurrentUserContext based on Code Institute Moments walk through project.
+  Creation of user context enables access to user details throughout the app.
+  Axios interceptors are included to refresh tokens.
+
+*/
+
+// Context for current user and setting current user
 export const CurrentUserContext = createContext();
 export const SetCurrentUserContext = createContext();
 
+// Custom hooks for accessing current user and setting current user
 export const useCurrentUser = () => useContext(CurrentUserContext);
 export const useSetCurrentUser = () => useContext(SetCurrentUserContext);
 
+// Provider component to pass current user context to children
 export const CurrentUserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const history = useHistory();
 
   const handleMount = async () => {
+    // Retrieves details of current user and sets state
     try {
       const { data } = await axiosRes.get("/dj-rest-auth/user/");
       setCurrentUser(data);
@@ -28,6 +39,7 @@ export const CurrentUserProvider = ({ children }) => {
   }, []);
 
   useMemo(() => {
+    // Create request interceptor
     axiosReq.interceptors.request.use(
       async (config) => {
         if (shouldRefreshToken()) {
@@ -51,6 +63,7 @@ export const CurrentUserProvider = ({ children }) => {
       },
     );
 
+    // Create response interceptor
     axiosRes.interceptors.response.use(
       (response) => response,
       async (err) => {
@@ -74,6 +87,7 @@ export const CurrentUserProvider = ({ children }) => {
   }, [history]);
 
   return (
+    // Return providers so child components can access
     <CurrentUserContext.Provider value={currentUser}>
       <SetCurrentUserContext.Provider value={setCurrentUser}>
         {children}
