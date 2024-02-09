@@ -1,57 +1,58 @@
 .Row {
-    height: calc(100vh - 81px);
-  }
-  .Input {
-    background: var(--light-color);
-    border: 1px solid #f0f1f9;
-    box-sizing: border-box;
-    border-radius: 2px;
-    color: var(--dark-color);
-    text-align: center;
-    padding: 10px;
-  }
-  
-  .Header {
-    font-style: normal;
-    font-family: 'Amatic SC', sans-serif;
-    font-weight: bold;
-    font-size: 2rem;
-    line-height: 19px;
-    text-align: center;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--primary-color);
-    margin-bottom: 1.5rem;
-  }
-  
-  .Link {
-    font-size: 1rem;
-    text-decoration: none;
-    text-align: center;
-    display: block;
-    margin: auto;
-  }
-  
-  .Link span {
-    margin-left: 4px;
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: var(--primary-color);
-  }
+  height: calc(100vh - 81px);
+}
 
-  .Link span:hover {
-    color: var(--secondary-color);
-    font-weight: bold;
-  }
+.Input {
+  background: var(--light-color);
+  border: 1px solid #f0f1f9;
+  box-sizing: border-box;
+  border-radius: 2px;
+  color: var(--dark-color);
+  text-align: center;
+  padding: 10px;
+}
   
-  .Container {
-    padding: 30px 10px;
-  }
+.Header {
+  font-style: normal;
+  font-family: 'Amatic SC', sans-serif;
+  font-weight: bold;
+  font-size: 2rem;
+  line-height: 19px;
+  text-align: center;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+}
   
-  .SignInCol {
-    height: 320px;
-  }
-  
-  .SignUpCol {
-    height: 375px;
-  }
+.Link {
+  font-size: 1rem;
+  text-decoration: none;
+  text-align: center;
+  display: block;
+  margin: auto;
+}
+
+.Link span {
+  margin-left: 4px;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.Link span:hover {
+  color: var(--secondary-color);
+  font-weight: bold;
+}
+
+.Container {
+  padding: 30px 10px;
+}
+
+.SignInCol {
+  height: 320px;
+}
+
+.SignUpCol {
+  height: 375px;
+}
