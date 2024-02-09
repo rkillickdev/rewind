@@ -1,5 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 
+/*
+  Custom hook that handles toggle behaviour when clicking
+  outside of the ref element
+*/
 const useClickOutsideToggle = () => {
   const [expanded, setExpanded] = useState(false);
   const ref = useRef(null);
