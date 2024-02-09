@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -6,19 +7,18 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
+import Image from "react-bootstrap/Image";
 
 import Upload from "../../assets/image-upload-icon.png";
-
 import styles from "../../styles/SnapshotCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
-import Asset from "../../components/Asset";
-import { Image } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
+
 import { axiosReq } from "../../api/axiosDefaults";
-import useAlert from "../../hooks/useAlert";
 import { useOptions } from "../../contexts/OptionsContext";
+import useAlert from "../../hooks/useAlert";
 import { useRedirect } from "../../hooks/useRedirect";
+import Asset from "../../components/Asset";
 
 function SnapshotCreateForm() {
   useRedirect("loggedOut");
@@ -38,7 +38,9 @@ function SnapshotCreateForm() {
 
   const imageInput = useRef(null);
   const history = useHistory();
+  const { setAlert } = useAlert();
 
+  // Function to handle changes to form inputs
   const handleChange = (event) => {
     setSnapshotData({
       ...snapshotData,
@@ -46,6 +48,7 @@ function SnapshotCreateForm() {
     });
   };
 
+  // Function to handle changes to image file select field
   const handleChangeImage = (event) => {
     if (event.target.files.length) {
       URL.revokeObjectURL(image);
@@ -56,8 +59,7 @@ function SnapshotCreateForm() {
     }
   };
 
-  const { setAlert } = useAlert();
-
+  // Function to handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -83,6 +85,7 @@ function SnapshotCreateForm() {
 
   const textSelectFields = (
     <div className="text-center">
+      {/* Text input field for title */}
       <Form.Group>
         <Form.Label className="d-none">Title</Form.Label>
         <Form.Control
@@ -101,6 +104,7 @@ function SnapshotCreateForm() {
       ))}
 
       <Form.Group>
+        {/* Textarea input field for description */}
         <Form.Label className="d-none">Description</Form.Label>
         <Form.Control
           as="textarea"
@@ -119,6 +123,7 @@ function SnapshotCreateForm() {
       ))}
 
       <Form.Group>
+        {/* Select field for genre */}
         <Form.Label className="d-none">Genre</Form.Label>
         <Form.Control
           as="select"
@@ -146,6 +151,7 @@ function SnapshotCreateForm() {
       ))}
 
       <Form.Group>
+        {/* Select field for era */}
         <Form.Label className="d-none">Era</Form.Label>
         <Form.Control
           as="select"
@@ -173,6 +179,7 @@ function SnapshotCreateForm() {
       ))}
 
       <Form.Group>
+        {/* Select field for category */}
         <Form.Label className="d-none">Category</Form.Label>
         <Form.Control
           as="select"
@@ -226,6 +233,7 @@ function SnapshotCreateForm() {
           <Container
             className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
           >
+            {/* Displays currently selected image if one exists or upload icon if not */}
             <Form.Group className="text-center">
               {image ? (
                 <>
@@ -264,12 +272,13 @@ function SnapshotCreateForm() {
                 {message}
               </Alert>
             ))}
-
+            {/* renders form text and select fields */}
             <div className="d-md-none">{textSelectFields}</div>
           </Container>
         </Col>
         <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
           <Container className={appStyles.Content}>
+            {/* renders form text and select fields */}
             {textSelectFields}
           </Container>
         </Col>

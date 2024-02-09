@@ -1,28 +1,28 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { useHistory } from "react-router-dom/cjs/react-router-dom";
 
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
-import HeroImage from "../../assets/cassette-player-retro.webp";
-
 import appStyles from "../../App.module.css";
 import styles from "../../styles/SnapshotPage.module.css";
-import { useParams } from "react-router-dom";
+import HeroImage from "../../assets/cassette-player-retro.webp";
+
 import { axiosReq } from "../../api/axiosDefaults";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import useAlert from "../../hooks/useAlert";
+import { fetchMoreData } from "../../utils/utils";
 import Snapshot from "./Snapshot";
 import CommentCreateForm from "../comments/CommentCreateForm";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import Comment from "../comments/Comment";
-import InfiniteScroll from "react-infinite-scroll-component";
 import Asset from "../../components/Asset";
-import { fetchMoreData } from "../../utils/utils";
 import RelevantProfiles from "../profiles/RelevantProfiles";
 import SampleCreateForm from "../samples/SampleCreateForm";
 import Sample from "../samples/Sample";
 import UserDirection from "../../components/UserDirection";
-import { useHistory } from "react-router-dom/cjs/react-router-dom";
-import useAlert from "../../hooks/useAlert";
 
 function SnapshotPage() {
   const { id } = useParams();

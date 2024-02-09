@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom/cjs/react-router-dom";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -6,16 +8,15 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
+import Image from "react-bootstrap/Image";
 
-import styles from "../../styles/SnapshotCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
-import { Image } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
+import styles from "../../styles/SnapshotCreateEditForm.module.css";
+
 import { axiosReq } from "../../api/axiosDefaults";
-import { useParams } from "react-router-dom/cjs/react-router-dom";
-import useAlert from "../../hooks/useAlert";
 import { useOptions } from "../../contexts/OptionsContext";
+import useAlert from "../../hooks/useAlert";
 
 function SnapshotEditForm() {
   const [errors, setErrors] = useState({});
@@ -35,8 +36,10 @@ function SnapshotEditForm() {
   const imageInput = useRef(null);
   const history = useHistory();
   const { id } = useParams();
+  const { setAlert } = useAlert();
 
   useEffect(() => {
+    // Retrieve snapshot by id on mount
     const handleMount = async () => {
       try {
         const { data } = await axiosReq.get(`/snapshots/${id}/`);
@@ -56,8 +59,7 @@ function SnapshotEditForm() {
     handleMount();
   }, [history, id]);
 
-  const { setAlert } = useAlert();
-
+  // Function to handle changes to form inputs
   const handleChange = (event) => {
     setSnapshotData({
       ...snapshotData,
@@ -65,6 +67,7 @@ function SnapshotEditForm() {
     });
   };
 
+  // Function to handle changes to image file select field
   const handleChangeImage = (event) => {
     if (event.target.files.length) {
       URL.revokeObjectURL(image);
@@ -75,6 +78,7 @@ function SnapshotEditForm() {
     }
   };
 
+  // Function to handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -104,6 +108,7 @@ function SnapshotEditForm() {
   const textSelectFields = (
     <div className="text-center">
       <Form.Group>
+        {/* Text input field for title */}
         <Form.Label className="d-none">Title</Form.Label>
         <Form.Control
           type="text"
@@ -121,6 +126,7 @@ function SnapshotEditForm() {
       ))}
 
       <Form.Group>
+        {/* Textarea input field for description */}
         <Form.Label className="d-none">Description</Form.Label>
         <Form.Control
           as="textarea"
@@ -139,6 +145,7 @@ function SnapshotEditForm() {
       ))}
 
       <Form.Group>
+        {/* Select field for genre */}
         <Form.Label className="d-none">Genre</Form.Label>
         <Form.Control
           as="select"
@@ -163,6 +170,7 @@ function SnapshotEditForm() {
       ))}
 
       <Form.Group>
+        {/* Select field for era */}
         <Form.Label className="d-none">Era</Form.Label>
         <Form.Control
           as="select"
@@ -187,6 +195,7 @@ function SnapshotEditForm() {
       ))}
 
       <Form.Group>
+        {/* Select field for category */}
         <Form.Label className="d-none">Category</Form.Label>
         <Form.Control
           as="select"
@@ -237,6 +246,7 @@ function SnapshotEditForm() {
           <Container
             className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
           >
+            {/* Displays currently selected image */}
             <Form.Group className="text-center">
               <figure>
                 <Image
@@ -267,12 +277,13 @@ function SnapshotEditForm() {
                 {message}
               </Alert>
             ))}
-
+            {/* renders form text and select fields */}
             <div className="d-md-none">{textSelectFields}</div>
           </Container>
         </Col>
         <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
           <Container className={appStyles.Content}>
+            {/* renders form text and select fields */}
             {textSelectFields}
           </Container>
         </Col>

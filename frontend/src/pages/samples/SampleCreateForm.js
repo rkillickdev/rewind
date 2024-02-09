@@ -4,10 +4,10 @@ import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
 
-import Upload from "../../assets/sound-waves.png";
-
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
+import Upload from "../../assets/sound-waves.png";
+
 import { axiosReq } from "../../api/axiosDefaults";
 import useAlert from "../../hooks/useAlert";
 
@@ -19,6 +19,7 @@ const SampleCreateForm = (props) => {
   const [sampleLimitError, setSampleLimitError] = useState();
   const audioInput = useRef(null);
 
+  // Function to handle changes to form input field
   const handleChangeAudio = (event) => {
     if (event.target.files.length) {
       URL.revokeObjectURL(audio);
@@ -26,9 +27,11 @@ const SampleCreateForm = (props) => {
     }
   };
 
+  // Function to handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    // Client side validation to check sample count
     if (total_samples > 5) {
       setSampleLimitError(
         "Sorry, the maximum number of samples have been added for this snapshot",
@@ -71,6 +74,7 @@ const SampleCreateForm = (props) => {
       className="mt-2 mb-4 d-flex justify-content-between"
       onSubmit={handleSubmit}
     >
+      {/* User selects file to upload */}
       <Form.Group className="text-center my-auto">
         {audio ? (
           <>
@@ -121,11 +125,6 @@ const SampleCreateForm = (props) => {
       >
         Upload
       </Button>
-      {/* {errors.non_field_errors?.map((message, idx) => (
-        <Alert variant="warning" key={idx} className="mt-3">
-          {message}
-        </Alert>
-      ))} */}
     </Form>
   );
 };

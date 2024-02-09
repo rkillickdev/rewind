@@ -1,16 +1,22 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom/cjs/react-router-dom";
+
+import Card from "react-bootstrap/Card";
+import Media from "react-bootstrap/Media";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
+
 import appStyles from "../../App.module.css";
 import styles from "../../styles/Snapshot.module.css";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import Avatar from "../../components/Avatar";
-import { axiosRes } from "../../api/axiosDefaults";
-import EditDelete from "../../components/EditDelete";
-import { useHistory } from "react-router-dom/cjs/react-router-dom";
-import useAlert from "../../hooks/useAlert";
-import ModalPopup from "../../components/ModalPopup";
 import Waveform from "../../assets/sound-waves.png";
+
+import { axiosRes } from "../../api/axiosDefaults";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import useAlert from "../../hooks/useAlert";
+import Avatar from "../../components/Avatar";
+import EditDelete from "../../components/EditDelete";
+import ModalPopup from "../../components/ModalPopup";
 
 const Snapshot = (props) => {
   const {
@@ -36,13 +42,14 @@ const Snapshot = (props) => {
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
   const history = useHistory();
-
   const { setAlert } = useAlert();
 
+  // function to redirect user to edit page
   const handleEdit = () => {
     history.push(`/snapshots/${id}/edit`);
   };
 
+  // function to handle deletion of snapshots
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/snapshots/${id}/`);
@@ -54,6 +61,7 @@ const Snapshot = (props) => {
     }
   };
 
+  // Function to handle recommending a snapshot
   const handleRecommend = async () => {
     try {
       const { data } = await axiosRes.post("/recommendations/", {
@@ -78,6 +86,7 @@ const Snapshot = (props) => {
     }
   };
 
+  // Function to handle removing a recommendation for a snapshot
   const handleUnrecommend = async () => {
     try {
       await axiosRes.delete(`/recommendations/${recommendation_id}/`);
@@ -100,6 +109,7 @@ const Snapshot = (props) => {
     }
   };
 
+  // Function to handle pinning a snapshot
   const handlePin = async () => {
     try {
       const { data } = await axiosRes.post("/pins/", {
@@ -123,6 +133,7 @@ const Snapshot = (props) => {
     }
   };
 
+  // Function to handle unpinning a snapshot
   const handleUnpin = async () => {
     try {
       await axiosRes.delete(`/pins/${pin_id}/`);

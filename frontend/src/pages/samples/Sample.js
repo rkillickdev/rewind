@@ -1,15 +1,20 @@
 import React, { useState } from "react";
-import { Media, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link } from "react-router-dom/cjs/react-router-dom";
-import Avatar from "../../components/Avatar";
+
+import Media from "react-bootstrap/Media";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
+
 import styles from "../../styles/Sample.module.css";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import EditDelete from "../../components/EditDelete";
-import { axiosRes } from "../../api/axiosDefaults";
-import useAlert from "../../hooks/useAlert";
-import ModalPopup from "../../components/ModalPopup";
 import Waveform from "../../assets/sound-waves.png";
 import Pending from "../../assets/pending.png";
+
+import { axiosRes } from "../../api/axiosDefaults";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import useAlert from "../../hooks/useAlert";
+import Avatar from "../../components/Avatar";
+import EditDelete from "../../components/EditDelete";
+import ModalPopup from "../../components/ModalPopup";
 
 const Sample = (props) => {
   const {
@@ -29,6 +34,7 @@ const Sample = (props) => {
   const is_owner = currentUser?.username === owner;
   const { setAlert } = useAlert();
 
+  // Function to handle deleting a comment
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/samples/${id}/`);
@@ -54,11 +60,13 @@ const Sample = (props) => {
   return (
     <>
       <hr />
+      {/* Apply pending style if sample not approved */}
       <Media
         className={`${
           !approved && styles.Pending
         } d-flex justify-content-between align-items-center text-center`}
       >
+        {/* Display icon based on approved status */}
         {!approved && is_owner ? (
           <OverlayTrigger
             placement="top"
@@ -82,6 +90,7 @@ const Sample = (props) => {
           />
         )}
         <Media.Body className="align-self-center ml-2 text-center">
+          {/* Show name of sample owner /created date if logged in user does not own */}
           {!is_owner && (
             <>
               <div className="mb-3">
@@ -92,6 +101,7 @@ const Sample = (props) => {
           )}
           <audio src={audio} className="px-2" controls />
         </Media.Body>
+        {/* Display delete icon or Avatar dependent on owner status */}
         {is_owner ? (
           <EditDelete handleDelete={() => setShowModal(true)} />
         ) : (

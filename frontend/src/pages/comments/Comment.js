@@ -83,7 +83,7 @@ const Comment = (props) => {
             <p>{content}</p>
           )}
         </Media.Body>
-        {/* Display edit/ delet icons or Avatar dependent on owner status */}
+        {/* Display edit/ delete icons or Avatar dependent on owner status */}
         {is_owner && !showEditForm ? (
           <EditDelete
             handleEdit={() => setShowEditForm(true)}
