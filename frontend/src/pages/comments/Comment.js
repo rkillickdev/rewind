@@ -1,15 +1,17 @@
 import React, { useState } from "react";
-import { Media } from "react-bootstrap";
 import { Link } from "react-router-dom/cjs/react-router-dom";
-import Avatar from "../../components/Avatar";
-import styles from "../../styles/Comment.module.css";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import EditDelete from "../../components/EditDelete";
 import { axiosRes } from "../../api/axiosDefaults";
+
+import Media from "react-bootstrap/Media";
+import CommentBubble from "../../assets/chat.png";
+import styles from "../../styles/Comment.module.css";
+
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import useAlert from "../../hooks/useAlert";
+import Avatar from "../../components/Avatar";
+import EditDelete from "../../components/EditDelete";
 import CommentEditForm from "./CommentEditForm";
 import ModalPopup from "../../components/ModalPopup";
-import CommentBubble from "../../assets/chat.png";
 
 const Comment = (props) => {
   const {
@@ -29,6 +31,7 @@ const Comment = (props) => {
   const is_owner = currentUser?.username === owner;
   const { setAlert } = useAlert();
 
+  // Function to handle deleting a comment
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/comments/${id}/`);
@@ -57,6 +60,7 @@ const Comment = (props) => {
       <Media className="align-items-center">
         <img src={CommentBubble} alt="Comment Bubble" height={45} width={45} />
         <Media.Body className="align-self-center ml-2 text-center">
+          {/* Show name of comment owner /updated date if logged in user does not own */}
           {!is_owner && (
             <>
               <div className="mb-3">
@@ -65,6 +69,7 @@ const Comment = (props) => {
               </div>
             </>
           )}
+          {/* Display edit form if showEditForm equates to True */}
           {showEditForm ? (
             <CommentEditForm
               id={id}
@@ -78,6 +83,7 @@ const Comment = (props) => {
             <p>{content}</p>
           )}
         </Media.Body>
+        {/* Display edit/ delet icons or Avatar dependent on owner status */}
         {is_owner && !showEditForm ? (
           <EditDelete
             handleEdit={() => setShowEditForm(true)}

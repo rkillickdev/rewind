@@ -1,20 +1,27 @@
 import React from "react";
 import appStyles from "../../App.module.css";
-import { Container } from "react-bootstrap";
-import Asset from "../../components/Asset";
-import Profile from "./Profile";
+import Container from "react-bootstrap/Container";
+import DrumMachine from "../../assets/roland-808.webp";
+
 import { useProfileData } from "../../contexts/ProfileDataContext";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import UserDirection from "../../components/UserDirection";
-import DrumMachine from "../../assets/roland-808.webp";
+import Asset from "../../components/Asset";
+import Profile from "./Profile";
 
 const RelevantProfiles = ({ mobile }) => {
   const currentUser = useCurrentUser();
   const profile_id = currentUser?.profile_id || "";
+
+  // Extract user preference details from currentUser
   const genre_preference = currentUser?.genre_preference || "";
   const era_preference = currentUser?.era_preference || "";
   const category_preference = currentUser?.category_preference || "";
+
+  // Retrieve popular profiles with the useProfileData custom hook
   const { popularProfiles } = useProfileData();
+
+  // Filter popular profiles based on current user preferences
   const preferenceFilteredProfiles = popularProfiles.results
     .filter((profile) => profile.id !== currentUser?.profile_id)
     .filter(
@@ -24,6 +31,12 @@ const RelevantProfiles = ({ mobile }) => {
         profile.category_preference === category_preference,
     );
 
+  /* 
+    While popular profiles are loading, display spinner.
+    If results are avaialble for preferenceFilteredProfiles
+    display these.
+    If no preferenceFilteredProfiles, display popular profiles.
+  */
   return popularProfiles.results.length ? (
     preferenceFilteredProfiles.length ? (
       <Container

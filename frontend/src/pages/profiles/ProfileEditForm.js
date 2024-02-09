@@ -9,14 +9,14 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 
+import btnStyles from "../../styles/Button.module.css";
+import appStyles from "../../App.module.css";
+
 import { axiosReq } from "../../api/axiosDefaults";
 import {
   useCurrentUser,
   useSetCurrentUser,
 } from "../../contexts/CurrentUserContext";
-
-import btnStyles from "../../styles/Button.module.css";
-import appStyles from "../../App.module.css";
 import { useOptions } from "../../contexts/OptionsContext";
 import useAlert from "../../hooks/useAlert";
 
@@ -28,7 +28,10 @@ const ProfileEditForm = () => {
   const imageFile = useRef();
   const { setAlert } = useAlert();
 
+  // Retrieve options with useOptions custom hook
   const options = useOptions();
+
+  // destructure options
   const { genres, eras, categories } = options;
 
   const [profileData, setProfileData] = useState({
@@ -36,6 +39,7 @@ const ProfileEditForm = () => {
     bio: "",
     image: "",
   });
+
   const {
     name,
     bio,
@@ -47,6 +51,7 @@ const ProfileEditForm = () => {
 
   const [errors, setErrors] = useState({});
 
+  // Retrieve and set profile data on component mount
   useEffect(() => {
     const handleMount = async () => {
       if (currentUser?.profile_id?.toString() === id) {
@@ -79,8 +84,10 @@ const ProfileEditForm = () => {
     };
 
     handleMount();
+    // Dependency array determines changes that should trigger handleMount function.
   }, [currentUser, history, id]);
 
+  // Function to handle changes to form inputs
   const handleChange = (event) => {
     setProfileData({
       ...profileData,
@@ -88,6 +95,7 @@ const ProfileEditForm = () => {
     });
   };
 
+  // Function to handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -150,6 +158,7 @@ const ProfileEditForm = () => {
     </>
   );
 
+  // destructured options mapped over to provide select fields
   const selectFields = (
     <>
       <Form.Group>
@@ -262,6 +271,7 @@ const ProfileEditForm = () => {
       <Row>
         <Col className="py-2 p-0 p-md-2 text-center" md={7} lg={6}>
           <Container className={appStyles.Content}>
+            {/* Display current profile image and select new image */}
             <Form.Group>
               {image && (
                 <figure>
@@ -296,10 +306,12 @@ const ProfileEditForm = () => {
               />
             </Form.Group>
             <div className="d-md-none">
+              {/* User can update their Bio */}
               {textFields}
               <p className={`h4 ${appStyles.FeatureHeading}`}>
                 What would you like to hear about?
               </p>
+              {/* User can update their preferences */}
               {selectFields}
               {buttons}
             </div>
@@ -307,10 +319,12 @@ const ProfileEditForm = () => {
         </Col>
         <Col md={5} lg={6} className="d-none d-md-block p-0 p-md-2 text-center">
           <Container className={appStyles.Content}>
+            {/* User can update their Bio */}
             {textFields}
             <p className={`h4 ${appStyles.FeatureHeading}`}>
               What would you like to hear about?
             </p>
+            {/* User can update their preferences */}
             {selectFields}
             {buttons}
           </Container>

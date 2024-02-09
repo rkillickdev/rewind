@@ -1,32 +1,32 @@
 import React, { useEffect, useState } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom";
 
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
+import Image from "react-bootstrap/Image";
 
-import Asset from "../../components/Asset";
 import HeroImage from "../../assets/cassette-player-retro.webp";
-
+import NoResults from "../../assets/no-results.png";
 import styles from "../../styles/ProfilePage.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import RelevantProfiles from "./RelevantProfiles";
-import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import {
   useProfileData,
   useSetProfileData,
 } from "../../contexts/ProfileDataContext";
-import { Button, Image } from "react-bootstrap";
-import InfiniteScroll from "react-infinite-scroll-component";
-import Snapshot from "../snapshots/Snapshot";
-import { fetchMoreData } from "../../utils/utils";
-import NoResults from "../../assets/no-results.png";
-import { ProfileEditOptions } from "../../components/EditDelete";
 import useAlert from "../../hooks/useAlert";
+import { fetchMoreData } from "../../utils/utils";
+import Snapshot from "../snapshots/Snapshot";
+import RelevantProfiles from "./RelevantProfiles";
+import { ProfileEditOptions } from "../../components/EditDelete";
 import UserDirection from "../../components/UserDirection";
+import Asset from "../../components/Asset";
 
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -41,6 +41,7 @@ function ProfilePage() {
   const { setAlert } = useAlert();
 
   useEffect(() => {
+    // Retrieves data for specific profile and snapshots owned by the profile
     const fetchData = async () => {
       try {
         const [{ data: pageProfile }, { data: profileSnapshots }] =
@@ -63,6 +64,7 @@ function ProfilePage() {
     fetchData();
   }, [id, setProfileData]);
 
+  // Profile data associated with the specified profile id
   const mainProfile = (
     <>
       <Row noGutters className="px-3 text-center">
@@ -122,6 +124,7 @@ function ProfilePage() {
     </>
   );
 
+  // List of all snapshots owned by the profile
   const mainProfilePosts = (
     <>
       <hr />

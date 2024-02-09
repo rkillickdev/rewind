@@ -2,23 +2,25 @@ import React, { useState } from "react";
 
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
-import { axiosRes } from "../../api/axiosDefaults";
 
 import btnStyles from "../../styles/Button.module.css";
 import styles from "../../styles/CommentCreateEditForm.module.css";
+
+import { axiosRes } from "../../api/axiosDefaults";
 import useAlert from "../../hooks/useAlert";
 
 function CommentEditForm(props) {
   const { id, content, setShowEditForm, setComments } = props;
-
   const [formContent, setFormContent] = useState(content);
   const [errors, setErrors] = useState({});
   const { setAlert } = useAlert();
 
+  // Function to handle changes to form inputs
   const handleChange = (event) => {
     setFormContent(event.target.value);
   };
 
+  // Function to handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -48,6 +50,7 @@ function CommentEditForm(props) {
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group className="pr-1">
+        {/* Text area for user to update their comment */}
         <Form.Control
           className={styles.Form}
           as="textarea"
@@ -64,6 +67,7 @@ function CommentEditForm(props) {
       ))}
 
       <div className="text-right">
+        {/* Button cancels comment update */}
         <button
           className={`${btnStyles.Button} ${btnStyles.Highlight}`}
           onClick={() => setShowEditForm(false)}
@@ -71,6 +75,7 @@ function CommentEditForm(props) {
         >
           cancel
         </button>
+        {/* Button to save changes to comment */}
         <button
           className={`${btnStyles.Button} ${btnStyles.Feature}`}
           disabled={!content.trim()}

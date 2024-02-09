@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-import btnStyles from "../../styles/Button.module.css";
-
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import InputGroup from "react-bootstrap/InputGroup";
 
 import styles from "../../styles/CommentCreateEditForm.module.css";
-import Avatar from "../../components/Avatar";
+import btnStyles from "../../styles/Button.module.css";
+
 import { axiosRes } from "../../api/axiosDefaults";
 import useAlert from "../../hooks/useAlert";
+import Avatar from "../../components/Avatar";
 
 function CommentCreateForm(props) {
   const { snapshot, setSnapshot, setComments, profileImage, profile_id } =
@@ -19,10 +19,12 @@ function CommentCreateForm(props) {
   const { setAlert } = useAlert();
   const [errors, setErrors] = useState({});
 
+  // Function to handle changes to form inputs
   const handleChange = (event) => {
     setContent(event.target.value);
   };
 
+  // Function to handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -55,9 +57,11 @@ function CommentCreateForm(props) {
     <Form className="mt-2" onSubmit={handleSubmit}>
       <Form.Group>
         <InputGroup>
+          {/* Link to profile of user leaving comment */}
           <Link to={`/profiles/${profile_id}`}>
             <Avatar src={profileImage} />
           </Link>
+          {/* Text area for user to leave their comment */}
           <Form.Control
             className={styles.Form}
             placeholder="leave a comment..."
@@ -75,6 +79,7 @@ function CommentCreateForm(props) {
           {message}
         </Alert>
       ))}
+      {/* Comment submission button */}
       <button
         className={`${btnStyles.Button} ${btnStyles.Feature} btn d-block ml-auto`}
         disabled={!content.trim()}
