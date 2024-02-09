@@ -9,7 +9,7 @@ import Container from "react-bootstrap/Container";
 
 import styles from "../../styles/SnapshotsPage.module.css";
 import HeroImage from "../../assets/cassette-player-retro.webp";
-import NoResults from "../../assets/no-results.png";
+import NoResults from "../../assets/no-results-icon.webp";
 
 import { axiosReq } from "../../api/axiosDefaults";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";

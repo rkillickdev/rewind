@@ -9,7 +9,7 @@ import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 import Image from "react-bootstrap/Image";
 
-import Upload from "../../assets/image-upload-icon.png";
+import Upload from "../../assets/image-upload.webp";
 import styles from "../../styles/SnapshotCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
@@ -257,6 +257,8 @@ function SnapshotCreateForm() {
                   <Asset
                     src={Upload}
                     message="Click here to upload your image"
+                    height={100}
+                    width={100}
                   />
                 </Form.Label>
               )}

@@ -9,7 +9,7 @@ import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
 
 import HeroImage from "../../assets/cassette-player-retro.webp";
-import NoResults from "../../assets/no-results.png";
+import NoResults from "../../assets/no-results-icon.webp";
 import styles from "../../styles/ProfilePage.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
