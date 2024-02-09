@@ -1,7 +1,7 @@
 .ToastFixed {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    z-index: 9999;
-    background-color: var(--secondary-color);;
-  }
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 9999;
+  background-color: var(--secondary-color);;
+}
