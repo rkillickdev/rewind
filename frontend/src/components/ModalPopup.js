@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+
 import btnStyles from "../styles/Button.module.css";
 
 // Referenced the following article when implementing Modal Popup:
