@@ -1,16 +1,20 @@
 import React from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
-import { OverlayTrigger, Tooltip } from "react-bootstrap";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
+
 import appStyles from "../App.module.css";
 
 const EditDelete = ({ handleEdit, handleDelete }) => {
   return (
     <div>
+      {/* Rendered if handleEdit prop passed */}
       {handleEdit && (
         <span onClick={handleEdit}>
           <i className={"fas fa-edit"} aria-label="edit" />
         </span>
       )}
+      {/* Rendered if handleDelete prop passed */}
       {handleDelete && (
         <span onClick={handleDelete}>
           <i className={"fas fa-trash-alt"} aria-label="delete" />
