@@ -34,7 +34,7 @@ const Sample = (props) => {
   const is_owner = currentUser?.username === owner;
   const { setAlert } = useAlert();
 
-  // Function to handle deleting a comment
+  // Function to handle deleting a sample
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/samples/${id}/`);
