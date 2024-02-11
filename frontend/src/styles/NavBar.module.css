@@ -9,6 +9,13 @@
   margin-left: 0.5rem;
 }
 
+/* Media query for mobile devices from 400px and down.  Reduces heading size */
+@media only screen and (max-width: 400px) {
+  .NavBar h1 {
+    font-size: 2rem;
+  }
+}
+
 .NavLink {
   padding: 5px;
 }
