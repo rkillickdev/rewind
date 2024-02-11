@@ -121,7 +121,7 @@ function SnapshotsPage({ message, filter = "", curated, pinboard }) {
       </Row>
       <Row className={styles.SearchAdd}>
         {/* Render search bar */}
-        <Col lg={currentUser && 8} className="m-auto">
+        <Col lg={8}>
           <i className={`fas fa-search ${styles.SearchIcon}`}></i>
           <Form
             className={styles.SearchBar}

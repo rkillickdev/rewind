@@ -478,23 +478,66 @@ The only warnings that occur relate to the use of vendor pseudo elements, vendor
 
 ![Lighthouse Sign Up Desktop ](docs/lighthouse/desktop/pp5-lighthouse-sign-up-desktop.png)
 
-**Home Authenticated New User**
+**Home Authenticated User**
 
 ![Lighthouse New USer Desktop ](docs/lighthouse/desktop/pp5-lighthouse-home-auth-new-user-desktop.png)
 
-**Home Authenticated New User**
+**Snapshot Detail**
 
-![Lighthouse New USer Desktop ](docs/lighthouse/desktop/pp5-lighthouse-home-auth-new-user-desktop.png)
+![Lighthouse Snapshot Detail Desktop ](docs/lighthouse/desktop/pp5-lighthouse-snapshot-detail-desktop.png)
 
-**Home Add Snapshot**
+**Add Snapshot**
 
 ![Lighthouse Add Snapshot Desktop ](docs/lighthouse/desktop/pp5-lighthouse-add-snapshot-desktop.png)
+
+**Edit Snapshot**
+
+![Lighthouse Edit Snapshot Desktop ](docs/lighthouse/desktop/pp5-lighthouse-snapshot-edit-desktop.png)
 
 **Profile Page**
 
 ![Lighthouse Profile Page Desktop ](docs/lighthouse/desktop/pp5-lighthouse-profile-page-desktop.png)
 
 </details>
+
+<details><summary>Mobile Results</summary>
+
+<br>
+
+**Home Page Unauthenticated**
+
+![Lighthouse Home Page Unauth Mobile ](docs/lighthouse/mobile/pp5-lighthouse-home-unauth-mobile.png)
+
+**Sign In Page**
+
+![Lighthouse Sign In Mobile ](docs/lighthouse/mobile/pp5-lighthouse-sign-in-mobile.png)
+
+**Sign Up Page**
+
+![Lighthouse Sign Up Mobile ](docs/lighthouse/mobile/pp5-lighthouse-sign-up-mobile.png)
+
+**Home Authenticated User**
+
+![Lighthouse New USer Mobile ](docs/lighthouse/mobile/pp5-lighthouse-home-auth-new-user-mobile.png)
+
+**Snapshot Detail**
+
+![Lighthouse Snapshot Detail Mobile ](docs/lighthouse/mobile/pp5-lighthouse-snapshot-detail-mobile.png)
+
+**Add Snapshot**
+
+![Lighthouse Add Snapshot Mobile ](docs/lighthouse/mobile/pp5-lighthouse-add-snapshot-mobile.png)
+
+**Edit Snapshot**
+
+![Lighthouse Edit Snapshot Mobile ](docs/lighthouse/mobile/pp5-lighthouse-snapshot-edit-mobile.png)
+
+**Profile Page**
+
+![Lighthouse Profile Page Mobile ](docs/lighthouse/mobile/pp5-lighthouse-profile-page-mobile.png)
+
+</details>
+
 
 
 ## **Wave Accessibility**

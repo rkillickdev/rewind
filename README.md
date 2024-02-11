@@ -329,6 +329,10 @@ Wireframes were created using [Balsamiq](https://balsamiq.com/wireframes/) and u
 <summary> Navbar
 </summary>
 
+<br>
+
+![Nav bar for unauthenticated user](docs/features/pp5-features-unauth-nav-bar.png)
+
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: | 
 | [#2](https://github.com/rkillickdev/rewind/issues/2) | As a user I can access a navbar on every page so that navigation of the site is intuitive | Pass |
@@ -350,6 +354,10 @@ To the right of the navbar, page links are displayed and a hover effect applied 
 | Sign in | Logged out users |
 | Sign out | Logged in users |
 
+<br>
+
+![Nav bar for authenticated user](docs/features/pp5-features-auth-nav-bar.png)
+
 The Profile link is coupled with an avatar.  If the user has edited their profile and added their own personal image, this is displayed.  A default image is displayed in cases where the user has not yet added an image.
 
 | | User Story | Acceptance Criteria Satisfied | 
@@ -359,7 +367,11 @@ ___
 
 To ensure good user experience and satisfy the site owner's goal of responsive design across a range of device sizes, the navigation menu collapses down into a hamburger menu on screen sizes below 992px.  This prevents the navbar from feeling cluttered on smaller devices and the instantly recognisable hamburger icon ensures that site navigation remains intuitive for users.
 
+![Collapsed mobile nav links](docs/features/pp5-features-nav-bar-mobile-collapsed.png)
+
 Clicking on the hamburger icon expands the nav links which are stacked vertically to the left of the screen.  Clicking on a link, the icon or anywhere else on the pag collapses the nav menu.
+
+![Expanded mobile nav links](docs/features/pp5-features-nav-bar-mobile-expanded.png)
 
 The React Router library is used to handle routing for the application, with specified urls routing the user to different pages.  However this happens without the browser refreshing as the router handles these changes in the React virtual DOM.  In reality each time a user navigates to a new 'page', it is always the same HTML page but with a different component rendered.
 
@@ -368,11 +380,17 @@ The React Router library is used to handle routing for the application, with spe
 | [#3](https://github.com/rkillickdev/rewind/issues/3) | As a user I can navigate the content of the site without the page refreshing so that content is accessed quickly and user experience is enhanced | Pass |
 ___
 
+<br>
+
 </details>
 
 <details>
 <summary> Sign Up Form
 </summary>
+
+<br>
+
+![Sign up form](docs/features/pp5-features-sign-up.png)
 
 Clicking on the 'Sign up' nav link renders the `SignUpForm` component where a new user can create an account.  This also provides a link to the 'Sign in' page, in case the user already has an account.
 
@@ -387,12 +405,18 @@ ___
 <summary> Sign In Form
 </summary>
 
+<br>
+
+![Sign in form](docs/features/pp5-features-sign-in.png)
+
 Clicking on the 'Sign in' nav link renders the `SignInForm` component where a user with existing credentials can sign in.  This also provides a link to the 'Sign up' page, in case the user does not yet have an account.
 
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: | 
 | [#5](https://github.com/rkillickdev/rewind/issues/5) | As a user I can sign in using my existing credentials so that I can view my account and continue enjoying site functionality only accessible to authenticated users | Pass |
 ___
+
+<br>
 
 </details>
 
@@ -404,12 +428,16 @@ ___
 
 * A search bar positioned at the top of the page allows the user to search for snapshots based on their title, era, musical genre or category.  The filtering happens dynamically as the user types via the backend using the DRF SearchFilter as specified in `snapshots/views.py`.  Below the search bar, a list of snapshots is displayed.
 
+![Snapshots search bar](docs/features/gifs/search-bar.gif)
+
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: |
 | [#10](https://github.com/rkillickdev/rewind/issues/10) | As a user I can search snapshots by keywords so that I can filter results displayed by their text content or by the profile of the poster | Pass |
 
 
 * The `Snapshot` component is rendered for each snapshot in the list, each with a unique key (this is provided by the snapshot id).  This displays the Profile avatar and name of the owner, Snapshot image, title, date created and description if available.  Exactly what else the user sees is determined by their authentication status and props passed into the component.
+
+![Snapshots list all users](docs/features/gifs/snapshots-list.gif)
 
 ### **All Users**
 
@@ -421,7 +449,11 @@ ___
 
 ### **Unauthenticated**
 
+![Snapshot unauthenticated user](docs/features/pp5-features-snapshot-unauth.png)
+
 * Icons and tallies for recommendation and comment counts are displayed.  If the user tries to recommend the snapshot, a tooltip provides feedback that they must be signed in to carry out this action.  Clicking on the comments icon directs the user to the Snapshot Detail Page.
+
+![Home unauthenticated user](docs/features/pp5-features-home-unauth.png)
 
 * To the right of the Snapshot list, a reuseable `UserDirection` component is rendered to display a hero image and 'call to action' button, encouraging the user to 'get started' by signing up.
 
@@ -431,11 +463,15 @@ ___
 
 * Users can recommend/ remove recommendations for snaphots that they do not own.  If they own the snapshot and attempt to recommend, a tooltip provides feedback that they cannot carry out this action.
 
+![Recommend snapshots](docs/features/gifs/recommend-snapshot.gif)
+
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: | 
 | [#22](https://github.com/rkillickdev/rewind/issues/22) | As a logged in user I can recommend a snapshot so that I can show my appreciation of another user's post and encourage others to view it  | Pass |
 
 * Users can pin/ remove pins for any snapshot.
+
+![Pin snapshots](docs/features/gifs/pin-snapshot.gif)
 
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: | 
