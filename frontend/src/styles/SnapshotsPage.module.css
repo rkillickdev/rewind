@@ -1,6 +1,6 @@
 .SearchBar input {
   border-radius: 20px;
-  color: #242a3d;
+  color: var(--dark-color);
   padding-left: 40px;
   margin-bottom: 16px;
 }
@@ -14,7 +14,7 @@
   
 .SearchIcon:hover {
   cursor: default;
-  color: #cfced3;
+  color: var(--secondary-color);
 }
 
 /* Media query for mobile devices from 991px and down. Row switches to flex column */
