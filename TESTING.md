@@ -407,7 +407,23 @@ Main Directory:
 
 [Back to top &uarr;](#contents)
 
+
+### **W3C HTML Markup Validator**
+
+HTML has been validated using the [W3C](https://validator.w3.org/) Markup Validator .  No errors or warnings were displayed.
+
+![HTML Validation Results](docs/validation/html/pp5-html-validation.png)
+
 [Back to top &uarr;](#contents)
+
+### **W3C CSS Validator**
+
+I used the [W3C jigsaw](https://jigsaw.w3.org/css-validator/) CSS Validation Service to validate my CSS files.
+
+| File | Errors | Result |
+| ---- | :------: | :------: |
+|  | 0 | Pass |
+
 
 # **Performance**
 
@@ -415,11 +431,44 @@ Main Directory:
 
 ## **Wave Accessibility**
 
-All pages of the site have been passed through the [Wave Chrome Extension](https://wave.webaim.org/extension/) to check for accessibility performance.  No errors are logged on any pages.  I have checked any other warnings to ensure they are acceptable.
+All pages of the site have been passed through the [Wave Chrome Extension](https://wave.webaim.org/extension/) to check for accessibility performance.  No errors are logged on any pages.  I have checked warnings to ensure they are acceptable.
 
 <details><summary>Wave Results</summary>
 
+![Wave Accessibility Home](docs/accessibility/pp5-wave-accessibility-home.png)
+
+![Wave Accessibility Sign In](docs/accessibility/pp5-wave-accessibility-sign-in.png)
+
+![Wave Accessibility Sign Up](docs/accessibility/pp5-wave-accessibility-sign-up.png)
+
+![Wave Accessibility Home Authenticated](docs/accessibility/pp5-wave-accessibility-home-authenticated.png)
+
+![Wave Accessibility Home New User](docs/accessibility/pp5-wave-accessibility-home-auth-new-user.png)
+
+![Wave Accessibility For You Page](docs/accessibility/pp5-wave-accessibility-for-you.png)
+
+![Wave Accessibility Pinned Page](docs/accessibility/pp5-wave-accessibility-pinned.png)
+
+![Wave Accessibility Snapshot Detail](docs/accessibility/pp5-wave-accessibility-snapshot-detail.png)
+
+![Wave Accessibility Create Snapshot](docs/accessibility/pp5-wave-accessibility-create-snapshot.png)
+
+![Wave Accessibility Edit Snapshot](docs/accessibility/pp5-wave-accessibility-edit-snapshot.png)
+
+![Wave Accessibility Edit Comment](docs/accessibility/pp5-wave-accessibility-edit-comment.png)
+
+![Wave Accessibility Profile Page](docs/accessibility/pp5-wave-accessibility-profile-page.png)
+
+![Wave Accessibility Profile Edit](docs/accessibility/pp5-wave-accessibility-profile-edit.png)
+
+![Wave Accessibility Change Username](docs/accessibility/pp5-wave-accessibility-change-username.png)
+
+![Wave Accessibility Change Password](docs/accessibility/pp5-wave-accessibility-change-password.png)
+
+</details>
+
 <br>
+
 
 
 
