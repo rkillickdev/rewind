@@ -99,19 +99,19 @@ function ProfilePage() {
             </Col>
           </Row>
         </Col>
-        <Col lg={3} className="text-center align-items-center">
+        <Col lg={3} className="text-center">
           {currentUser &&
             !is_owner &&
             (profile?.following_id ? (
               <Button
-                className={`${btnStyles.Button} ${btnStyles.FeatureOutline}`}
+                className={`mt-3 ${btnStyles.Button} ${btnStyles.FeatureOutline}`}
                 onClick={() => handleUnfollow(profile)}
               >
                 unfollow
               </Button>
             ) : (
               <Button
-                className={`${btnStyles.Button} ${btnStyles.Feature}`}
+                className={`mt-3 ${btnStyles.Button} ${btnStyles.Feature}`}
                 onClick={() => handleFollow(profile)}
               >
                 follow
