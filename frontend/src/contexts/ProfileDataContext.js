@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { useCurrentUser } from "./CurrentUserContext";
 import { axiosReq, axiosRes } from "../api/axiosDefaults";
 import { followHelper, unfollowHelper } from "../utils/utils";
+import useAlert from "../hooks/useAlert";
 
 /* 
   Code for ProfileDataContext based on Code Institute Moments walk through project.
@@ -26,6 +27,7 @@ export const ProfileDataProvider = ({ children }) => {
 
   // Access current user with useCurrentUser hook
   const currentUser = useCurrentUser();
+  const { setAlert } = useAlert();
 
   const handleFollow = async (clickedProfile) => {
     try {
@@ -49,6 +51,7 @@ export const ProfileDataProvider = ({ children }) => {
       }));
     } catch (err) {
       // console.log(err);
+      setAlert("sorry, something went wrong.  Try again later.", "warning");
     }
   };
 
@@ -73,6 +76,7 @@ export const ProfileDataProvider = ({ children }) => {
       }));
     } catch (err) {
       // console.log(err);
+      setAlert("sorry, something went wrong.  Try again later.", "warning");
     }
   };
 
@@ -89,6 +93,7 @@ export const ProfileDataProvider = ({ children }) => {
         }));
       } catch (err) {
         // console.log(err);
+        setAlert("sorry, something went wrong.  Try again later.", "warning");
       }
     };
 

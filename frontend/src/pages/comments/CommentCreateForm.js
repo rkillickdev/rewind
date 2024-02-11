@@ -48,7 +48,6 @@ function CommentCreateForm(props) {
       setContent("");
     } catch (err) {
       // console.log(err);
-      // setAlert(err.message, "warning");
       setErrors(err.response?.data);
     }
   };

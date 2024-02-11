@@ -1,7 +1,10 @@
 import jwtDecode from "jwt-decode";
 import { axiosReq } from "../api/axiosDefaults";
+import useAlert from "../hooks/useAlert";
 
 export const fetchMoreData = async (resource, setResource) => {
+  const { setAlert } = useAlert();
+
   try {
     const { data } = await axiosReq.get(resource.next);
     setResource((prevResource) => ({
@@ -15,6 +18,7 @@ export const fetchMoreData = async (resource, setResource) => {
     }));
   } catch (err) {
     // console.log(err);
+    setAlert("sorry, something went wrong.  Try again later.", "warning");
   }
 };
 

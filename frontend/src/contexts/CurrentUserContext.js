@@ -3,6 +3,7 @@ import axios from "axios";
 import { axiosReq, axiosRes } from "../api/axiosDefaults";
 import { useHistory } from "react-router-dom";
 import { removeTokenTimestamp, shouldRefreshToken } from "../utils/utils";
+import useAlert from "../hooks/useAlert";
 
 /* 
   Code for CurrentUserContext based on Code Institute Moments walk through project.
@@ -22,6 +23,7 @@ export const useSetCurrentUser = () => useContext(SetCurrentUserContext);
 export const CurrentUserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const history = useHistory();
+  const { setAlert } = useAlert();
 
   const handleMount = async () => {
     // Retrieves details of current user and sets state
@@ -30,6 +32,7 @@ export const CurrentUserProvider = ({ children }) => {
       setCurrentUser(data);
     } catch (err) {
       // console.log(err);
+      setAlert("sorry, something went wrong.  Try again later.", "warning");
     }
   };
 

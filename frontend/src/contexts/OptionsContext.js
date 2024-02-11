@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { axiosReq } from "../api/axiosDefaults";
+import useAlert from "../hooks/useAlert";
 
 // Context for options and setting options.  Options refers to genre, era and category.
 export const OptionsContext = createContext();
@@ -11,6 +12,7 @@ export const useSetOptions = () => useContext(SetOptionsContext);
 
 // Provider component to pass options context to children
 export const OptionsProvider = ({ children }) => {
+  const { setAlert } = useAlert();
   const [options, setOptions] = useState({
     genres: [],
     eras: [],
@@ -35,6 +37,7 @@ export const OptionsProvider = ({ children }) => {
         }));
       } catch (err) {
         // console.log(err);
+        setAlert("sorry, something went wrong.  Try again later.", "warning");
       }
     };
     // Call fetchSnapshotOptions function on component mount

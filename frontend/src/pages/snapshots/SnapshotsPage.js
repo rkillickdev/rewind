@@ -15,6 +15,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useSetProfileData } from "../../contexts/ProfileDataContext";
 import { fetchMoreData } from "../../utils/utils";
+import useAlert from "../../hooks/useAlert";
 import Snapshot from "./Snapshot";
 import Asset from "../../components/Asset";
 import RelevantProfiles from "../profiles/RelevantProfiles";
@@ -26,6 +27,7 @@ function SnapshotsPage({ message, filter = "", curated, pinboard }) {
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
   const { handleFollow, handleUnfollow } = useSetProfileData();
+  const { setAlert } = useAlert();
 
   //Retrieve current user with useCurrentUser hook
   const currentUser = useCurrentUser();
@@ -56,6 +58,7 @@ function SnapshotsPage({ message, filter = "", curated, pinboard }) {
         setHasLoaded(true);
       } catch (err) {
         // console.log(err);
+        setAlert("sorry, something went wrong.  Try again later.", "warning");
       }
     };
 

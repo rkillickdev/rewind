@@ -64,7 +64,7 @@ const SampleCreateForm = (props) => {
       setAudio("");
     } catch (err) {
       // console.log(err);
-      // setAlert(err.message, "warning");
+      setAlert("sorry, something went wrong.  Try again later.", "warning");
       setErrors(err.response?.data);
     }
   };

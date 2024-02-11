@@ -54,6 +54,7 @@ const Sample = (props) => {
       }));
     } catch (err) {
       // console.log(err);
+      setAlert("sorry, something went wrong.  Try again later.", "warning");
     }
   };
 

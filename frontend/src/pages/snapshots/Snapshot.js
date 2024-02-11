@@ -57,7 +57,7 @@ const Snapshot = (props) => {
       history.goBack();
     } catch (err) {
       // console.log(err);
-      setAlert(err.message, "warning");
+      setAlert("sorry, something went wrong.  Try again later.", "warning");
     }
   };
 
@@ -81,7 +81,7 @@ const Snapshot = (props) => {
         }),
       }));
     } catch (err) {
-      setAlert(err.message, "warning");
+      setAlert("sorry, something went wrong.  Try again later.", "warning");
       // console.log(err);
     }
   };
@@ -105,7 +105,7 @@ const Snapshot = (props) => {
       }));
     } catch (err) {
       // console.log(err);
-      setAlert(err.message, "warning");
+      setAlert("sorry, something went wrong.  Try again later.", "warning");
     }
   };
 
@@ -129,7 +129,7 @@ const Snapshot = (props) => {
       }));
     } catch (err) {
       // console.log(err);
-      setAlert(err.message, "warning");
+      setAlert("sorry, something went wrong.  Try again later.", "warning");
     }
   };
 
@@ -156,7 +156,7 @@ const Snapshot = (props) => {
         }));
     } catch (err) {
       // console.log(err);
-      setAlert(err.message, "warning");
+      setAlert("sorry, something went wrong.  Try again later.", "warning");
     }
   };
 

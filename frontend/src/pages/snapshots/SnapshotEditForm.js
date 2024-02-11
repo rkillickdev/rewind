@@ -51,7 +51,7 @@ function SnapshotEditForm() {
           : history.push("/");
       } catch (err) {
         history.push("/");
-        setAlert("sorry, something went wrong", "warning");
+        setAlert("sorry, something went wrong.  Try again later.", "warning");
         // console.log(err);
       }
     };

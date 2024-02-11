@@ -33,7 +33,7 @@ const NavBar = () => {
       removeTokenTimestamp();
     } catch (err) {
       // console.log(err);
-      setAlert(err.message, "warning");
+      setAlert("sorry, something went wrong.  Try again later.", "warning");
     }
   };
 
