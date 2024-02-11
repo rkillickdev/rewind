@@ -1,6 +1,13 @@
+/* Used this article when centering the Alert on the page: */
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/translate */
+
 .AlertFixed {
-  position: fixed;
-  margin-top: 20px;
-  z-index: 9999;
+  position: absolute;
+  z-index: 100;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-transform: capitalize;
   text-align: center;
+  font-weight: bold;
 }
