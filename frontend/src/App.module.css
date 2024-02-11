@@ -1,26 +1,24 @@
 :root {
-    /* --primary-color: #CF2000; */
-    --primary-color: #E07000;
-    /* --secondary-color: #F5B047; */
-    --secondary-color: #FFC107;
-    --light-color: #E9EBED;
-    --highlight-color: #393F4A;
-    --dark-color: #2C2F38;
-    --white-color: #ffffff;
+  --primary-color: #E07000;
+  --secondary-color: #FFC107;
+  --light-color: #E9EBED;
+  --highlight-color: #393F4A;
+  --dark-color: #2C2F38;
+  --white-color: #ffffff;
 }
 
 .App {
-    font-family: 'Ubuntu', sans-serif;
-    color: var(--dark-color);
-    background-color: var(--light-color);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+  font-family: 'Ubuntu', sans-serif;
+  color: var(--dark-color);
+  background-color: var(--light-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .Main {
-    padding-top: 100px;
-  }
+  padding-top: 100px;
+}
 
 .Content {
   background-color: var(--white-color);
@@ -51,31 +49,24 @@
   letter-spacing: 2px;
 }
 
-/* Media query for mobile devices from 991px and down. Feature Heading font size increases */
-/* @media only screen and (max-width: 991px) {
-  .FeatureHeading {
-    font-size: 3rem;   
-  }
-} */
-
 * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-  }
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
   
 a {
-color: inherit;
-transition: color ease-in-out 0.3s;
+  color: inherit;
+  transition: color ease-in-out 0.3s;
 }
 
 a:hover {
-text-decoration: none;
-color: var(--highlight-color);
+  text-decoration: none;
+  color: var(--highlight-color);
 }
 
 a:hover i {
-color: var(--secondary-color);
+  color: var(--secondary-color);
 }
 
 input[type="file"] {
@@ -83,16 +74,16 @@ input[type="file"] {
 }
 
 i {
-color: var(--primary-color);
-font-size: 1.6rem;
-padding: 7px;
-vertical-align: middle;
-transition: color ease-in-out 0.3s;
+  color: var(--primary-color);
+  font-size: 1.6rem;
+  padding: 7px;
+  vertical-align: middle;
+  transition: color ease-in-out 0.3s;
 }
 
 i:hover {
-cursor: pointer;
-color: var(--secondary-color);
+  cursor: pointer;
+  color: var(--secondary-color);
 }
 
 figure {
