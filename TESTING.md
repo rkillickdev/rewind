@@ -418,16 +418,84 @@ HTML has been validated using the [W3C](https://validator.w3.org/) Markup Valida
 
 ### **W3C CSS Validator**
 
-I used the [W3C jigsaw](https://jigsaw.w3.org/css-validator/) CSS Validation Service to validate my CSS files.
+I used the [W3C jigsaw](https://jigsaw.w3.org/css-validator/) CSS Validation Service to validate my CSS files.  All files were error free.
+
+![css validation error free](docs/validation/css/pp5-css-validation.png)
 
 | File | Errors | Result |
 | ---- | :------: | :------: |
-|  | 0 | Pass |
+| frontend/src/App.module.css | 0 | Pass |
+| frontend/src/styles/AddSnapshot.module.css | 0 | Pass |
+| frontend/src/styles/AlertPopup.module.css | 0 | Pass |
+| frontend/src/styles/Asset.module.css | 0 | Pass |
+| frontend/src/styles/Avatar.module.css | 0 | Pass |
+| frontend/src/styles/Button.module.css | 0 | Pass |
+| frontend/src/styles/Comment.module.css | 0 | Pass |
+| frontend/src/styles/CommentCreateEditForm.module.css | 0 | Pass |
+| frontend/src/styles/Footer.module.css | 0 | Pass |
+| frontend/src/styles/NavBar.module.css | 0 | Pass |
+| frontend/src/styles/NotFound.module.css | 0 | Pass |
+| frontend/src/styles/Profile.module.css | 0 | Pass |
+| frontend/src/styles/ProfilePage.module.css | 0 | Pass |
+| frontend/src/styles/Sample.module.css | 0 | Pass |
+| frontend/src/styles/SignInUpForm.module.css | 0 | Pass |
+| frontend/src/styles/Snapshot.module.css | 0 | Pass |
+| frontend/src/styles/SnapshotCreateEditForm.module.css | 0 | Pass |
+| frontend/src/styles/SnapshotPage.module.css | 0 | Pass |
+| frontend/src/styles/SnapshotsPage.module.css | 0 | Pass |
+| frontend/src/styles/ToastPopup.module.css | 0 | Pass |
+| frontend/src/index.css | 0 | Pass |
 
+The only warnings that occur relate to the use of vendor pseudo elements, vendor extensions and use of variables.  I am satisfied that these are not causing any issues with the functionality of the site.
+
+![css variables warning](docs/validation/css/pp5-css-comment-validation-warnings.png)
+
+![css vendor pseudo element warning](docs/validation/css/pp5-css-sample-validation-warnings.png)
+
+![css vendor extensions warning](docs/validation/css/pp5-css-index-validation-warnings.png)
 
 # **Performance**
 
 ## **Lighthouse**
+
+### Improvements
+
+### Opportunities
+
+<details><summary>Desktop Results</summary>
+
+<br>
+
+**Home Page Unauthenticated**
+
+![Lighthouse Home Page Unauth Desktop ](docs/lighthouse/desktop/pp5-lighthouse-home-unauth-desktop.png)
+
+**Sign In Page**
+
+![Lighthouse Sign In Desktop ](docs/lighthouse/desktop/pp5-lighthouse-sign-in-desktop.png)
+
+**Sign Up Page**
+
+![Lighthouse Sign Up Desktop ](docs/lighthouse/desktop/pp5-lighthouse-sign-up-desktop.png)
+
+**Home Authenticated New User**
+
+![Lighthouse New USer Desktop ](docs/lighthouse/desktop/pp5-lighthouse-home-auth-new-user-desktop.png)
+
+**Home Authenticated New User**
+
+![Lighthouse New USer Desktop ](docs/lighthouse/desktop/pp5-lighthouse-home-auth-new-user-desktop.png)
+
+**Home Add Snapshot**
+
+![Lighthouse Add Snapshot Desktop ](docs/lighthouse/desktop/pp5-lighthouse-add-snapshot-desktop.png)
+
+**Profile Page**
+
+![Lighthouse Profile Page Desktop ](docs/lighthouse/desktop/pp5-lighthouse-profile-page-desktop.png)
+
+</details>
+
 
 ## **Wave Accessibility**
 
