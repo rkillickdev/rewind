@@ -10,7 +10,7 @@
 }
 
 .Pending {
-    opacity: 0.2;
+  opacity: 0.2;
 }
 
 /* Used the following thread to help with audio styling: */
@@ -37,16 +37,16 @@ audio::-webkit-media-controls-timeline {
 }
 
 audio::-webkit-media-controls-panel {
-    background-color: var(--light-color);
-  }
+  background-color: var(--light-color);
+}
 
 audio::-webkit-media-controls-play-button {
-background-color: var(--secondary-color);
-border-radius: 50%;
+  background-color: var(--secondary-color);
+  border-radius: 50%;
 }
 
 audio::-webkit-media-controls-play-button:hover {
-    background-color: var(--primary-color);
-    cursor: pointer;
-  }
+  background-color: var(--primary-color);
+  cursor: pointer;
+}
 

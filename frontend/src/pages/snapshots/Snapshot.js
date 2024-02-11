@@ -178,7 +178,7 @@ const Snapshot = (props) => {
         <Card.Body>
           {title && <Card.Title className="text-center">{title}</Card.Title>}
           {description && <Card.Text>{description}</Card.Text>}
-          <div className={`d-flex justify-content-between ${styles.PostBar}`}>
+          <div className="d-flex justify-content-between">
             <div className={!is_owner || !snapshotPage ? "m-auto" : "mr-auto"}>
               {currentUser ? (
                 is_owner ? (
