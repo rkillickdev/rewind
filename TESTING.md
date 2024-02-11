@@ -407,6 +407,20 @@ Main Directory:
 
 [Back to top &uarr;](#contents)
 
+[Back to top &uarr;](#contents)
+
+# **Performance**
+
+## **Lighthouse**
+
+## **Wave Accessibility**
+
+All pages of the site have been passed through the [Wave Chrome Extension](https://wave.webaim.org/extension/) to check for accessibility performance.  No errors are logged on any pages.  I have checked any other warnings to ensure they are acceptable.
+
+<details><summary>Wave Results</summary>
+
+<br>
+
 
 
 
