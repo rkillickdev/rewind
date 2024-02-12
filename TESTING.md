@@ -460,7 +460,21 @@ The only warnings that occur relate to the use of vendor pseudo elements, vendor
 
 ### Improvements
 
+I used Lighthouse within Google Chrome developer tools as a way of testing performance, accessibility, best practices and SEO for the site.  The improvements I made using the Wave Accessibility tool ensured that accessibility scores are **100** on all pages.  
+
+Any recommendations for best practice were also implemented, and the only pages that do not achieve **100** scores are the home landing page, sign up page and sign in page. The reason for this is that HTTP 401 errors are logged to the console, therefore bringing best practice scores down to **92**.  However, 3 errors are to be expected when a user arrives on the home page as 3 network requests are required to establish whether the user is really logged out.  401 errors are also logged when navigating to sign up/ sign in pages as a consequence of checking the user's authorisation status and whether they should be redirected away from these pages if an attempt is made to access them.
+
 ### Opportunities
+
+Several opportunities were flagged by the lighthouse report to improve performance throughout the site,  particularly when testing for mobile.
+
+* Preload Largest Contentful Paint image
+* Properly size images
+* Serve images in next-gen formats
+* Enable text compression
+* Eliminate render-blocking resources
+
+Size and format of images being served is an area that should be looked into further during future iterations.  I have already implemented server side logic in the Snapshots serializers file to prevent images over 2MB in size being uploaded.  I have tested the site on various devices and networks and the issue does not seem to be impacting page load times to the detriment of the user.
 
 <details><summary>Desktop Results</summary>
 
