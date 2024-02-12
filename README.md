@@ -804,12 +804,28 @@ ___
 * [Heroku](https://dashboard.heroku.com/apps) - For deployment of the project.
 * [ElephantSQL](https://www.elephantsql.com/) - a PostgreSQL database used for the deployed production site.
 * [Cloudinary](https://www.cloudimage.io/) - Used to store user uploaded images and audio files.
+* [W3C](https://validator.w3.org/) - HTML Validator
+* [W3C jigsaw](https://jigsaw.w3.org/css-validator/) - CSS Validator
 * [PEP8](https://pep8ci.herokuapp.com/) - CI Python Linter.
 * [ESLint](https://eslint.org/)
 * [Prettier](https://prettier.io/)
 * [Black](https://www.freecodecamp.org/news/auto-format-your-python-code-with-black/) - Python Auto Formatter.
+* [Google Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) - Used at testing stage to show statistics for performance, accessibility, best practices and SEO.
+* [Google DevTools](https://developer.chrome.com/docs/devtools/) - Used throughout build of website for debugging, checking responsiveness and trialing new features/ styling.
+* [Google Fonts](https://fonts.google.com/) - Used to import required fonts for the app.
+* [Font Awesome](https://fontawesome.com/) - Used for all icons throughout the website.
+* [TinyPNG](https://tinypng.com/) - For compression of image files to improve website performance.
+* [Birme](https://www.birme.net/?target_width=425&target_height=450&auto_focal=false&image_format=jpeg&quality_jpeg=100&quality_webp=100) - For resizing and re-formatting images to make them suitable for use on the website.
+* [xnipapp](https://www.xnipapp.com/) - For capturing site screenshots
+* [jpg2png](https://jpg2png.com/) - For conversion of JPG images to PNG format.
+* [gyazo](https://gyazo.com/captures) - For mp4 screen captures of site functionality
+* [ezgif](https://ezgif.com/video-to-gif) - For conversion of mp4 video files to GIFs
 * [dbdiagram](https://dbdiagram.io/home) - Database Relationship Diagrams Design Tool.
 * [Balsamiq](https://balsamiq.com/wireframes/) - Used to create wireframes.
+* [ImageOnline](https://imageonline.co/merge-png.php) - Used for merging png files
+* [Favicon.ico & App Icon Generator](https://www.favicon-generator.org/) - For creating the 16x16px ico favicon.
+* [Techsini](https://techsini.com/multi-mockup/index.php) - For displaying images of how the website looks across a range of devices.
+* [Meta Tags IO](https://metatags.io/) - For improving site visual appearance on social media.
 * [Stackoverflow](https://stackoverflow.com/) - Used for researching solutions/ fixing bugs.
 
 ## **Frameworks and Libraries Used**
