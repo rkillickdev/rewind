@@ -9,7 +9,7 @@ const NotFound = () => {
       <UserDirection
         src={CassetteTapes}
         alt="Multi coloured cassette tapes"
-        heading="Sorry, the page you're looking for doesn't exist"
+        heading="Sorry, the page you're looking for does not exist"
         button="Go Home"
         page="/"
       />
