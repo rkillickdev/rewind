@@ -763,6 +763,20 @@ The custom error page has been implemented in `App.js`.  If a url entered by the
 
 I adopted a mobile first approach when designing and building the site. Bootstrap's grid system and responsiveness tiers were used to provide different layouts according to default breakpoints and ensure responsiveness across a range of device sizes. Additional styling tweaks were made using media queries in component css files.
 
+<br>
+
+![Responsive design mobile 1](docs/features/mobile/pp5-mobile-merge-1.png)
+
+![Responsive design mobile 2](docs/features/mobile/pp5-mobile-merge-2.png)
+
+![Responsive design mobile 3](docs/features/mobile/pp5-mobile-merge-3.png)
+
+![Responsive design mobile 4](docs/features/mobile/pp5-mobile-merge-4.png)
+
+![Responsive design mobile 5](docs/features/mobile/pp5-mobile-merge-5.png)
+
+![Responsive design mobile 6](docs/features/mobile/pp5-mobile-merge-6.png)
+
 </details>
 
 
