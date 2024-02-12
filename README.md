@@ -321,7 +321,7 @@ To secure certain Django Views and ensure they are only accessible to registered
 
 This is an important security consideration .  Although functionality to update and delete objects owned by another user is not provided in the user interface, this alone does not provide adequate protection.  Objects in the database could still be targeted using specific urls.  The inclusion of permission_classes add this additional layer of defence.
 
-Unit tests have been written to check the functionality of these permission classes.  Documentation for this can be found in the [TESTING.md](TESTING.md) file.
+Unit tests have been written to check the functionality of these permission classes.  Documentation for this can be found in the [TESTING.md](https://github.com/rkillickdev/rewind/blob/main/TESTING.md) file.
 
 #### **Protection Of Sensitive Details**
 ___
@@ -778,6 +778,16 @@ The custom error page has been implemented in `App.js`.  If a url entered by the
 
 <br>
 
+A favicon link has been included in the head of the index.html file and displays in each browser tab. The image is the same icon that is used in the navbar brand heading, to ensure consistency of styling.  It is a 16px X 16px ico file generated on the [Favicon.ico & App Icon Generator](https://www.favicon-generator.org/)
+
+![Favicon Image](docs/features/pp5-favicon-cassette-orange-logo.png)
+
+Open Graph and Twitter meta tags have been placed in the head of the base.html template to control how the URL is displayed when shared on social media.  It appears as displayed below:
+
+![Meta Tags social media display]()
+
+[Back to top &uarr;](#contents)
+
 </details>
 
 <details>
@@ -801,6 +811,23 @@ I adopted a mobile first approach when designing and building the site. Bootstra
 ![Responsive design mobile 5](docs/features/mobile/pp5-mobile-merge-5.png)
 
 ![Responsive design mobile 6](docs/features/mobile/pp5-mobile-merge-6.png)
+
+</details>
+
+<details>
+<summary> Accessibility
+</summary>
+
+<br>
+
+To ensure that the site is as accessible as possible for all users and compatible with screen readers, I have implemented the following:
+
+* Semantic markup used to structure the HTML code.
+* Checked that the colour contrast ratio across the website meets acceptable standards.
+* Descriptive alt attributes have been given to all images.
+* Aria labels have been used for interactive elements where no accessible name is provided.
+
+I used the [Wave Chrome Extension](https://wave.webaim.org/extension/) to check the accessibility of each page,  Results for this can be viewed in the [TESTING.md file](https://github.com/rkillickdev/rewind/blob/main/TESTING.md)
 
 </details>
 
