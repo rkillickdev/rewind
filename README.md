@@ -711,9 +711,60 @@ ___
 
 <br>
 
+A simple Footer component is rendered on each page.  The GitHub profile name of the site developer is displayed and a clickable GitHub icon that directs the user to the repository for the Rewind App in a new browser tab.
+
 ![Footer](docs/features/pp5-feature-footer.png)
 
 </details>
+
+<details>
+<summary> 404 Error Page
+</summary>
+
+<br>
+
+I have included a custom 404 error page as a form of defensive design. This improves the user experience by keeping the user informed about the problem and engaged with the site. The styling imagery and branding used on these pages is consistent with the rest of the user experience. To ensure the user does not decide to navigate away from the site, a 'Go Home' button is displayed. This also ensures they do not have to use the back button in their browser for navigation.
+
+The custom error page has been implemented in `App.js`.  If a url entered by the user matches none of the Route paths specified, the NotFound component is rendered.
+
+![404 Error Page](docs/features/gifs/404-error.gif)
+
+</details>
+
+<details>
+<summary> Toasts
+</summary>
+
+<br>
+
+</details>
+
+<details>
+<summary> Alerts
+</summary>
+
+<br>
+
+</details>
+
+<details>
+<summary> Favicon and Meta Tags
+</summary>
+
+<br>
+
+</details>
+
+<details>
+<summary> Responsive Design
+</summary>
+
+<br>
+
+I adopted a mobile first approach when designing and building the site. Bootstrap's grid system and responsiveness tiers were used to provide different layouts according to default breakpoints and ensure responsiveness across a range of device sizes. Additional styling tweaks were made using media queries in component css files.
+
+</details>
+
 
 ## **Accessibility**
 
