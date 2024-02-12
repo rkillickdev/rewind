@@ -461,6 +461,8 @@ ___
 
 * The AddSnapshot component is rendered.  This displays a clickable icon which directs the user to the `SnapshotCreateForm`
 
+![Add snapshot icon](docs/features/gifs/add-snapshot.gif)
+
 * Users can recommend/ remove recommendations for snaphots that they do not own.  If they own the snapshot and attempt to recommend, a tooltip provides feedback that they cannot carry out this action.
 
 ![Recommend snapshots](docs/features/gifs/recommend-snapshot.gif)
@@ -479,6 +481,8 @@ ___
 
 * If a user has not set their profile preferences, a `UserDirection` component is rendered with props passed to display a reminder message and button directing them to their profile edit page.
 
+![Set preferences message](docs/features/new-user-preference-message.png)
+
 * The RelevantProfiles component is rendered to the right of the snapshot list (see description of the component below).
 
 * Authenticated users navigating to the 'For you' page can view a list of snapshots filtered by any snapshot belonging to a profile they are following.  This stage of the filtering is carried out on the backend, with the required filterset field passed to the component as a prop.  Returned results are ordered according to recommendation count (descending order).  If a user has not followed any other profiles, a resuable `Asset` component is rendered to display a message encouraging the user to start following other profiles to fill the page. 
@@ -487,7 +491,11 @@ ___
 
 * Authenticated users navigating to the 'Pinned' page can view a list of all snapshots that they have pinned, ordered by most recently created (descending order).
 
+![Pinned page](docs/features/gifs/add-to-pinned-page.gif)
+
 * Pins can be removed for a snapshot on the 'Pinned' page and the list dynamically updates in response to this, so the targeted snapshot is no longer displayed.
+
+![Remove from Pinned page](docs/features/gifs/remove-pins.gif)
 
 </details>
 
@@ -585,11 +593,17 @@ ___
 <summary> Relevant Profile Page
 </summary>
 
+<br>
+
 * The `RelevantProfilePage` component is rendered as part of the `SnapshotsPage` component, if the user is authenticated.
 
-* If the user has not yet specified any preferences on their profile edit page, the rendered `RelevantProfilePage` component displays a list of popular profiles in descending order, based on the number of followers each profile has.  In this scenario, every user will be presented with the same list.  Howver, code has been implemented to ensure that the logged in user's own profile does not appear in the list they are presented with. 
+* If the user has not yet specified any preferences on their profile edit page, the rendered `RelevantProfilePage` component displays a list of popular profiles in descending order, based on the number of followers each profile has.  In this scenario, every user will be presented with the same list.  Howver, code has been implemented to ensure that the logged in user's own profile does not appear in the list they are presented with.
+
+![Popular profiles](docs/features/popular-profiles.png)
 
 * If the user has selected their preferences on the Profile Edit page, these are retrieved via the `CurrentUserContext`.  This information is then used to carry out frontend filtering of the 'popular profiles' list to return a list of suggested profiles whose interests/ preferences are most closely aligned with the current user.  It's possible that no results are returned, especially while the datatabase of profiles grows.  In this case, the list of popular profiles are displayed as a default.
+
+![Relevant profiles](docs/features/relevant-profiles.png)
 
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: |
@@ -619,6 +633,8 @@ ___
 
 * For every snapshot associated with the profile, a `Snapshot` component is rendered beneath the profile details.
 
+![Profile page unauthenticated user](docs/features/profile-page-unauth.png)
+
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: |
 | [#26](https://github.com/rkillickdev/rewind/issues/26) | As a user I can view the profile pages of other site users so that I can learn more about them and the type of content they are posting | Pass |
@@ -626,6 +642,8 @@ ___
 ### **Authenticated**
 
 * The profile id of the selected profile page is compared with the profile id of the current user.  If the logged in user is not the owner of the profile, an follow/ unfollow button is displayed.
+
+![Profile page follow](docs/features/gifs/profile-follow.gif)
 
 ### **Authenticated & Profile Owner**
 
@@ -635,11 +653,17 @@ ___
   2. Edit username directs the user to the following url `/profiles/:id/edit/username`.  The react router renders the `UsernameForm` component.
   3. Change password directs the user to the following url `/profiles/:id/edit/password`.  The react router renders the `UserPasswordForm` component.
 
+![Profile page owner](docs/features/profile-page-owner.png)
+
 </details>
 
 <details>
 <summary> Profile Edit Form
 </summary>
+
+<br>
+
+![Profile edit page](docs/features/gifs/profile-edit.gif)
 
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: |
@@ -651,6 +675,10 @@ ___
 <summary> Username Form
 </summary>
 
+<br>
+
+![Profile change username](docs/features/gifs/profile-change-username.gif)
+
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: |
 | [#27](https://github.com/rkillickdev/rewind/issues/27) | As a logged in user I can update my username and password so that I can choose how my name is displayed to other users and to ensure my login credentials remain secure | Pass |
@@ -661,11 +689,29 @@ ___
 <summary> User Password Form
 </summary>
 
+<br>
+
+![Profile change password](docs/features/gifs/profile-change-password.gif)
+
 </details>
 
 <details>
-<summary> Log Out
+<summary> Sign Out
 </summary>
+
+<br>
+
+![User sign out](docs/features/gifs/sign-out.gif)
+
+</details>
+
+<details>
+<summary> Footer
+</summary>
+
+<br>
+
+![Footer](docs/features/pp5-feature-footer.png)
 
 </details>
 
