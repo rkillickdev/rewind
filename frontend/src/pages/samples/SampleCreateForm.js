@@ -58,6 +58,7 @@ const SampleCreateForm = (props) => {
           {
             ...prevSnapshot.results[0],
             samples_count: prevSnapshot.results[0].samples_count + 1,
+            total_samples: prevSnapshot.results[0].total_samples + 1,
           },
         ],
       }));
