@@ -1156,6 +1156,11 @@ The following steps were followed to deploy the site to Heroku:
 
 <br>
 
+| Bug Description | Solution |
+| ------------ | --------------- |
+| Upon selecting an audio file for upload, the file path is not cleared on submission.  If the upload button is clicked again without re-selecting a file, the same will be uploaded again. | |
+| If a user attempts to upload the same file after submitting once, the audio file icon is not displayed but the file can be succesfully submitted | |
+
 ## **Solved Bugs**
 
 | Bug Description | Solution |
