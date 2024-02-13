@@ -1176,6 +1176,75 @@ if 'DEV' not in os.environ:
     ]
 ```
 
+## Setting up a unified project
+
+The app has been developed following a unified approach,  with the DRF API project and React project existing together in one repository and deployed as a single project.  I built the DRF API first and then created and configured a new React project within the existing Django REST Framework workspace.  I followed the steps suggested by Code Institute to achieve this:
+
+1. Open the DRF project workspace and create a new folder in the root directory with the terminal command: ```mkdir frontend```
+
+2. Change directory into the newly created frontend folder, using the terminal command: ```cd frontend```
+
+3. Create a new React app and install all necessary dependencies by running the terminal command: ```npx create-react-app . --template git+https://github.com/Code-Institute-Org/cra-template-moments.git --use-npm```
+
+4. Confirm creation of the app when prompted by entering `y` and then clicking `enter`
+
+5. Wait for all dependencies to be installed. This installation will take some time, the terminal may appear to freeze for a few minutes.
+
+6. Remove the .git folder, .gitignore file and README.md from the frontend folder as these already exist within the root directory of the DRF project.  This can be achieved by entering the following terminal command: ```rm -rf .git .gitignore README.md```
+**Be sure to run this command from the frontend directory**
+
+## Preparation for a unified workspace
+
+One of the benefits of operating with a unified project is that it is possible to work on development versions of the DRF API and React projects simultaneously.  The following Code Institute recommended steps were taken to prepare a combined workspace:
+
+1. Add `os.environ['DEBUG'] = '1'` to the env.py file.  In settings.py we have `DEBUG = 'DEBUG' in os.environ`.  Therefore DEBUG equates to True in development and False in production.  We need to do this as we were previously relying on the 'DEV' variable exsting in the env.py file to determine the DEBUG status.  However, this is commented out to allow pure json responses from the API. It's useful to continue viewing the Django logs during development to assist in debugging.
+
+2.  Add a new `ALLOWED_HOST` key to env.py with the value of your development environment URL, wrapped in quotes.
+**Ensure you remove the https:// from the beginning, and the trailing slash / from the end of the development environment URL.**
+
+* In settings.py, the following code is set:
+```python
+ ALLOWED_HOSTS = [
+    os.environ.get('ALLOWED_HOST'),
+    'localhost',
+    ]
+```
+
+3. Add a new `CLIENT_ORIGIN` key to env.py with the value of your development environment URL, wrapped in quotes.
+**This string should include the https:// at the beginning, but the trailing slash / should be removed.**
+
+4. Keys for `DATABASE_URL` and `CLOUDINARY_URL` should also have values set if they have not been already.
+
+5. In settings.py use the following code:
+
+```python
+CORS_ALLOWED_ORIGINS = [
+    os.environ.get('CLIENT_ORIGIN')
+]
+```
+
+6. Open the package.json file in the frontend directory, and at the bottom of the file, add a new key to the JSON object:
+
+* `"proxy": "http://localhost:8000/"`
+
+7. Create the `axiosDefaults.js` file (When it comes to deployment, the BaseURL setting will need to be defined but for now this file is left empty):
+
+* `cd frontend/src`
+* `mkdir api`
+* `cd api`
+* `touch axiosDefaults.js`
+
+## Running the unified development environment
+
+1. Open two terminals, side by side
+2. Check that Terminal 1 is in the root directory and run the Django API with the terminal command: 
+* `python3 manage.py runserver`
+3. Check that Terminal 2 is in the frontend directory.  If necessary use `cd frontend` to change directory from the root.  Run the React app with the terminal command:
+* `npm start`
+
+Both the DRF API and React App should now be running in the same worksapce.  The Django API will run on Port 8000, and the React application will run on Port 8080, or Port 3000 depending on which IDE you are using.
+
+
 ## **Heroku Deployment**
 
 The following steps were followed to deploy the site to Heroku:
@@ -1184,7 +1253,11 @@ The following steps were followed to deploy the site to Heroku:
 2.  In the Heroku dashboard, click the 'New' button at the top right of the screen and then select "Create new app".
 3.  I selected the name 'rkdev-rewind' ,set my region to Europe and clicked on the 'Create app' button.
 
+![Heroku Create App](docs/deployment/pp5-heroku-create-app.png)
+
 4.  Click on the settings tab and then click the 'Reveal Config Vars' button.
+
+![Heroku Config Var](docs/deployment/pp5-heroku-add-config-var.png)
 
 5. I entered the following Key : Value pairs to config vars:
 
