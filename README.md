@@ -1256,7 +1256,36 @@ pinboard &&
 | Bug Description | Solution |
 | ------------ | --------------- |
 | User inputs snaphot or profile url including an id that doesn't exist.  This is rendering a page but no data exists.  A 400 bad request error is logged in the console.  The error should be handled gracefully and the user redirected back to the home page | In the catch block of the handleMount function for the SnapshotPage component, I have made use of the useHistory hook to redirect the user, and also set an alert to inform them that there has been a problem |
-| On creation of a sample, this is not being displayed immediately to the current user in the samples list below the snapshot.  It appears on referesh of the page | The solution here was that I had not passed `setSamples={setSamples}` to the SampleCreateForm component on the SnapshotPage.  This meant that the samples state was not being updated on creation of the sample | 
+| On creation of a sample, this is not being displayed immediately to the current user in the samples list below the snapshot.  It appears on referesh of the page | The solution here was that I had not passed `setSamples={setSamples}` to the SampleCreateForm component on the SnapshotPage.  This meant that the samples state was not being updated on creation of the sample |
+| User adds 5 samples to a snapshot without refereshing the page.  Upon attempting to add a sixth sample, no alert is displayed and they are not prevented from continuing to add samples, even though the maximum limit has been reached | The total_samples count was not being updated upon form submission and sample deletion.  It was necessary to specify this as part of setSnapshot. See the code below |
+
+sampleCreateForm handleSubmit function:
+
+```js
+setSnapshot((prevSnapshot) => ({
+        results: [
+          {
+            ...prevSnapshot.results[0],
+            samples_count: prevSnapshot.results[0].samples_count + 1,
+            total_samples: prevSnapshot.results[0].total_samples + 1,
+          },
+        ],
+      }));
+```
+
+sample handleDelete function:
+
+```js
+setSnapshot((prevSnapshot) => ({
+        results: [
+          {
+            ...prevSnapshot.results[0],
+            samples_count: prevSnapshot.results[0].samples_count - 1,
+            total_samples: prevSnapshot.results[0].total_samples - 1,
+          },
+        ],
+      }));
+```
 
 
 # **Credits**
