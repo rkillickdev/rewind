@@ -1336,6 +1336,24 @@ The following steps were followed to deploy the site to Heroku:
 
 <br>
 
+## **Local Development**
+
+### **How to fork:**
+
+1. Log in (or sign up) to GitHub.
+2. Find the required repository, in this case: rkillickdev/rewind
+3. Click on the "fork" button at the top right of the page.
+
+### **How to clone:**
+
+1. Log in (or sign up) to GitHub.
+2. Find the required repository, in this case: rkillickdev/rewind
+3. Click on the green code button.  This will give you the choice of cloning the repository using HTTPS, an SSH key or GitHub CLI.  Make your selection and copy the provided URL link.
+4. Open the Terminal in your IDE of choice.
+5. Change the current working directory to the location where you want the cloned directory.
+6. Type 'git clone' and then paste the URL you copied earlier.
+7. Press enter.
+
 [Back to top &uarr;](#contents)
 
 # **Bugs**
