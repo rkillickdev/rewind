@@ -757,10 +757,28 @@ The custom error page has been implemented in `App.js`.  If a url entered by the
 </details>
 
 <details>
+<summary> Modals
+</summary>
+
+<br>
+
+Modals are used to confirm delete actions throughout the app.
+
+![Modal confirm delete](docs/features/pp5-modal-delete-confirm-merge.png)
+
+</details>
+
+<details>
 <summary> Toasts
 </summary>
 
 <br>
+
+Bootstrap Toasts are used throughout the app to notify users when their actions have been successful.
+
+![Toast notifications 1](docs/features/pp5-toast-notification-merge-1.png)
+
+![Toast notifications 2](docs/features/pp5-toast-notification-merge-2.png)
 
 </details>
 
@@ -769,6 +787,12 @@ The custom error page has been implemented in `App.js`.  If a url entered by the
 </summary>
 
 <br>
+
+Alerts are used throughout the app to warn the user of form field arrors and errors associated with requests to the DRF API.
+
+![Form field alerts](docs/features/pp5-form-field-alerts.png)
+
+![API error alerts](docs/features/pp5-api-error-alerts.png)
 
 </details>
 
