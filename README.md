@@ -972,6 +972,52 @@ Provides profileData to child components throughout the app.  It also provides a
 | [#39](https://github.com/rkillickdev/rewind/issues/39) | As a user I can filter the list of snapshots on the home page by era, genre and category so that I can view snapshots most relevant to my interests  | Future Feature |
 ___
 
+[Back to top &uarr;](#contents)
+
+## **SURFACE PLANE**
+
+## **Colour Palette**
+
+Initial inspiration for the colours used throughout the app came from a classic piece of retro hardware, the Roland TR808 drum machine.
+
+![Colour palette inspiration](docs/surface-plane/roland-808-palette-inspiration.webp)
+
+<br>
+
+I used this imagery to build a colour palette with the palette generator tool on the [coolors](https://coolors.co/) website.  I found that I needed to tweak some colours to ensure contrast ratios meet acceptable standards.
+
+![Generated colour palette](docs/surface-plane/pp5-rewind-colour-palette.png)
+
+<br>
+
+## **Typography**
+
+Spacing and typography is consistent throughout the site to provide the user with a sense of familiarity as they navigate between pages. Font awesome icons are used alongside informational headings to hint at content. The following font have been selected from Google Fonts and imported in the head of the index.html file.
+
+* Ubuntu - main App text
+* Amatic SC - feature text
+* Bungee Spice - Navbar logo
+
+The Bungee Spice font matches well with the colour themes and retro imagery of the site.
+
+![Logo Font](docs/surface-plane/bungee-spice-logo-text.png)
+
+<br>
+
+## **Imagery**
+
+Static images used throughout the site have been chosen to tie in with the retro theme of the app.
+
+![App surface plane imagery](docs/surface-plane/pp5-surface-plane-imagery-merge.png)
+
+<br>
+
+The brand logo used in the navbar has been chosen to envoke feelings of nostalgia and links well to the App name 'Rewind' - a nod to an age where 'rewinding casette tapes was part of daily life. The colour scheme used is consistent with the rest of the site.
+
+![App brand logo](docs/features/pp5-favicon-cassette-orange-logo.png)
+
+<br>
+
 # **Technologies Used**
 
 ## **Languages Used**
