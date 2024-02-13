@@ -1505,6 +1505,8 @@ setSnapshot((prevSnapshot) => ({
 
 <br>
 
+* The Code Institute PP5 Advanced Frontend 'Moments' walk through project and associated DRF API were a great reference point when planning and building the Rewind App.  I have created custom models tailored to the specific needs of my own project and additional features and logic not present in 'Moments'.
+
 * [Display string representation of Many To Many Fields in json response rather than IDs](https://stackoverflow.com/questions/64079111/how-can-i-display-the-values-of-a-manytomany-field-in-django-rest-framework-inst)
 
 * [Implementing Staff Only Permissions with Django REST Framework](https://stackoverflow.com/questions/31714198/staff-only-permissions-in-django-rest-framework)
