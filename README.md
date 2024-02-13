@@ -831,10 +831,96 @@ I used the [Wave Chrome Extension](https://wave.webaim.org/extension/) to check 
 
 </details>
 
+## **Re-use of components**
+
+Custom re-useable components were created with the intention of reducing code duplication throughout the app.
+
+### `AddSnapshot.js`
+
+Used to include the icon for adding a snapshot on any page where this functionality is required.
+
+### `AlertPopup`
+
+Designed to warn and inform users when errors occur.  This calls the useAlert custom hook, destructures the type and text of the alert and uses this information to display feedback to the user.  I have made use of this component when catching errors related to API requests, so the user is always notified if a problem occurs.
+
+### `Asset.js`
+
+This is a multi purpose component that renders content based on the props passed to it.  It can be used to display an image, message or Bootstrap spinner while waiting for data to load.
+
+### `Avatar`
+
+Used to display the profile images and names of users throughout the app.  It accepts the src and name props as a way of passing the required profile data for each occurence of the Avatar component.  It also accepts a height prop, set as a default to 45px but this can be over written if a larger version of the Avatar is required.  The height passed is also used to determine the width of the image.
+
+### `EditDelete.js`
+
+A flexible re-useable way of rendering edit and delte icons to the page wherever required.  It accepts handleEdit and handleEdit as props which are used to set the onClick functionality of each icon.  Dependent on the props passed to the component, both or just a single icon can be displayed.  For example when using the EditDelete component next to samples, only the delete icon is required as there is no included fuctionality to update a sample.
+
+### `Error.js`
+
+Used to render the ErrorFallback page when an error is detected by an error boundary.  It accepts error and resetErrorBoundary as props.  The error prop could be used to display the exact error to the user, although for now I have chosen to use a more generic, less technical message.
+
+### `Footer.js`
+
+Used to render a simple footer to all pages.
+
+### `ModalPopup`
+
+Used throughout the app as an additional layer of protection when deleting snapshots, comments and samples.  It accepts `title`, `message` and `buttonLabel` props so each modal can be rendered according to it's required purpose.  The `show` and `handleClose` props handle changes to the state of the modal.  It also accepts the `onChange` prop, as a way of passing a function that is then assigned to the onClick attribute of the confirm button.
+
+### `NavBar.js`
+
+This component is rendered at the top of every page as a way of displaying navigation links based on the user's authentication status.
+
+### `NotFound.js`
+
+Displays a message  and home redirection button if a user attempts to navigate to a url path that does not exist.
+
+### `ToastPopup.js`
+
+Similar in function to the `AlertPopup` but this component is used to handle displaying user feedback for CRUD functionality throughout the app.  For example, successful creation, update or deletion of comments.  When the useAlert hook is called and type/ text destructured, if the `type` is 'success', a Bootstrap Toast is rendered displaying the `text` as a message.
+
+### `UserDirection.js`
+
+A flexible component used to render images, messages and buttons based on props passed to it.  For example, it is used to display the home page call to action box for non-authenticated users or the 'set preferences' box for newly authenticated users.
+
+## **Custom hooks**
+
+### `useAlert.js`
+
+Calling this hook makes use of the functionality provided by AlertContext.
+
+### `useClickOutsideToggle.js`
+
+Used to ensure that clicks outide of an expanded menu still result in it closing.  This is called in the NavBar component.
+
+### `useRedirect`
+
+Used as a way of redirecting a user to the homepage based on their log in status.
+
+## **Custom contexts**
+
+### `AlertContext.js`
+
+Created to provide users with a range of feedback messages throughout the app, dependent on the alert `type`.
+
+### `CurrentUserContext.js`
+
+Used to determine the current user's logged in state.
+
+### `OptionsContext.js`
+
+Provides available eras, genres and categories to include when rendering form select options.  This is used when creating/ editing snapshots and profiles.
+
+### `ProfileDataContext.js`
+
+Provides profileData to child components throughout the app.  It also provides access to setProfileData, handleFollow and handleUnfollow.  For example, one user following another profile will update the profileData state which will then be reflected to all other users accessing profileData.
+
 
 ## **Accessibility**
 
-* Redundant Alternative Text occurs for each snapshot as it is the same as the title
+* Redundant Alternative Text occurs for each snapshot as it is the same as the title.
+
+
 
 ## **Future Features**
 
