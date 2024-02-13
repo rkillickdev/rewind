@@ -275,6 +275,8 @@ All forms have been checked thoroughly to ensure they cannot be submitted until 
 | era | No era selected from dropdown menu | Form displays warning 'This field may not be null.' | Pass |
 | category | No era selected from dropdown menu | Form displays warning 'This field may not be null.' | Pass |
 
+<br>
+
 **Snapshot Edit Form**
 
 The Snapshot Edit form is pre-populated data for the specified snapshot.  If no changes are made and the form is submitted there should be no validation warnings.  Changes made to the title or image fields should throw an alert on submission if the updated field is no longer valid.
@@ -307,6 +309,20 @@ Prevention of new empty comments being submitted is handled by disabling the sub
 | audio | No file selected | Alert warns 'The submitted data was not a file. Check the encoding type on the form.'| Pass |
 | audio | File selected exceeds 2MB in size | Alert warns 'Please choose an image smaller than 2MB' | Pass |
 | audio | Attemp to submit form when 5 samples already belong to the specified snapshot | Alert warns 'Sorry, the maximum number of samples have been added for this snapshot' | Pass |
+
+<br>
+
+**Profile Edit Form**
+
+The profile edit form can be saved with no changes made.  None of the fields are compulsory.  If an image is selected, it must pass validation for file size, width and height.
+
+| Field | Action | Expected Outcome | Pass/Fail |
+| ---- | ---- | ---- | ---- |
+| image | File selected exceeds 2MB in size | Alert warns 'Please choose an image smaller than 2MB' | Pass |
+| image | File selected width > 4096px | Alert warns 'Image width larger than 4096px!' | Pass |
+| image | File selected height > 4096px | Alert warns 'Image height larger than 4096px!' | Pass |
+
+<br>
 
 ## **Validators**
 
