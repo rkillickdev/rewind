@@ -1176,6 +1176,13 @@ if 'DEV' not in os.environ:
     ]
 ```
 
+A Procfile file is required that provides the commands to Heroku to build and run the project.  This should be created in the project root directory and contain the following commands:
+
+```
+  release: python manage.py makemigrations && python manage.py migrate
+  web: gunicorn drf_api.wsgi
+```
+
 ## Setting up a unified project
 
 The app has been developed following a unified approach,  with the DRF API project and React project existing together in one repository and deployed as a single project.  I built the DRF API first and then created and configured a new React project within the existing Django REST Framework workspace.  I followed the steps suggested by Code Institute to achieve this:
@@ -1245,6 +1252,61 @@ CORS_ALLOWED_ORIGINS = [
 Both the DRF API and React App should now be running in the same worksapce.  The Django API will run on Port 8000, and the React application will run on Port 8080, or Port 3000 depending on which IDE you are using.
 
 
+## Preparation for deployment of the unified project (DRF API)
+
+I followed the following steps recommended by Code Institute:
+
+1. Install whitenoise to enable storage of static files using the terminal command:
+* `pip3 install whitenoise==6.4.0`
+2. Add this dependency to the requirements.txt file using the terminal command:
+* `pip3 freeze > requirements.txt`
+3. Create a new empty folder called staticfiles in the root directory with the terminal command:
+* `mkdir staticfiles`
+4. In the INSTALLED_APPS list, ensure that the ‘cloudinary_storage’ app name is below ‘django.contrib.staticfiles’. This ensures that Cloudinary will not attempt to intervene with staticfiles, and allows whitenoise to become the primary package responsible for static files.
+5. In the MIDDLEWARE list in settings.py, add WhiteNoise below the SecurityMiddleware and above the SessionMiddleware:
+* `'whitenoise.middleware.WhiteNoiseMiddleware',`
+6. In the TEMPLATES list at the DIRS key, add the following code to the DIRS list, to tell Django and WhiteNoise where to look for Reacts index.html file in deployment:
+* `os.path.join(BASE_DIR, 'staticfiles', 'build')`
+7. In the static files section, add the STATIC_ROOT and WHITENOISE_ROOT variables and values to tell Django and WhiteNoise where to look for the admin static files and Reacts static files during deployment:
+* ```
+  STATIC_ROOT = BASE_DIR / 'staticfiles'
+  WHITENOISE_ROOT = BASE_DIR / 'staticfiles' / 'build'
+  ```
+8. In the `urls.py file` of the DRF application (rewind/urls.py):
+
+* Remove the root_route view from the .views imports
+* Import the TemplateView from the generic Django views:
+  * `from django.views.generic import TemplateView`
+* In the url_patterns list, remove the root_route code and replace it with the TemplateView pointing to the index.html file:
+  * `path('', TemplateView.as_view(template_name='index.html')),`
+* At the bottom of the file, add the 404 handler to allow React to handle 404 errors:
+  * `handler404 = TemplateView.as_view(template_name='index.html')`
+* Add `api/` to the beginning of all the API URLs, excluding the path for the home page and admin panel
+
+## Preparation for deployment of the unified project (React App)
+
+1.  In the `axiosDefaults.js` file, set the default base url:
+* ```js
+  axios.defaults.baseURL = "/api";
+  ```
+
+## Compile static files
+
+1. Collect the admin and DRF static files to the staticfiles directory.  Run the following terminal command from the root directory:
+* `python3 manage.py collectstatic`
+2. Compile the React application and move its files to the staticfiles folder.
+* `cd frontend`
+* `npm run build && mv build ../staticfiles/.`
+
+* **This command needs to be re-run prior to deployment if there have been changes to the static files or React code in the project. To do this, delete the existing build folder and rebuild it using the terminal command:**
+
+  * `npm run build && rm -rf ../staticfiles/build && mv build ../staticfiles/.`
+
+## Add runtime.txt file
+
+1. To ensure Heroku uses the correct version of Python to deploy the project, in the root directory create a new file named runtime.txt and add the following:
+* `python-3.9.16`
+
 ## **Heroku Deployment**
 
 The following steps were followed to deploy the site to Heroku:
@@ -1264,6 +1326,13 @@ The following steps were followed to deploy the site to Heroku:
     * CLOUDINARY_URL : (Enter your [Cloudinary](https://cloudinary.com/) API Credentials)
     * DATABASE_URL: (Enter your ElephantSQL database URL) 
     * SECRET_KEY : (Enter your Django Secret Key)
+    * ALLOWED_HOST: (**set to the URL of combined project, remove the https:// at the beginning and remove the trailing slash at the end**)
+    * CLIENT_ORIGIN: (**set to the URL of combined project. Keep the https:// at the beginning but remove the trailing slash at the end**)
+
+6.  Next select the 'Deploy' tab, select GitHub as the deployment method, and click the 'Connect to GitHub' button.
+7.  Search for the GitHub repository name (rewind) in the 'App Connected to GitHub' section and then click the 'connect' button'
+8.  You can now choose to enable automatic deploys or deploy manually.  When the 'automatic deploys' button is clicked and enabled, Heroku will rebuild the app every time a new change is pushed to GitHub.  In the 'Manual deploy' section, the 'Deploy branch' button can be clicked to deploy manually.
+9.  I chose to deploy manually. Once the app is built, a link is provided to the [deployed app](https://rkdev-rewind-ed88f8459fe7.herokuapp.com/).
 
 <br>
 
