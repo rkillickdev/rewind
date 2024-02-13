@@ -253,7 +253,60 @@
 | ---- | ---- | :----: |
 | Authenticated user clicks 'sign out' nav link | User signed out and only has access to unauthenticated site content.  Toast message displayed informing the user that they have signed out | Pass |
 
+<br>
+
 [Back to top &uarr;](#contents)
+
+## **Form Testing**
+
+All forms have been checked thoroughly to ensure they cannot be submitted until all fields are valid.
+
+**Snapshot Create Form**
+
+| Field | Action | Expected Outcome | Pass/Fail |
+| ---- | ---- | ---- | ---- |
+| title | Input > 150 characters | Form prevents input of any additional characters | Pass |
+| title | Input empty | Form displays warning 'This field may not be blank' | Pass |
+| image | No file selected | Alert warns 'The submitted data was not a file. Check the encoding type on the form.'| Pass |
+| image | File selected exceeds 2MB in size | Alert warns 'Please choose an image smaller than 2MB' | Pass |
+| image | File selected width > 4096px | Alert warns 'Image width larger than 4096px!' | Pass |
+| image | File selected height > 4096px | Alert warns 'Image height larger than 4096px!' | Pass |
+| genre | No genre selected from dropdown menu | Form displays warning 'This field may not be null.' | Pass |
+| era | No era selected from dropdown menu | Form displays warning 'This field may not be null.' | Pass |
+| category | No era selected from dropdown menu | Form displays warning 'This field may not be null.' | Pass |
+
+**Snapshot Edit Form**
+
+The Snapshot Edit form is pre-populated data for the specified snapshot.  If no changes are made and the form is submitted there should be no validation warnings.  Changes made to the title or image fields should throw an alert on submission if the updated field is no longer valid.
+
+| Field | Action | Expected Outcome | Pass/Fail |
+| ---- | ---- | ---- | ---- |
+| title | Input > 150 characters | Form prevents input of any additional characters | Pass |
+| title | Input empty | Form displays warning 'This field may not be blank' | Pass |
+| image | New file selected exceeds 2MB in size | Alert warns 'Please choose an image smaller than 2MB' | Pass |
+| image | New file selected width > 4096px | Alert warns 'Image width larger than 4096px!' | Pass |
+| image | New file selected height > 4096px | Alert warns 'Image height larger than 4096px!' | Pass |
+
+<br>
+
+**Comment Create/ Edit Form**
+
+Prevention of new empty comments being submitted is handled by disabling the submit button until text has been entered.
+
+| Field | Action | Expected Outcome | Pass/Fail |
+| ---- | ---- | ---- | ---- |
+| content | No text entered | Post button remains disabled and user unable to submit form | Pass |
+| Content | User removes all text when updating a comment and tries to submit | Form displays warning 'This field may not be blank' | Pass |
+
+<br>
+
+**Sample Create Form**
+
+| Field | Action | Expected Outcome | Pass/Fail |
+| ---- | ---- | ---- | ---- |
+| audio | No file selected | Alert warns 'The submitted data was not a file. Check the encoding type on the form.'| Pass |
+| audio | File selected exceeds 2MB in size | Alert warns 'Please choose an image smaller than 2MB' | Pass |
+| audio | Attemp to submit form when 5 samples already belong to the specified snapshot | Alert warns 'Sorry, the maximum number of samples have been added for this snapshot' | Pass |
 
 ## **Validators**
 
