@@ -808,7 +808,7 @@ A favicon link has been included in the head of the index.html file and displays
 
 Open Graph and Twitter meta tags have been placed in the head of the base.html template to control how the URL is displayed when shared on social media.  It appears as displayed below:
 
-![Meta Tags social media display]()
+![Meta tag social displays](docs/features/pp5-meta-tags-merged.png)
 
 [Back to top &uarr;](#contents)
 
@@ -852,6 +852,24 @@ To ensure that the site is as accessible as possible for all users and compatibl
 * Aria labels have been used for interactive elements where no accessible name is provided.
 
 I used the [Wave Chrome Extension](https://wave.webaim.org/extension/) to check the accessibility of each page,  Results for this can be viewed in the [TESTING.md file](https://github.com/rkillickdev/rewind/blob/main/TESTING.md)
+
+</details>
+
+<details>
+<summary> CRUD functionality
+</summary>
+
+<br>
+
+The Rewind app features full CRUD functionality on the Front-End UI, implemented through the code written in React. This allows users to work with records from the Django REST Framework API.
+
+`CREATE` - Users can sign up which creates a new user account and associated profile.  Once authenticated, users can create snapshots, comments and samples.
+
+`READ` - All users can read their own and other user's snapshots, comments and profile.  They can read their own samples and those of other user's that have been approved by an administrator.
+
+`UPDATE` - Authenticated users can update their own profile, snapshots and comments.  They do not have required permissions to update an object belonging to another user.
+
+`DELETE` - Authenticated users can delete their own snapshots, comments and samples.  They do not have required permissions to delete an object belonging to another user.  
 
 </details>
 
