@@ -150,12 +150,10 @@ if 'DEV_DB' in os.environ:
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
-    print('dev database connected')
 else:
     DATABASES = {
         'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
     }
-    print('production database connected')
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
