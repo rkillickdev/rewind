@@ -32,7 +32,7 @@ const SampleCreateForm = (props) => {
     event.preventDefault();
 
     // Client side validation to check sample count
-    if (total_samples > 5) {
+    if (total_samples >= 3) {
       setSampleLimitError(
         "Sorry, the maximum number of samples have been added for this snapshot",
       );
