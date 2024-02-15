@@ -27,7 +27,7 @@ class SnapshotList(generics.ListCreateAPIView):
         samples_count=Count(
             "samples", distinct=True, filter=Q(samples__approved=True)
         ),
-    ).order_by("-created_at")
+    ).order_by("-updated_at")
     filter_backends = [
         filters.OrderingFilter,
         filters.SearchFilter,
@@ -43,6 +43,7 @@ class SnapshotList(generics.ListCreateAPIView):
     ]
     search_fields = ["title", "era__decade", "genre__style", "category__title"]
     ordering_fields = [
+        "updated_at",
         "comments_count",
         "recommendations_count",
         "pins__created_at",

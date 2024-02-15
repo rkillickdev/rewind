@@ -22,7 +22,7 @@ import RelevantProfiles from "../profiles/RelevantProfiles";
 import AddSnapshot from "../../components/AddSnapshot";
 import UserDirection from "../../components/UserDirection";
 
-function SnapshotsPage({ message, filter = "", curated, pinboard }) {
+function SnapshotsPage({ message, filter = "", curated, pinboard, home }) {
   const [snapshots, setSnapshots] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
@@ -47,21 +47,22 @@ function SnapshotsPage({ message, filter = "", curated, pinboard }) {
 
   const [query, setQuery] = useState("");
 
-  useEffect(() => {
-    //Fetch snapshots based on filter and search query
-    const fetchSnapshots = async () => {
-      try {
-        const { data } = await axiosReq.get(
-          `/snapshots/?${filter}search=${query}`,
-        );
-        setSnapshots(data);
-        setHasLoaded(true);
-      } catch (err) {
-        // console.log(err);
-        setAlert("sorry, something went wrong.  Try again later.", "warning");
-      }
-    };
+  //Fetch snapshots based on filter and search query
+  const fetchSnapshots = async () => {
+    try {
+      const { data } = await axiosReq.get(
+        `/snapshots/?${filter}search=${query}`,
+      );
+      setSnapshots(data);
+      setHasLoaded(true);
+    } catch (err) {
+      // console.log(err);
+      setAlert("sorry, something went wrong.  Try again later.", "warning");
+    }
+  };
 
+  useEffect(() => {
+    fetchSnapshots();
     setHasLoaded(false);
     const timer = setTimeout(() => {
       fetchSnapshots();
@@ -119,7 +120,7 @@ function SnapshotsPage({ message, filter = "", curated, pinboard }) {
           )}
         </Col>
       </Row>
-      <Row className={styles.SearchAdd}>
+      <Row className={`align-items-center ${styles.SearchAdd}`}>
         {/* Render search bar */}
         <Col lg={8}>
           <i className={`fas fa-search ${styles.SearchIcon}`}></i>
@@ -137,25 +138,29 @@ function SnapshotsPage({ message, filter = "", curated, pinboard }) {
               placeholder="Search by title or preference"
             />
           </Form>
-          {/* Render sort icons */}
-          <div className={`${styles.SortIcons} d-flex align-items-center mb-4`}>
-            <p className="my-0 mr-3">Sort By:</p>
-            <i
-              onClick={handleRecommendationSort}
-              className={"fa-solid fa-thumbs-up"}
-              aria-label="Sort by recommendation count"
-            />
-            <i
-              onClick={handleCommentSort}
-              className={"far fa-comments"}
-              aria-label="Sort by comment count"
-            />
-            <i
-              onClick={handleDateSort}
-              className={"fa-solid fa-calendar-days"}
-              aria-label="Sort by most recently posted"
-            />
-          </div>
+          {/* Render sort icons if home prop accepted */}
+          {home && (
+            <div
+              className={`${styles.SortIcons} d-flex align-items-center mb-4`}
+            >
+              <p className="my-0 mr-3">Sort By:</p>
+              <i
+                onClick={handleRecommendationSort}
+                className={"fa-solid fa-thumbs-up"}
+                aria-label="Sort by recommendation count"
+              />
+              <i
+                onClick={handleCommentSort}
+                className={"far fa-comments"}
+                aria-label="Sort by comment count"
+              />
+              <i
+                onClick={fetchSnapshots}
+                className={"fa-solid fa-calendar-days"}
+                aria-label="Sort by most recently posted"
+              />
+            </div>
+          )}
         </Col>
         {/* Render Add Snapshot icon link */}
         {currentUser && (
