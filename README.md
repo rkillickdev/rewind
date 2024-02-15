@@ -667,6 +667,8 @@ ___
 
 ![Relevant profiles](docs/features/relevant-profiles.png)
 
+![Set profile prefs](docs/features/gifs/pp5-set-profile-prefs.gif)
+
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: |
 | [#28](https://github.com/rkillickdev/rewind/issues/28) | As a logged in user I can view suggested profiles so that I can decide whether their previous snapshot posts are of interest to me | Pass |
