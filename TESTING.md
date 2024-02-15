@@ -3,7 +3,6 @@
 ## **CONTENTS**
 
 * [Manual Testing](#manual-testing)
-    * [User Story Testing](#user-story-testing)
     * [Full Testing](#full-testing)
     * [Defensive Testing](#defensive-testing)
     * [Form Testing](#form-testing)
@@ -324,6 +323,27 @@ The profile edit form can be saved with no changes made.  None of the fields are
 
 <br>
 
+**Sign Up Form**
+
+| Field | Action | Expected Outcome | Pass/Fail |
+| ---- | ---- | ---- | ---- |
+| username | Leave field blank | Receive alert 'This field may not be blank' | Pass |
+| password | Leave field blank | Receive alert 'This field may not be blank' | Pass |
+| confirm password | Leave field blank | Receive alert 'This field may not be blank' | Pass |
+| username | enter a space between characters | Receive alert 'Enter a valid username. This value may contain only letters, numbers, and @/./+/-/_ characters.' | Pass |
+| password | Enter 123 as password | Receive alert 'This password is too short. It must contain at least 8 characters'/ 'This password is too common'/ 'This password is entirely numeric' | Pass |
+| confirm password | Does not match password | Receive alert 'The two password fields didn't match' | Pass |
+
+**Sign In Form**
+
+| Field | Action | Expected Outcome | Pass/Fail |
+| ---- | ---- | ---- | ---- |
+| username | Leave field blank | Receive alert 'Must include "username" and "password"' | Pass |
+| password | Leave field blank | Receive alert 'Must include "username" and "password"' | Pass |
+| username | Enter an invalid name that does not match a password | Receive alert 'Unable to log in with provided credentials' | Pass |
+| password | Enter a password that is invalid for given username | Receive alert 'Unable to log in with provided credentials' | Pass |
+
+ 
 ## **Validators**
 
 ### **PEP8 Validation:**
