@@ -459,6 +459,13 @@ ___
 | --- | ------------ | :---: |
 | [#10](https://github.com/rkillickdev/rewind/issues/10) | As a user I can search snapshots by keywords so that I can filter results displayed by their text content or by the profile of the poster | Pass |
 
+* Icons allowing user to sort snapshots by recommendation count, comment count or most recently updated are displayed when the SnapshotsPage component is rendered with the `home` prop passed to it.  Clicking on each of the icons re-orders the list of snapshots accordingly.
+
+![Sort snapshots](docs/features/gifs/pp5-sort-snapshots.gif)
+
+| | User Story | Acceptance Criteria Satisfied | 
+| --- | ------------ | :---: |
+| [#11](https://github.com/rkillickdev/rewind/issues/11) | As a user I can choose to order the list by 'most liked' or 'most talked about' so that I can view most popular snapshots first | Future Feature |
 
 * The `Snapshot` component is rendered for each snapshot in the list, each with a unique key (this is provided by the snapshot id).  This displays the Profile avatar and name of the owner, Snapshot image, title, date created and description if available.  Exactly what else the user sees is determined by their authentication status and props passed into the component.
 
@@ -532,11 +539,15 @@ ___
 
 * To successfully create a new snaphot, the user must select an image and input a title.  Description is optional.  The snapshot must also be given an era, genre and category.
 
+* On successful submission, a toast alert is used to notify users that the snapshot has been created.
+
+![Create snapshot success](docs/features/gifs/pp5-create-snapshot-success.gif)
+
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: |
 | [#13](https://github.com/rkillickdev/rewind/issues/13) | As a logged in user I can post image snapshots so that I can share my nostalgic memories with other site users | Pass |
 
-* On successful submission, a toast alert is used to notify users that the snapshot has been created.
+
 
 </details>
 
@@ -968,7 +979,6 @@ Provides profileData to child components throughout the app.  It also provides a
 
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: |
-| [#11](https://github.com/rkillickdev/rewind/issues/11) | As a user I can choose to order the list by 'most liked' or 'most talked about' so that I can view most popular snapshots first | Future Feature |
 | [#39](https://github.com/rkillickdev/rewind/issues/39) | As a user I can filter the list of snapshots on the home page by era, genre and category so that I can view snapshots most relevant to my interests  | Future Feature |
 ___
 
