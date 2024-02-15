@@ -3,7 +3,7 @@ import CassetteTapes from "../assets/multi-cassette-tapes.webp";
 import styles from "../styles/NotFound.module.css";
 import UserDirection from "./UserDirection";
 
-const ErrorFallback = ({ error, resetErrorBoundary }) => {
+const ErrorFallback = ({ resetErrorBoundary }) => {
   return (
     <div className={styles.NoPageResults}>
       <UserDirection
