@@ -124,12 +124,14 @@ function SnapshotPage() {
           ) : currentUser ? (
             <>
               <hr />
-              <span>No comments yet. Be the first to comment.</span>
+              <span className={styles.CommentMessage}>
+                No comments yet. Be the first to comment.
+              </span>
             </>
           ) : (
             <>
               <hr />
-              <span>No comments yet</span>
+              <span className={styles.CommentMessage}>No comments yet</span>
             </>
           )}
         </Container>
