@@ -11,7 +11,7 @@
     * [Unit Testing](#unit-testing)
 * [Validators](#validators)
     * [PEP8 Validation](#pep8-validation)
-    * [JSHint Javascript Validation](#jshint-javascript-validation)
+    * [ESLint for Javascript and JSX Validation](#eslint-for-javascript-and-jsx-validation)
     * [W3C Markup HTML Validator](#w3c-html-markup-validator)
     * [W3C CSS Validator](#w3c-css-validator)
 * [Performance](#performance)
@@ -345,6 +345,43 @@ The profile edit form can be saved with no changes made.  None of the fields are
 
  
 ## **Validators**
+
+### **ESLint for Javascript and JSX Validation**
+
+ESLint was installed and configured for my gitpod workspace with help from the following article and CI Slack threads:
+
+[Install ESLint and Prettier auto formatting for React](https://gist.github.com/ianmeigh/8e603b91a38d7829d959402bfcf29d3d)
+[ESLint Config](https://code-institute-room.slack.com/archives/C02MTH5MBDG/p1663951564900919?thread_ts=1663797268.383809&cid=C02MTH5MBDG)
+
+When the code for the React app is compiled, ESLint checks that certain rules are being adhered to.  Additionally, I used the Prettier extension to format js files on save.  I found that I had to specify that javascript files should use Prettier as the default formatter in my workspace settings.json file, as can be seen in the code snippet below: 
+
+```json
+"[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.detectIndentation": true,
+        "editor.tabSize": 2,
+        "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": "explicit"
+        }, 
+        "editor.formatOnSave": true   
+    },
+```
+The following rules have been set in my .eslintrc.json file which resides in the root of the frontend directory:
+
+```json
+"rules": {
+        "react/react-in-jsx-scope": "off",
+        "react/prop-types": [0, { "ignore": ["children"] }],
+		"react/no-children-prop": [
+			0,
+			{
+				"allowFunctions": true
+			}
+		],
+        "no-unused-vars": ["warn", { "argsIgnorePattern": "req|res|next|__" }],
+        "react/no-unescaped-entities": ["error", { "forbid": [">", "}"] }]
+    }
+```
 
 ### **PEP8 Validation:**
 
