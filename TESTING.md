@@ -174,7 +174,7 @@
 | ---- | ---- | :----: |
 | User clicks on Add Snapshot Icon | Snapshot Create Form displayed | Pass |
 | User clicks on Cancel button | User directed back to the page they were previously on | Pass |
-| User completes valid field entries and clicks on 'create' button | User redirected to the snapshot detail page of the newly created snapshot and toast message displayed to confirm successful creation | RE-TEST |
+| User completes valid field entries and clicks on 'create' button | User redirected to the snapshot detail page of the newly created snapshot and toast message displayed to confirm successful creation | Pass |
 
 ## SnapshotEditForm
 

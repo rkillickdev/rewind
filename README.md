@@ -517,9 +517,17 @@ ___
 
 * The RelevantProfiles component is rendered to the right of the snapshot list (see description of the component below).
 
-* Authenticated users navigating to the 'For you' page can view a list of snapshots filtered by any snapshot belonging to a profile they are following.  This stage of the filtering is carried out on the backend, with the required filterset field passed to the component as a prop.  Returned results are ordered according to recommendation count (descending order).  If a user has not followed any other profiles, a resuable `Asset` component is rendered to display a message encouraging the user to start following other profiles to fill the page. 
+* Authenticated users navigating to the 'For you' page can view a list of snapshots filtered by any snapshot belonging to a profile they are following.  This stage of the filtering is carried out on the backend, with the required filterset field passed to the component as a prop.  Returned results are ordered according to recommendation count (descending order).
+
+![For You page follow profiles](docs/features/gifs/pp5-follow-profiles-for-you-page.gif)
+
+If a user has not followed any other profiles, a resuable `Asset` component is rendered to display a message encouraging the user to start following other profiles to fill the page.
+
+![For You page no results](docs/features/pp5-for-you-no-results.png)
 
 * If a user has specified their preferences on the profile edit page, Snapshots on the 'For You' page will be further filtered on the frontend to match these preferences.  This ensures that each user receives bespoke content best matched to their interests.  If the frontend filtering returns no results, by default snapshots belonging to all followed profiles are displayed.
+
+![For You page filtered by user preferences](docs/features/gifs/pp5-for-you-filter-by-prefs.gif)
 
 * Authenticated users navigating to the 'Pinned' page can view a list of all snapshots that they have pinned, ordered by most recently created (descending order).
 
