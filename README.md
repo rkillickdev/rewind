@@ -652,7 +652,7 @@ ___
 </details>
 
 <details>
-<summary> Relevant Profile Page
+<summary> Relevant Profiles
 </summary>
 
 <br>
@@ -832,6 +832,20 @@ Alerts are used throughout the app to warn the user of form field arrors and err
 ![Form field alerts](docs/features/pp5-form-field-alerts.png)
 
 ![API error alerts](docs/features/pp5-api-error-alerts.png)
+
+</details>
+
+<details>
+<summary> Error Boundaries
+</summary>
+
+<br>
+
+Alongside the Alerts I implemented to notify the user of API errors, I also used error boundaries in React as a form of error handling.  I used [this article](https://blog.logrocket.com/react-error-handling-with-react-error-boundary/#error-boundaries-react) to understand and successfully integrate with the project.  I made use of the react-error-boundary library, wrapping the `ErrorBoundary` component round the whole App in `index.js` to catch any errors.  `FallbackComponent` is rendered whenever the ErrorBoundary catches an error, to display a message to the user and provide a button to reset the error state and try rendering the component again.  When this button is clicked, it calls resetErrorBoundary, which triggers the onReset function and clears the error state.  I have specified that the onReset function should direct the user back to the home page.
+
+This library helps to provide a much better user experience as it prevents a situation where the app crashes and the user is faced with a blank screen.
+
+![Error boundaries](docs/features/gifs/error-boundary.gif)
 
 </details>
 
