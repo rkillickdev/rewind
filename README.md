@@ -1082,6 +1082,11 @@ The brand logo used in the navbar has been chosen to envoke feelings of nostalgi
 
 ## **Languages Used**
 
+* [HTML5](https://developer.mozilla.org/en-US/docs/Glossary/HTML5)
+* [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS)
+* [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+* [Python](https://www.python.org/)
+
 ## **Programs and Tools Used**
 
 * [Git](https://en.wikipedia.org/wiki/Git) -  Version control.
@@ -1114,13 +1119,11 @@ The brand logo used in the navbar has been chosen to envoke feelings of nostalgi
 * [Meta Tags IO](https://metatags.io/) - For improving site visual appearance on social media.
 * [Stackoverflow](https://stackoverflow.com/) - Used for researching solutions/ fixing bugs.
 
-## **Frameworks and Libraries Used**
+
+## **Backend  Frameworks and Libraries Used**
 
 * [Django 3.2.23](https://www.djangoproject.com/) - High level Python web framework used in conjunction with DRF for development of the project backend.
 * [Django REST Framework](https://www.django-rest-framework.org/) - Framework used to develop the backend API.
-
-The [requirements.txt](requirements.txt) file provides information on required installations for this project.  Below are libraries that I installed to implement site functionality:
-
 * [cloudinary](https://cloudinary.com/) - Python library to facilitate integration of cloudinary with Django
 * [dj-databse-url](https://pypi.org/project/dj-database-url/) - A utility that allows use of the DATABASE_URL environment variable to configure a Django application.  This was used for connection to the PostgreSQL database.
 * [dj3-cloudinary-storage](https://pypi.org/project/dj3-cloudinary-storage/) - A Django package that facilitates Cloudinary storage for media files used in the project.
@@ -1133,12 +1136,18 @@ The [requirements.txt](requirements.txt) file provides information on required i
 * [gunicorn](https://gunicorn.org/) - A Python WSGI HTTP Server for UNIX.
 * [whitenoise](https://pypi.org/project/whitenoise/) - Simplified static file serving for WSGI applications.  I used this to serve static files for both the DRF backend and the React frontend.
 
-* [react-bootstrap 1.6.3](https://react-bootstrap-v4.netlify.app/)
-* [react-router-dom](https://www.npmjs.com/package/react-router-dom)
-* [axios](https://axios-http.com/docs/intro)
-* [react-infinite-scroll-component](https://www.npmjs.com/package/react-infinite-scroll-component)
-* [jwt-decode](https://www.npmjs.com/package/jwt-decode)
-* [react-error-boundary](https://github.com/bvaughn/react-error-boundary)
+## **Frontend Libraries Used**
+
+* [React](https://react.dev/) - A JavaScript library for building user interfaces
+* [react-bootstrap 1.6.3](https://react-bootstrap-v4.netlify.app/) - Frontend framework that is compatible with React.  Used to create a responsive site
+* [react-router-dom](https://www.npmjs.com/package/react-router-dom) - a library that enables 'client side routing'.  Components used from this library include:
+  1. **Switch:** Component used to render the first route that matches the location rather than rendering all matching routes.
+  2. **Route:** Component that checks current URL and displays the component associated with that exact path.  All routes are placed within the switch components. 
+  3. **Link:** Component used to create links to different routes
+* [axios](https://axios-http.com/docs/intro) - A promise-based HTTP library.  THis enabled HTTP requests to be made to the DRF API.
+* [react-infinite-scroll-component](https://www.npmjs.com/package/react-infinite-scroll-component) - A component used to implement infinite scrolling for snapshots and comments
+* [jwt-decode](https://www.npmjs.com/package/jwt-decode) - Browser library that helps with decoding of Base64URL encoded JSON web tokens.
+* [react-error-boundary](https://github.com/bvaughn/react-error-boundary) - A library that provides a way to handle JavaScript errors in React components.
 
 [Back to top &uarr;](#contents)
 
@@ -1609,7 +1618,8 @@ setSnapshot((prevSnapshot) => ({
 
 * Setting Foreign Key Field im model serializer to null: [Article 1/ ](https://stackoverflow.com/questions/56917190/django-django-rest-framework-how-do-i-allow-model-serializer-to-set-models-fo)[Article 2](https://stackoverflow.com/questions/47076194/django-rest-framework-how-to-set-a-field-to-null-via-patch-request)
 
-*[Setting up Bootstrap Modals in React](https://www.codu.co/articles/creating-a-pop-up-modal-dialog-in-bootstrap-react-xgeujzcj)
+* [Setting up Bootstrap Modals in React](https://www.codu.co/articles/creating-a-pop-up-modal-dialog-in-bootstrap-react-xgeujzcj)
 
+* [React Router Dom](https://www.geeksforgeeks.org/what-is-react-router-dom/)
 
 
