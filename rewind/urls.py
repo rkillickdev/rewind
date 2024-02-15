@@ -13,10 +13,47 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
+# Production import - reinstate
+
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 from .views import logout_route
+
+# Testing imports
+
+# from django.contrib import admin
+# from django.urls import path, include
+# from .views import root_route
+# from .views import logout_route
+
+# urls for testing 
+
+# urlpatterns = [
+#     path('', root_route),
+#     path("admin/", admin.site.urls),
+#     path("api-auth/", include("rest_framework.urls")),
+#     # Logout route has to be above the default one to be matched first
+#     path('dj-rest-auth/logout/', logout_route),
+#     path('dj-rest-auth/', include('dj_rest_auth.urls')),
+#     path(
+#         'dj-rest-auth/registration/',
+#         include('dj_rest_auth.registration.urls'),
+#     ),
+#     path("", include("profiles.urls")),
+#     path("", include("eras.urls")),
+#     path("", include("genres.urls")),
+#     path("", include("categories.urls")),
+#     path("", include("snapshots.urls")),
+#     path("", include("comments.urls")),
+#     path("", include("recommendations.urls")),
+#     path("", include("followers.urls")),
+#     path("", include("pins.urls")),
+#     path("", include("samples.urls")),
+# ]
+
+# Reinstate for Production Deployment
 
 urlpatterns = [
     path('', TemplateView.as_view(template_name='index.html')),
