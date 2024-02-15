@@ -705,7 +705,7 @@ ___
 
 ### **Authenticated**
 
-* The profile id of the selected profile page is compared with the profile id of the current user.  If the logged in user is not the owner of the profile, an follow/ unfollow button is displayed.
+* The profile id of the selected profile page is compared with the profile id of the current user.  If the logged in user is not the owner of the profile, a follow/ unfollow button is displayed.
 
 ![Profile page follow](docs/features/gifs/profile-follow.gif)
 
