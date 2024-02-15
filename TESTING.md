@@ -366,7 +366,7 @@ When the code for the React app is compiled, ESLint checks that certain rules ar
         "editor.formatOnSave": true   
     },
 ```
-The following rules have been set in my .eslintrc.json file which resides in the root of the frontend directory:
+The following rules have been set in my `.eslintrc.json` file which resides in the root of the frontend directory:
 
 ```json
 "rules": {
@@ -381,6 +381,13 @@ The following rules have been set in my .eslintrc.json file which resides in the
         "no-unused-vars": ["warn", { "argsIgnorePattern": "req|res|next|__" }],
         "react/no-unescaped-entities": ["error", { "forbid": [">", "}"] }]
     }
+```
+
+I received a warning from ESLint `'React' is defined but never used no-unused-vars`.  To solve this , I referenced the following [Stack Overflow thread](https://stackoverflow.com/questions/42541559/eslint-with-react-gives-no-unused-vars-errors) and added two additional rules to my `.eslintrc.json` file:
+
+```json
+"react/jsx-uses-react": "error",   
+"react/jsx-uses-vars": "error" 
 ```
 
 ### **PEP8 Validation:**
