@@ -91,15 +91,6 @@ function SnapshotsPage({ message, filter = "", curated, pinboard, home }) {
         .reverse(),
     }));
   }
-  // Function to handle sorting of results by created at date
-  function handleDateSort() {
-    setSnapshots((prevSnapshots) => ({
-      ...prevSnapshots,
-      results: prevSnapshots.results.sort((a, b) =>
-        b.created_at.localeCompare(a.created_at),
-      ),
-    }));
-  }
 
   return (
     <>
