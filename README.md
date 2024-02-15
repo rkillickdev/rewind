@@ -465,7 +465,7 @@ ___
 
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: |
-| [#11](https://github.com/rkillickdev/rewind/issues/11) | As a user I can choose to order the list by 'most liked' or 'most talked about' so that I can view most popular snapshots first | Future Feature |
+| [#11](https://github.com/rkillickdev/rewind/issues/11) | As a user I can choose to order the list by 'most liked' or 'most talked about' so that I can view most popular snapshots first | Pass |
 
 * The `Snapshot` component is rendered for each snapshot in the list, each with a unique key (this is provided by the snapshot id).  This displays the Profile avatar and name of the owner, Snapshot image, title, date created and description if available.  Exactly what else the user sees is determined by their authentication status and props passed into the component.
 
@@ -555,7 +555,11 @@ ___
 <summary> Snapshot Page
 </summary>
 
+<br>
+
 * The SnapshotPage component is rendered using the React Router whenever the user naviagates to the exact url `/snapshots/:id`.  This displays details for a snapshot specified by the id supplied in the url.  As detailed in the description for the `SnapshotsPage` component, the `Snapshot` component is rendered to display this information.
+
+![Snapshot detail page](docs/features/pp5-snapshot-detail-unauth.png)
 
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: |
@@ -575,6 +579,8 @@ ___
 
 ### **Authenticated**
 
+![Sample and comment create forms](docs/features/pp5-snapshot-detail-auth.png)
+
 * The `SampleCreateForm` component is rendered above the `sample` and `Snapshot` components.  This provides users with the ability to select an audio file and upload.  On successful upload, a toast alert is used to notify users that the new sample has been created.
 
 | | User Story | Acceptance Criteria Satisfied | 
@@ -590,6 +596,8 @@ ___
 
 ### **Authenticated & Owner of Snapshot**
 
+![Snapshot owner edit delete icons](docs/features/pp5-snapshot-owner-detail.png)
+
 * The `EditDelete` component is rendered within the `Snapshot` component.  This displays clickable icons for editing or deleting the snapshot.
 
 * Clicking on the edit icon directs the user to the url path `/snapshots/:id/edit`.  This route renders the SnapshotEditForm component.  Here a user can update details of their Snapshot.  On successful submission, a toast alert is used to notify users that the snapshot has been updated.
@@ -602,6 +610,8 @@ ___
 
 
 ### **Authenticated & Owner of Comment**
+
+![Comment owner edit delete icons](docs/features/pp5-snapshot-detail-comment-owner.png)
 
 * The `EditDelete` component is rendered within the `Comment` component.  This displays clickable icons for editing or deleting the snapshot.
 
@@ -618,6 +628,8 @@ ___
 | [#20](https://github.com/rkillickdev/rewind/issues/20) | As a logged in user I can delete my own comments so that I can control whether a previous comment remains visible to other site users | Passed |
 
 ### **Authenticated & Owner of Sample**
+
+![Sample owner delete icon](docs/features/pp5-snapshot-detail-sample-owner.png)
 
 * The `EditDelete` component is rendered within the `Sample` component.  As the user only has the ability to delete samples, only the `handleDelete` prop is passed to EditDelete.  This displays a  clickable icons for deleting the sample.
 
