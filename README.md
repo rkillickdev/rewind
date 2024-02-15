@@ -1571,4 +1571,18 @@ setSnapshot((prevSnapshot) => ({
 
 * [React Router Dom](https://www.geeksforgeeks.org/what-is-react-router-dom/)
 
+* [Remove itermittent black border on feature button hover](https://stackoverflow.com/questions/67209715/strange-black-outline-in-the-css-button)
+
+* [Writing comments for React code](https://dmitripavlutin.com/react-comments/)
+
+* [Styling the HTML audio element](https://stackoverflow.com/questions/75604231/audio-tag-minimal-play-button)
+
+* [Error Boundary implementation 1](https://www.freecodecamp.org/news/how-to-avoid-breaking-your-react-app-in-production/)
+
+* [Error Boundary implementation 2](https://refine.dev/blog/react-error-boundaries/#introduction)
+
+* [Using client login with DRF for unit tests](https://stackoverflow.com/questions/2619102/djangos-self-client-login-does-not-work-in-unit-tests)
+
+* [Installing and setting up ESLint](https://gist.github.com/ianmeigh/8e603b91a38d7829d959402bfcf29d3d)
+
 
