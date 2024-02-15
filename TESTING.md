@@ -390,6 +390,10 @@ I received a warning from ESLint `'React' is defined but never used no-unused-va
 "react/jsx-uses-vars": "error" 
 ```
 
+The React code is now compiled with no errors or warnings and the following message is displayed in the development terminal:
+
+![ESLint error free](docs/validation/eslint/pp5-eslint-error-free.png)
+
 ### **PEP8 Validation:**
 
 <br>
