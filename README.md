@@ -2,6 +2,14 @@
 
 <br>
 
+![Deployed Site Responsive Views](docs/features/pp5-rewind-responsive-mock-up.png)
+
+<br>
+
+[View the deployed site on Heroku](https://rkdev-rewind-ed88f8459fe7.herokuapp.com/)
+
+<br>
+
 Rewind has been developed as part of the [Code Institute](https://codeinstitute.net/) Diploma in Full Stack Software Development (Advanced Front End Portfolio Project #5).  The Django REST Framework has been used to build a backend API.  This returns JSON data to the front end which has been built using React.  The aim of the site is to provide a platform for a community of like minded music/technology enthusiasts who enjoy sharing snippets of nostalgia to evoke memories of the past and engaging in conversations about these snapshots in time.
 
 ## **CONTENTS**
