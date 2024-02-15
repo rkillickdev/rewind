@@ -185,7 +185,7 @@ const Snapshot = (props) => {
                   <OverlayTrigger
                     placement="top"
                     overlay={
-                      <Tooltip>You can't recommend your own post!</Tooltip>
+                      <Tooltip>You can't recommend your own snapshot!</Tooltip>
                     }
                   >
                     <i

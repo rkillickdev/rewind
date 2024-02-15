@@ -70,7 +70,7 @@
 
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
-| User navigates to home page | Each snapshot in the list displays an image, title, description (if it exists), profile avatar and name of the snapshot owner, and date created.  The number of recommendations and number of comments should be displayed for each snapshot.  If samples belong to the snapshot a waveform icon should be displayed | Pass |
+| User navigates to home page | Each snapshot in the list displays an image, title, description (if it exists), profile avatar and name of the snapshot owner, and date created.  The number of recommendations and number of comments should be displayed for each snapshot.  If approved samples belong to the snapshot a waveform icon should be displayed | Pass |
 | User hovers or clicks on recommendation icon | Icon colour transformed on hover and returns to original on moving away.  Tooltip displayed, informing user that they must sign in to recommend a snapshot | Pass |
 | User hovers over comment icon | Icon colour transformed on hover and returns to original on moving away | Pass |
 | User clicks on comments icon | User redirected to detail page for associated snapshot | Pass |
@@ -90,7 +90,7 @@
 
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
-| User clicks on avatar of a profile | User redirected to the profile page of the associated profile.  Stats for the snapshots count, followers count and following count associated with the profile are displayed along side the profile image, name and bio(if it exists).  All snapshots owned by the profile are listed below | Pass |
+| User clicks on avatar of a profile | User redirected to the profile page of the associated profile.  Stats for the snapshots count, followers count and following count associated with the profile are displayed along side the profile image and name.  All snapshots owned by the profile are listed below | Pass |
 
 ## **UNAUTHENTICATED USER**
 
@@ -136,7 +136,7 @@
 
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
-| User enters site url https://rkdev-rewind-ed88f8459fe7.herokuapp.com/ in a web browser | Navbar displays links: Home, For You, Pinned, Sign Out and Profile Avatar | Pass |
+| User signs in with valid credentials | Navbar displays links: Home, For You, Pinned, Sign Out and Profile Avatar | Pass |
 | User clicks on 'Home' navbar link | User redirected to the home page | Pass |
 | User clicks on 'For You' navbar link | User redirected to page displaying snapshots for profiles they are following | Pass |
 | User clicks on 'Pinned' navbar link | User redirected to page displaying snapshots they have pinned | Pass |
