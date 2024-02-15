@@ -583,12 +583,16 @@ ___
 
 * The `SampleCreateForm` component is rendered above the `sample` and `Snapshot` components.  This provides users with the ability to select an audio file and upload.  On successful upload, a toast alert is used to notify users that the new sample has been created.
 
+![Sample create](docs/features/gifs/pp5-sample-create.gif)
+
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: |
 | [#14](https://github.com/rkillickdev/rewind/issues/14) | As a logged in user I can upload audio clips when creating a snaphot so that I can share audio memories with other site users | Pass |
 
 
 * The `CommentCreateForm` component is rendered directly below the `Snapshot` component and above the `Comment` component.  This provides a text area input field where users can write a comment.  While this field is empty, the 'post' button is disabled.  Only when text has been entered can the comment be posted.  On successful creation of a comment, a toast alert is used to notify users that the new comment has been created.
+
+![Comment create](docs/features/gifs/pp5-comment-create.gif)
 
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: |
@@ -602,7 +606,11 @@ ___
 
 * Clicking on the edit icon directs the user to the url path `/snapshots/:id/edit`.  This route renders the SnapshotEditForm component.  Here a user can update details of their Snapshot.  On successful submission, a toast alert is used to notify users that the snapshot has been updated.
 
+![Snapshot edit](docs/features/gifs/pp5-snapshot-edit.gif)
+
 * Clicking on the delete icon triggers rendering of the `ModalPopup` component.  This allows the user to confirm that they definitely want to delete the snapshot.  Upon successful deletion, a toast alert is used to notify users that the snapshot has been deleted.
+
+![Snapshot delete](docs/features/gifs/pp5-snapshot-delete.gif)
 
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: |
@@ -617,11 +625,15 @@ ___
 
 * Clicking on the edit icon renders the `CommentEditForm` component in place of the `Comment` component.  Here a user can update the content of their comment.  On successful submission, a toast alert is used to notify users that the comment has been updated.
 
+![Edit comment](docs/features/gifs/pp5-comment-edit.gif)
+
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: |
 | [#19](https://github.com/rkillickdev/rewind/issues/19) | As a logged in user I can edit my own comments so that I can amend and update my thoughts | Passed |
 
 * Clicking on the delete icon triggers rendering of the `ModalPopup` component.  This allows the user to confirm that they definitely want to delete the comment.  Upon successful deletion, a toast alert is used to notify users that the comment has been deleted.
+
+![Delete comment](docs/features/gifs/pp5-comment-delete.gif)
 
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: |
@@ -634,6 +646,8 @@ ___
 * The `EditDelete` component is rendered within the `Sample` component.  As the user only has the ability to delete samples, only the `handleDelete` prop is passed to EditDelete.  This displays a  clickable icons for deleting the sample.
 
 * Clicking on the delete icon triggers rendering of the `ModalPopup` component.  This allows the user to confirm that they definitely want to delete the sample.  Upon successful deletion, a toast alert is used to notify users that the sample has been deleted.
+
+![Sample delete](docs/features/gifs/pp5-sample-delete.gif)
 
 </details>
 
