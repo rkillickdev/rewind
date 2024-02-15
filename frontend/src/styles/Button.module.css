@@ -39,7 +39,9 @@
 .Feature,
 .FeatureOutline:hover  {
   background-color: var(--secondary-color);
-  color: var(--dark-color); 
+  color: var(--dark-color);
+  outline: none;
+  border: 0;
 }
 
 .Feature:hover {
