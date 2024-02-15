@@ -39,7 +39,7 @@
 | User clicks on brand name on the left of the navbar | User redirected to the home page | Pass |
 | Hover over  and move away from brand name in nav bar | Link opacity added to brand name on hover and no opacity on moving away. Cursor turns to pointer | Pass |
 | User hovers over nav bar links  | Link colour transformed on hover and returns to original on moving away. Cursor turns to pointer | Pass   |
-| User hovers over hamburger toggler on screens below 992px | Link colour transformed on hover and returns to original on moving away. Cursor turns to pointer | Fail | 
+| User hovers over hamburger toggler on screens below 992px | Cursor turns to pointer | Pass | 
 | User clicks on hamburger toggler on screens below 992px when menu items collapsed | Vertical navbar links expanded | Pass |
 | User clicks on hamburger toggler or anywhere else on the screen on screens below 992px when menu items expanded. | Vertical navbar links collapsed | Pass |
 | Navigate between pages from nav bar links | Navbar link for active page text colour changes colour to indicate active | Pass |
@@ -50,8 +50,8 @@
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
 |  |  |   |
-| Hover over and move away from each footer icon link | Link colour transformed on hover and returns to original on moving away | |
-| User clicks on GitHub Icon in footer | New browser tab opens displaying GitHub repo for Rewind | Fail |
+| Hover over and move away from footer icon link | Link colour transformed on hover and returns to original on moving away | Pass |
+| User clicks on GitHub Icon in footer | New browser tab opens displaying GitHub repo for Rewind | Pass |
 
 ## SnapshotsPage - HOME
 
@@ -62,7 +62,7 @@
 | User enters text into the search bar | Results filter dynamically with a 1 second pause after the user stops typing.  Snapshots will be displayed if text input matches any text in the title, era, genre or category of the snapshot | Pass |
 | User enters text into the search bar that does not match any text in the defined API search fields | Message displayed to user, informing that no snapshots could be found and recommending to adjust their search phrase | Pass |
 | User hovers over each of the sort icons | Icon colour transformed on hover and returns to original on moving away | Pass |
-| User clicks on 'Recommendations' sort icon | Snapshots sorted by recommendation count (descending) without the page refereshing | Pass |
+| User clicks on 'Recommendations' sort icon | Snapshots sorted by recommendation count (descending) without the page refreshing | Pass |
 | User clicks on 'Comments' sort icon | Snapshots sorted by comment count (descending) without the page refereshing | Pass |
 | User clicks on 'Date' sort icon | Snapshots sorted by date created (descending) without the page refereshing | Pass |
 
