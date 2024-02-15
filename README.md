@@ -1499,6 +1499,22 @@ setSnapshot((prevSnapshot) => ({
 ```
 
 
+| Bug Description | Solution |
+| ------------ | --------------- |
+| Client side sorting by date does not operate as expected.  Most recently updated snapshots are not displayed first | The issue here is attempting to do the ordering on the client side in React using the date strings provided by Django.  I have formatted these in settings.py to provide the user with a readable user friendly format e.g. `15 Feb 2024`.  However these strings were harder to sort as strings rather than numeric values and the code I originally implemented was not working as expected.  I therefore decided to handle this sorting on the backend.  When posts are fetched from the API, they are already sorted by the snapshot `updated_at` field, so the solution was just a case of calling the `fetchSnapshots` function from the onClick attribute of the date sort icon (this is located in `SnapshotsPage.js`).  See the code below for my original `handleSortDate` function (which was ultimately removed when no longer required) |
+
+```js
+// Function to handle sorting of results by created at date
+  function handleDateSort() {
+    setSnapshots((prevSnapshots) => ({
+      ...prevSnapshots,
+      results: prevSnapshots.results.sort((a, b) =>
+        b.created_at.localeCompare(a.created_at),
+      ),
+    }));
+  }
+```
+
 # **Credits**
 
 ## **Code Used and Referenced**
