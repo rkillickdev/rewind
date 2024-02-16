@@ -343,7 +343,17 @@ The profile edit form can be saved with no changes made.  None of the fields are
 | username | Enter an invalid name that does not match a password | Receive alert 'Unable to log in with provided credentials' | Pass |
 | password | Enter a password that is invalid for given username | Receive alert 'Unable to log in with provided credentials' | Pass |
 
- 
+## **Javascript Testing**
+
+While manually testing the Rewind app, the console has been checked for errors.  No errors are logged apart from the following:
+
+* 3 x `401_UNAUTHORIZED` errors on mount or refresh.  These requests to the API establish whether the user is logged out.
+* 1 x `401_UNAUTHORIZED` error on naviagtion to Sign Up page.  Request to API checking user's authorisation status to determine whether the user should be directed away from the page.  Only unauthenticated users should be able to access this page.
+* 1 x `401_UNAUTHORIZED` error on naviagtion to Sign In page.  Request to API checking user's authorisation status to determine whether the user should be directed away from the page.  Only unauthenticated users should be able to access this page.
+* Feedback errors from the API, for example a `400_BAD_REQUEST` error if a form is submitted with invalid fields.  Also a `401_UNAUTHORIZED` error appears when an access token has expired, it is refreshed in the background and the request eventually succeeds.
+
+<br>
+
 ## **Validators**
 
 ### **ESLint for Javascript and JSX Validation**
