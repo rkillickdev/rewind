@@ -408,6 +408,17 @@ The React code is now compiled with no errors or warnings and the following mess
 
 Alongside comprehensive manual testing, I have written some automated tests used Python's `unittest` unit testing framework.  My aim was to verify that the permission classes allocated to List and Detail views were performing as expected.
 
+I created a separate `settings_test.py` file, which is a duplicate of `settings.py` but specifies that the sqlite3 database should be used for testing purposes:
+
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+```
+
 In order to test snapshots that require a valid image field, I included the following code in the setUp method:
 
 ```python
@@ -420,9 +431,9 @@ def setUp(self):
                                         content_type='image/jpeg')
 ```
 
-I tried the following [solution](https://stackoverflow.com/questions/63476979/unit-testing-django-model-with-an-image-not-quite-understanding-simpleuploaded) which does require the use of a real image, but received the following error: `[ErrorDetail(string='Upload a valid image. The file you uploaded was either not an image or a corrupted image.', code='invalid_image'`
+I tried the following [solution](https://stackoverflow.com/questions/63476979/unit-testing-django-model-with-an-image-not-quite-understanding-simpleuploaded) which does not require the use of a real image, but received the following error: `[ErrorDetail(string='Upload a valid image. The file you uploaded was either not an image or a corrupted image.', code='invalid_image'`
 
-Due to the fact that I am working in a unifield project, when it came to running the tests I had to modify the following files/settings:
+Due to the fact that I am working in a unified project, when it came to running the tests I had to modify the following files/settings:
 
 * `rewind/urls.py` 
 
