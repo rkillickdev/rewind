@@ -1548,6 +1548,10 @@ setSnapshot((prevSnapshot) => ({
   }
 ```
 
+| Bug Description | Solution |
+| ------------ | --------------- |
+| Warning logged in Terminal from Python regarding pagination and unordered lists `UnorderedObjectListWarning: Pagination may yield inconsistent results with an unordered object_list` | Added ordering when retrieving a queryset in the era, genre and category list view |
+
 # **Credits**
 
 ## **Code Used and Referenced**
