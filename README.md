@@ -1429,6 +1429,7 @@ The following steps were followed to deploy the site to Heroku:
 | ------------ | --------------- |
 | Upon selecting an audio file for upload, the file path is not cleared on submission.  If the upload button is clicked again without re-selecting a file, the same will be uploaded again. | |
 | If a user attempts to upload the same file after submitting once, the audio file icon is not displayed but the file can be succesfully submitted | |
+| I noticed when testing the cleint side sorting by recommendations and comments, upon page load this sorting is only based on the first page of paginated results.  If the User scrolls and loads more results and clicks a sort icon again, the sorting will be based on all of the snapshots that have been fetched |. In future iterations, it may be worth considering whether it would be better to carry this sorting out on the backend so it is applied to the whole queryset.
 
 ## **Solved Bugs**
 
