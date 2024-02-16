@@ -1634,4 +1634,50 @@ setSnapshot((prevSnapshot) => ({
 
 * [Installing and setting up ESLint](https://gist.github.com/ianmeigh/8e603b91a38d7829d959402bfcf29d3d)
 
+<br>
 
+[Back to top &uarr;](#contents)
+
+## **Media**
+
+* Images purchased from Shutterstock for use throughouty the site
+
+* Royalty free images used throughout the site from [Pexels](https://www.pexels.com/)
+
+* Royalty free images used throughout the site from [Unsplash](https://unsplash.com/)
+  * Multiple Casette Tapes - Photo by hosein zanbori on Unsplash
+  * Technics 1210 close up - Photo by Jan Kopřiva on Unsplash
+  * Roland 808 - Photo by Steve Harvey on Unsplash
+  * Roland 909 - Photo by Cone Trees on Unsplash
+  * Roland Gear Stack - Photo by Katalin Salles on Unsplash
+  * Modular Synth - Photo by Ryunosuke Kikuno on Unsplash
+  * Pile of Vinyl - Photo by Nihal Demirci Erenay on Unsplash
+
+* Royaly free icons used throughout the site from [Flaticon](https://www.flaticon.com)
+  * [Orange Cassette](https://www.flaticon.com/free-icons/cassette)
+  * [Upload Icon](https://www.flaticon.com/free-icons/image-upload)
+  * [No Search Results](https://www.flaticon.com/free-icons/no-results)
+  * [Sound Wave]()
+  * [Default Avatar]()
+  * [Laptop Profile Image]()
+  * [DJ Profile Image]()
+  * [Smiley Face Headphones]()
+  * [Turntable Icon]()
+  * [Reel to Reel Profile]()
+  * [Headphones Profile]()
+  * [Synth Profile]()
+  * [Cassette Tangled Profile]()
+  * [Vinyl Profile]()
+  * [Comment Icon]()
+  * [Pending Icon]()
+  * [Wooden Speaker Icon]()
+  * [Walkman profile icon]()
+  * [Multi colour walkman profile icon]()
+
+<br>
+
+## **Acknowledgements**
+
+* To my family for supporting me through this journey!
+* To my PP5 Code Institute Mentor Anto Rodriguez for his advice and help during my Advanced Frontend project.
+* To my Code Institute Mentor Can Sucullu for his help, advice and feedback throughout the course.
