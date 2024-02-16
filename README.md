@@ -1647,6 +1647,8 @@ setSnapshot((prevSnapshot) => ({
 
 * [Installing and setting up ESLint](https://gist.github.com/ianmeigh/8e603b91a38d7829d959402bfcf29d3d)
 
+* [opening and reading files - used for uploading images in unit tests](https://blog.enterprisedna.co/python-open-file/#:~:text=In%20this%20code%2C%20'rb',file%20using%20a%20file%20pointer.&text=The%20output%20is%20binary%20data%20of%20the%20image.)
+
 <br>
 
 [Back to top &uarr;](#contents)

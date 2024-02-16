@@ -16,6 +16,8 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
 class ReadOnly(permissions.BasePermission):
     """
     Return True if request method is safe.
+    Used the following article when researching the solution:
+    https://stackoverflow.com/questions/37968770/django-rest-framework-permission-isadminorreadonly
     """
 
     def has_permission(self, request, view):
