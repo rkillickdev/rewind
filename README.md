@@ -1653,7 +1653,7 @@ setSnapshot((prevSnapshot) => ({
 
 ## **Media**
 
-* Images purchased from Shutterstock for use throughouty the site
+* TR808, Multi Cassettes and Retro Tape Deck images purchased from [Shutterstock](https://www.shutterstock.com/)
 
 * Royalty free images used throughout the site from [Pexels](https://www.pexels.com/)
 
@@ -1667,27 +1667,28 @@ setSnapshot((prevSnapshot) => ({
   * Pile of Vinyl - Photo by Nihal Demirci Erenay on Unsplash
 
 * Royaly free icons used throughout the site from [Flaticon](https://www.flaticon.com)
-  * [Orange Cassette](https://www.flaticon.com/free-icons/cassette)
-  * [Upload Icon](https://www.flaticon.com/free-icons/image-upload)
-  * [No Search Results](https://www.flaticon.com/free-icons/no-results)
-  * [Sound Wave]()
-  * [Default Avatar]()
-  * [Laptop Profile Image]()
-  * [DJ Profile Image]()
-  * [Smiley Face Headphones]()
-  * [Turntable Icon]()
-  * [Reel to Reel Profile]()
-  * [Headphones Profile]()
-  * [Synth Profile]()
-  * [Cassette Tangled Profile]()
-  * [Vinyl Profile]()
-  * [Comment Icon]()
-  * [Pending Icon]()
-  * [Wooden Speaker Icon]()
-  * [Walkman profile icon]()
-  * [Multi colour walkman profile icon]()
+  * <a href="https://www.flaticon.com/free-icons/cassette" title="cassette icons">Cassette icons created by Smashicons - Flaticon</a>
+  * <a href="https://www.flaticon.com/free-icons/image-upload" title="image upload icons">Image upload icons created by Cap Cool - Flaticon</a>
+  * <a href="https://www.flaticon.com/free-icons/no-results" title="no results icons">No results icons created by Design Circle - Flaticon</a>
+  * <a href="https://www.flaticon.com/free-icons/sound-wave" title="sound wave icons">Sound wave icons created by Cap Cool - Flaticon</a>
+  * <a href="https://www.flaticon.com/free-icons/robot" title="robot icons">Robot icons created by Freepik - Flaticon</a>
+  * <a href="https://www.flaticon.com/free-icons/computer" title="computer icons">Computer icons created by Freepik - Flaticon</a>
+  * <a href="https://www.flaticon.com/free-icons/disc-jockey" title="disc jockey icons">Disc jockey icons created by Freepik - Flaticon</a>
+  * <a href="https://www.flaticon.com/free-icons/headphone" title="headphone icons">Headphone icons created by amonrat rungreangfangsai - Flaticon</a>
+  * <a href="https://www.flaticon.com/free-icons/turntable" title="turntable icons">Turntable icons created by Freepik - Flaticon</a>
+  * <a href="https://www.flaticon.com/free-icons/tape-recorder" title="tape recorder icons">Tape recorder icons created by Vectors Market - Flaticon</a>
+  * <a href="https://www.flaticon.com/free-icons/audio" title="audio icons">Audio icons created by Freepik - Flaticon</a>
+  * <a href="https://www.flaticon.com/free-icons/synthesizer" title="synthesizer icons">Synthesizer icons created by Freepik - Flaticon</a>
+  * <a href="https://www.flaticon.com/free-icons/tape" title="tape icons">Tape icons created by Smashicons - Flaticon</a>
+  * <a href="https://www.flaticon.com/free-icons/vinyl" title="vinyl icons">Vinyl icons created by Smashicons - Flaticon</a>
+  * <a href="https://www.flaticon.com/free-icons/message" title="message icons">Message icons created by chehuna - Flaticon</a>
+  * <a href="https://www.flaticon.com/free-icons/pending" title="pending icons">Pending icons created by vectaicon - Flaticon</a>
+  * <a href="https://www.flaticon.com/free-icons/amplifier" title="amplifier icons">Amplifier icons created by Freepik - Flaticon</a>
+  * <a href="https://www.flaticon.com/free-icons/loud-speaker" title="loud speaker icons">Loud speaker icons created by Freepik - Flaticon</a>
+  * <a href="https://www.flaticon.com/free-icons/walkman" title="walkman icons">Walkman icons created by Eucalyp - Flaticon</a>
+  * <a href="https://www.flaticon.com/free-icons/walkman" title="walkman icons">Walkman icons created by Freepik - Flaticon</a>
 
-  * [chatGPT](https://chat.openai.com/) was used to generate a few pieces of text content for the snapshots.   Other content for the site was written by myself.
+* [chatGPT](https://chat.openai.com/) was used to generate a few pieces of text content for the snapshots.   Other content for the site was written by myself.
 
 <br>
 
