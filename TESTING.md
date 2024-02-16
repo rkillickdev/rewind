@@ -21,8 +21,6 @@
 
 # **Manual Testing**
 
-## **User Story Testing**
-
 ## **Full Testing**
 
 ## **ALL USERS**
@@ -404,7 +402,88 @@ The React code is now compiled with no errors or warnings and the following mess
 
 ![ESLint error free](docs/validation/eslint/pp5-eslint-error-free.png)
 
-### **PEP8 Validation:**
+# **Automated Testing**
+
+## **Unit Testing**
+
+Alongside comprehensive manual testing, I have written some automated tests used Python's `unittest` unit testing framework.  My aim was to verify that the permission classes allocated to List and Detail views were performing as expected.
+
+In order to test snapshots that require a valid image field, I included the following code in the setUp method:
+
+```python
+from django.core.files.uploadedfile import SimpleUploadedFile
+
+def setUp(self):
+    with open("docs/tests/comment-test-image.jpg", "rb") as file:
+                image_data = file.read()
+    self.image_file = SimpleUploadedFile(name="test_image.jpg", content=image_data,
+                                        content_type='image/jpeg')
+```
+
+I tried the following [solution](https://stackoverflow.com/questions/63476979/unit-testing-django-model-with-an-image-not-quite-understanding-simpleuploaded) which does require the use of a real image, but received the following error: `[ErrorDetail(string='Upload a valid image. The file you uploaded was either not an image or a corrupted image.', code='invalid_image'`
+
+Due to the fact that I am working in a unifield project, when it came to running the tests I had to modify the following files/settings:
+
+* `rewind/urls.py` 
+
+```python
+from django.contrib import admin
+from django.urls import path, include
+from django.views.generic import TemplateView
+from .views import logout_route
+
+urlpatterns = [
+    path('', root_route),
+    path("admin/", admin.site.urls),
+    path("api-auth/", include("rest_framework.urls")),
+    # Logout route has to be above the default one to be matched first
+    path('dj-rest-auth/logout/', logout_route),
+    path('dj-rest-auth/', include('dj_rest_auth.urls')),
+    path(
+        'dj-rest-auth/registration/',
+        include('dj_rest_auth.registration.urls'),
+    ),
+    path("", include("profiles.urls")),
+    path("", include("eras.urls")),
+    path("", include("genres.urls")),
+    path("", include("categories.urls")),
+    path("", include("snapshots.urls")),
+    path("", include("comments.urls")),
+    path("", include("recommendations.urls")),
+    path("", include("followers.urls")),
+    path("", include("pins.urls")),
+    path("", include("samples.urls")),
+]
+```
+
+* rewind/settings_test.py
+
+```python
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        # Set 'DIRS' as an empty list
+        'DIRS': [],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+```
+
+All tests written so far are passing and the aim will be to continue writing tests to improve coverage across the site.
+
+<br>
+
+# **Validators**
+
+## **PEP8 Validation:**
 
 <br>
 
