@@ -12,9 +12,11 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
             return True
         return obj.owner == request.user
 
+
 class ReadOnly(permissions.BasePermission):
     """
     Return True if request method is safe.
     """
+
     def has_permission(self, request, view):
         return request.method in permissions.SAFE_METHODS

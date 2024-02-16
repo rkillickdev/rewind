@@ -11,7 +11,7 @@ class CategoryList(generics.ListCreateAPIView):
     """
 
     serializer_class = CategorySerializer
-    permission_classes = [permissions.IsAdminUser|ReadOnly]
+    permission_classes = [permissions.IsAdminUser | ReadOnly]
     queryset = Category.objects.all().order_by("title")
 
 
