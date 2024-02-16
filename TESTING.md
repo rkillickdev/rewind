@@ -789,8 +789,6 @@ Size and format of images being served is an area that should be looked into fur
 
 </details>
 
-
-
 ## **Wave Accessibility**
 
 All pages of the site have been passed through the [Wave Chrome Extension](https://wave.webaim.org/extension/) to check for accessibility performance.  No errors are logged on any pages.  I have checked warnings to ensure they are acceptable.
@@ -830,6 +828,34 @@ All pages of the site have been passed through the [Wave Chrome Extension](https
 </details>
 
 <br>
+
+[Back to top &uarr;](#contents)
+
+# **Responsiveness**
+
+Full testing for responsiveness of all pages across the site has been carried out with the help of Google Dev Tools along side the following physical devices:
+
+* Macbook Pro 2021 14 inch M1 Pro
+* iPhone 11
+* iPad 9th generation A2602
+
+<br>
+
+The following browsers were used to test on each device to check for consistency of appearance and performance:
+
+* Google Chrome
+* Firefox
+* Safari
+
+| Browser Compatibility |  |        |       |                        
+| :---: | :---:  | :---:   | :---:  |
+|       | Chrome | Firefox | Safari |  
+| Appearance | Good | Good | Good |
+| Responsiveness | Good | Good | Good |
+
+<br>
+
+[Back to top &uarr;](#contents)
 
 
 
