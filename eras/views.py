@@ -1,24 +1,16 @@
 from rest_framework import generics, permissions
 from .models import Era
 from .serializers import EraSerializer
+from rewind.permissions import ReadOnly
 
 
-class EraList(generics.ListAPIView):
+class EraList(generics.ListCreateAPIView):
     """
-    List and Eras.  Designed for regular users to be read only.
-    """
-
-    serializer_class = EraSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    queryset = Era.objects.all()
-
-class EraCreate(generics.CreateAPIView):
-    """
-    Create Eras.  Designed for admin users to create new instances.
+    List and Create Eras.  Read only unless user has admin permissions.
     """
 
     serializer_class = EraSerializer
-    permission_classes = [permissions.IsAdminUser]
+    permission_classes = [permissions.IsAdminUser|ReadOnly]
     queryset = Era.objects.all()
 
 
