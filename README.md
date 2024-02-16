@@ -966,6 +966,18 @@ I have also ensured that regular site users only have **read only** access to th
 </details>
 
 <details>
+<summary> Django Admin Panel
+</summary>
+
+<br>
+
+Models for the site can be accessed and manipulated from the Django Admin panel by entering the url `https://rkdev-rewind-ed88f8459fe7.herokuapp.com/admin`.  The designated superuser has total control over this.  At the moment  an administrator can only create update or delete instances of the Era, Genre or Category models via the admin panel.  Eventually functionality to carry out these actions from the frontend user interface could be implemented.  I have also written the `approve_samples` method in samples/admin.py, which enables an administrator to set `approved=True` for a sample once they are satisfied that the content is appropiate for other site users.
+
+![Django Admin Panel](docs/features/pp5-django-admin-panel.png)
+
+</details>
+
+<details>
 <summary> Future Features
 </summary>
 
