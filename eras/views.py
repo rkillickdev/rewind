@@ -3,14 +3,22 @@ from .models import Era
 from .serializers import EraSerializer
 
 
-class EraList(generics.ListCreateAPIView):
+class EraList(generics.ListAPIView):
     """
-    List and Create Eras.   Only authenticated
-    users can create an instance.
+    List and Eras.  Designed for regular users to be read only.
     """
 
     serializer_class = EraSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    queryset = Era.objects.all()
+
+class EraCreate(generics.CreateAPIView):
+    """
+    Create Eras.  Designed for admin users to create new instances.
+    """
+
+    serializer_class = EraSerializer
+    permission_classes = [permissions.IsAdminUser]
     queryset = Era.objects.all()
 
 
