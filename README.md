@@ -325,11 +325,15 @@ To secure certain Django Views and ensure they are only accessible to registered
 
 * `IsAuthenticatedOrReadOnly` is a Django REST Framework built in permission class.  It allows users to perform any request.  Requests for unauthenticated users are only permitted if the request method is one of the "safe" methods; `GET`, `HEAD` or `OPTIONS`.  This ensures that only logged in users are granted write permissions.
 
-* `IsOwnerOrReadOnly` is a custom class stored in rewind/permissions.py which extends DRF permissions.BasePermission. The method `has_object_permissions' defined within the class, returns a boolean value.  If the request method received is one of the "safe" methods, true is returned as all users are permitted to make these requests.  If not a safe method, true is only returned if the current user is the owner of an object.  This ensures that users can only update or delete an object that they own.  
+* `IsOwnerOrReadOnly` is a custom class stored in rewind/permissions.py which extends DRF permissions.BasePermission. The method `has_object_permissions' defined within the class, returns a boolean value.  If the request method received is one of the "safe" methods, true is returned as all users are permitted to make these requests.  If not a safe method, true is only returned if the current user is the owner of an object.  This ensures that users can only update or delete an object that they own.  This is an important security consideration .  Although functionality to update and delete objects owned by another user is not provided in the user interface, this alone does not provide adequate protection.  Objects in the database could still be targeted using specific urls.  The inclusion of permission_classes add this additional layer of defence.
 
-This is an important security consideration .  Although functionality to update and delete objects owned by another user is not provided in the user interface, this alone does not provide adequate protection.  Objects in the database could still be targeted using specific urls.  The inclusion of permission_classes add this additional layer of defence.
+* `ReadOnly` is a custom class stored in rewind/permissions.py which extends DRF permissions.BasePermission.  If the request method received is one of the "safe" methods, true is returned.  I added this custom permission to the ListCreateAPIView for eras, genres and categories to ensure that all users have read permissions but only admin users have permission to create new instances.
 
-Unit tests have been written to check the functionality of these permission classes.  Documentation for this can be found in the [TESTING.md](https://github.com/rkillickdev/rewind/blob/main/TESTING.md) file.
+```python
+permission_classes = [permissions.IsAdminUser|ReadOnly]
+```
+
+* Unit tests have been written to check the functionality of these permission classes.  Documentation for this can be found in the [TESTING.md](https://github.com/rkillickdev/rewind/blob/main/TESTING.md) file.
 
 #### **Protection Of Sensitive Details**
 ___
