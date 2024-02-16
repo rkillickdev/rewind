@@ -963,6 +963,31 @@ The Rewind app features full CRUD functionality on the Front-End UI, implemented
 
 I have also ensured that regular site users only have **read only** access to the era, genre and category models.  This is so instances of these models can be displayed in form select fields, but I do not want users to have the ability to create, update or delete these files.  
 
+</details>
+
+<details>
+<summary> Future Features
+</summary>
+
+<br>
+
+Functionality and features that are not within the scope of this project, but that could be implemented in future sprints to enhance the user experience include:
+
+* Additional filtering capabilities, for example client side filtering to only view snapshots associated with a certain genre/ era/ category.  This would be especially helpful as content on the site increases and additional genres/eras/categories are added.  A user story for this feature was created during the planning phase, so this has been returned to the Product Backlog for now and placed in the Future Features column on the project kanban board.  Implementation of this feature will be addressed in a future sprint.
+
+| | User Story | Acceptance Criteria Satisfied | 
+| --- | ------------ | :---: |
+| [#39](https://github.com/rkillickdev/rewind/issues/39) | As a user I can filter the list of snapshots on the home page by era, genre and category so that I can view snapshots most relevant to my interests  | Future Feature |
+
+___
+
+<br>
+
+* Playback of samples is currently handled using the HTML audio element.  To improve styling and capabilities of this playback controller, it might be worth building an audio player tailored to the requirements of the site.
+
+* Allow users to specify multiple genre/era/category preferences.
+
+* Include option of video upload.
 
 </details>
 
@@ -1050,19 +1075,7 @@ Provides available eras, genres and categories to include when rendering form se
 
 Provides profileData to child components throughout the app.  It also provides access to setProfileData, handleFollow and handleUnfollow.  For example, one user following another profile will update the profileData state which will then be reflected to all other users accessing profileData.
 
-
-## **Accessibility**
-
-* Redundant Alternative Text occurs for each snapshot as it is the same as the title.
-
-
-
-## **Future Features**
-
-| | User Story | Acceptance Criteria Satisfied | 
-| --- | ------------ | :---: |
-| [#39](https://github.com/rkillickdev/rewind/issues/39) | As a user I can filter the list of snapshots on the home page by era, genre and category so that I can view snapshots most relevant to my interests  | Future Feature |
-___
+<br>
 
 [Back to top &uarr;](#contents)
 
