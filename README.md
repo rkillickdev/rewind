@@ -182,7 +182,9 @@ In order to satisfy the goals and user stories outlined in the [strategy plane](
 
 ## **Database Schema**
 
-![rewind final database schema](docs/database-schema/pp5-rewind-database-schema.png)
+![rewind final database schema](docs/database-schema/pp5-rewind-database-schema-final.png)
+
+From the original planning phase to the final site, a few tweaks were made to the database schema to suit the functionality of the site.  In particular, I eventually decided to create a model for samples rather than including it as a field in the snapshot model.  The soundbyte field remains as part of the snapshot model for now but is redundant.  The original database schema v01 can be viewed [here](docs/database-schema/pp5-rewind-database-schema-v01.png)
 
 The following custom models have been implemented as part of the development process:
 
@@ -209,7 +211,7 @@ The Era / Genre / Category models are linked to the Snapshot model via a foreign
 
 The API endpoints detailed below have been built to allow for eventual implementation of 'Create', 'Read' and 'Update' functionality on these models from the front end.  Although not included in the initial scope of the project, building this functionality into the backend will allow for a future feature whereby a site administrator can add additional eras/ generes/ categories via the site interface rather than using the Django admin panel.  This functionality could be implemented in future sprints.
 
-The `IsAdminUser` class from the rest_framwork permissions has been included in the views for eras, genres and categories to ensure only staff users can access the following API endpoints.
+The `IsAdminUser` class from rest_framwork permissions has been used in combination with a custom `ReadOnly` permissions class in the views for eras, genres and categories.  This is to ensure only staff users have permission for POST, GET and PUT requests, but all users can make GET requests.
 
 ### **Era API Endpoints**
 ___
@@ -285,6 +287,21 @@ ___
 | PUT | /comments/:id | Update a comment by id | DETAIL |
 | DELETE | /comments/:id | Delete a comment by id | DETAIL |
 
+### **SAMPLE**
+
+There are 'One To Many' relationships between User / Snapshot models and Sample Model.  Many samples could be associated with either a single User or Snapshot.  All users can retrieve samples, authenticated users can create an instance and delete an instance if they are the owner. 
+
+### **Sample API Endpoints**
+___
+
+| HTTP REQUEST | URI | CRUD Operation | View Type |
+| ------------ | --- | -------------- | --------- |
+| GET | /samples | List all samples | LIST |
+| POST | /samples | Create a sample | LIST |
+| GET | /samples/:id | Retrieve a sample by id | DETAIL |
+| PUT | /samples/:id | Update a sample by id | DETAIL |
+| DELETE | /samples/:id | Delete a sample by id | DETAIL |
+
 ### **FOLLOWER**
 
 There are two relationships between the User model and the Follower model.  Both are 'One To Many' relationships.  It is important to include 'related_names' in this case to distinguish between the two.  A user could be connected to an instance of Follower because they are the owner (i.e. following another user), or because they are being 'followed'.  Either way, many instances of Follower can be associated with a User.  They might be following many others, or being followed by many others.  Authenticated users can 'follow' another user (i.e. create an instance).  There is no need to include an API endpoint for updating an instance of Follower.  Deleting an instance is the equivalent of 'unfollowing' another user and can only be carried out by an authenticated user who owns the instance.
@@ -315,10 +332,10 @@ ___
 
 <br>
 
-### **Security**
+## **Security**
 ___
 
-#### **Defensive Programming**
+### **Defensive Programming**
 ___
 
 To secure certain Django Views and ensure they are only accessible to registered users, permission classes have been set in the views.py file of each Django App.  Two classes have been used:
@@ -335,7 +352,7 @@ permission_classes = [permissions.IsAdminUser|ReadOnly]
 
 * Unit tests have been written to check the functionality of these permission classes.  Documentation for this can be found in the [TESTING.md](https://github.com/rkillickdev/rewind/blob/main/TESTING.md) file.
 
-#### **Protection Of Sensitive Details**
+### **Protection Of Sensitive Details**
 ___
 
 Any keys containing sensitive data were stored in and retrieved from the env.py file during development. This was added to the gitignore file to ensure this data was never pushed to the GitHub repo.  For the deployed production version of the site hosted on Heroku, these sensitive keys are stored securely in the config vars.
