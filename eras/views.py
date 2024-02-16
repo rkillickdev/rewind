@@ -11,7 +11,7 @@ class EraList(generics.ListCreateAPIView):
 
     serializer_class = EraSerializer
     permission_classes = [permissions.IsAdminUser|ReadOnly]
-    queryset = Era.objects.all()
+    queryset = Era.objects.all().order_by("decade")
 
 
 class EraDetail(generics.RetrieveUpdateAPIView):

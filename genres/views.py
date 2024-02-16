@@ -1,17 +1,17 @@
 from rest_framework import generics, permissions
 from .models import Genre
 from .serializers import GenreSerializer
+from rewind.permissions import ReadOnly
 
 
 class GenreList(generics.ListCreateAPIView):
     """
-    List and Create Genres.  Only authenticated
-    users can create an instance.
+    List and Create Eras.  Read only unless user has admin permissions.
     """
 
     serializer_class = GenreSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    queryset = Genre.objects.all()
+    permission_classes = [permissions.IsAdminUser|ReadOnly]
+    queryset = Genre.objects.all().order_by("style")
 
 
 class GenreDetail(generics.RetrieveUpdateAPIView):

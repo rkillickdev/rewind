@@ -1,6 +1,7 @@
 from rest_framework import generics, permissions
 from .models import Category
 from .serializers import CategorySerializer
+from rewind.permissions import ReadOnly
 
 
 class CategoryList(generics.ListCreateAPIView):
@@ -10,8 +11,8 @@ class CategoryList(generics.ListCreateAPIView):
     """
 
     serializer_class = CategorySerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    queryset = Category.objects.all()
+    permission_classes = [permissions.IsAdminUser|ReadOnly]
+    queryset = Category.objects.all().order_by("title")
 
 
 class CategoryDetail(generics.RetrieveUpdateAPIView):
