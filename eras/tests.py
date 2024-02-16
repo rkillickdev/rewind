@@ -20,7 +20,7 @@ class EraListViewTests(APITestCase):
             'decade': '1980s',
         }
         response = self.client.post('/eras/', data=data)
-        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
 class EraDetailViewTests(APITestCase):
     def setUp(self):
@@ -32,7 +32,7 @@ class EraDetailViewTests(APITestCase):
 
     def test_regular_user_cant_retrieve_era_using_valid_id(self):
         response = self.client.get('/eras/1/')
-        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_regular_user_cant_update_era(self):
         self.client.login(username='rob', password='pass123')
@@ -40,7 +40,7 @@ class EraDetailViewTests(APITestCase):
             'decade': '1990s'
         }
         response = self.client.put('/eras/1/', data=data)
-        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
 
 
