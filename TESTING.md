@@ -254,6 +254,43 @@
 
 [Back to top &uarr;](#contents)
 
+## **Defensive Testing**
+
+To check that users cannot access restricted pages by directly entering a url path, I manually tested the following scenarios:
+
+### **User Status: Not logged in**
+
+| URL Tested | Expected Outcome | Note | Pass/Fail |
+| ---- | ---- | ---- | :----: |
+| https://rkdev-rewind-ed88f8459fe7.herokuapp.com/snapshots/create | User redirected to Home Page | | Pass |
+| https://rkdev-rewind-ed88f8459fe7.herokuapp.com/profiles/12/edit | User redirected to Home Page | valid profile id | Pass |
+| https://rkdev-rewind-ed88f8459fe7.herokuapp.com/profiles/12/edit/username | User redirected to Home Page | valid profile id | Pass |
+| https://rkdev-rewind-ed88f8459fe7.herokuapp.com/profiles/12/edit/password | User redirected to Home Page | valid profile id | Pass |
+| https://rkdev-rewind-ed88f8459fe7.herokuapp.com/profiles/99/edit | User redirected to Home Page | invalid profile id  | Pass |
+| https://rkdev-rewind-ed88f8459fe7.herokuapp.com/profiles/99/edit/username | User redirected to Home Page | invalid profile id | Pass |
+| https://rkdev-rewind-ed88f8459fe7.herokuapp.com/profiles/99/edit/password | User redirected to Home Page | invalid profile id | Pass |
+
+### **User Status: Logged in**
+
+| URL Tested | Expected Outcome | Note | Pass/Fail |
+| ---- | ---- | ---- | :----: |
+| https://rkdev-rewind-ed88f8459fe7.herokuapp.com/profiles/12/edit | User redirected to Home Page | valid profile id belongs to another user | Pass |
+| https://rkdev-rewind-ed88f8459fe7.herokuapp.com/profiles/12/edit/username | User redirected to Home Page | valid profile id belongs to another user | Pass |
+| https://rkdev-rewind-ed88f8459fe7.herokuapp.com/profiles/12/edit/password | User redirected to Home Page | valid profile id belongs to another user | Pass |
+| https://rkdev-rewind-ed88f8459fe7.herokuapp.com/profiles/99/edit | User redirected to Home Page | invalid profile id  | Pass |
+| https://rkdev-rewind-ed88f8459fe7.herokuapp.com/profiles/99/edit/username | User redirected to Home Page | invalid profile id | Pass |
+| https://rkdev-rewind-ed88f8459fe7.herokuapp.com/profiles/99/edit/password | User redirected to Home Page | invalid profile id | Pass |
+
+### **All users**
+
+| URL Tested | Expected Outcome | Note | Pass/Fail |
+| ---- | ---- | ---- | :----: |
+| https://rkdev-rewind-ed88f8459fe7.herokuapp.com/invalid | 404 page displayed | | Pass |
+
+<br>
+
+[Back to top &uarr;](#contents)
+
 ## **Form Testing**
 
 All forms have been checked thoroughly to ensure they cannot be submitted until all fields are valid.
@@ -332,6 +369,8 @@ The profile edit form can be saved with no changes made.  None of the fields are
 | password | Enter 123 as password | Receive alert 'This password is too short. It must contain at least 8 characters'/ 'This password is too common'/ 'This password is entirely numeric' | Pass |
 | confirm password | Does not match password | Receive alert 'The two password fields didn't match' | Pass |
 
+<br>
+
 **Sign In Form**
 
 | Field | Action | Expected Outcome | Pass/Fail |
@@ -341,7 +380,11 @@ The profile edit form can be saved with no changes made.  None of the fields are
 | username | Enter an invalid name that does not match a password | Receive alert 'Unable to log in with provided credentials' | Pass |
 | password | Enter a password that is invalid for given username | Receive alert 'Unable to log in with provided credentials' | Pass |
 
-## **Javascript Testing**
+<br>
+
+[Back to top &uarr;](#contents)
+
+## **Console Error Testing**
 
 While manually testing the Rewind app, the console has been checked for errors.  No errors are logged apart from the following:
 
@@ -352,55 +395,7 @@ While manually testing the Rewind app, the console has been checked for errors. 
 
 <br>
 
-## **Validators**
-
-### **ESLint for Javascript and JSX Validation**
-
-ESLint was installed and configured for my gitpod workspace with help from the following article and CI Slack threads:
-
-[Install ESLint and Prettier auto formatting for React](https://gist.github.com/ianmeigh/8e603b91a38d7829d959402bfcf29d3d)
-[ESLint Config](https://code-institute-room.slack.com/archives/C02MTH5MBDG/p1663951564900919?thread_ts=1663797268.383809&cid=C02MTH5MBDG)
-
-When the code for the React app is compiled, ESLint checks that certain rules are being adhered to.  Additionally, I used the Prettier extension to format js files on save.  I found that I had to specify that javascript files should use Prettier as the default formatter in my workspace settings.json file, as can be seen in the code snippet below: 
-
-```json
-"[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.detectIndentation": true,
-        "editor.tabSize": 2,
-        "editor.codeActionsOnSave": {
-            "source.fixAll.eslint": "explicit"
-        }, 
-        "editor.formatOnSave": true   
-    },
-```
-The following rules have been set in my `.eslintrc.json` file which resides in the root of the frontend directory:
-
-```json
-"rules": {
-        "react/react-in-jsx-scope": "off",
-        "react/prop-types": [0, { "ignore": ["children"] }],
-		"react/no-children-prop": [
-			0,
-			{
-				"allowFunctions": true
-			}
-		],
-        "no-unused-vars": ["warn", { "argsIgnorePattern": "req|res|next|__" }],
-        "react/no-unescaped-entities": ["error", { "forbid": [">", "}"] }]
-    }
-```
-
-I received a warning from ESLint `'React' is defined but never used no-unused-vars`.  To solve this , I referenced the following [Stack Overflow thread](https://stackoverflow.com/questions/42541559/eslint-with-react-gives-no-unused-vars-errors) and added two additional rules to my `.eslintrc.json` file:
-
-```json
-"react/jsx-uses-react": "error",   
-"react/jsx-uses-vars": "error" 
-```
-
-The React code is now compiled with no errors or warnings and the following message is displayed in the development terminal:
-
-![ESLint error free](docs/validation/eslint/pp5-eslint-error-free.png)
+[Back to top &uarr;](#contents)
 
 # **Automated Testing**
 
@@ -431,7 +426,7 @@ def setUp(self):
                                         content_type='image/jpeg')
 ```
 
-I tried the following [solution](https://stackoverflow.com/questions/63476979/unit-testing-django-model-with-an-image-not-quite-understanding-simpleuploaded) which does not require the use of a real image, but received the following error: `[ErrorDetail(string='Upload a valid image. The file you uploaded was either not an image or a corrupted image.', code='invalid_image'`
+I also tried the following [solution](https://stackoverflow.com/questions/63476979/unit-testing-django-model-with-an-image-not-quite-understanding-simpleuploaded) which does not require the use of a real image, but received the following error: `[ErrorDetail(string='Upload a valid image. The file you uploaded was either not an image or a corrupted image.', code='invalid_image'`
 
 Due to the fact that I am working in a unified project, when it came to running the tests I had to modify the following files/settings:
 
@@ -492,7 +487,61 @@ All tests written so far are passing and the aim will be to continue writing tes
 
 <br>
 
-# **Validators**
+[Back to top &uarr;](#contents)
+
+## **Validators**
+
+### **ESLint for Javascript and JSX Validation**
+
+ESLint was installed and configured for my gitpod workspace with help from the following article and CI Slack threads:
+
+[Install ESLint and Prettier auto formatting for React](https://gist.github.com/ianmeigh/8e603b91a38d7829d959402bfcf29d3d)
+[ESLint Config](https://code-institute-room.slack.com/archives/C02MTH5MBDG/p1663951564900919?thread_ts=1663797268.383809&cid=C02MTH5MBDG)
+
+When the code for the React app is compiled, ESLint checks that certain rules are being adhered to.  Additionally, I used the Prettier extension to format js files on save.  I found that I had to specify that javascript files should use Prettier as the default formatter in my workspace settings.json file, as can be seen in the code snippet below: 
+
+```json
+"[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.detectIndentation": true,
+        "editor.tabSize": 2,
+        "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": "explicit"
+        }, 
+        "editor.formatOnSave": true   
+    },
+```
+The following rules have been set in my `.eslintrc.json` file which resides in the root of the frontend directory:
+
+```json
+"rules": {
+        "react/react-in-jsx-scope": "off",
+        "react/prop-types": [0, { "ignore": ["children"] }],
+		"react/no-children-prop": [
+			0,
+			{
+				"allowFunctions": true
+			}
+		],
+        "no-unused-vars": ["warn", { "argsIgnorePattern": "req|res|next|__" }],
+        "react/no-unescaped-entities": ["error", { "forbid": [">", "}"] }]
+    }
+```
+
+I received a warning from ESLint `'React' is defined but never used no-unused-vars`.  To solve this , I referenced the following [Stack Overflow thread](https://stackoverflow.com/questions/42541559/eslint-with-react-gives-no-unused-vars-errors) and added two additional rules to my `.eslintrc.json` file:
+
+```json
+"react/jsx-uses-react": "error",   
+"react/jsx-uses-vars": "error" 
+```
+
+The React code is now compiled with no errors or warnings and the following message is displayed in the development terminal:
+
+![ESLint error free](docs/validation/eslint/pp5-eslint-error-free.png)
+
+<br>
+
+[Back to top &uarr;](#contents)
 
 ## **PEP8 Validation:**
 
@@ -651,6 +700,8 @@ HTML has been validated using the [W3C](https://validator.w3.org/) Markup Valida
 
 ![HTML Validation Results](docs/validation/html/pp5-html-validation.png)
 
+<br>
+
 [Back to top &uarr;](#contents)
 
 ### **W3C CSS Validator**
@@ -690,6 +741,10 @@ The only warnings that occur relate to the use of vendor pseudo elements, vendor
 ![css vendor pseudo element warning](docs/validation/css/pp5-css-sample-validation-warnings.png)
 
 ![css vendor extensions warning](docs/validation/css/pp5-css-index-validation-warnings.png)
+
+<br>
+
+[Back to top &uarr;](#contents)
 
 # **Performance**
 
@@ -788,6 +843,10 @@ Size and format of images being served is an area that should be looked into fur
 ![Lighthouse Profile Page Mobile ](docs/lighthouse/mobile/pp5-lighthouse-profile-page-mobile.png)
 
 </details>
+
+<br>
+
+[Back to top &uarr;](#contents)
 
 ## **Wave Accessibility**
 
