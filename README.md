@@ -1675,6 +1675,8 @@ setSnapshot((prevSnapshot) => ({
   * [Walkman profile icon]()
   * [Multi colour walkman profile icon]()
 
+  * [chatGPT](https://chat.openai.com/) was used to generate a few pieces of text content for the snapshots.   Other content for the site was written by myself.
+
 <br>
 
 ## **Acknowledgements**
