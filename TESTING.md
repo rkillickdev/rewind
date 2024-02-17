@@ -401,7 +401,29 @@ While manually testing the Rewind app, the console has been checked for errors. 
 
 # **Automated Testing**
 
-## **Unit Testing**
+## React Jest Testing
+
+To complement the manual testing carried out, I used Jest to write some automated tests for the React frontend.  In preparation for running tests, I completed the following steps:
+
+* Install the Mock Service Worker library (only as a dependency for development) using the terminal command `npm install msw --save-dev`
+
+* Create `handlers.js` in src/mocks. This is a file to store mocked API responses.
+
+* Configure `setupTests.js` file in order to connect the mock service worker to the project tests.
+ 
+Due to the fact I was working in a unified project , it was necessary to amend the `axiosDefaults.js` file temporarily during testing.  The base url was set to my local host address while running the tests.
+
+For the NavBar component, I wrote and ran the following tests:
+
+* Test that the NavBar component renders
+* Test that the NavBar component renders the Profile Avatar and links for Pinned/For You/Sign out when a user is logged in.
+* Test that Sign in and Sign up links are re-rendered when a user signs out
+
+All tests passed as can be seen below:
+
+
+
+## **Django Unit Testing**
 
 Alongside comprehensive manual testing, I have written some automated tests used Python's `unittest` unit testing framework.  My aim was to verify that the permission classes allocated to List and Detail views were performing as expected.
 
