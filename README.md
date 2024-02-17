@@ -690,9 +690,9 @@ ___
 
 ___
 
-* The `CommentCreateForm` component is rendered above the `Snapshot` component.  This provides a text area input field where users can write a comment.  While this field is empty, the 'post' button is disabled.  Only when text has been entered can the comment be posted.  On successful creation of a comment, a toast alert is used to notify users that the new comment has been created.
-
 ![Comment create](docs/features/gifs/pp5-comment-create.gif)
+
+* The `CommentCreateForm` component is rendered above the `Snapshot` component.  This provides a text area input field where users can write a comment.  While this field is empty, the 'post' button is disabled.  Only when text has been entered can the comment be posted.  On successful creation of a comment, a toast alert is used to notify users that the new comment has been created.
 
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: |
@@ -768,15 +768,19 @@ ___
 
 <br>
 
-* The `RelevantProfilePage` component is rendered as part of the `SnapshotsPage` component, if the user is authenticated.
-
-* If the user has not yet specified any preferences on their profile edit page, the rendered `RelevantProfilePage` component displays a list of popular profiles in descending order, based on the number of followers each profile has.  In this scenario, every user will be presented with the same list.  Howver, code has been implemented to ensure that the logged in user's own profile does not appear in the list they are presented with.
+The `RelevantProfilePage` component is rendered as part of the `SnapshotsPage` component, if the user is authenticated.
 
 ![Popular profiles](docs/features/popular-profiles.png)
 
-* If the user has selected their preferences on the Profile Edit page, these are retrieved via the `CurrentUserContext`.  This information is then used to carry out frontend filtering of the 'popular profiles' list to return a list of suggested profiles whose interests/ preferences are most closely aligned with the current user.  It's possible that no results are returned, especially while the datatabase of profiles grows.  In this case, the list of popular profiles are displayed as a default.
+* If the user has not yet specified any preferences on their profile edit page, the rendered `RelevantProfilePage` component displays a list of popular profiles in descending order, based on the number of followers each profile has.  In this scenario, every user will be presented with the same list.  However, code has been implemented to ensure that the logged in user's own profile does not appear in the list they are presented with.
+
+___
 
 ![Relevant profiles](docs/features/relevant-profiles.png)
+
+* If the user has selected their preferences on the Profile Edit page, these are retrieved via the `CurrentUserContext`.  This information is then used to carry out frontend filtering of the 'popular profiles' list to return a list of suggested profiles whose interests/ preferences are most closely aligned with the current user.  It's possible that no results are returned, especially while the datatabase of profiles grows.  In this case, the list of popular profiles are displayed as a default.
+
+<br>
 
 ![Set profile prefs](docs/features/gifs/pp5-set-profile-prefs.gif)
 
@@ -784,11 +788,15 @@ ___
 | --- | ------------ | :---: |
 | [#28](https://github.com/rkillickdev/rewind/issues/28) | As a logged in user I can view suggested profiles so that I can decide whether their previous snapshot posts are of interest to me | Pass |
 
+___
+
 * For each profile in the returned list, the `Profile` component is rendered.  It accepts the profile data as a prop, destructures this and uses it to display the Avatar and name for the associated profile.  If the logged in user is not following a profile, a 'follow' button is displayed.  Once they are following a profile, an 'unfollow' button is displayed.
 
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: |
 | [#29](https://github.com/rkillickdev/rewind/issues/29) | As a logged in user I can choose to follow profiles that are posting interesting content so that I can be updated with more of their posts in the future | Pass |
+
+___
 
 </details>
 
@@ -796,39 +804,47 @@ ___
 <summary> Profile Page
 </summary>
 
-### **Unauthenticated**
+### **Unauthenticated User**
+
+![Profile page unauthenticated user](docs/features/profile-page-unauth.png)
 
 * The `ProfilePage` component is rendered using the React Router whenever the user naviagates to the exact url `/profiles/:id`.  This displays the following details for a profile specified by the id supplied in the url:
 
- 1. Image
- 2. Profile Name
- 3. The number of snapshots the profile has added
- 4. The number of followers the profile has
- 5. The number of other profiles that the specified profile is following
+  * Image
+  * Profile Name
+  * The number of snapshots the profile has added
+  * The number of followers the profile has
+  * The number of other profiles that the specified profile is following
 
 * For every snapshot associated with the profile, a `Snapshot` component is rendered beneath the profile details.
-
-![Profile page unauthenticated user](docs/features/profile-page-unauth.png)
 
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: |
 | [#26](https://github.com/rkillickdev/rewind/issues/26) | As a user I can view the profile pages of other site users so that I can learn more about them and the type of content they are posting | Pass |
 
-### **Authenticated**
+___
 
-* The profile id of the selected profile page is compared with the profile id of the current user.  If the logged in user is not the owner of the profile, a follow/ unfollow button is displayed.
+### **Authenticated User**
 
 ![Profile page follow](docs/features/gifs/profile-follow.gif)
 
+<br>
+
+* The profile id of the selected profile page is compared with the profile id of the current user.  If the logged in user is not the owner of the profile, a follow/ unfollow button is displayed.
+
+___
+
 ### **Authenticated & Profile Owner**
+
+![Profile page owner](docs/features/profile-page-owner.png)
 
 * The `ProfileEditOptions` component is rendered below the profile details and 3 icons displayed:
 
-  1. Edit profile directs the user to the following url `/profiles/:id/edit`.  The react router renders the `ProfileEditForm` component
-  2. Edit username directs the user to the following url `/profiles/:id/edit/username`.  The react router renders the `UsernameForm` component.
-  3. Change password directs the user to the following url `/profiles/:id/edit/password`.  The react router renders the `UserPasswordForm` component.
+  * Edit profile directs the user to the following url `/profiles/:id/edit`.  The react router renders the `ProfileEditForm` component
+  * Edit username directs the user to the following url `/profiles/:id/edit/username`.  The react router renders the `UsernameForm` component.
+  * Change password directs the user to the following url `/profiles/:id/edit/password`.  The react router renders the `UserPasswordForm` component.
 
-![Profile page owner](docs/features/profile-page-owner.png)
+___
 
 </details>
 
@@ -844,6 +860,8 @@ ___
 | --- | ------------ | :---: |
 | [#25](https://github.com/rkillickdev/rewind/issues/25) | As a logged in user I can edit the details of my profile so that I can update my profile pic, bio details and preferences for era, musical genre and category | Pass |
 
+___
+
 </details>
 
 <details>
@@ -858,6 +876,8 @@ ___
 | --- | ------------ | :---: |
 | [#27](https://github.com/rkillickdev/rewind/issues/27) | As a logged in user I can update my username and password so that I can choose how my name is displayed to other users and to ensure my login credentials remain secure | Pass |
 
+___
+
 </details>
 
 <details>
@@ -868,6 +888,8 @@ ___
 
 ![Profile change password](docs/features/gifs/profile-change-password.gif)
 
+___
+
 </details>
 
 <details>
@@ -877,6 +899,8 @@ ___
 <br>
 
 ![User sign out](docs/features/gifs/sign-out.gif)
+
+___
 
 </details>
 
@@ -889,6 +913,8 @@ ___
 A simple Footer component is rendered on each page.  The GitHub profile name of the site developer is displayed and a clickable GitHub icon that directs the user to the repository for the Rewind App in a new browser tab.
 
 ![Footer](docs/features/pp5-feature-footer.png)
+
+___
 
 </details>
 
