@@ -263,6 +263,7 @@ To check that users cannot access restricted pages by directly entering a url pa
 | URL Tested | Expected Outcome | Note | Pass/Fail |
 | ---- | ---- | ---- | :----: |
 | https://rkdev-rewind-ed88f8459fe7.herokuapp.com/snapshots/create | User redirected to Home Page | | Pass |
+| https://rkdev-rewind-ed88f8459fe7.herokuapp.com/snapshots/11/edit | User redirected to Home Page | | Pass | 
 | https://rkdev-rewind-ed88f8459fe7.herokuapp.com/profiles/12/edit | User redirected to Home Page | valid profile id | Pass |
 | https://rkdev-rewind-ed88f8459fe7.herokuapp.com/profiles/12/edit/username | User redirected to Home Page | valid profile id | Pass |
 | https://rkdev-rewind-ed88f8459fe7.herokuapp.com/profiles/12/edit/password | User redirected to Home Page | valid profile id | Pass |
@@ -275,6 +276,7 @@ To check that users cannot access restricted pages by directly entering a url pa
 | URL Tested | Expected Outcome | Note | Pass/Fail |
 | ---- | ---- | ---- | :----: |
 | https://rkdev-rewind-ed88f8459fe7.herokuapp.com/profiles/12/edit | User redirected to Home Page | valid profile id belongs to another user | Pass |
+| https://rkdev-rewind-ed88f8459fe7.herokuapp.com/snapshots/11/edit | User redirected to Home Page | valid snapshot id belongs to another user | Pass |
 | https://rkdev-rewind-ed88f8459fe7.herokuapp.com/profiles/12/edit/username | User redirected to Home Page | valid profile id belongs to another user | Pass |
 | https://rkdev-rewind-ed88f8459fe7.herokuapp.com/profiles/12/edit/password | User redirected to Home Page | valid profile id belongs to another user | Pass |
 | https://rkdev-rewind-ed88f8459fe7.herokuapp.com/profiles/99/edit | User redirected to Home Page | invalid profile id  | Pass |
