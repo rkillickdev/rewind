@@ -22,15 +22,16 @@ Rewind has been developed as part of the [Code Institute](https://codeinstitute.
         * [User Stories](#user-stories)
     * [Scope Plane](#scope-plane)
     * [Skeleton Plane](#skeleton-plane)
-        * [Wireframes](#wireframes)
         * [Database Schema](#database-schema)
+        * [Wireframes](#wireframes)
     * [Structure Plane](#structure-plane)
         * [Features](#features)
     * [Surface Plane](#surface-plane)
 * [Technologies Used](#technologies-used)
     * [Languages Used](#languages-used)
     * [Programs and Tools Used](#programs-and-tools-used)
-    * [Frameworks and Libraries Used](#frameworks-and-libraries-used)
+    * [Backend Frameworks and Libraries](#backend-frameworks-and-libraries)
+    * [Frontend Frameworks and Libraries](#frontend-frameworks-and-libraries)
 * [Testing](#testing)
 * [Deployment and Local Development](#deployment-and-local-development)
 * [Bugs](#bugs)
@@ -1305,7 +1306,7 @@ ___
 * [Stackoverflow](https://stackoverflow.com/) - Used for researching solutions/ fixing bugs.
 
 
-## **Backend  Frameworks and Libraries Used**
+## **Backend Frameworks and Libraries**
 
 * [Django 3.2.23](https://www.djangoproject.com/) - High level Python web framework used in conjunction with DRF for development of the project backend.
 * [Django REST Framework](https://www.django-rest-framework.org/) - Framework used to develop the backend API.
@@ -1321,7 +1322,7 @@ ___
 * [gunicorn](https://gunicorn.org/) - A Python WSGI HTTP Server for UNIX.
 * [whitenoise](https://pypi.org/project/whitenoise/) - Simplified static file serving for WSGI applications.  I used this to serve static files for both the DRF backend and the React frontend.
 
-## **Frontend Libraries Used**
+## **Frontend Frameworks and Libraries**
 
 * [React](https://react.dev/) - A JavaScript library for building user interfaces
 * [react-bootstrap 1.6.3](https://react-bootstrap-v4.netlify.app/) - Frontend framework that is compatible with React.  Used to create a responsive site
@@ -1337,6 +1338,10 @@ ___
 <br>
 
 [Back to top &uarr;](#contents)
+
+# **Testing**
+
+Please follow this link to the [TESTING.md file](https://github.com/rkillickdev/rewind/blob/main/TESTING.md) for documentation about the testing procedure I followed for this project.
 
 # **Deployment and Local Development**
 
@@ -1817,3 +1822,7 @@ setSnapshot((prevSnapshot) => ({
 * To my family for supporting me through this journey!
 * To my PP5 Code Institute Mentor Anto Rodriguez for his advice and help during my Advanced Frontend project.
 * To my Code Institute Mentor Can Sucullu for his help, advice and feedback throughout the course.
+
+<br>
+
+[Back to top &uarr;](#contents)
