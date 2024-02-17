@@ -505,11 +505,11 @@ ___
 <summary> Snapshots Page
 </summary>
 
-* The SnapshotsPage component is rendered using the React Router whenever the user navigates to the exact url for 'Home', 'For You' or 'Pinned'.  
-
-* A search bar positioned at the top of the page allows the user to search for snapshots based on their title, era, musical genre or category.  The filtering happens dynamically as the user types via the backend using the DRF SearchFilter as specified in `snapshots/views.py`.  Below the search bar, a list of snapshots is displayed.
+The SnapshotsPage component is rendered using the React Router whenever the user navigates to the exact url for 'Home', 'For You' or 'Pinned'.  
 
 ![Snapshots search bar](docs/features/gifs/search-bar.gif)
+
+* A search bar positioned at the top of the page allows the user to search for snapshots based on their title, era, musical genre or category.  The filtering happens dynamically as the user types via the backend using the DRF SearchFilter as specified in `snapshots/views.py`.  Below the search bar, a list of snapshots is displayed.
 
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: |
@@ -517,9 +517,9 @@ ___
 
 ___
 
-* Icons allowing user to sort snapshots by recommendation count, comment count or most recently updated are displayed when the SnapshotsPage component is rendered with the `home` prop passed to it.  Clicking on each of the icons re-orders the list of snapshots accordingly.
-
 ![Sort snapshots](docs/features/gifs/pp5-sort-snapshots.gif)
+
+* Icons allowing user to sort snapshots by recommendation count, comment count or most recently updated are displayed when the SnapshotsPage component is rendered with the `home` prop passed to it.  Clicking on each of the icons re-orders the list of snapshots accordingly.
 
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: |
@@ -527,9 +527,9 @@ ___
 
 ___
 
-* The `Snapshot` component is rendered for each snapshot in the list, each with a unique key (this is provided by the snapshot id).  This displays the Profile avatar and name of the owner, Snapshot image, title, date updated and description if available.  Exactly what else the user sees is determined by their authentication status and props passed into the component.
-
 ![Snapshots list all users](docs/features/gifs/snapshots-list.gif)
+
+* The `Snapshot` component is rendered for each snapshot in the list, each with a unique key (this is provided by the snapshot id).  This displays the Profile avatar and name of the owner, Snapshot image, title, date updated and description if available.  Exactly what else the user sees is determined by their authentication status and props passed into the component.
 
 ___
 
@@ -621,11 +621,17 @@ ___
 
 * Pins can be removed for a snapshot on the 'Pinned' page and the list dynamically updates in response to this, so the targeted snapshot is no longer displayed.
 
+___
+
 </details>
 
 <details>
 <summary> SnapshotCreateForm
 </summary>
+
+<br>
+
+![Create snapshot success](docs/features/gifs/pp5-create-snapshot-success.gif)
 
 * The `SnapshotCreateForm` component is rendered by the react router when a user navigates to the `/snapshots/create` url.
 
@@ -633,13 +639,11 @@ ___
 
 * On successful submission, a toast alert is used to notify users that the snapshot has been created.
 
-![Create snapshot success](docs/features/gifs/pp5-create-snapshot-success.gif)
-
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: |
 | [#13](https://github.com/rkillickdev/rewind/issues/13) | As a logged in user I can post image snapshots so that I can share my nostalgic memories with other site users | Pass |
 
-
+___
 
 </details>
 
@@ -649,40 +653,44 @@ ___
 
 <br>
 
-* The SnapshotPage component is rendered using the React Router whenever the user naviagates to the exact url `/snapshots/:id`.  This displays details for a snapshot specified by the id supplied in the url.  As detailed in the description for the `SnapshotsPage` component, the `Snapshot` component is rendered to display this information.
-
 ![Snapshot detail page](docs/features/pp5-snapshot-detail-unauth.png)
+
+* The SnapshotPage component is rendered using the React Router whenever the user naviagates to the exact url `/snapshots/:id`.  This renders a `Snapshot` component, displaying details for a snapshot specified by the id supplied in the url.
 
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: |
-| As a user I can view a snapshot detail page so that I can read the full description of the snapshot and any associated comments | [#16](https://github.com/rkillickdev/rewind/issues/16) | Passed |
+| [#16](https://github.com/rkillickdev/rewind/issues/16) | As a user I can view a snapshot detail page so that I can read the full description of the snapshot and any associated comments | Passed |
+
+ ___
 
  Additionally, the following components are rendered:
 
-### **Unauthenticated**
+### **Unauthenticated User**
 
-* A list of approved samples relating to the associated snapshot is displayed above the `Snapshot` component, with the `Sample` component used to render each sample.  Each has it's own unique key (this is provided by the sample id).  A rendered Sample component displays the Profile avatar and name of the sample owner.  A media player to audition the audio sample is displayed.  To ensure good user experience, the user must instigate playback of the sample themselves.
+* A list of approved samples relating to the associated snapshot is displayed below the `Snapshot` component, with the `Sample` component used to render each sample.  Each has it's own unique key (this is provided by the sample id).  A rendered Sample component displays the Profile avatar and name of the sample owner.  A media player to audition the audio sample is also displayed.  To ensure good user experience, the user must instigate playback of the sample themselves.
 
-* If no samples are associated with the snapshot, a message is displayed to the user to convey this information.
-
-* A list of comments relating to the associated snapshot is displayed below the `Snapshot` component, with the `Comment` component used to render each comment.  Each has it's own unique key (this is provided by the comment id).  A rendered Comment component displays the Profile avatar and name of the comment owner, the comment and the date created.
+* A list of comments relating to the associated snapshot is displayed below the `Snapshot` component, with the `Comment` component used to render each comment.  Each has it's own unique key (this is provided by the comment id).  A rendered Comment component displays the Profile avatar and name of the comment owner, the comment and the date updated.
 
 * If no comments are associated with the snapshot, a message is displayed to the user to convey this information.
 
-### **Authenticated**
+### **Authenticated User**
 
 ![Sample and comment create forms](docs/features/pp5-snapshot-detail-auth.png)
 
-* The `SampleCreateForm` component is rendered above the `sample` and `Snapshot` components.  This provides users with the ability to select an audio file and upload.  On successful upload, a toast alert is used to notify users that the new sample has been created.
+* The `SampleCreateForm` component is rendered above the `Snapshot` component.  This provides users with the ability to select an audio file and upload.  On successful upload, a toast alert is used to notify users that the new sample has been created.
+
+<br>
 
 ![Sample create](docs/features/gifs/pp5-sample-create.gif)
+
 
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: |
 | [#14](https://github.com/rkillickdev/rewind/issues/14) | As a logged in user I can upload audio clips when creating a snaphot so that I can share audio memories with other site users | Pass |
 
+___
 
-* The `CommentCreateForm` component is rendered directly below the `Snapshot` component and above the `Comment` component.  This provides a text area input field where users can write a comment.  While this field is empty, the 'post' button is disabled.  Only when text has been entered can the comment be posted.  On successful creation of a comment, a toast alert is used to notify users that the new comment has been created.
+* The `CommentCreateForm` component is rendered above the `Snapshot` component.  This provides a text area input field where users can write a comment.  While this field is empty, the 'post' button is disabled.  Only when text has been entered can the comment be posted.  On successful creation of a comment, a toast alert is used to notify users that the new comment has been created.
 
 ![Comment create](docs/features/gifs/pp5-comment-create.gif)
 
@@ -690,24 +698,29 @@ ___
 | --- | ------------ | :---: |
 | [#18](https://github.com/rkillickdev/rewind/issues/18) | As a logged in user I can comment on another user's snapshot so that I can share my thoughts and interact with the Rewind community | Passed |
 
+___
+
 ### **Authenticated & Owner of Snapshot**
 
 ![Snapshot owner edit delete icons](docs/features/pp5-snapshot-owner-detail.png)
 
 * The `EditDelete` component is rendered within the `Snapshot` component.  This displays clickable icons for editing or deleting the snapshot.
 
-* Clicking on the edit icon directs the user to the url path `/snapshots/:id/edit`.  This route renders the SnapshotEditForm component.  Here a user can update details of their Snapshot.  On successful submission, a toast alert is used to notify users that the snapshot has been updated.
-
 ![Snapshot edit](docs/features/gifs/pp5-snapshot-edit.gif)
 
-* Clicking on the delete icon triggers rendering of the `ModalPopup` component.  This allows the user to confirm that they definitely want to delete the snapshot.  Upon successful deletion, a toast alert is used to notify users that the snapshot has been deleted.
-
-![Snapshot delete](docs/features/gifs/pp5-snapshot-delete.gif)
+* Clicking on the edit icon directs the user to the url path `/snapshots/:id/edit`.  This route renders the SnapshotEditForm component.  Here a user can update details of their Snapshot.  On successful submission, a toast alert is used to notify users that the snapshot has been updated.
 
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: |
-| [#17](https://github.com/rkillickdev/rewind/issues/17) | As a logged in user I can edit my own snapshots so that I can update and amend the details of my original post | Passed | 
+| [#17](https://github.com/rkillickdev/rewind/issues/17) | As a logged in user I can edit my own snapshots so that I can update and amend the details of my original post | Passed |
 
+___
+
+![Snapshot delete](docs/features/gifs/pp5-snapshot-delete.gif)
+
+* Clicking on the delete icon triggers rendering of the `ModalPopup` component.  This allows the user to confirm that they definitely want to delete the snapshot.  Upon successful deletion, a toast alert is used to notify users that the snapshot has been deleted.
+
+___
 
 ### **Authenticated & Owner of Comment**
 
@@ -715,21 +728,25 @@ ___
 
 * The `EditDelete` component is rendered within the `Comment` component.  This displays clickable icons for editing or deleting the snapshot.
 
-* Clicking on the edit icon renders the `CommentEditForm` component in place of the `Comment` component.  Here a user can update the content of their comment.  On successful submission, a toast alert is used to notify users that the comment has been updated.
-
 ![Edit comment](docs/features/gifs/pp5-comment-edit.gif)
+
+* Clicking on the edit icon renders the `CommentEditForm` component in place of the `Comment` component.  Here a user can update the content of their comment.  On successful submission, a toast alert is used to notify users that the comment has been updated.
 
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: |
 | [#19](https://github.com/rkillickdev/rewind/issues/19) | As a logged in user I can edit my own comments so that I can amend and update my thoughts | Passed |
 
-* Clicking on the delete icon triggers rendering of the `ModalPopup` component.  This allows the user to confirm that they definitely want to delete the comment.  Upon successful deletion, a toast alert is used to notify users that the comment has been deleted.
+___
 
 ![Delete comment](docs/features/gifs/pp5-comment-delete.gif)
+
+* Clicking on the delete icon triggers rendering of the `ModalPopup` component.  This allows the user to confirm that they definitely want to delete the comment.  Upon successful deletion, a toast alert is used to notify users that the comment has been deleted.
 
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: |
 | [#20](https://github.com/rkillickdev/rewind/issues/20) | As a logged in user I can delete my own comments so that I can control whether a previous comment remains visible to other site users | Passed |
+
+___
 
 ### **Authenticated & Owner of Sample**
 
@@ -737,9 +754,11 @@ ___
 
 * The `EditDelete` component is rendered within the `Sample` component.  As the user only has the ability to delete samples, only the `handleDelete` prop is passed to EditDelete.  This displays a  clickable icons for deleting the sample.
 
+![Sample delete](docs/features/gifs/pp5-sample-delete.gif)
+
 * Clicking on the delete icon triggers rendering of the `ModalPopup` component.  This allows the user to confirm that they definitely want to delete the sample.  Upon successful deletion, a toast alert is used to notify users that the sample has been deleted.
 
-![Sample delete](docs/features/gifs/pp5-sample-delete.gif)
+___
 
 </details>
 
