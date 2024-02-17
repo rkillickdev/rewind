@@ -1569,9 +1569,8 @@ The following steps were followed to deploy the site to Heroku:
 
 | Bug Description | Solution |
 | ------------ | --------------- |
-| Upon selecting an audio file for upload, the file path is not cleared on submission.  If the upload button is clicked again without re-selecting a file, the same will be uploaded again. | |
-| If a user attempts to upload the same file after submitting once, the audio file icon is not displayed but the file can be succesfully submitted | |
-| I noticed when testing the cleint side sorting by recommendations and comments, upon page load this sorting is only based on the first page of paginated results.  If the User scrolls and loads more results and clicks a sort icon again, the sorting will be based on all of the snapshots that have been fetched |. In future iterations, it may be worth considering whether it would be better to carry this sorting out on the backend so it is applied to the whole queryset.
+| Upon selecting an audio file for upload, the file path does not appear to be cleared on submission.  If the upload button is clicked again without re-selecting a file, the same file will be uploaded.  If the user clicks on the waveform to select another file but chooses the same file again, the icon does not change to indicate that a file has been selected.  | |
+| I noticed when testing the client side sorting by recommendations and comments, upon page load this sorting is only based on the first page of paginated results.  If the User scrolls and loads more results and clicks a sort icon again, the sorting will be based on all of the snapshots that have been fetched |. In future iterations, it may be worth considering whether it would be better to carry this sorting out on the backend so it is applied to the whole queryset.
 
 ## **Solved Bugs**
 
@@ -1711,6 +1710,8 @@ setSnapshot((prevSnapshot) => ({
 | Warning logged in Terminal from Python regarding pagination and unordered lists:  `UnorderedObjectListWarning: Pagination may yield inconsistent results with an unordered object_list` | Added ordering when retrieving a queryset in the era, genre and category list view |
 
 <br>
+
+[Back to top &uarr;](#contents)
 
 # **Credits**
 
