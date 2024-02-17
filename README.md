@@ -180,12 +180,15 @@ In order to satisfy the goals and user stories outlined in the [strategy plane](
 * Implement functionality for all users to read comments relating to user's snapshot posts.
 * Implement functionality for all users to view the profiles of other site users.
 * Implement functionality for users to create a user account and access additional site features.
-* Implement functionality for logged in users to create and update their own snapshot posts.
-* Implement functionality for logged in users to create, update and delete their own comments about a particular snapshot post. 
-* Implement functionality for logged in users to like snapshots posted by other site users
-* Implement functionality for logged in users to pin snapshots posted by other site users so they can easily return to it
-* Implement functionality for displaying suggested profiles to logged  in users, based on their own musical preferences
+* Implement functionality for logged in users to create, update and delete their own snapshot posts.
+* Implement functionality for logged in users to create, update and delete their own comments about a particular snapshot post.
+* Implement functionality for logged in users to upload and delete their own audio samples relating to a particular snapshot post. 
+* Implement functionality for logged in users to recommend snapshots posted by other site users
+* Implement functionality for logged in users to pin snapshots posted by other site users so they can easily return to them
+* Implement functionality for displaying suggested profiles to logged  in users, based on their own preferences
 * Implement functionality to allow logged in users to follow profiles they want to hear more from
+
+<br>
 
 [Back to top &uarr;](#contents)
 
@@ -201,9 +204,9 @@ The following custom models have been implemented as part of the development pro
 
 ### **PROFILE**
 
-An instances of the Profile model is created automatically when a user signs up for an account and is connected to the User model via a one to one field.  Users are able to edit the `name`, `bio` and `image` fields.
+An instance of the Profile model is created automatically when a user signs up for an account and is connected to the User model via a one to one field.  Users are able to edit the `name`, `bio` and `image` fields.
 
-There is a many to many relationship connecting the Profile model to the Era, Genre and Category models.  This gives the user the ability to set their preferences for the type of snapshot posts they are most interested in viewing.  The many to many link means that a user could attach several different eras/ genres/ categories to their profile, and a single instance of an Era/ Genre/ Category can belong to many different profiles.
+There is a one to many relationship connecting the Profile model to the Era, Genre and Category models.  This gives the user the ability to set their preferences for the type of snapshot posts they are most interested in viewing.  In future iterations of the project, the relationship could be changed to 'many to many' in order to provide greater flexibility when setting preferences.
 
 ### **Profile API Endpoints**
 ___
@@ -214,15 +217,17 @@ ___
 | GET | /profiles/:id | Retrieve a profile by id | DETAIL |
 | PUT | /profiles/:id | Update a profile by id | DETAIL |
 
+___
+
 ### **ERA / GENRE/ CATEGORY**
 
 Multiple instances of Era / Genre/ Category can belong to multiple profiles.  This data will then be used to tailor content presented to site users and make suggestions for other profiles to follow.  
 
 The Era / Genre / Category models are linked to the Snapshot model via a foreign key field.  For example, a single instance of Era,Genre or Category can belong to many different instances of Snapshot.
 
-The API endpoints detailed below have been built to allow for eventual implementation of 'Create', 'Read' and 'Update' functionality on these models from the front end.  Although not included in the initial scope of the project, building this functionality into the backend will allow for a future feature whereby a site administrator can add additional eras/ generes/ categories via the site interface rather than using the Django admin panel.  This functionality could be implemented in future sprints.
+The API endpoints detailed below have been built to allow for eventual implementation of 'Create', 'Read' and 'Update' functionality on these models from the front end.  Although not included in the initial scope of the project, building this functionality into the backend will allow for a future feature whereby a site administrator can add additional eras/ genres/ categories via the site interface rather than using the Django admin panel.  This functionality could be implemented in future sprints.
 
-The `IsAdminUser` class from rest_framwork permissions has been used in combination with a custom `ReadOnly` permissions class in the views for eras, genres and categories.  This is to ensure only staff users have permission for POST, GET and PUT requests, but all users can make GET requests.
+The `IsAdminUser` class from rest_framwork permissions has been used in combination with a custom `ReadOnly` permissions class in the list views for eras, genres and categories.  This is to ensure only staff users have permission for POST requests, but all users can make GET requests.  The `IsAdminUser` permissions class is also allocated to the detail views for era, genres and categories, ensuring that only admin users can make GET or PUT requests for a specific id.
 
 ### **Era API Endpoints**
 ___
@@ -254,9 +259,11 @@ ___
 | GET | /categories/:id | Retrieve a category by id | DETAIL |
 | PUT | /categories/:id | Update a category by id | DETAIL |
 
+___
+
 ### **SNAPSHOT**
 
-As noted above, there is a 'One To Many' relationship linking the Era, Genre and Category models to the Snapshot model.  The User model is also linked to the Snapshot model via a 'One To Many' relationship, whereby a single instance of User can own many instances of Snapshot.  When a new instance of Snapshot is created (only avaialable to authenticated users), the owner field of the Snapshot model is automatically populated with the logged in user.  The perform_create method defined in the [snapshots/views](snapshots/views.py) takes care of this task.  Authenticated users are able to perform full CRUD functionality on the Snaphot model, although the ability to Update or Delete an instance is only available if the user owns the specified instance.
+As noted above, there is a 'One To Many' relationship linking the Era, Genre and Category models to the Snapshot model.  The User model is also linked to the Snapshot model via a 'One To Many' relationship, whereby a single instance of User can own many instances of Snapshot.  When a new instance of Snapshot is created (only available to authenticated users), the owner field of the Snapshot model is automatically populated with the logged in user.  The perform_create method defined in the [snapshots/views](snapshots/views.py) takes care of this task.  Authenticated users are able to perform full CRUD functionality on the Snapshot model, although the ability to Update or Delete an instance is only available if the user owns the specified instance.
 
 ### **Snapshot API Endpoints**
 ___
@@ -269,9 +276,11 @@ ___
 | PUT | /snapshots/:id | Update a snapshot by id | DETAIL |
 | DELETE | /snapshots/:id | Delete a snapshot by id | DETAIL |
 
+___
+
 ### **RECOMMENDATION**
 
-The Snapshot model is linked to the Recommendation model via a 'One To Many relationship' - Many instances of Recommendation can belong to a single instance of Snapshot.  As was the case with the Snapshot model above, the User model is also linked to the Recommendation model via a 'One To Many' relationship.  The relationship is automatically established each time a new instance of Recommendation is created. Authenticated users are able Create and Retrieve instances of Recommendation and delete them if the user owns the instance.  There is no need to provide the ability to update an istance of Recommendation, and this is reflected in the specified API Endpoints below.
+The Snapshot model is linked to the Recommendation model via a 'One To Many relationship' - Many instances of Recommendation can belong to a single instance of Snapshot.  As was the case with the Snapshot model above, the User model is also linked to the Recommendation model via a 'One To Many' relationship.  The relationship is automatically established each time a new instance of Recommendation is created. Authenticated users are able to Create and Retrieve instances of Recommendation and delete them if the user owns the instance.  There is no need to provide the ability to update an instance of Recommendation, and this is reflected in the specified API Endpoints below.
 
 ### **Recommendation API Endpoints**
 ___
@@ -282,6 +291,8 @@ ___
 | POST | /recommendations | Create a recommendation | LIST |
 | GET | /recommendations/:id | Retrieve a recommendation by id | DETAIL |
 | DELETE | /recommendations/:id | Delete a recommendation by id | DETAIL |
+
+___
 
 ### **COMMENT**
 
@@ -298,6 +309,8 @@ ___
 | PUT | /comments/:id | Update a comment by id | DETAIL |
 | DELETE | /comments/:id | Delete a comment by id | DETAIL |
 
+___
+
 ### **SAMPLE**
 
 There are 'One To Many' relationships between User / Snapshot models and Sample Model.  Many samples could be associated with either a single User or Snapshot.  All users can retrieve samples, authenticated users can create an instance and delete an instance if they are the owner. 
@@ -310,8 +323,9 @@ ___
 | GET | /samples | List all samples | LIST |
 | POST | /samples | Create a sample | LIST |
 | GET | /samples/:id | Retrieve a sample by id | DETAIL |
-| PUT | /samples/:id | Update a sample by id | DETAIL |
 | DELETE | /samples/:id | Delete a sample by id | DETAIL |
+
+___
 
 ### **FOLLOWER**
 
@@ -326,6 +340,8 @@ ___
 | POST | /followers | Create a follower | LIST |
 | GET | /followers/:id | Retrieve a follower by id | DETAIL |
 | DELETE | /followers/:id | Delete a follower by id | DETAIL |
+
+___
 
 ### **PIN**
 
@@ -349,11 +365,11 @@ ___
 ### **Defensive Programming**
 ___
 
-To secure certain Django Views and ensure they are only accessible to registered users, permission classes have been set in the views.py file of each Django App.  Two classes have been used:
+To secure certain Django Views and ensure they are only accessible to registered users, permission classes have been set in the views.py file of each Django App.  Three classes have been used:
 
-* `IsAuthenticatedOrReadOnly` is a Django REST Framework built in permission class.  It allows users to perform any request.  Requests for unauthenticated users are only permitted if the request method is one of the "safe" methods; `GET`, `HEAD` or `OPTIONS`.  This ensures that only logged in users are granted write permissions.
+* `IsAuthenticatedOrReadOnly` is a Django REST Framework built in permission class.  Requests for unauthenticated users are only permitted if the request method is one of the "safe" methods; `GET`, `HEAD` or `OPTIONS`.  This ensures that only logged in users are granted write permissions.
 
-* `IsOwnerOrReadOnly` is a custom class stored in rewind/permissions.py which extends DRF permissions.BasePermission. The method `has_object_permissions' defined within the class, returns a boolean value.  If the request method received is one of the "safe" methods, true is returned as all users are permitted to make these requests.  If not a safe method, true is only returned if the current user is the owner of an object.  This ensures that users can only update or delete an object that they own.  This is an important security consideration .  Although functionality to update and delete objects owned by another user is not provided in the user interface, this alone does not provide adequate protection.  Objects in the database could still be targeted using specific urls.  The inclusion of permission_classes add this additional layer of defence.
+* `IsOwnerOrReadOnly` is a custom class stored in rewind/permissions.py which extends DRF permissions.BasePermission. The method `has_object_permissions' defined within the class, returns a boolean value.  If the request method received is one of the "safe" methods, true is returned as all users are permitted to make these requests.  If not a safe method, true is only returned if the current user is the owner of an object.  This ensures that users can only update or delete an object that they own.  This is an important security consideration .  Although functionality to update and delete objects owned by another user is not provided in the user interface, this alone does not provide adequate protection.  Objects in the database could still be targeted using specific urls.  The inclusion of permission_classes add an additional layer of defence.
 
 * `ReadOnly` is a custom class stored in rewind/permissions.py which extends DRF permissions.BasePermission.  If the request method received is one of the "safe" methods, true is returned.  I added this custom permission to the ListCreateAPIView for eras, genres and categories to ensure that all users have read permissions but only admin users have permission to create new instances.
 
@@ -368,7 +384,7 @@ ___
 
 Any keys containing sensitive data were stored in and retrieved from the env.py file during development. This was added to the gitignore file to ensure this data was never pushed to the GitHub repo.  For the deployed production version of the site hosted on Heroku, these sensitive keys are stored securely in the config vars.
 
-In the settings file, for I have declared ```DEBUG = 'DEBUG' in os.environ```.  This means that DEBUG will only equate to True in development mode.  In production, the 'DEBUG' variable is not stored and therefore equates to False.  It is important for DEBUG not to be enabled in production, as this prevents users from seeing the detailed traceback displayed by Django if an exception is raised.  Although this is useful while in development mode, these messages could contain information about the site that we would not want the final user to see.
+In the settings.py file, I have declared ```DEBUG = 'DEBUG' in os.environ```.  This means that DEBUG will only equate to True in development mode.  In production, the 'DEBUG' variable is not stored and therefore equates to False.  It is important for DEBUG not to be enabled in production, as this prevents users from seeing the detailed traceback displayed by Django if an exception is raised.  Although this is useful while in development mode, these messages could contain information about the site that we would not want the final user to see.
 
 <br>
 
@@ -419,7 +435,7 @@ To the right of the navbar, page links are displayed and a hover effect applied 
 | Sign in | Logged out users |
 | Sign out | Logged in users |
 
-<br>
+___
 
 ![Nav bar for authenticated user](docs/features/pp5-features-auth-nav-bar.png)
 
@@ -434,9 +450,13 @@ To ensure good user experience and satisfy the site owner's goal of responsive d
 
 ![Collapsed mobile nav links](docs/features/pp5-features-nav-bar-mobile-collapsed.png)
 
-Clicking on the hamburger icon expands the nav links which are stacked vertically to the left of the screen.  Clicking on a link, the icon or anywhere else on the pag collapses the nav menu.
+___
+
+Clicking on the hamburger icon expands the nav links which are stacked vertically to the left of the screen.  Clicking on a link, the icon or anywhere else on the page collapses the nav menu.
 
 ![Expanded mobile nav links](docs/features/pp5-features-nav-bar-mobile-expanded.png)
+
+___
 
 The React Router library is used to handle routing for the application, with specified urls routing the user to different pages.  However this happens without the browser refreshing as the router handles these changes in the React virtual DOM.  In reality each time a user navigates to a new 'page', it is always the same HTML page but with a different component rendered.
 
@@ -444,8 +464,6 @@ The React Router library is used to handle routing for the application, with spe
 | --- | ------------ | :---: | 
 | [#3](https://github.com/rkillickdev/rewind/issues/3) | As a user I can navigate the content of the site without the page refreshing so that content is accessed quickly and user experience is enhanced | Pass |
 ___
-
-<br>
 
 </details>
 
@@ -481,15 +499,13 @@ Clicking on the 'Sign in' nav link renders the `SignInForm` component where a us
 | [#5](https://github.com/rkillickdev/rewind/issues/5) | As a user I can sign in using my existing credentials so that I can view my account and continue enjoying site functionality only accessible to authenticated users | Pass |
 ___
 
-<br>
-
 </details>
 
 <details>
 <summary> Snapshots Page
 </summary>
 
-* The SnapshotsPage component is rendered using the React Router whenever the user naviagates to the exact url for 'Home', 'For You' or 'Pinned'.  
+* The SnapshotsPage component is rendered using the React Router whenever the user navigates to the exact url for 'Home', 'For You' or 'Pinned'.  
 
 * A search bar positioned at the top of the page allows the user to search for snapshots based on their title, era, musical genre or category.  The filtering happens dynamically as the user types via the backend using the DRF SearchFilter as specified in `snapshots/views.py`.  Below the search bar, a list of snapshots is displayed.
 
@@ -499,6 +515,8 @@ ___
 | --- | ------------ | :---: |
 | [#10](https://github.com/rkillickdev/rewind/issues/10) | As a user I can search snapshots by keywords so that I can filter results displayed by their text content or by the profile of the poster | Pass |
 
+___
+
 * Icons allowing user to sort snapshots by recommendation count, comment count or most recently updated are displayed when the SnapshotsPage component is rendered with the `home` prop passed to it.  Clicking on each of the icons re-orders the list of snapshots accordingly.
 
 ![Sort snapshots](docs/features/gifs/pp5-sort-snapshots.gif)
@@ -507,75 +525,101 @@ ___
 | --- | ------------ | :---: |
 | [#11](https://github.com/rkillickdev/rewind/issues/11) | As a user I can choose to order the list by 'most liked' or 'most talked about' so that I can view most popular snapshots first | Pass |
 
-* The `Snapshot` component is rendered for each snapshot in the list, each with a unique key (this is provided by the snapshot id).  This displays the Profile avatar and name of the owner, Snapshot image, title, date created and description if available.  Exactly what else the user sees is determined by their authentication status and props passed into the component.
+___
+
+* The `Snapshot` component is rendered for each snapshot in the list, each with a unique key (this is provided by the snapshot id).  This displays the Profile avatar and name of the owner, Snapshot image, title, date updated and description if available.  Exactly what else the user sees is determined by their authentication status and props passed into the component.
 
 ![Snapshots list all users](docs/features/gifs/snapshots-list.gif)
 
+___
+
 ### **All Users**
 
-* All users navigating to the 'Home' page can view a list of all snapshots, ordered by the most recently created.
+* All users navigating to the 'Home' page can view a list of all snapshots, ordered by the most recently updated.
 
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: | 
 | [#9](https://github.com/rkillickdev/rewind/issues/9) | As a user I can view all snapshots posted so that I can get an overview of the type of content available on the site and decide whether I would like to sign up | Pass |
 
-### **Unauthenticated**
+___
+
+### **Unauthenticated User**
 
 ![Snapshot unauthenticated user](docs/features/pp5-features-snapshot-unauth.png)
 
-* Icons and tallies for recommendation and comment counts are displayed.  If the user tries to recommend the snapshot, a tooltip provides feedback that they must be signed in to carry out this action.  Clicking on the comments icon directs the user to the Snapshot Detail Page.
+* Icons and tallies for recommendation and comment counts are displayed.  If the user tries to recommend the snapshot, a tooltip provides feedback that they must be signed in to carry out this action.  If audio samples belong to the snapshot, a waveform icon is displayed.  Clicking on the comments icon or waveform directs the user to the Snapshot Detail Page.
+
+___
 
 ![Home unauthenticated user](docs/features/pp5-features-home-unauth.png)
 
-* To the right of the Snapshot list, a reuseable `UserDirection` component is rendered to display a hero image and 'call to action' button, encouraging the user to 'get started' by signing up.
+* To the right of the Snapshot list, a re-useable `UserDirection` component is rendered to display a hero image and 'call to action' button, encouraging the user to 'get started' by signing up.
 
-### **Authenticated**
+___
 
-* The AddSnapshot component is rendered.  This displays a clickable icon which directs the user to the `SnapshotCreateForm`
+### **Authenticated User**
 
 ![Add snapshot icon](docs/features/gifs/add-snapshot.gif)
 
-* Users can recommend/ remove recommendations for snaphots that they do not own.  If they own the snapshot and attempt to recommend, a tooltip provides feedback that they cannot carry out this action.
+* The AddSnapshot component is rendered.  This displays a clickable icon which directs the user to the `SnapshotCreateForm`
+
+___
 
 ![Recommend snapshots](docs/features/gifs/recommend-snapshot.gif)
+
+* Users can recommend/ remove recommendations for snaphots that they do not own.  If they own the snapshot and attempt to recommend, a tooltip provides feedback that they cannot carry out this action.
 
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: | 
 | [#22](https://github.com/rkillickdev/rewind/issues/22) | As a logged in user I can recommend a snapshot so that I can show my appreciation of another user's post and encourage others to view it  | Pass |
 
-* Users can pin/ remove pins for any snapshot.
+___
 
 ![Pin snapshots](docs/features/gifs/pin-snapshot.gif)
+
+* Users can pin/ remove pins for any snapshot.
 
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: | 
 | [#23](https://github.com/rkillickdev/rewind/issues/23) | As a logged in user I can pin any snapshots of interest while browsing the site so that I can build a list of posts to return to later   | Pass |
 
-* If a user has not set their profile preferences, a `UserDirection` component is rendered with props passed to display a reminder message and button directing them to their profile edit page.
+___
 
 ![Set preferences message](docs/features/new-user-preference-message.png)
 
+* If a user has not set their profile preferences, a `UserDirection` component is rendered with props passed to display a reminder message and button directing them to their profile edit page.
+
 * The RelevantProfiles component is rendered to the right of the snapshot list (see description of the component below).
 
-* Authenticated users navigating to the 'For you' page can view a list of snapshots filtered by any snapshot belonging to a profile they are following.  This stage of the filtering is carried out on the backend, with the required filterset field passed to the component as a prop.  Returned results are ordered according to recommendation count (descending order).
+___
 
 ![For You page follow profiles](docs/features/gifs/pp5-follow-profiles-for-you-page.gif)
 
-If a user has not followed any other profiles, a resuable `Asset` component is rendered to display a message encouraging the user to start following other profiles to fill the page.
+* Authenticated users navigating to the 'For you' page can view a list of snapshots filtered by any snapshot belonging to a profile they are following.  This stage of the filtering is carried out on the backend, with the required filterset field passed to the component as a prop.  Returned results are ordered according to recommendation count (descending order).
+
+___
 
 ![For You page no results](docs/features/pp5-for-you-no-results.png)
 
-* If a user has specified their preferences on the profile edit page, Snapshots on the 'For You' page will be further filtered on the frontend to match these preferences.  This ensures that each user receives bespoke content best matched to their interests.  If the frontend filtering returns no results, by default snapshots belonging to all followed profiles are displayed.
+* If a user has not followed any other profiles, a resuable `Asset` component is rendered to display a message encouraging the user to start following other profiles to fill the page.
+
+___
 
 ![For You page filtered by user preferences](docs/features/gifs/pp5-for-you-filter-by-prefs.gif)
 
-* Authenticated users navigating to the 'Pinned' page can view a list of all snapshots that they have pinned, ordered by most recently created (descending order).
+* If a user has specified their preferences on the profile edit page, Snapshots on the 'For You' page will be further filtered on the frontend to match these preferences.  This ensures that each user receives bespoke content best matched to their interests.  If the frontend filtering returns no results, by default snapshots belonging to all followed profiles are displayed.
+
+___
 
 ![Pinned page](docs/features/gifs/add-to-pinned-page.gif)
 
-* Pins can be removed for a snapshot on the 'Pinned' page and the list dynamically updates in response to this, so the targeted snapshot is no longer displayed.
+* Authenticated users navigating to the 'Pinned' page can view a list of all snapshots that they have pinned, ordered by most recently created (descending order).
+
+___
 
 ![Remove from Pinned page](docs/features/gifs/remove-pins.gif)
+
+* Pins can be removed for a snapshot on the 'Pinned' page and the list dynamically updates in response to this, so the targeted snapshot is no longer displayed.
 
 </details>
 
