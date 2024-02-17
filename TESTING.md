@@ -6,12 +6,13 @@
     * [Full Testing](#full-testing)
     * [Defensive Testing](#defensive-testing)
     * [Form Testing](#form-testing)
-    * [Javascript Testing](#javascript-testing)
+    * [Console Error Testing](#console-error-testing)
 * [Automated Testing](#automated-testing)
-    * [Unit Testing](#unit-testing)
+    * [React Jest Testing](#react-jest-testing)
+    * [Django Unit Testing](#django-unit-testing)
 * [Validators](#validators)
-    * [PEP8 Validation](#pep8-validation)
     * [ESLint for Javascript and JSX Validation](#eslint-for-javascript-and-jsx-validation)
+    * [PEP8 Validation](#pep8-validation)
     * [W3C Markup HTML Validator](#w3c-html-markup-validator)
     * [W3C CSS Validator](#w3c-css-validator)
 * [Performance](#performance)
@@ -55,13 +56,13 @@
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
 | User navigates to home page  | Snapshots listed in descending order and sorted by date created.  Search bar and sort icons appear at top of page above first snapshot  | Pass |
-| User scrolls through snapshots | More snapshots load automatically as user scrolls (if more than 10 exist) | Fail |
+| User scrolls through snapshots | More snapshots load automatically as user scrolls (if more than 5 exist) | Pass |
 | User enters text into the search bar | Results filter dynamically with a 1 second pause after the user stops typing.  Snapshots will be displayed if text input matches any text in the title, era, genre or category of the snapshot | Pass |
 | User enters text into the search bar that does not match any text in the defined API search fields | Message displayed to user, informing that no snapshots could be found and recommending to adjust their search phrase | Pass |
 | User hovers over each of the sort icons | Icon colour transformed on hover and returns to original on moving away | Pass |
 | User clicks on 'Recommendations' sort icon | Snapshots sorted by recommendation count (descending) without the page refreshing | Pass |
-| User clicks on 'Comments' sort icon | Snapshots sorted by comment count (descending) without the page refereshing | Pass |
-| User clicks on 'Date' sort icon | Snapshots sorted by date created (descending) without the page refereshing | Pass |
+| User clicks on 'Comments' sort icon | Snapshots sorted by comment count (descending) without the page refreshing | Pass |
+| User clicks on 'Date' sort icon | Snapshots sorted by date created (descending) without the page refreshing | Pass |
 
 ## Snapshot
 
@@ -78,8 +79,8 @@
 
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
-| User clicks on snapshot image,comments icon or waveform icon | User redirected to detail page for associated snapshot.  Approved samples associated with the snapshot are listed in date created descending order below the snapshot. First 10 comments associated with the snapshot are displayed in date created descending order below any samples.  If no comments exist, display message to inform user | Pass |
-| User scrolls through comments | More comments load automatically as user scrolls (if more than 10 exist) | Pass |
+| User clicks on snapshot image, comments icon or waveform icon | User redirected to detail page for associated snapshot.  Approved samples associated with the snapshot are listed in date created descending order below the snapshot. First 10 comments associated with the snapshot are displayed in date created descending order below any samples.  If no comments exist, display message to inform user | Pass |
+| User scrolls through comments | More comments load automatically as user scrolls (if more than 5 exist) | Pass |
 | User clicks play button of audio player | Playback of sample begins | Pass |
 | User clicks pause button of audio player | Playback of sample stops | Pass |
 
@@ -114,7 +115,7 @@
 | ---- | ---- | :----: |
 |  |  |   |
 | User hovers over 'Sign Up' button on sign up form | Button hover transformation applied | Pass |
-| User clicks on 'Sign Up' button with a valid form | User redirected to Sign In Form prepopulated with new user details | Pass |
+| User clicks on 'Sign Up' button with a valid form | User redirected to Sign In Form pre-populated with new user details | Pass |
 | User hovers over 'Sign In' redirect link | Link text colour changes to site secondary colour | Pass |
 | User clicks on 'Sign In' redirect link | User redirected to Sign In Form | Pass |
 
@@ -123,7 +124,7 @@
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
 | User hovers over 'Sign In' button on login form  | Button hover transformation applied | Pass |
-| User clicks on 'Sign In' button with a valid form | User logged in and redirected to the home page. A bootstrap toast is displayed to inform the user they are sucessfully logged in | Pass |
+| User clicks on 'Sign In' button with a valid form | User logged in and redirected to the home page. A bootstrap toast is displayed to inform the user they are successfully logged in | Pass |
 | User hovers over 'Sign Up' redirect link | Link text colour changes to site secondary colour | Pass |
 | User clicks on 'Sign Up' redirect link | User redirected to Sign Up Form | Pass |
 
@@ -138,13 +139,13 @@
 | User clicks on 'For You' navbar link | User redirected to page displaying snapshots for profiles they are following | Pass |
 | User clicks on 'Pinned' navbar link | User redirected to page displaying snapshots they have pinned | Pass |
 | User clicks on 'Profile/ Avatar' navbar link | User redirected to their own profile page | Pass |
-| User clicks on 'Sign Out' navbar link | User logged out.  A bootstrap toast is displayed to inform the user they are sucessfully logged out | Pass |
+| User clicks on 'Sign Out' navbar link | User logged out.  A bootstrap toast is displayed to inform the user they are successfully logged out | Pass |
 
 ## Snapshot
 
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
-| User hovers over or clicks on recommendation icon when they own the snapshot | Tooltip dsiplayed, informing user that they cannot recommend their own snapshot | Pass |
+| User hovers over or clicks on recommendation icon when they own the snapshot | Tooltip displayed, informing user that they cannot recommend their own snapshot | Pass |
 | User clicks on recommendation icon for a snapshot owned by another user | Recommendation icon turns solid colour and recommendation count increments by 1. Toast message displayed informing user they have recommended the snapshot | Pass |
 | User clicks on recommendation icon for a snapshot they have already recommended | Recommendation icon turns to outline and recommendation count decreases by 1. Toast message displayed informing user they have removed recommendation for the snapshot | Pass |
 | Hover and click on bookmark icon below snapshot | Icon outline changes colour on hover and turns solid colour on click to indicate that the snapshot has been pinned.  Toast message displayed informing user they have pinned the snapshot | Pass |
@@ -160,11 +161,11 @@
 | User attempts to post an empty comment | 'Post' button has opacity effect applied to indicate that it is disabled and clicking has no effect | Pass |
 | User creates and submits a new comment | 'Post' button becomes active as the user types text.  Once posted, the comment appears at top of the comments list and toast message is displayed informing user they have added a comment.  Created date should display as 'now' initially (not visible if user owns the comment).  Comment count should increase by 1 | Pass |
 | User selects sample file and submits | Sample appears below snapshot with opacity effect applied. On hovering over pending icon, a tooltip is used to convey message that approval is pending.  A delete icon is displayed next to the sample | Pass |
-| User clicks on edit icon next to a comment they own | Comment edit form displayed, prepopulated with existing comment | Pass |
+| User clicks on edit icon next to a comment they own | Comment edit form displayed, pre-populated with existing comment | Pass |
 | User clicks on Comment edit form cancel button | Comment edit form hidden | Pass |
 | User amends comment and clicks on Comment edit form save button | Comment edit form hidden and amended comment content displayed.  Toast message displayed informing user they have updated their comment | Pass |
 | User clicks on delete icon next to a comment they own | Modal displayed to confirm deletion.  Upon confirming the action, comment deleted and removed from comment list. Comment count decreases by 1. Toast message displayed informing user they have deleted their comment | Pass |
-| User clicks on delete icon next to a sample they own | Modal displayed to confirm deletion.  Upon confirming the action, sample deleted and removed from sample list. Toast message displayed informing user they have deleted their sample | DOUBLE CHECK |
+| User clicks on delete icon next to a sample they own | Modal displayed to confirm deletion.  Upon confirming the action, sample deleted and removed from sample list. Toast message displayed informing user they have deleted their sample | Pass |
 
 ## SnapshotsCreateForm
 
@@ -178,7 +179,7 @@
 
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
-| User clicks on pencil icon for a snapshop that they own | User directed to Snapshot edit page | Pass |
+| User clicks on pencil icon for a snapshot that they own | User directed to Snapshot edit page | Pass |
 | User clicks on Snapshot Edit Form cancel button | User redirected back to Snapshot detail Page | Pass |
 | User updates any snapshot fields and clicks save button | User redirected back to Snapshot detail Page and amended information displayed.  Toast message displayed informing user they have updated their snapshot | Pass |
 | User clicks save button with no fields updated | User redirected back to Snapshot detail Page | Pass | 
@@ -226,7 +227,7 @@
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
 | User clicks on Profile Edit Form cancel button | User redirected back to Profile Page | Pass |
-| User updates profile information and clicks save button | User redirected back to Profile Page and amended information displayed.  Toast message displayed informing user they have updated their profile | Fail |
+| User updates profile information and clicks save button | User redirected back to Profile Page and amended information displayed.  Toast message displayed informing user they have updated their profile | Pass |
 
 ## UsernameForm
 
@@ -267,6 +268,7 @@ To check that users cannot access restricted pages by directly entering a url pa
 | https://rkdev-rewind-ed88f8459fe7.herokuapp.com/profiles/12/edit | User redirected to Home Page | valid profile id | Pass |
 | https://rkdev-rewind-ed88f8459fe7.herokuapp.com/profiles/12/edit/username | User redirected to Home Page | valid profile id | Pass |
 | https://rkdev-rewind-ed88f8459fe7.herokuapp.com/profiles/12/edit/password | User redirected to Home Page | valid profile id | Pass |
+| https://rkdev-rewind-ed88f8459fe7.herokuapp.com/snapshots/99/edit | User redirected to Home Page | invalid profile id  | Pass |
 | https://rkdev-rewind-ed88f8459fe7.herokuapp.com/profiles/99/edit | User redirected to Home Page | invalid profile id  | Pass |
 | https://rkdev-rewind-ed88f8459fe7.herokuapp.com/profiles/99/edit/username | User redirected to Home Page | invalid profile id | Pass |
 | https://rkdev-rewind-ed88f8459fe7.herokuapp.com/profiles/99/edit/password | User redirected to Home Page | invalid profile id | Pass |
@@ -279,6 +281,7 @@ To check that users cannot access restricted pages by directly entering a url pa
 | https://rkdev-rewind-ed88f8459fe7.herokuapp.com/snapshots/11/edit | User redirected to Home Page | valid snapshot id belongs to another user | Pass |
 | https://rkdev-rewind-ed88f8459fe7.herokuapp.com/profiles/12/edit/username | User redirected to Home Page | valid profile id belongs to another user | Pass |
 | https://rkdev-rewind-ed88f8459fe7.herokuapp.com/profiles/12/edit/password | User redirected to Home Page | valid profile id belongs to another user | Pass |
+| https://rkdev-rewind-ed88f8459fe7.herokuapp.com/snapshots/99/edit | User redirected to Home Page | invalid profile id  | Pass |
 | https://rkdev-rewind-ed88f8459fe7.herokuapp.com/profiles/99/edit | User redirected to Home Page | invalid profile id  | Pass |
 | https://rkdev-rewind-ed88f8459fe7.herokuapp.com/profiles/99/edit/username | User redirected to Home Page | invalid profile id | Pass |
 | https://rkdev-rewind-ed88f8459fe7.herokuapp.com/profiles/99/edit/password | User redirected to Home Page | invalid profile id | Pass |
@@ -297,7 +300,7 @@ To check that users cannot access restricted pages by directly entering a url pa
 
 All forms have been checked thoroughly to ensure they cannot be submitted until all fields are valid.
 
-**Snapshot Create Form**
+### **Snapshot Create Form**
 
 | Field | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | ---- | ---- |
@@ -313,9 +316,9 @@ All forms have been checked thoroughly to ensure they cannot be submitted until 
 
 <br>
 
-**Snapshot Edit Form**
+### **Snapshot Edit Form**
 
-The Snapshot Edit form is pre-populated data for the specified snapshot.  If no changes are made and the form is submitted there should be no validation warnings.  Changes made to the title or image fields should throw an alert on submission if the updated field is no longer valid.
+The Snapshot Edit form is pre-populated with data for the specified snapshot.  If no changes are made and the form is submitted there should be no validation warnings.  Changes made to the title or image fields should throw an alert on submission if the updated field is no longer valid.
 
 | Field | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | ---- | ---- |
@@ -327,28 +330,28 @@ The Snapshot Edit form is pre-populated data for the specified snapshot.  If no 
 
 <br>
 
-**Comment Create/ Edit Form**
+### **Comment Create/ Edit Form**
 
 Prevention of new empty comments being submitted is handled by disabling the submit button until text has been entered.
 
 | Field | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | ---- | ---- |
 | content | No text entered | Post button remains disabled and user unable to submit form | Pass |
-| Content | User removes all text when updating a comment and tries to submit | Form displays warning 'This field may not be blank' | Pass |
+| content | User removes all text when updating a comment and tries to submit | Form displays warning 'This field may not be blank' | Pass |
 
 <br>
 
-**Sample Create Form**
+### **Sample Create Form**
 
 | Field | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | ---- | ---- |
 | audio | No file selected | Alert warns 'The submitted data was not a file. Check the encoding type on the form.'| Pass |
 | audio | File selected exceeds 2MB in size | Alert warns 'Please choose an image smaller than 2MB' | Pass |
-| audio | Attemp to submit form when 5 samples already belong to the specified snapshot | Alert warns 'Sorry, the maximum number of samples have been added for this snapshot' | Pass |
+| audio | Attempt to submit form when 5 samples already belong to the specified snapshot | Alert warns 'Sorry, the maximum number of samples have been added for this snapshot' | Pass |
 
 <br>
 
-**Profile Edit Form**
+### **Profile Edit Form**
 
 The profile edit form can be saved with no changes made.  None of the fields are compulsory.  If an image is selected, it must pass validation for file size, width and height.
 
@@ -360,7 +363,7 @@ The profile edit form can be saved with no changes made.  None of the fields are
 
 <br>
 
-**Sign Up Form**
+### **Sign Up Form**
 
 | Field | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | ---- | ---- |
@@ -373,7 +376,7 @@ The profile edit form can be saved with no changes made.  None of the fields are
 
 <br>
 
-**Sign In Form**
+### **Sign In Form**
 
 | Field | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | ---- | ---- |
@@ -391,8 +394,8 @@ The profile edit form can be saved with no changes made.  None of the fields are
 While manually testing the Rewind app, the console has been checked for errors.  No errors are logged apart from the following:
 
 * 3 x `401_UNAUTHORIZED` errors on mount or refresh.  These requests to the API establish whether the user is logged out.
-* 1 x `401_UNAUTHORIZED` error on naviagtion to Sign Up page.  Request to API checking user's authorisation status to determine whether the user should be directed away from the page.  Only unauthenticated users should be able to access this page.
-* 1 x `401_UNAUTHORIZED` error on naviagtion to Sign In page.  Request to API checking user's authorisation status to determine whether the user should be directed away from the page.  Only unauthenticated users should be able to access this page.
+* 1 x `401_UNAUTHORIZED` error on navigation to Sign Up page.  Request to API checking user's authorisation status to determine whether the user should be directed away from the page.  Only unauthenticated users should be able to access this page.
+* 1 x `401_UNAUTHORIZED` error on navigation to Sign In page.  Request to API checking user's authorisation status to determine whether the user should be directed away from the page.  Only unauthenticated users should be able to access this page.
 * Feedback errors from the API, for example a `400_BAD_REQUEST` error if a form is submitted with invalid fields.  Also a `401_UNAUTHORIZED` error appears when an access token has expired, it is refreshed in the background and the request eventually succeeds.
 
 <br>
@@ -425,7 +428,7 @@ All tests passed as can be seen below:
 
 ## **Django Unit Testing**
 
-Alongside comprehensive manual testing, I have written some automated tests used Python's `unittest` unit testing framework.  My aim was to verify that the permission classes allocated to List and Detail views were performing as expected.
+Alongside comprehensive manual testing, I have written some automated tests using Python's `unittest` unit testing framework.  My aim was to verify that the permission classes allocated to List and Detail views were performing as expected.
 
 I created a separate `settings_test.py` file, which is a duplicate of `settings.py` but specifies that the sqlite3 database should be used for testing purposes:
 
@@ -519,8 +522,9 @@ All tests written so far are passing and the aim will be to continue writing tes
 
 ESLint was installed and configured for my gitpod workspace with help from the following article and CI Slack threads:
 
-[Install ESLint and Prettier auto formatting for React](https://gist.github.com/ianmeigh/8e603b91a38d7829d959402bfcf29d3d)
-[ESLint Config](https://code-institute-room.slack.com/archives/C02MTH5MBDG/p1663951564900919?thread_ts=1663797268.383809&cid=C02MTH5MBDG)
+* [Install ESLint and Prettier auto formatting for React](https://gist.github.com/ianmeigh/8e603b91a38d7829d959402bfcf29d3d)
+
+* [ESLint Config](https://code-institute-room.slack.com/archives/C02MTH5MBDG/p1663951564900919?thread_ts=1663797268.383809&cid=C02MTH5MBDG)
 
 When the code for the React app is compiled, ESLint checks that certain rules are being adhered to.  Additionally, I used the Prettier extension to format js files on save.  I found that I had to specify that javascript files should use Prettier as the default formatter in my workspace settings.json file, as can be seen in the code snippet below: 
 
@@ -569,9 +573,7 @@ The React code is now compiled with no errors or warnings and the following mess
 
 ## **PEP8 Validation:**
 
-<br>
-
-I passed all python files through the [Code Institute Python Linter](https://pep8ci.herokuapp.com/) and no errors are found. Results of this testing can be seen below:
+I passed all python files through the [Code Institute Python Linter](https://pep8ci.herokuapp.com/) Results of this testing can be seen below.  The only warnings flagged were for the `AUTH_PASSWORD_VALIDATORS` in the settings.py file `E501 line too long (91 > 79 characters)`.  I discussed this with my mentor and he confirmed that these would be ok to leave as this was not Python code I wrote myself.
 
 <br>
 
@@ -582,7 +584,6 @@ App: rewind
 | asgi.py | 0 | Passed |
 | permissions.py | 0 | Passed |
 | serializers.py | 0 | Passed |
-| settings.py | 0 | FAILED |
 | urls.py | 0 | Passed |
 | views.py | 0 | Passed |
 | wsgi.py | 0 | Passed |
@@ -877,6 +878,8 @@ Size and format of images being served is an area that should be looked into fur
 All pages of the site have been passed through the [Wave Chrome Extension](https://wave.webaim.org/extension/) to check for accessibility performance.  No errors are logged on any pages.  I have checked warnings to ensure they are acceptable.
 
 <details><summary>Wave Results</summary>
+
+<br>
 
 ![Wave Accessibility Home](docs/accessibility/pp5-wave-accessibility-home.png)
 
