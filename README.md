@@ -910,10 +910,9 @@ ___
 
 <br>
 
-A simple Footer component is rendered on each page.  The GitHub profile name of the site developer is displayed and a clickable GitHub icon that directs the user to the repository for the Rewind App in a new browser tab.
-
 ![Footer](docs/features/pp5-feature-footer.png)
 
+* A simple Footer component is rendered on each page.  The GitHub profile name of the site developer is displayed and a clickable GitHub icon that directs the user to the repository for the Rewind App in a new browser tab.
 ___
 
 </details>
@@ -924,11 +923,13 @@ ___
 
 <br>
 
-I have included a custom 404 error page as a form of defensive design. This improves the user experience by keeping the user informed about the problem and engaged with the site. The styling imagery and branding used on these pages is consistent with the rest of the user experience. To ensure the user does not decide to navigate away from the site, a 'Go Home' button is displayed. This also ensures they do not have to use the back button in their browser for navigation.
+![404 Error Page](docs/features/gifs/404-error.gif)
+
+I have included a custom 404 error page as a form of defensive design. This improves the user experience by keeping the user informed about the problem and engaged with the site. The styling, imagery and branding used on this page is consistent with the rest of the user experience. To ensure the user does not decide to navigate away from the site, a 'Go Home' button is displayed. This also ensures they do not have to use the back button in their browser for navigation.
 
 The custom error page has been implemented in `App.js`.  If a url entered by the user matches none of the Route paths specified, the NotFound component is rendered.
 
-![404 Error Page](docs/features/gifs/404-error.gif)
+___
 
 </details>
 
@@ -938,9 +939,11 @@ The custom error page has been implemented in `App.js`.  If a url entered by the
 
 <br>
 
+![Modal confirm delete](docs/features/pp5-modal-delete-confirm-merge.png)
+
 Modals are used to confirm delete actions throughout the app.
 
-![Modal confirm delete](docs/features/pp5-modal-delete-confirm-merge.png)
+___
 
 </details>
 
@@ -950,11 +953,15 @@ Modals are used to confirm delete actions throughout the app.
 
 <br>
 
-Bootstrap Toasts are used throughout the app to notify users when their actions have been successful.
-
 ![Toast notifications 1](docs/features/pp5-toast-notification-merge-1.png)
 
+___
+
 ![Toast notifications 2](docs/features/pp5-toast-notification-merge-2.png)
+
+Bootstrap Toasts are used throughout the app to notify users when their actions have been successful.
+
+___
 
 </details>
 
@@ -964,11 +971,15 @@ Bootstrap Toasts are used throughout the app to notify users when their actions 
 
 <br>
 
-Alerts are used throughout the app to warn the user of form field arrors and errors associated with requests to the DRF API.
-
 ![Form field alerts](docs/features/pp5-form-field-alerts.png)
 
+___
+
 ![API error alerts](docs/features/pp5-api-error-alerts.png)
+
+Alerts are used throughout the app to warn the user of form field errors and errors associated with requests to the DRF API.
+
+___
 
 </details>
 
@@ -980,9 +991,13 @@ Alerts are used throughout the app to warn the user of form field arrors and err
 
 Alongside the Alerts I implemented to notify the user of API errors, I also used error boundaries in React as a form of error handling.  I used [this article](https://blog.logrocket.com/react-error-handling-with-react-error-boundary/#error-boundaries-react) to understand and successfully integrate with the project.  I made use of the react-error-boundary library, wrapping the `ErrorBoundary` component round the whole App in `index.js` to catch any errors.  `FallbackComponent` is rendered whenever the ErrorBoundary catches an error, to display a message to the user and provide a button to reset the error state and try rendering the component again.  When this button is clicked, it calls resetErrorBoundary, which triggers the onReset function and clears the error state.  I have specified that the onReset function should direct the user back to the home page.
 
-This is a good example of where installation and implementation of a library has helped to provide an enhanced user experience.  It aims to prevent a situation where the app crashes and the user is faced with a blank screen and no feedback.
+This is a good example of where installation and implementation of a frontend library has helped to provide an enhanced user experience.  It aims to prevent a situation where the app crashes and the user is faced with a blank screen and no feedback.
+
+<br>
 
 ![Error boundaries](docs/features/gifs/error-boundary.gif)
+
+___
 
 </details>
 
@@ -996,11 +1011,11 @@ A favicon link has been included in the head of the index.html file and displays
 
 ![Favicon Image](docs/features/pp5-favicon-cassette-orange-logo.png)
 
-Open Graph and Twitter meta tags have been placed in the head of the base.html template to control how the URL is displayed when shared on social media.  It appears as displayed below:
+Open Graph and Twitter meta tags have been placed in the head of the index.html template to control how the URL is displayed when shared on social media.  It appears as displayed below:
 
 ![Meta tag social displays](docs/features/pp5-meta-tags-merged.png)
 
-[Back to top &uarr;](#contents)
+___
 
 </details>
 
@@ -1012,19 +1027,29 @@ Open Graph and Twitter meta tags have been placed in the head of the base.html t
 
 I adopted a mobile first approach when designing and building the site. Bootstrap's grid system and responsiveness tiers were used to provide different layouts according to default breakpoints and ensure responsiveness across a range of device sizes. Additional styling tweaks were made using media queries in component css files.
 
-<br>
-
 ![Responsive design mobile 1](docs/features/mobile/pp5-mobile-merge-1.png)
+
+___
 
 ![Responsive design mobile 2](docs/features/mobile/pp5-mobile-merge-2.png)
 
+___
+
 ![Responsive design mobile 3](docs/features/mobile/pp5-mobile-merge-3.png)
+
+___
 
 ![Responsive design mobile 4](docs/features/mobile/pp5-mobile-merge-4.png)
 
+___
+
 ![Responsive design mobile 5](docs/features/mobile/pp5-mobile-merge-5.png)
 
+___
+
 ![Responsive design mobile 6](docs/features/mobile/pp5-mobile-merge-6.png)
+
+___
 
 </details>
 
@@ -1061,7 +1086,7 @@ The Rewind app features full CRUD functionality on the Front-End UI, implemented
 
 `DELETE` - Authenticated users can delete their own snapshots, comments and samples.  They do not have required permissions to delete an object belonging to another user.
 
-I have also ensured that regular site users only have **read only** access to the era, genre and category models.  This is so instances of these models can be displayed in form select fields, but I do not want users to have the ability to create, update or delete these files.  
+I have also ensured that regular site users only have **read only** access to the era, genre and category models.  This is so instances of these models can be displayed in form select fields, but I do not want users to have the ability to create, update or delete instances.  
 
 </details>
 
@@ -1071,7 +1096,7 @@ I have also ensured that regular site users only have **read only** access to th
 
 <br>
 
-Models for the site can be accessed and manipulated from the Django Admin panel by entering the url `https://rkdev-rewind-ed88f8459fe7.herokuapp.com/admin`.  The designated superuser has total control over this.  At the moment  an administrator can only create update or delete instances of the Era, Genre or Category models via the admin panel.  Eventually functionality to carry out these actions from the frontend user interface could be implemented.  I have also written the `approve_samples` method in samples/admin.py, which enables an administrator to set `approved=True` for a sample once they are satisfied that the content is appropiate for other site users.
+Models for the site can be accessed and manipulated from the Django Admin panel by entering the url `https://rkdev-rewind-ed88f8459fe7.herokuapp.com/admin`.  The designated superuser has total control over this.  At the moment  an administrator can only create update or delete instances of the Era, Genre or Category models via the admin panel.  Eventually functionality to carry out these actions from the frontend user interface could be implemented.  I have also written the `approve_samples` method in samples/admin.py, which enables an administrator to set `approved=True` for a sample once they are satisfied that the content is appropriate for other site users.
 
 ![Django Admin Panel](docs/features/pp5-django-admin-panel.png)
 
@@ -1103,6 +1128,10 @@ ___
 
 </details>
 
+<br>
+
+[Back to top &uarr;](#contents)
+
 ## **Re-use of components**
 
 Custom re-useable components were created with the intention of reducing code duplication throughout the app.
@@ -1113,7 +1142,7 @@ Used to include the icon for adding a snapshot on any page where this functional
 
 ### `AlertPopup`
 
-Designed to warn and inform users when errors occur.  This calls the useAlert custom hook, destructures the type and text of the alert and uses this information to display feedback to the user.  I have made use of this component when catching errors related to API requests, so the user is always notified if a problem occurs.
+Designed to warn and inform users when errors occur.  This calls the useAlert custom hook, de-structures the type and text of the alert and uses this information to display feedback to the user.  I have made use of this component when catching errors related to API requests, so the user is always notified if a problem occurs.
 
 ### `Asset.js`
 
@@ -1121,11 +1150,11 @@ This is a multi purpose component that renders content based on the props passed
 
 ### `Avatar`
 
-Used to display the profile images and names of users throughout the app.  It accepts the src and name props as a way of passing the required profile data for each occurence of the Avatar component.  It also accepts a height prop, set as a default to 45px but this can be over written if a larger version of the Avatar is required.  The height passed is also used to determine the width of the image.
+Used to display the profile images and names of users throughout the app.  It accepts the src and name props as a way of passing the required profile data for each occurrence of the Avatar component.  It also accepts a height prop, set as a default to 45px but this can be over written if a larger version of the Avatar is required.  The height passed is also used to determine the width of the image.
 
 ### `EditDelete.js`
 
-A flexible re-useable way of rendering edit and delte icons to the page wherever required.  It accepts handleEdit and handleEdit as props which are used to set the onClick functionality of each icon.  Dependent on the props passed to the component, both or just a single icon can be displayed.  For example when using the EditDelete component next to samples, only the delete icon is required as there is no included fuctionality to update a sample.
+A flexible re-useable way of rendering edit and delete icons to the page wherever required.  It accepts handleEdit and handleDelete as props which are used to set the onClick functionality of each icon.  Dependent on the props passed to the component, both or just a single icon can be displayed.  For example when using the EditDelete component next to samples, only the delete icon is required as there is no included functionality to update a sample.
 
 ### `Error.js`
 
@@ -1137,7 +1166,7 @@ Used to render a simple footer to all pages.
 
 ### `ModalPopup`
 
-Used throughout the app as an additional layer of protection when deleting snapshots, comments and samples.  It accepts `title`, `message` and `buttonLabel` props so each modal can be rendered according to it's required purpose.  The `show` and `handleClose` props handle changes to the state of the modal.  It also accepts the `onChange` prop, as a way of passing a function that is then assigned to the onClick attribute of the confirm button.
+Used throughout the app as an additional layer of protection when deleting snapshots, comments and samples.  It accepts `title`, `message` and `buttonLabel` props so each modal can be rendered according to its required purpose.  The `show` and `handleClose` props handle changes to the state of the modal.  It also accepts the `onChange` prop, as a way of passing a function that is then assigned to the onClick attribute of the confirm button.
 
 ### `NavBar.js`
 
@@ -1149,7 +1178,7 @@ Displays a message  and home redirection button if a user attempts to navigate t
 
 ### `ToastPopup.js`
 
-Similar in function to the `AlertPopup` but this component is used to handle displaying user feedback for CRUD functionality throughout the app.  For example, successful creation, update or deletion of comments.  When the useAlert hook is called and type/ text destructured, if the `type` is 'success', a Bootstrap Toast is rendered displaying the `text` as a message.
+Similar in function to the `AlertPopup` but this component is used to handle displaying user feedback for CRUD functionality throughout the app.  For example, successful creation, update or deletion of comments.  When the useAlert hook is called and type/ text de-structured, if the `type` is 'success', a Bootstrap Toast is rendered displaying the `text` as a message.
 
 ### `UserDirection.js`
 
@@ -1163,7 +1192,7 @@ Calling this hook makes use of the functionality provided by AlertContext.
 
 ### `useClickOutsideToggle.js`
 
-Used to ensure that clicks outide of an expanded menu still result in it closing.  This is called in the NavBar component.
+Used to ensure that clicks outside of an expanded menu still result in it closing.  This is called in the NavBar component.
 
 ### `useRedirect`
 
@@ -1205,11 +1234,11 @@ I used this imagery to build a colour palette with the palette generator tool on
 
 ![Generated colour palette](docs/surface-plane/pp5-rewind-colour-palette.png)
 
-<br>
+___
 
 ## **Typography**
 
-Spacing and typography is consistent throughout the site to provide the user with a sense of familiarity as they navigate between pages. Font awesome icons are used alongside informational headings to hint at content. The following font have been selected from Google Fonts and imported in the head of the index.html file.
+Spacing and typography is consistent throughout the app to provide the user with a sense of familiarity as they navigate between pages. Font awesome icons are used alongside informational headings to hint at content. The following fonts have been selected from Google Fonts and imported in the head of the index.html file.
 
 * Ubuntu - main App text
 * Amatic SC - feature text
@@ -1219,7 +1248,7 @@ The Bungee Spice font matches well with the colour themes and retro imagery of t
 
 ![Logo Font](docs/surface-plane/bungee-spice-logo-text.png)
 
-<br>
+___
 
 ## **Imagery**
 
@@ -1227,13 +1256,12 @@ Static images used throughout the site have been chosen to tie in with the retro
 
 ![App surface plane imagery](docs/surface-plane/pp5-surface-plane-imagery-merge.png)
 
-<br>
 
-The brand logo used in the navbar has been chosen to envoke feelings of nostalgia and links well to the App name 'Rewind' - a nod to an age where 'rewinding casette tapes was part of daily life. The colour scheme used is consistent with the rest of the site.
+The brand logo used in the navbar has been chosen to invoke feelings of nostalgia and links well to the App name 'Rewind' - a nod to an age where 'rewinding cassette tapes was part of daily life. The colour scheme used is consistent with the rest of the site.
 
 ![App brand logo](docs/features/pp5-favicon-cassette-orange-logo.png)
 
-<br>
+___
 
 # **Technologies Used**
 
@@ -1255,16 +1283,16 @@ The brand logo used in the navbar has been chosen to envoke feelings of nostalgi
 * [W3C](https://validator.w3.org/) - HTML Validator
 * [W3C jigsaw](https://jigsaw.w3.org/css-validator/) - CSS Validator
 * [PEP8](https://pep8ci.herokuapp.com/) - CI Python Linter.
-* [ESLint](https://eslint.org/)
-* [Prettier](https://prettier.io/)
+* [ESLint](https://eslint.org/) - linting utility for JavaScript and JSX
+* [Prettier](https://prettier.io/) - An opinionated code formatter used in conjuction with ESLint
 * [Black](https://www.freecodecamp.org/news/auto-format-your-python-code-with-black/) - Python Auto Formatter.
 * [Google Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) - Used at testing stage to show statistics for performance, accessibility, best practices and SEO.
 * [Google DevTools](https://developer.chrome.com/docs/devtools/) - Used throughout build of website for debugging, checking responsiveness and trialing new features/ styling.
 * [Google Fonts](https://fonts.google.com/) - Used to import required fonts for the app.
-* [Font Awesome](https://fontawesome.com/) - Used for all icons throughout the website.
-* [TinyPNG](https://tinypng.com/) - For compression of image files to improve website performance.
-* [Birme](https://www.birme.net/?target_width=425&target_height=450&auto_focal=false&image_format=jpeg&quality_jpeg=100&quality_webp=100) - For resizing and re-formatting images to make them suitable for use on the website.
-* [xnipapp](https://www.xnipapp.com/) - For capturing site screenshots
+* [Font Awesome](https://fontawesome.com/) - Used for icons throughout the website.
+* [TinyPNG](https://tinypng.com/) - For compression of image files to improve performance.
+* [Birme](https://www.birme.net/?target_width=425&target_height=450&auto_focal=false&image_format=jpeg&quality_jpeg=100&quality_webp=100) - For resizing and re-formatting images to make them suitable for use on the app.
+* [xnipapp](https://www.xnipapp.com/) - For capturing screenshots used in the README file
 * [jpg2png](https://jpg2png.com/) - For conversion of JPG images to PNG format.
 * [gyazo](https://gyazo.com/captures) - For mp4 screen captures of site functionality
 * [ezgif](https://ezgif.com/video-to-gif) - For conversion of mp4 video files to GIFs
@@ -1272,8 +1300,8 @@ The brand logo used in the navbar has been chosen to envoke feelings of nostalgi
 * [Balsamiq](https://balsamiq.com/wireframes/) - Used to create wireframes.
 * [ImageOnline](https://imageonline.co/merge-png.php) - Used for merging png files
 * [Favicon.ico & App Icon Generator](https://www.favicon-generator.org/) - For creating the 16x16px ico favicon.
-* [Techsini](https://techsini.com/multi-mockup/index.php) - For displaying images of how the website looks across a range of devices.
-* [Meta Tags IO](https://metatags.io/) - For improving site visual appearance on social media.
+* [Techsini](https://techsini.com/multi-mockup/index.php) - For displaying images of how the app looks across a range of devices.
+* [Meta Tags IO](https://metatags.io/) - For improving visual appearance of links to the app on social media.
 * [Stackoverflow](https://stackoverflow.com/) - Used for researching solutions/ fixing bugs.
 
 
@@ -1286,7 +1314,7 @@ The brand logo used in the navbar has been chosen to envoke feelings of nostalgi
 * [dj3-cloudinary-storage](https://pypi.org/project/dj3-cloudinary-storage/) - A Django package that facilitates Cloudinary storage for media files used in the project.
 * [django-filter](https://django-filter.readthedocs.io/en/stable/#) - Enables filtering of a queryset based on a Model's fields.
 * [pillow](https://pypi.org/project/pillow/) - A Python Imaging Library that adds image processing capabilities to your Python interpreter.
-* [django-allauth](https://docs.allauth.org/en/latest/) - An integrated set of Django applications addressing authentication, registration and account management.  Used to implement role based login functionality across the site.
+* [django-allauth](https://docs.allauth.org/en/latest/) - An integrated set of Django applications addressing authentication, registration and account management.  Used to implement role based login functionality across the app.
 * [djangorestframework-simplejwt](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/) - Provides a JSON Web Token authentication backend for the Django REST Framework.
 * [dj-rest-auth](https://dj-rest-auth.readthedocs.io/en/latest/) - Provides a set of REST API endpoints to handle User Registration and Authentication tasks.
 * [psycopg2](https://pypi.org/project/psycopg2/) - A Python PostgreSQL Database Adapter.
@@ -1301,18 +1329,20 @@ The brand logo used in the navbar has been chosen to envoke feelings of nostalgi
   1. **Switch:** Component used to render the first route that matches the location rather than rendering all matching routes.
   2. **Route:** Component that checks current URL and displays the component associated with that exact path.  All routes are placed within the switch components. 
   3. **Link:** Component used to create links to different routes
-* [axios](https://axios-http.com/docs/intro) - A promise-based HTTP library.  THis enabled HTTP requests to be made to the DRF API.
+* [axios](https://axios-http.com/docs/intro) - A promise-based HTTP library.  This enabled HTTP requests to be made to the DRF API.
 * [react-infinite-scroll-component](https://www.npmjs.com/package/react-infinite-scroll-component) - A component used to implement infinite scrolling for snapshots and comments
 * [jwt-decode](https://www.npmjs.com/package/jwt-decode) - Browser library that helps with decoding of Base64URL encoded JSON web tokens.
 * [react-error-boundary](https://github.com/bvaughn/react-error-boundary) - A library that provides a way to handle JavaScript errors in React components.
+
+<br>
 
 [Back to top &uarr;](#contents)
 
 # **Deployment and Local Development**
 
-I made sure to keep my requirements.txt file up to date throughout, running the command `pip3 freeze --local > requirements.txt` from the terminal whenever any new libraries were installed.  It is important that all requirements are added to this before deployment so Heroku installs the necessary dependencies.
+I made sure to keep my requirements.txt file up to date throughout development, running the command `pip3 freeze --local > requirements.txt` from the terminal whenever any new libraries were installed.  It is important that all requirements are added to this file before deployment so Heroku installs the necessary dependencies.
 
-In development mode, the sqlite3 database provided by Django was used but this was not suitable for use in a production environment.  The deployed site uses a PostreSQL database hosted by [elephantSQL](https://www.elephantsql.com/) that Heroku can access.  It was therefore necessary to create an account with elephantSQL, and create a new database instance selecting the Tiny Turtle(free) plan.  My database instance is also named 'rewind'.  From the ElephantSQL dashboard, clicking on the database reveals a 'details' page where you can access the database URL, which is necessary for use in both the production and development environments.
+In development mode, the sqlite3 database provided by Django was used but this was not suitable for use in a production environment.  The deployed site uses a PostgreSQL database hosted by [elephantSQL](https://www.elephantsql.com/) that Heroku can access.  It was therefore necessary to create an account with elephantSQL, and create a new database instance selecting the Tiny Turtle(free) plan.  My database instance is also named 'rewind'.  From the ElephantSQL dashboard, clicking on the database reveals a 'details' page where you can access the database URL, which is necessary for use in both the production and development environments.
 
 To implement functionality of the PostgreSQL database with Django, the following libraries were installed using the terminal command:
 
@@ -1379,7 +1409,7 @@ The app has been developed following a unified approach,  with the DRF API proje
 
 One of the benefits of operating with a unified project is that it is possible to work on development versions of the DRF API and React projects simultaneously.  The following Code Institute recommended steps were taken to prepare a combined workspace:
 
-1. Add `os.environ['DEBUG'] = '1'` to the env.py file.  In settings.py we have `DEBUG = 'DEBUG' in os.environ`.  Therefore DEBUG equates to True in development and False in production.  We need to do this as we were previously relying on the 'DEV' variable exsting in the env.py file to determine the DEBUG status.  However, this is commented out to allow pure json responses from the API. It's useful to continue viewing the Django logs during development to assist in debugging.
+1. Add `os.environ['DEBUG'] = '1'` to the env.py file.  In settings.py we have `DEBUG = 'DEBUG' in os.environ`.  Therefore DEBUG equates to True in development and False in production.  We need to do this as we were previously relying on the 'DEV' variable existing in the env.py file to determine the DEBUG status.  However, this is commented out to allow pure json responses from the API. It's useful to continue viewing the Django logs during development to assist in debugging.
 
 2.  Add a new `ALLOWED_HOST` key to env.py with the value of your development environment URL, wrapped in quotes.
 **Ensure you remove the https:// from the beginning, and the trailing slash / from the end of the development environment URL.**
@@ -1424,7 +1454,7 @@ CORS_ALLOWED_ORIGINS = [
 3. Check that Terminal 2 is in the frontend directory.  If necessary use `cd frontend` to change directory from the root.  Run the React app with the terminal command:
 * `npm start`
 
-Both the DRF API and React App should now be running in the same worksapce.  The Django API will run on Port 8000, and the React application will run on Port 8080, or Port 3000 depending on which IDE you are using.
+Both the DRF API and React App should now be running in the same workspace.  The Django API will run on Port 8000, and the React application will run on Port 8080, or Port 3000 depending on which IDE you are using.
 
 
 ## Preparation for deployment of the unified project (DRF API)
@@ -1573,7 +1603,7 @@ formData.append("audio", audioInput.current.files[0]);
 ``` 
 | Bug Description | Solution |
 | ------------ | --------------- |
-| User unpins snapshot on home page.  Any snapshots that are not pinned dissapear. 'No results found' message displayed if there are no pinned snapshots | This issue related to the handleUnpin function in the Snapshot component.  Filtering was being applied to Snapshots on **any** page where the handleUnpin was called.  However this was only required on the 'pinned' page to ensure that snapshots were removed from this page once unpinned.  To solve this, I pass a `pinboard` prop to the SnapshotsPage component in App.js and then pass this prop down to the Snapshot component.  I then use the && conditional operator in handleUnpin to check if the pinboard prop is present, and only apply filtering if it is. |
+| User unpins snapshot on home page.  Any snapshots that are not pinned disappear. 'No results found' message displayed if there are no pinned snapshots | This issue related to the handleUnpin function in the Snapshot component.  Filtering was being applied to Snapshots on **any** page where the handleUnpin was called.  However this was only required on the 'pinned' page to ensure that snapshots were removed from this page once unpinned.  To solve this, I pass a `pinboard` prop to the SnapshotsPage component in App.js and then pass this prop down to the Snapshot component.  I then use the && conditional operator in handleUnpin to check if the pinboard prop is present, and only apply filtering if it is. |
 ```js
 pinboard &&
         setSnapshots((prevSnapshots) => ({
@@ -1581,22 +1611,7 @@ pinboard &&
           results: prevSnapshots.results.filter((snapshot) => snapshot.pin_id),
         }));
 ```
-| Bug Description | Solution |
-| ------------ | --------------- |
-| When navigating to the Profile Edit Form, even though `blank=True` and `null=True` was set on the era_preference, genre_preference and category_preference fields in the Profile model, a 400 'bad request' error was logged in the console if the form was submitted without a value selected for era, genre and category. |  With the help of [this Stack overflow thread](https://stackoverflow.com/questions/56917190/django-django-rest-framework-how-do-i-allow-model-serializer-to-set-models-fo), I specified `allow_null=True` on each required field in the serializer file and defined the update method.  I also needed to specify `required=False` on the serializer fields to allow users to leave the form field blank, even though I had already specified this on the model field. |
-```js
-    era_preference = EraSerializer(allow_null=True, required=False)
-    genre_preference = GenreSerializer(allow_null=True, required=False)
-    category_preference = GenreSerializer(allow_null=True, required=False)
 
-    def update(self, instance, validated_data):
-        instance.era_preference = validated_data.get('era_preference')
-        instance.genre_preference = validated_data.get('genre_preference')
-        instance.category_preference = validated_data.get('category_preference')
-        instance.save()
-
-        return instance
-```
 | Bug Description | Solution |
 | ------------ | --------------- |
 | 'No file was submitted' warning when updating a snapshot without changing the image | This bug came about because I removed `blank=True` from my Snapshot model.  The logic in the handleSubmit function of the Snapshot Edit Form looks to see whether a file exists in imageInput, and if so it appends it to the formData.  However, if the user chooses not to change the snapshot image, a warning is displayed on submission of the form as the field cannot be blank.  I only need this rule to be enforced when a user is creating a **new** snapshot, but not when updating.  I therefore created a SnapshotDetailSerializer which inherits from SnapshotSerializer but additionally defines `image = serializers.ImageField(required=False)`.  This ensures that when updating an instance of Snapshot, the image field can be blank  |
@@ -1642,9 +1657,9 @@ pinboard &&
 
 | Bug Description | Solution |
 | ------------ | --------------- |
-| User inputs snaphot or profile url including an id that doesn't exist.  This is rendering a page but no data exists.  A 400 bad request error is logged in the console.  The error should be handled gracefully and the user redirected back to the home page | In the catch block of the handleMount function for the SnapshotPage component, I have made use of the useHistory hook to redirect the user, and also set an alert to inform them that there has been a problem |
-| On creation of a sample, this is not being displayed immediately to the current user in the samples list below the snapshot.  It appears on referesh of the page | The solution here was that I had not passed `setSamples={setSamples}` to the SampleCreateForm component on the SnapshotPage.  This meant that the samples state was not being updated on creation of the sample |
-| User adds 5 samples to a snapshot without refereshing the page.  Upon attempting to add a sixth sample, no alert is displayed and they are not prevented from continuing to add samples, even though the maximum limit has been reached | The total_samples count was not being updated upon form submission and sample deletion.  It was necessary to specify this as part of setSnapshot. See the code below |
+| User inputs snapshot or profile url including an id that doesn't exist.  This is rendering a page but no data exists.  A 400 bad request error is logged in the console.  The error should be handled gracefully and the user redirected back to the home page | In the catch block of the handleMount function for the SnapshotPage component, I have made use of the useHistory hook to redirect the user, and also set an alert to inform them that there has been a problem |
+| On creation of a sample, this is not being displayed immediately to the current user in the samples list below the snapshot.  It appears on refresh of the page | The solution here was that I had not passed `setSamples={setSamples}` to the SampleCreateForm component on the SnapshotPage.  This meant that the samples state was not being updated on creation of the sample |
+| User adds 5 samples to a snapshot without refreshing the page.  Upon attempting to add a sixth sample, no alert is displayed and they are not prevented from continuing to add samples, even though the maximum limit has been reached | The total_samples count was not being updated upon form submission and sample deletion.  It was necessary to specify this as part of setSnapshot. See the code below |
 
 sampleCreateForm handleSubmit function:
 
@@ -1693,7 +1708,9 @@ setSnapshot((prevSnapshot) => ({
 
 | Bug Description | Solution |
 | ------------ | --------------- |
-| Warning logged in Terminal from Python regarding pagination and unordered lists `UnorderedObjectListWarning: Pagination may yield inconsistent results with an unordered object_list` | Added ordering when retrieving a queryset in the era, genre and category list view |
+| Warning logged in Terminal from Python regarding pagination and unordered lists:  `UnorderedObjectListWarning: Pagination may yield inconsistent results with an unordered object_list` | Added ordering when retrieving a queryset in the era, genre and category list view |
+
+<br>
 
 # **Credits**
 
