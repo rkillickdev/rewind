@@ -47,11 +47,11 @@ Rewind has been developed as part of the [Code Institute](https://codeinstitute.
 
 ## **Project Goals**
 
-The aim of the site is to create a community for music/technology enthusiasts with a particular emphasis on the ability to share memories and reminisce.  The term 'nostalgia' can be defined as "a feeling of sadness mixed with pleasure and affection when you think of happy times in the past".  This is a powerful emotion to tap into and cyclical patterns can be seen in fashion, music and technology.  The resurgence in the Vinyl market is a great demonstration of this.  Although the primary target site user may be those wishing to share their memories, this does not limit the target audience to those who witnessed trends and movements the first time round.  It will also engage a new generation where there is great interest for all things 'Retro' and an enthusiasm to discover more about these bygone eras.
+The aim of the site is to create a community for music/technology enthusiasts with a particular emphasis on the ability to share memories and reminisce.  The term 'nostalgia' can be defined as "a feeling of sadness mixed with pleasure and affection when you think of happy times in the past".  This is a powerful emotion to tap into and cyclical patterns can be seen in fashion, music and technology.  The resurgence in the Vinyl market is a great demonstration of this.  Although the primary target site user may be those wishing to share their memories, this does not limit the target audience to those who witnessed trends and movements the first time round.  It will also engage a new generation where there is great interest for all things 'retro' and an enthusiasm to discover more about these bygone eras.
 
-Rewind will give users a platform to post their own 'snapshots' from the past and enter into discussion about fellow user's memories.  To ensure that site users can intuitively and effortlessly access content most relevant to their interets, they will be given the opportunity to tailor their user profiles to indicate their preferences.  This data will be used to recommend other profiles and snapshots that may be of interest to the user.  Users will also have the ability to recommend snapshots that they have enjoyed and this data will be stored in the database, so it can then be used as mechanism for users to sort content.  To fit in with busy lives of a site user, they will also have the ability to pin snapshots while they scroll, so they can easily return to them at a later date.
+Rewind will give users a platform to post their own 'snapshots' from the past and enter into discussion about fellow user's memories.  To ensure that site users can intuitively and effortlessly access content most relevant to their interests, they will be given the opportunity to tailor their user profiles to indicate their preferences.  This data will be used to recommend other profiles and snapshots that may be of interest to the user.  Users will also have the ability to recommend snapshots that they have enjoyed and this data will be stored in the database, so it can then be used as a mechanism for users to sort content.  To fit in with the busy lives of site users, they will also have the ability to pin snapshots while they scroll, so they can easily return to them at a later date.
 
-Although the initial build of the site focuses on music/technology, site traffic could be increased by expanding genres / categories to appeal to a more diverse range of users.  For example additional categories such as Fashion, Art, Design could be added as instances in the Category Model
+Although the initial build of the site focuses on music/technology, site traffic could be increased by expanding genres / categories to appeal to a more diverse range of users.  For example additional categories such as Fashion, Art, Design could be added as instances in the Category Model.
 
 <br>
 
@@ -110,8 +110,16 @@ As the user is viewing content on the site, they should have the ability to reco
 #### **EPIC: Profiles [#24](https://github.com/rkillickdev/rewind/issues/24)**
 
 `
-Logged in users should have the ability to update and tailor their own profile details. They should also be able to view the profiles of other site users and their associated snapshot posts. Users should be recommended other profiles to follow based on musical genre preferences specified in their own profiles
+Logged in users should have the ability to update and tailor their own profile details. They should also be able to view the profiles of other site users and their associated snapshot posts. Users should be recommended other profiles to follow based on musical genre preferences specified in their own profiles.
 `
+
+#### **EPIC: DRF API [#30](https://github.com/rkillickdev/rewind/issues/30)**
+
+`
+Build and deploy an API using the Django REST Framework that enables implementation of the functionality outlined in the project user stories.
+`
+
+<br>
 
 [Back to top &uarr;](#contents)
 
@@ -119,45 +127,48 @@ Logged in users should have the ability to update and tailor their own profile d
 
 #### **EPIC: Navigation & User Authentication [#1](https://github.com/rkillickdev/rewind/issues/1)**
 
-* As a user I can access a navbar on every page so that navigation of the site is intuitive [#2](https://github.com/rkillickdev/rewind/issues/2)
-* As a user I can navigate the content of the site without the page refreshing so that content is accessed quickly and user experience is enhanced [#3](https://github.com/rkillickdev/rewind/issues/3)
-* As a user I can sign up and create a user account so that I can access additional site functionality only available to authenticated users [#4](https://github.com/rkillickdev/rewind/issues/4)
-* As a user I can sign in using my existing credentials so that I can view my account and continue enjoying site functionality only accessible to authenticated users [#5](https://github.com/rkillickdev/rewind/issues/5)
-* As a user I can see whether I am already logged in so that I am aware of my status and the features of the site I can access [#6](https://github.com/rkillickdev/rewind/issues/6)
-* As a user I can sign out from the site so that no one else using my device can access my account [#7](https://github.com/rkillickdev/rewind/issues/7)
+* As a **user** I can **access a navbar on every page** so that **navigation of the site is intuitive** [#2](https://github.com/rkillickdev/rewind/issues/2)
+* As a **user** I can **navigate the content of the site without the page refreshing** so that **content is accessed quickly and user experience is enhanced** [#3](https://github.com/rkillickdev/rewind/issues/3)
+* As a **user** I can **sign up and create a user account** so that **I can access additional site functionality only available to authenticated users** [#4](https://github.com/rkillickdev/rewind/issues/4)
+* As a **user** I can **sign in using my existing credentials** so that **I can view my account and continue enjoying site functionality only accessible to authenticated users** [#5](https://github.com/rkillickdev/rewind/issues/5)
+* As a **user** I can **see whether I am already logged in** so that **I am aware of my status and the features of the site I can access** [#6](https://github.com/rkillickdev/rewind/issues/6)
+* As a **user** I can **sign out from the site** so that **no one else using my device can access my account** [#7](https://github.com/rkillickdev/rewind/issues/7)
 
 #### **EPIC: Snapshot Lists [#8](https://github.com/rkillickdev/rewind/issues/8)**
 
-* As a user I can view all snapshots posted so that I can get an overview of the type of content available on the site and decide whether I would like to sign up [#9](https://github.com/rkillickdev/rewind/issues/9)
-* As a user I can search snapshots by keywords so that I can filter results displayed by their text content or by the profile of the poster [#10](https://github.com/rkillickdev/rewind/issues/10)
-* As a user I can choose to order the list by 'most liked' or 'most talked about' so that I can view most popular snapshots first [#11](https://github.com/rkillickdev/rewind/issues/11)
-* As a user I can filter the list of snapshots on the home page by era, genre and category so that I can view snapshots most relevant to my interests [#39](https://github.com/rkillickdev/rewind/issues/39)
+* As a **user** I can **view all snapshots posted** so that **I can get an overview of the type of content available on the site and decide whether I would like to sign up** [#9](https://github.com/rkillickdev/rewind/issues/9)
+* As a **user** I can **search snapshots by keywords** so that **I can filter results displayed by their text content or by the profile of the poster** [#10](https://github.com/rkillickdev/rewind/issues/10)
+* As a **user** I can **choose to order the list by 'most recommended' or 'most talked about'** so that **I can view most popular snapshots first** [#11](https://github.com/rkillickdev/rewind/issues/11)
+* As a **user** I can **filter the list of snapshots on the home page by era, genre and category** so that **I can view snapshots most relevant to my interests** [#39](https://github.com/rkillickdev/rewind/issues/39)
 
 #### **EPIC: Create Snapshots [#12](https://github.com/rkillickdev/rewind/issues/12)**
 
-* As a logged in user I can post image snapshots so that I can share my nostalgic memories with other site users [#13](https://github.com/rkillickdev/rewind/issues/13) 
-* As a logged in user I can upload audio clips when creating a snaphot so that I can share audio memories with other site users [#14](https://github.com/rkillickdev/rewind/issues/14)
+* As a **logged in user** I can **post image snapshots** so that **I can share my nostalgic memories with other site users** [#13](https://github.com/rkillickdev/rewind/issues/13) 
+* As a **logged in user** I can **upload audio clips when creating a snaphot** so that **I can share audio memories with other site users** [#14](https://github.com/rkillickdev/rewind/issues/14)
 
 #### **EPIC: Snapshot Details [#15](https://github.com/rkillickdev/rewind/issues/15)**
 
-* As a user I can view a snapshot detail page so that I can read the full description of the snapshot and any associated comments [#16](https://github.com/rkillickdev/rewind/issues/16)
-* As a logged in user I can edit my own snapshots so that I can update and amend the details of my original post [#17](https://github.com/rkillickdev/rewind/issues/17)
-* As a logged in user I can comment on another user's snapshot so that I can share my thoughts and interact with the Rewind community [#18](https://github.com/rkillickdev/rewind/issues/18)
-* As a logged in user I can edit my own comments so that I can amend and update my thoughts [#19](https://github.com/rkillickdev/rewind/issues/19)
-* As a logged in user I can delete my own comments so that I can control whether a previous comment remains visible to other site users [#20](https://github.com/rkillickdev/rewind/issues/20)
+* As a **user** I can **view a snapshot detail page** so that **I can read the full description of the snapshot and any associated comments** [#16](https://github.com/rkillickdev/rewind/issues/16)
+* As a **logged in user** I can **edit my own snapshots** so that **I can update and amend the details of my original post** [#17](https://github.com/rkillickdev/rewind/issues/17)
+* As a **logged in user** I can **comment on another user's snapshot** so that **I can share my thoughts and interact with the Rewind community** [#18](https://github.com/rkillickdev/rewind/issues/18)
+* As a **logged in user** I can **edit my own comments** so that **I can amend and update my thoughts**
+ [#19](https://github.com/rkillickdev/rewind/issues/19)
+* As a **logged in user** I can **delete my own comments** so that **I can control whether a previous comment remains visible to other site users** [#20](https://github.com/rkillickdev/rewind/issues/20)
 
 #### **EPIC: Recommend and Pin Snapshots [#21](https://github.com/rkillickdev/rewind/issues/21)**
 
-* As a logged in user I can recommend a snapshot so that I can show my appreciation of another user's post and encourage others to view it [#22](https://github.com/rkillickdev/rewind/issues/22)
-* As a logged in user I can pin any snapshots of interest while browsing the site so that I can build a list of posts to return to later [#23](https://github.com/rkillickdev/rewind/issues/23)
+* As a **logged in user** I can **recommend a snapshot** so that **I can show my appreciation of another user's post and encourage others to view it** [#22](https://github.com/rkillickdev/rewind/issues/22)
+* As a **logged in user** I can **pin any snapshots of interest while browsing the site** so that **I can build a list of posts to return to later** [#23](https://github.com/rkillickdev/rewind/issues/23)
 
 #### **EPIC: Profiles [#24](https://github.com/rkillickdev/rewind/issues/24)**
 
-* As a logged in user I can edit the details of my profile so that I can update my profile pic, bio details and preferences for era, musical genre and category [#25](https://github.com/rkillickdev/rewind/issues/25)
-* As a user I can view the profile pages of other site users so that I can learn more about them and the type of content they are posting [#26](https://github.com/rkillickdev/rewind/issues/26)
-* As a logged in user I can update my username and password so that I can choose how my name is displayed to other users and to ensure my login credentials remain secure [#27](https://github.com/rkillickdev/rewind/issues/27)
-* As a logged in user I can view suggested profiles so that I can decide whether their previous snapshot posts are of interest to me [#28](https://github.com/rkillickdev/rewind/issues/28)
-* As a logged in user I can choose to follow profiles that are posting interesting content so that I can be updated with more of their posts in the future [#29](https://github.com/rkillickdev/rewind/issues/29)
+* As a **logged in user** I can **edit the details of my profile** so that **I can update my profile pic, bio details and preferences for era, musical genre and category** [#25](https://github.com/rkillickdev/rewind/issues/25)
+* As a **user** I can **view the profile pages of other site users** so that **I can learn more about them and the type of content they are posting** [#26](https://github.com/rkillickdev/rewind/issues/26)
+* As a **logged in user** I can **update my username  and password** so that **I can choose how my name is displayed to other users and to ensure my login credentials remain secure** [#27](https://github.com/rkillickdev/rewind/issues/27)
+* As a **logged in user** I can **view suggested profiles** so that **I can decide whether their previous snapshot posts are of interest to me** [#28](https://github.com/rkillickdev/rewind/issues/28)
+* As a **logged in user** I can **choose to follow profiles that are posting interesting content** so that **I can be updated with more of their posts in the future** [#29](https://github.com/rkillickdev/rewind/issues/29)
+
+<br>
 
 [Back to top &uarr;](#contents)
 
