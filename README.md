@@ -391,9 +391,9 @@ In the settings.py file, I have declared ```DEBUG = 'DEBUG' in os.environ```.  T
 
 ## **Wireframes**
 
-Wireframes were created using [Balsamiq](https://balsamiq.com/wireframes/) and used as a blueprint for development of the site layout and structure.
+Wireframes were created using [Balsamiq](https://balsamiq.com/wireframes/) and served as a blueprint for development of the site layout and structure.  Some layout modifications were made throughout the development process to provide better user experience, and these changes therefore supersede the wireframes.  The era/ genre/ category filtering functionality that has been marked as a future feature appears on the wireframes but has not yet been implemented in the production version of the app.
 
-<details><summary>Mobile</summary>
+<details><summary>Mobile devices</summary>
 
 <br>
 
@@ -406,6 +406,22 @@ Wireframes were created using [Balsamiq](https://balsamiq.com/wireframes/) and u
 ![Rewind wireframe mobile Snapshot Forms](docs/wireframes/mobile/pp5-wireframe-mobile-form-views.png)
 
 </details>
+
+<details><summary>Laptop/ Desktop/ Tablet(landscape)</summary>
+
+<br>
+
+![Rewind wireframe desktop List Views](docs/wireframes/desktop/pp5-wireframe-desktop-list-views.png)
+
+![Rewind wireframe desktop Detail Views](docs/wireframes/desktop/pp5-wireframe-desktop-detail-views.png)
+
+![Rewind wireframe desktop Profile Views](docs/wireframes/desktop/pp5-wireframe-desktop-profiles-views.png)
+
+![Rewind wireframe desktop Form Views](docs/wireframes/desktop/pp5-wireframe-desktop-form-views.png)
+
+</details>
+
+<br>
 
 [Back to top &uarr;](#contents)
 
