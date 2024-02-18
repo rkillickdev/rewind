@@ -510,7 +510,9 @@ TEMPLATES = [
 ]
 ```
 
-All tests written so far are passing and the aim will be to continue writing tests to improve coverage across the site.
+28 tests have been written so far and all are passing.  The aim will be to continue writing tests to improve coverage across the site.
+
+![Django Unit Test Results](docs/tests/pp5-django-unit-test-results.png)
 
 <br>
 
