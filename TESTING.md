@@ -422,9 +422,15 @@ For the NavBar component, I wrote and ran the following tests:
 * Test that the NavBar component renders the Profile Avatar and links for Pinned/For You/Sign out when a user is logged in.
 * Test that Sign in and Sign up links are re-rendered when a user signs out
 
+I wrote and ran the following test for the AddSnapshot component:
+
+* Test that the AddSnapshot component is rendered if a user is logged in 
+
 All tests passed as can be seen below:
 
+![React Jest Testing Results](docs/tests/pp5-react-jest-testing-results.png)
 
+<br>
 
 ## **Django Unit Testing**
 
