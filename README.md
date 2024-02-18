@@ -550,9 +550,9 @@ ___
 
 ___
 
-![Snapshots list all users](docs/features/gifs/snapshots-list.gif)
+![Snapshots list all users infinite scroll](docs/features/gifs/pp5-infinite-snapshot.gif)
 
-* The `Snapshot` component is rendered for each snapshot in the list, each with a unique key (this is provided by the snapshot id).  This displays the Profile avatar and name of the owner, Snapshot image, title, date updated and description if available.  Exactly what else the user sees is determined by their authentication status and props passed into the component.
+* The `Snapshot` component is rendered for each snapshot in the list, each with a unique key (this is provided by the snapshot id).  This displays the Profile avatar and name of the owner, Snapshot image, title, date updated and description if available.  Exactly what else the user sees is determined by their authentication status and props passed into the component.  Pagination is set in Django so 5 snapshots are fetched at a time.  Infinite scrolling has been implemented so additional snapshots will be loaded as the user scrolls.
 
 ___
 
