@@ -1594,10 +1594,12 @@ The following steps were followed to deploy the site to Heroku:
 
 <br>
 
-| Bug Description | Solution |
+| Bug Description | Solutions Tried |
 | ------------ | --------------- |
-| Upon selecting an audio file for upload, the file path does not appear to be cleared on submission.  If the upload button is clicked again without re-selecting a file, the same file will be uploaded.  If the user clicks on the waveform to select another file but chooses the same file again, the icon does not change to indicate that a file has been selected.  | |
-| I noticed when testing the client side sorting by recommendations and comments, upon page load this sorting is only based on the first page of paginated results.  If the User scrolls and loads more results and clicks a sort icon again, the sorting will be based on all of the snapshots that have been fetched |. In future iterations, it may be worth considering whether it would be better to carry this sorting out on the backend so it is applied to the whole queryset.
+| Upon selecting an audio file for upload, the file path does not appear to be cleared on submission.  If the upload button is clicked again without re-selecting a file, the same file will be uploaded.  If the user clicks on the waveform to select another file but chooses the same file again, the icon does not change to indicate that a file has been selected.  | I have tried using the `URL.revokeObjectURL` approach to clear the path.  This was not successful but I believe with more time and further investigation, this could play a part in the solution.  I will include this fix in a future sprint.  For now I do not find it to be too problematic, especially because I have the client side validation limiting the total number of samples that can be uploaded for a snapshot.  Also samples must be approved by an administrator so they would flag if there were 3 identical samples and only approve 1 |
+| I noticed when testing the client side sorting by recommendations and comments that upon page load this sorting is only based on the first page of paginated results.  If the User scrolls and loads more results and clicks a sort icon again, the sorting will be based on all of the snapshots that have been fetched | Although not a bug as such, in future iterations it may be worth considering whether it would be better to carry this sorting out on the backend so it is applied to the whole queryset. |
+
+<br>
 
 ## **Solved Bugs**
 
