@@ -528,6 +528,8 @@ ___
 <summary> Snapshots Page
 </summary>
 
+<br>
+
 The SnapshotsPage component is rendered using the React Router whenever the user navigates to the exact url for 'Home', 'For You' or 'Pinned'.  
 
 ![Snapshots search bar](docs/features/gifs/search-bar.gif)
@@ -826,6 +828,8 @@ ___
 <details>
 <summary> Profile Page
 </summary>
+
+<br>
 
 ### **Unauthenticated User**
 
