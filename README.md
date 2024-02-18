@@ -397,7 +397,13 @@ Wireframes were created using [Balsamiq](https://balsamiq.com/wireframes/) and u
 
 <br>
 
-![PlanIt-Go wireframe mobile List Views](docs/wireframes/mobile/mobile-list-views.png)
+![Rewind wireframe mobile List Views](docs/wireframes/mobile/pp5-wireframe-mobile-list-views.png)
+
+![Rewind wireframe mobile Detail Views](docs/wireframes/mobile/pp5-wireframe-mobile-detail-views.png)
+
+![Rewind wireframe mobile Profile Views](docs/wireframes/mobile/pp5-wireframe-mobile-profile-views.png)
+
+![Rewind wireframe mobile Snapshot Forms](docs/wireframes/mobile/pp5-wireframe-mobile-form-views.png)
 
 </details>
 
