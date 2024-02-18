@@ -9,7 +9,15 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 
 
 class SnapshotListViewTests(APITestCase):
+    """
+    Testing for Snapshot List View.
+    """
+
     def setUp(self):
+        """
+        Setup creates user, era, genre, category and image to be
+        used when creating a snapshot.
+        """
         User.objects.create_user(username="rob", password="pass123")
 
         self.era = Era.objects.create(
@@ -59,7 +67,15 @@ class SnapshotListViewTests(APITestCase):
 
 
 class SnapshotDetailViewTests(APITestCase):
+    """
+    Testing for Snapshot Detail View.
+    """
+
     def setUp(self):
+        """
+        Setup creates 2 users, era, genre, category to be
+        used when creating 2 separate snapshots.
+        """
         rob = User.objects.create_user(username="rob", password="pass123")
         mills = User.objects.create_user(username="mills", password="pass456")
 
