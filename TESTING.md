@@ -55,20 +55,20 @@
 
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
-| User navigates to home page  | Snapshots listed in descending order and sorted by date created.  Search bar and sort icons appear at top of page above first snapshot  | Pass |
+| User navigates to home page  | Snapshots listed in descending order and sorted by date updated.  Search bar and sort icons appear at top of page above first snapshot  | Pass |
 | User scrolls through snapshots | More snapshots load automatically as user scrolls (if more than 5 exist) | Pass |
 | User enters text into the search bar | Results filter dynamically with a 1 second pause after the user stops typing.  Snapshots will be displayed if text input matches any text in the title, era, genre or category of the snapshot | Pass |
 | User enters text into the search bar that does not match any text in the defined API search fields | Message displayed to user, informing that no snapshots could be found and recommending to adjust their search phrase | Pass |
 | User hovers over each of the sort icons | Icon colour transformed on hover and returns to original on moving away | Pass |
 | User clicks on 'Recommendations' sort icon | Snapshots sorted by recommendation count (descending) without the page refreshing | Pass |
 | User clicks on 'Comments' sort icon | Snapshots sorted by comment count (descending) without the page refreshing | Pass |
-| User clicks on 'Date' sort icon | Snapshots sorted by date created (descending) without the page refreshing | Pass |
+| User clicks on 'Date' sort icon | Snapshots sorted by date updated (descending) without the page refreshing | Pass |
 
 ## Snapshot
 
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
-| User navigates to home page | Each snapshot in the list displays an image, title, description (if it exists), profile avatar and name of the snapshot owner, and date created.  The number of recommendations and number of comments should be displayed for each snapshot.  If approved samples belong to the snapshot a waveform icon should be displayed | Pass |
+| User navigates to home page | Each snapshot in the list displays an image, title, description (if it exists), profile avatar and name of the snapshot owner, and date updated.  The number of recommendations and number of comments should be displayed for each snapshot.  If approved samples belong to the snapshot a waveform icon should be displayed | Pass |
 | User hovers or clicks on recommendation icon | Icon colour transformed on hover and returns to original on moving away.  Tooltip displayed, informing user that they must sign in to recommend a snapshot | Pass |
 | User hovers over comment icon | Icon colour transformed on hover and returns to original on moving away | Pass |
 | User clicks on comments icon | User redirected to detail page for associated snapshot | Pass |
@@ -79,7 +79,7 @@
 
 | Action | Expected Outcome | Pass/Fail |
 | ---- | ---- | :----: |
-| User clicks on snapshot image, comments icon or waveform icon | User redirected to detail page for associated snapshot.  Approved samples associated with the snapshot are listed in date created descending order below the snapshot. First 10 comments associated with the snapshot are displayed in date created descending order below any samples.  If no comments exist, display message to inform user | Pass |
+| User clicks on snapshot image, comments icon or waveform icon | User redirected to detail page for associated snapshot.  Approved samples associated with the snapshot are listed in date created descending order below the snapshot. First 5 comments associated with the snapshot are displayed in date created descending order below any samples.  If no comments exist, display message to inform user | Pass |
 | User scrolls through comments | More comments load automatically as user scrolls (if more than 5 exist) | Pass |
 | User clicks play button of audio player | Playback of sample begins | Pass |
 | User clicks pause button of audio player | Playback of sample stops | Pass |
