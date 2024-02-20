@@ -347,7 +347,7 @@ Prevention of new empty comments being submitted is handled by disabling the sub
 | ---- | ---- | ---- | ---- |
 | audio | No file selected | Alert warns 'The submitted data was not a file. Check the encoding type on the form.'| Pass |
 | audio | File selected exceeds 2MB in size | Alert warns 'Please choose an image smaller than 2MB' | Pass |
-| audio | Attempt to submit form when 5 samples already belong to the specified snapshot | Alert warns 'Sorry, the maximum number of samples have been added for this snapshot' | Pass |
+| audio | Attempt to submit form when 3 samples already belong to the specified snapshot | Alert warns 'Sorry, the maximum number of samples have been added for this snapshot' | Pass |
 
 <br>
 
