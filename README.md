@@ -1357,16 +1357,16 @@ ___
 
 ## **Frontend Frameworks and Libraries**
 
-* [React](https://react.dev/) - A JavaScript library for building user interfaces
-* [react-bootstrap 1.6.3](https://react-bootstrap-v4.netlify.app/) - Frontend framework that is compatible with React.  Used to create a responsive site
+* [React](https://react.dev/) - A JavaScript library for building user interfaces.
+* [react-bootstrap 1.6.3](https://react-bootstrap-v4.netlify.app/) - Frontend framework that is compatible with React.  Used to create a responsive site to provide good user experience across a range of devices.
 * [react-router-dom](https://www.npmjs.com/package/react-router-dom) - a library that enables 'client side routing'.  Components used from this library include:
   1. **Switch:** Component used to render the first route that matches the location rather than rendering all matching routes.
   2. **Route:** Component that checks current URL and displays the component associated with that exact path.  All routes are placed within the switch components. 
   3. **Link:** Component used to create links to different routes
 * [axios](https://axios-http.com/docs/intro) - A promise-based HTTP library.  This enabled HTTP requests to be made to the DRF API.
-* [react-infinite-scroll-component](https://www.npmjs.com/package/react-infinite-scroll-component) - A component used to implement infinite scrolling for snapshots and comments
+* [react-infinite-scroll-component](https://www.npmjs.com/package/react-infinite-scroll-component) - A component used to implement infinite scrolling for snapshots and comments.  This improves user experience as there is no need to click on pagination links to load the next set of results.
 * [jwt-decode](https://www.npmjs.com/package/jwt-decode) - Browser library that helps with decoding of Base64URL encoded JSON web tokens.
-* [react-error-boundary](https://github.com/bvaughn/react-error-boundary) - A library that provides a way to handle JavaScript errors in React components.
+* [react-error-boundary](https://github.com/bvaughn/react-error-boundary) - A library that provides a way to handle JavaScript errors in React components.  This was an additional tool to use in overall error handling across the app alongside the catch blocks used in requests to the API.  The error boundary will catch any errors in their child component tree and display a fallback UI, therefore improving user experience.
 
 <br>
 
