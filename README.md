@@ -76,6 +76,8 @@ Timeboxing was used throughout the development of the project.  Week long 'sprin
 
 Throughout the development process, I used a kanban board to provide up to date information about the status of progress for each iteration.  The board was created and managed using GitHub Projects and can be viewed [here](https://github.com/users/rkillickdev/projects/5).
 
+![Rewing Kanban Board](docs/agile/pp5-kanaban-board.png)
+
 User stories for each sprint were initially allocated to the 'Todo' column and then transferred to the 'In Progress' column as they were worked on.  Once each task for the user story had been completed and all acceptance criteria satisfied, the issue was marked as complete and moved to the 'Done' column.
 
 [Back to top &uarr;](#contents)
