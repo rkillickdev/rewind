@@ -141,7 +141,7 @@ Build and deploy an API using the Django REST Framework that enables implementat
 #### **EPIC: Snapshot Lists [#8](https://github.com/rkillickdev/rewind/issues/8)**
 
 * As a **user** I can **view all snapshots posted** so that **I can get an overview of the type of content available on the site and decide whether I would like to sign up** [#9](https://github.com/rkillickdev/rewind/issues/9)
-* As a **user** I can **search snapshots by keywords** so that **I can filter results displayed by their text content or by the profile of the poster** [#10](https://github.com/rkillickdev/rewind/issues/10)
+* As a **user** I can **search snapshots by keywords** so that **I can filter results displayed by their text content or by era, genre or category of a snapshot** [#10](https://github.com/rkillickdev/rewind/issues/10)
 * As a **user** I can **choose to order the list by 'most recommended' or 'most talked about'** so that **I can view most popular snapshots first** [#11](https://github.com/rkillickdev/rewind/issues/11)
 * As a **user** I can **filter the list of snapshots on the home page by era, genre and category** so that **I can view snapshots most relevant to my interests** [#39](https://github.com/rkillickdev/rewind/issues/39)
 
@@ -152,7 +152,7 @@ Build and deploy an API using the Django REST Framework that enables implementat
 
 #### **EPIC: Snapshot Details [#15](https://github.com/rkillickdev/rewind/issues/15)**
 
-* As a **user** I can **view a snapshot detail page** so that **I can read the full description of the snapshot and any associated comments** [#16](https://github.com/rkillickdev/rewind/issues/16)
+* As a **user** I can **view a snapshot detail page** so that **I can read the full description of the snapshot and any associated comments and samples** [#16](https://github.com/rkillickdev/rewind/issues/16)
 * As a **logged in user** I can **edit my own snapshots** so that **I can update and amend the details of my original post** [#17](https://github.com/rkillickdev/rewind/issues/17)
 * As a **logged in user** I can **comment on another user's snapshot** so that **I can share my thoughts and interact with the Rewind community** [#18](https://github.com/rkillickdev/rewind/issues/18)
 * As a **logged in user** I can **edit my own comments** so that **I can amend and update my thoughts**
@@ -541,7 +541,7 @@ The SnapshotsPage component is rendered using the React Router whenever the user
 
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: |
-| [#10](https://github.com/rkillickdev/rewind/issues/10) | As a user I can search snapshots by keywords so that I can filter results displayed by their text content or by the profile of the poster | Pass |
+| [#10](https://github.com/rkillickdev/rewind/issues/10) | As a user I can search snapshots by keywords so that I can filter results displayed by their text content or by era, genre or category of a snapshot | Pass |
 
 ___
 
@@ -551,7 +551,7 @@ ___
 
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: |
-| [#11](https://github.com/rkillickdev/rewind/issues/11) | As a user I can choose to order the list by 'most liked' or 'most talked about' so that I can view most popular snapshots first | Pass |
+| [#11](https://github.com/rkillickdev/rewind/issues/11) | As a user I can choose to order the list by 'most recommended' or 'most talked about' so that I can view most popular snapshots first | Pass |
 
 ___
 
@@ -687,7 +687,7 @@ ___
 
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: |
-| [#16](https://github.com/rkillickdev/rewind/issues/16) | As a user I can view a snapshot detail page so that I can read the full description of the snapshot and any associated comments | Passed |
+| [#16](https://github.com/rkillickdev/rewind/issues/16) | As a user I can view a snapshot detail page so that I can read the full description of the snapshot and any associated comments and samples | Passed |
 
  ___
 
@@ -929,6 +929,10 @@ ___
 <br>
 
 ![User sign out](docs/features/gifs/sign-out.gif)
+
+| | User Story | Acceptance Criteria Satisfied | 
+| --- | ------------ | :---: |
+| [#7](https://github.com/rkillickdev/rewind/issues/7) | As a user I can sign out from the site so that no one else using my device can access my account | Pass |
 
 ___
 
