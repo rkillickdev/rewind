@@ -801,6 +801,13 @@ Several opportunities were flagged by the lighthouse report to improve performan
 
 Size and format of images being served is an area that should be looked into further during future iterations.  I have already implemented server side logic in the Snapshots serializers file to prevent images over 2MB in size being uploaded.  I have tested the site on various devices and networks and the issue does not seem to be impacting page load times to the detriment of the user.
 
+I have also noted that 'issues' are flagged in Dev Tools.  The following warning is communicated when navigating to some forms:
+
+![Dev Tools Issues Tab](docs/lighthouse/issues/pp5-console-issue-form-label.png)
+
+I attempted a solution as suggested by adding a `for attribute on the label that matches a form field id`.  However this then raised further issues as the form is rendered twice in the html even though only one is ever displayed and the other hidden (dependent on screen size).  Because I am storing the form fields in a variable and then rendering, adding an id to a field results in duplicate ids as each field is rendered twice.  This may be something to look at again in future sprints, but for now these pages are still passing with no accessibility errors.
+
+
 <details><summary>Desktop Results</summary>
 
 <br>
