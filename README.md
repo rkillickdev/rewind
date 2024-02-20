@@ -23,6 +23,7 @@ Rewind has been developed as part of the [Code Institute](https://codeinstitute.
     * [Scope Plane](#scope-plane)
     * [Skeleton Plane](#skeleton-plane)
         * [Database Schema](#database-schema)
+        * [Security](#security)
         * [Wireframes](#wireframes)
     * [Structure Plane](#structure-plane)
         * [Features](#features)
@@ -148,7 +149,7 @@ Build and deploy an API using the Django REST Framework that enables implementat
 #### **EPIC: Create Snapshots [#12](https://github.com/rkillickdev/rewind/issues/12)**
 
 * As a **logged in user** I can **post image snapshots** so that **I can share my nostalgic memories with other site users** [#13](https://github.com/rkillickdev/rewind/issues/13) 
-* As a **logged in user** I can **upload audio clips when creating a snaphot** so that **I can share audio memories with other site users** [#14](https://github.com/rkillickdev/rewind/issues/14)
+* As a **logged in user** I can **upload audio clips when creating a snapshot** so that **I can share audio memories with other site users** [#14](https://github.com/rkillickdev/rewind/issues/14)
 
 #### **EPIC: Snapshot Details [#15](https://github.com/rkillickdev/rewind/issues/15)**
 
@@ -225,7 +226,7 @@ ___
 
 ### **ERA / GENRE/ CATEGORY**
 
-Multiple instances of Era / Genre/ Category can belong to multiple profiles.  This data will then be used to tailor content presented to site users and make suggestions for other profiles to follow.  
+One instance of Era / Genre/ Category can belong to multiple profiles.  This data will then be used to tailor content presented to site users and make suggestions for other profiles to follow.  
 
 The Era / Genre / Category models are linked to the Snapshot model via a foreign key field.  For example, a single instance of Era,Genre or Category can belong to many different instances of Snapshot.
 
@@ -373,7 +374,7 @@ To secure certain Django Views and ensure they are only accessible to registered
 
 * `IsAuthenticatedOrReadOnly` is a Django REST Framework built in permission class.  Requests for unauthenticated users are only permitted if the request method is one of the "safe" methods; `GET`, `HEAD` or `OPTIONS`.  This ensures that only logged in users are granted write permissions.
 
-* `IsOwnerOrReadOnly` is a custom class stored in rewind/permissions.py which extends DRF permissions.BasePermission. The method `has_object_permissions' defined within the class, returns a boolean value.  If the request method received is one of the "safe" methods, true is returned as all users are permitted to make these requests.  If not a safe method, true is only returned if the current user is the owner of an object.  This ensures that users can only update or delete an object that they own.  This is an important security consideration .  Although functionality to update and delete objects owned by another user is not provided in the user interface, this alone does not provide adequate protection.  Objects in the database could still be targeted using specific urls.  The inclusion of permission_classes add an additional layer of defence.
+* `IsOwnerOrReadOnly` is a custom class stored in rewind/permissions.py which extends DRF permissions.BasePermission. The method `has_object_permissions` defined within the class, returns a boolean value.  If the request method received is one of the "safe" methods, true is returned as all users are permitted to make these requests.  If not a safe method, true is only returned if the current user is the owner of an object.  This ensures that users can only update or delete an object that they own.  This is an important security consideration .  Although functionality to update and delete objects owned by another user is not provided in the user interface, this alone does not provide adequate protection.  Objects in the database could still be targeted using specific urls.  The inclusion of permission_classes add an additional layer of defence.
 
 * `ReadOnly` is a custom class stored in rewind/permissions.py which extends DRF permissions.BasePermission.  If the request method received is one of the "safe" methods, true is returned.  I added this custom permission to the ListCreateAPIView for eras, genres and categories to ensure that all users have read permissions but only admin users have permission to create new instances.
 
@@ -391,6 +392,8 @@ Any keys containing sensitive data were stored in and retrieved from the env.py 
 In the settings.py file, I have declared ```DEBUG = 'DEBUG' in os.environ```.  This means that DEBUG will only equate to True in development mode.  In production, the 'DEBUG' variable is not stored and therefore equates to False.  It is important for DEBUG not to be enabled in production, as this prevents users from seeing the detailed traceback displayed by Django if an exception is raised.  Although this is useful while in development mode, these messages could contain information about the site that we would not want the final user to see.
 
 <br>
+
+[Back to top &uarr;](#contents)
 
 ## **Wireframes**
 
@@ -484,7 +487,7 @@ Clicking on the hamburger icon expands the nav links which are stacked verticall
 
 ___
 
-The React Router library is used to handle routing for the application, with specified urls routing the user to different pages.  However this happens without the browser refreshing as the router handles these changes in the React virtual DOM.  In reality each time a user navigates to a new 'page', it is always the same HTML page but with a different component rendered.
+The React Router library is used to handle routing for the application, with specified urls routing the user to different pages.  However this happens without the browser refreshing as the router handles these changes in the React virtual DOM.  In reality each time a user navigates to a new 'page', it is always the same HTML page but with  different components rendered.
 
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: | 
@@ -595,7 +598,7 @@ ___
 
 ![Recommend snapshots](docs/features/gifs/recommend-snapshot.gif)
 
-* Users can recommend/ remove recommendations for snaphots that they do not own.  If they own the snapshot and attempt to recommend, a tooltip provides feedback that they cannot carry out this action.
+* Users can recommend/ remove recommendations for snapshots that they do not own.  If they own the snapshot and attempt to recommend, a tooltip provides feedback that they cannot carry out this action.
 
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: | 
@@ -629,7 +632,7 @@ ___
 
 ![For You page no results](docs/features/pp5-for-you-no-results.png)
 
-* If a user has not followed any other profiles, a resuable `Asset` component is rendered to display a message encouraging the user to start following other profiles to fill the page.
+* If a user has not followed any other profiles, a reuseable `Asset` component is rendered to display a message encouraging the user to start following other profiles to fill the page.
 
 ___
 
@@ -663,7 +666,7 @@ ___
 
 * The `SnapshotCreateForm` component is rendered by the react router when a user navigates to the `/snapshots/create` url.
 
-* To successfully create a new snaphot, the user must select an image and input a title.  Description is optional.  The snapshot must also be given an era, genre and category.
+* To successfully create a new snapshot, the user must select an image and input a title.  Description is optional.  The snapshot must also be given an era, genre and category.
 
 * On successful submission, a toast alert is used to notify users that the snapshot has been created.
 
@@ -683,7 +686,7 @@ ___
 
 ![Snapshot detail page](docs/features/pp5-snapshot-detail-unauth.png)
 
-* The SnapshotPage component is rendered using the React Router whenever the user naviagates to the exact url `/snapshots/:id`.  This renders a `Snapshot` component, displaying details for a snapshot specified by the id supplied in the url.
+* The SnapshotPage component is rendered using the React Router whenever the user navigates to the exact url `/snapshots/:id`.  This renders a `Snapshot` component, displaying details for a snapshot specified by the id supplied in the url.
 
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: |
@@ -714,7 +717,7 @@ ___
 
 | | User Story | Acceptance Criteria Satisfied | 
 | --- | ------------ | :---: |
-| [#14](https://github.com/rkillickdev/rewind/issues/14) | As a logged in user I can upload audio clips when creating a snaphot so that I can share audio memories with other site users | Pass |
+| [#14](https://github.com/rkillickdev/rewind/issues/14) | As a logged in user I can upload audio clips when creating a snapshot so that I can share audio memories with other site users | Pass |
 
 ___
 
@@ -780,7 +783,9 @@ ___
 
 ![Sample owner delete icon](docs/features/pp5-snapshot-detail-sample-owner.png)
 
-* The `EditDelete` component is rendered within the `Sample` component.  As the user only has the ability to delete samples, only the `handleDelete` prop is passed to EditDelete.  This displays a  clickable icons for deleting the sample.
+* If a sample has not been approved by an administrator, an opacity effect is applied to the sample.  A tooltip is displayed when hovering over the pending icon to notify the user that approval is pending.
+
+* The `EditDelete` component is rendered within the `Sample` component.  As the user only has the ability to delete samples, only the `handleDelete` prop is passed to EditDelete.  This displays a  clickable icon for deleting the sample.
 
 ![Sample delete](docs/features/gifs/pp5-sample-delete.gif)
 
@@ -806,7 +811,7 @@ ___
 
 ![Relevant profiles](docs/features/relevant-profiles.png)
 
-* If the user has selected their preferences on the Profile Edit page, these are retrieved via the `CurrentUserContext`.  This information is then used to carry out frontend filtering of the 'popular profiles' list to return a list of suggested profiles whose interests/ preferences are most closely aligned with the current user.  It's possible that no results are returned, especially while the datatabase of profiles grows.  In this case, the list of popular profiles are displayed as a default.
+* If the user has selected their preferences on the Profile Edit page, these are retrieved via the `CurrentUserContext`.  This information is then used to carry out frontend filtering of the 'popular profiles' list to return a list of suggested profiles whose interests/ preferences are most closely aligned with the current user.  It's possible that no results are returned, especially while the database of profiles grows.  In this case, the list of popular profiles are displayed as a default.
 
 <br>
 
@@ -838,7 +843,7 @@ ___
 
 ![Profile page unauthenticated user](docs/features/profile-page-unauth.png)
 
-* The `ProfilePage` component is rendered using the React Router whenever the user naviagates to the exact url `/profiles/:id`.  This displays the following details for a profile specified by the id supplied in the url:
+* The `ProfilePage` component is rendered using the React Router whenever the user navigates to the exact url `/profiles/:id`.  This displays the following details for a profile specified by the id supplied in the url:
 
   * Image
   * Profile Name
@@ -1291,7 +1296,7 @@ Static images used throughout the site have been chosen to tie in with the retro
 ![App surface plane imagery](docs/surface-plane/pp5-surface-plane-imagery-merge.png)
 
 
-The brand logo used in the navbar has been chosen to invoke feelings of nostalgia and links well to the App name 'Rewind' - a nod to an age where 'rewinding cassette tapes was part of daily life. The colour scheme used is consistent with the rest of the site.
+The brand logo used in the navbar has been chosen to evoke feelings of nostalgia and links well to the App name 'Rewind' - a nod to an age where 'rewinding cassette tapes was part of daily life. The colour scheme used is consistent with the rest of the site.
 
 ![App brand logo](docs/features/pp5-favicon-cassette-orange-logo.png)
 
@@ -1318,7 +1323,7 @@ ___
 * [W3C jigsaw](https://jigsaw.w3.org/css-validator/) - CSS Validator
 * [PEP8](https://pep8ci.herokuapp.com/) - CI Python Linter.
 * [ESLint](https://eslint.org/) - linting utility for JavaScript and JSX
-* [Prettier](https://prettier.io/) - An opinionated code formatter used in conjuction with ESLint
+* [Prettier](https://prettier.io/) - An opinionated code formatter used in conjunction with ESLint
 * [Black](https://www.freecodecamp.org/news/auto-format-your-python-code-with-black/) - Python Auto Formatter.
 * [Google Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) - Used at testing stage to show statistics for performance, accessibility, best practices and SEO.
 * [Google DevTools](https://developer.chrome.com/docs/devtools/) - Used throughout build of website for debugging, checking responsiveness and trialing new features/ styling.
@@ -1344,7 +1349,7 @@ ___
 * [Django 3.2.23](https://www.djangoproject.com/) - High level Python web framework used in conjunction with DRF for development of the project backend.
 * [Django REST Framework](https://www.django-rest-framework.org/) - Framework used to develop the backend API.
 * [cloudinary](https://cloudinary.com/) - Python library to facilitate integration of cloudinary with Django
-* [dj-databse-url](https://pypi.org/project/dj-database-url/) - A utility that allows use of the DATABASE_URL environment variable to configure a Django application.  This was used for connection to the PostgreSQL database.
+* [dj-database-url](https://pypi.org/project/dj-database-url/) - A utility that allows use of the DATABASE_URL environment variable to configure a Django application.  This was used for connection to the PostgreSQL database.
 * [dj3-cloudinary-storage](https://pypi.org/project/dj3-cloudinary-storage/) - A Django package that facilitates Cloudinary storage for media files used in the project.
 * [django-filter](https://django-filter.readthedocs.io/en/stable/#) - Enables filtering of a queryset based on a Model's fields.
 * [pillow](https://pypi.org/project/pillow/) - A Python Imaging Library that adds image processing capabilities to your Python interpreter.
@@ -1375,6 +1380,10 @@ ___
 # **Testing**
 
 Please follow this link to the [TESTING.md file](https://github.com/rkillickdev/rewind/blob/main/TESTING.md) for documentation about the testing procedure I followed for this project.
+
+<br>
+
+[Back to top &uarr;](#contents)
 
 # **Deployment and Local Development**
 
@@ -1423,7 +1432,7 @@ A Procfile file is required that provides the commands to Heroku to build and ru
 
 ```
   release: python manage.py makemigrations && python manage.py migrate
-  web: gunicorn drf_api.wsgi
+  web: gunicorn rewind.wsgi
 ```
 
 ## Setting up a unified project
@@ -1786,13 +1795,15 @@ setSnapshot((prevSnapshot) => ({
 
 * [Sorting in Javascript](https://www.freecodecamp.org/news/how-does-the-javascript-sort-function-work/)
 
-* Setting Foreign Key Field im model serializer to null: [Article 1/ ](https://stackoverflow.com/questions/56917190/django-django-rest-framework-how-do-i-allow-model-serializer-to-set-models-fo)[Article 2](https://stackoverflow.com/questions/47076194/django-rest-framework-how-to-set-a-field-to-null-via-patch-request)
+* Setting Foreign Key Field in model serializer to null:
+  * [Article 1/ ](https://stackoverflow.com/questions/56917190/django-django-rest-framework-how-do-i-allow-model-serializer-to-set-models-fo)
+  * [Article 2](https://stackoverflow.com/questions/47076194/django-rest-framework-how-to-set-a-field-to-null-via-patch-request)
 
 * [Setting up Bootstrap Modals in React](https://www.codu.co/articles/creating-a-pop-up-modal-dialog-in-bootstrap-react-xgeujzcj)
 
 * [React Router Dom](https://www.geeksforgeeks.org/what-is-react-router-dom/)
 
-* [Remove itermittent black border on feature button hover](https://stackoverflow.com/questions/67209715/strange-black-outline-in-the-css-button)
+* [Remove intermittent black border on feature button hover](https://stackoverflow.com/questions/67209715/strange-black-outline-in-the-css-button)
 
 * [Writing comments for React code](https://dmitripavlutin.com/react-comments/)
 
@@ -1819,7 +1830,7 @@ setSnapshot((prevSnapshot) => ({
 * Royalty free images used throughout the site from [Pexels](https://www.pexels.com/)
 
 * Royalty free images used throughout the site from [Unsplash](https://unsplash.com/)
-  * Multiple Casette Tapes - Photo by hosein zanbori on Unsplash
+  * Multiple Cassette Tapes - Photo by hosein zanbori on Unsplash
   * Technics 1210 close up - Photo by Jan Kopřiva on Unsplash
   * Roland 808 - Photo by Steve Harvey on Unsplash
   * Roland 909 - Photo by Cone Trees on Unsplash
@@ -1827,7 +1838,7 @@ setSnapshot((prevSnapshot) => ({
   * Modular Synth - Photo by Ryunosuke Kikuno on Unsplash
   * Pile of Vinyl - Photo by Nihal Demirci Erenay on Unsplash
 
-* Royaly free icons used throughout the site from [Flaticon](https://www.flaticon.com)
+* Royalty free icons used throughout the site from [Flaticon](https://www.flaticon.com)
   * <a href="https://www.flaticon.com/free-icons/cassette" title="cassette icons">Cassette icons created by Smashicons - Flaticon</a>
   * <a href="https://www.flaticon.com/free-icons/image-upload" title="image upload icons">Image upload icons created by Cap Cool - Flaticon</a>
   * <a href="https://www.flaticon.com/free-icons/no-results" title="no results icons">No results icons created by Design Circle - Flaticon</a>
@@ -1849,7 +1860,7 @@ setSnapshot((prevSnapshot) => ({
   * <a href="https://www.flaticon.com/free-icons/walkman" title="walkman icons">Walkman icons created by Eucalyp - Flaticon</a>
   * <a href="https://www.flaticon.com/free-icons/walkman" title="walkman icons">Walkman icons created by Freepik - Flaticon</a>
 
-* [chatGPT](https://chat.openai.com/) was used to generate a few pieces of text content for the snapshots.   Other content for the site was written by myself.
+* [chatGPT](https://chat.openai.com/) was used to generate a few pieces of text content for test snapshots.   Other content for the site was written by myself.
 
 <br>
 
